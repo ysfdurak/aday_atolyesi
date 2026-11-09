@@ -2,7 +2,7 @@
 
 Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri bildirim → revizyon → mülakat provası** akışında birleştiren Türkçe portföy projesidir. Aday kendi çalışmasını düzenler. İK değerlendiricisi atanmış vaka teslimini ölçüt ve dayanak üzerinden inceler.
 
-[Uygulama sürümü 0.18.0](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
+[Uygulama sürümü 0.18.1](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
 
 | Alan | Kullanıcı ne yapar? |
 | --- | --- |
@@ -14,6 +14,12 @@ Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri b
 | Mülakat hazırlığı | Seçtiği örnekleri bir dosyada toplar ve kendi dayanaklarıyla prova yapar. |
 | İK incelemesi | Atanmış teslimi ekranda açar, her ölçüt için 0–3 seviye seçer ve çıktı bazında dayanaklı görüş yazar. Yönetici kör değerlendirmeyi açabilir, bekleyen teslimleri toplu atar. |
 
+## Çevrimiçi demo
+
+[ysfdurak.github.io/aday_atolyesi](https://ysfdurak.github.io/aday_atolyesi/) adresinde telefondan veya bilgisayardan kurulum olmadan açılır.
+
+> **Not:** Çevrimiçi demo GitHub Pages üzerinde çalışan **statik** bir sürümdür. Hazırlık planı, Zihin Parkuru, Mizaç, Rol Atölyesi, vaka çalışmaları, Word/Excel indirme, deneyim arşivi ve mülakat hazırlığı açıktır. Çalışmalar yalnızca o tarayıcıda saklanır; korumak için **Hesap ve ayarlar → Hedef ve kayıtlar** bölümünden cihaz yedeği indirilebilir. Sunucu gerektiren **hesap, dosya teslimi, İK değerlendirmesi, kör değerlendirme ve otomatik hesap kaydı bu sürümde kapalıdır**; uygulama içinde de bu durum bir notla gösterilir. Bu özellikleri denemek için aşağıdaki yerel demoyu kullan.
+
 ## Yerel demo
 
 Node.js 22.13 veya üstü (önerilen: 24) kurulu bir bilgisayarda proje klasörünü aç ve çalıştır:
@@ -22,7 +28,7 @@ Node.js 22.13 veya üstü (önerilen: 24) kurulu bir bilgisayarda proje klasör�
 npm run demo
 ```
 
-Tarayıcıda [http://127.0.0.1:5173](http://127.0.0.1:5173) adresini aç. Hesabım ve teslimler ekranından **Demo rolünü seç** düğmesiyle aday, İK değerlendiricisi veya pilot yöneticisi rolünü açabilirsin. Bu komut için paket kurulumu veya harici hesap gerekmez. Demo, hesap ve teslim kayıtlarını bellekte tutar. Sunucuyu durdurunca bu kayıtlar silinir. Tarayıcıdaki atölye ilerlemesi aynı tarayıcı profilinde saklanır. Demoda kurgusal dosyalar kullan.
+Aynı bilgisayardaki tarayıcıda [http://127.0.0.1:5173](http://127.0.0.1:5173) adresini aç (bu adres yalnızca komutu çalıştırdığın bilgisayarda açılır; telefondan açılmaz). Hesabım ve teslimler ekranından **Demo rolünü seç** düğmesiyle aday, İK değerlendiricisi veya pilot yöneticisi rolünü açabilirsin. Bu komut için paket kurulumu veya harici hesap gerekmez. Demo, hesap ve teslim kayıtlarını bellekte tutar. Sunucuyu durdurunca bu kayıtlar silinir. Tarayıcıdaki atölye ilerlemesi aynı tarayıcı profilinde saklanır. Demoda kurgusal dosyalar kullan.
 
 ## Geliştirme ve kontroller
 

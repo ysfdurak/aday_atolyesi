@@ -33,7 +33,7 @@
       if (!latest.has(key)) latest.set(key, r);
     }
     const pending = [...latest.values()].filter(r => !r.feedback).length;
-    return `<section class="card"><h2>Dosya teslimlerimin geri bildirimleri</h2><p>Hesabındaki son PDF, Word veya Excel teslimine yazılmış insan görüşünü getir. Dosya içeriği otomatik okunmaz; alıntı doğrulaması metinle yapılan teslimler için kullanılabilir.</p><button id="growth-load-files" ${account.status === 'loading' ? 'disabled' : ''}>${account.status === 'loading' ? 'Getiriliyor…' : 'Dosya geri bildirimlerimi getir'}</button><p role="status">${account.status === 'ready' ? account.rows.length + ' dosya kaydı incelendi. ' + (pending ? 'Son tesliminde geri bildirim beklenen ' + pending + ' vaka var; eski görüşler yeni cevaba aktarılmadı.' : '') : account.status === 'auth' ? 'Hesabım ve teslimler alanından giriş yaptıktan sonra tekrar dene.' : account.status === 'error' ? 'Geri bildirimler getirilemedi. Mevcut cihaz kayıtların korunuyor; tekrar deneyebilirsin.' : ''}</p>${link('#pilot', 'Hesabım ve teslimler')}</section>`;
+    return `<section class="card"><h2>Dosya teslimlerimin geri bildirimleri</h2><p>Hesabındaki son PDF, Word veya Excel teslimine yazılmış insan görüşünü getir. Dosya içeriği otomatik okunmaz; alıntı doğrulaması metinle yapılan teslimler için kullanılabilir.</p><button id="growth-load-files" ${account.status === 'loading' ? 'disabled' : ''}>${account.status === 'loading' ? 'Getiriliyor…' : 'Dosya geri bildirimlerimi getir'}</button><p role="status">${account.status === 'ready' ? account.rows.length + ' dosya kaydı incelendi. ' + (pending ? 'Son tesliminde geri bildirim beklenen ' + pending + ' vaka var; eski görüşler yeni cevaba aktarılmadı.' : '') : account.status === 'static' ? 'Dosya teslimi ve İK geri bildirimi bu statik demoda kapalı.' : account.status === 'auth' ? 'Hesabım ve teslimler alanından giriş yaptıktan sonra tekrar dene.' : account.status === 'error' ? 'Geri bildirimler getirilemedi. Mevcut cihaz kayıtların korunuyor; tekrar deneyebilirsin.' : ''}</p>${link('#pilot', 'Hesabım ve teslimler')}</section>`;
   }
 
   function fields(obj, rows) {
@@ -133,6 +133,11 @@
     if (!document.getElementById('growth-track')) return;
     document.getElementById('growth-load-files').onclick = async () => {
       const attempt = ++accountRequest;
+      if (root.AA_STATIC) {
+        account = { status: 'static', rows: [], userId: null };
+        render({ preserveScroll: true });
+        return;
+      }
       if (root.PilotProgress?.status() === 'guest') {
         account = { status: 'auth', rows: [], userId: null };
         render({ preserveScroll: true });

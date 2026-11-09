@@ -14,6 +14,15 @@ Tarayıcıdaki hazırlık alanı, vaka motorları ve modüller `web/` dizininded
 
 CV metni hesap yedeğinden çıkarılır. Cihaz yedeği yerel kayıtları taşıyabilir. Bir cihazdan diğerine aktarmak için uygulamadaki yedekleme veya hesaba kaydetme seçenekleri kullanılır.
 
+## Statik yayın (GitHub Pages)
+
+GitHub Pages `main` dalının kökünü yayımlar. Kökteki `index.html` ziyaretçiyi `web/` klasörüne yönlendirir; `.nojekyll` dosyaların Jekyll işlemesi olmadan sunulmasını sağlar. `web/site-base.js` her sayfada ilk yüklenir:
+
+- Uygulamanın yayımlandığı klasörü bulur ve kökten başlayan yolları (`/modules/...`, `/cases/...`) o klasöre göre çözer. Yerel demo ve Worker kurulumunda uygulama kökte olduğu için hiçbir şeyi değiştirmez.
+- `*.github.io` adreslerinde veya `?static=1` ile statik modu (`window.AA_STATIC`) açar. Bu modda `/api/pilot` isteklerine ağ kullanılmadan "kapalı" yanıtı döner; hesap, dosya teslimi, İK değerlendirmesi ve otomatik hesap kaydı ekranlarında bunun yerine açıklama notu gösterilir.
+
+Kontrol: `tests/check-static-site.cjs`.
+
 ## Yerel çalışma
 
 Node.js 22.13 veya üstü (önerilen: 24) ile proje kökünde `npm run demo` çalıştır ve [yerel demoyu](http://127.0.0.1:5173) aç. Aday, İK değerlendiricisi ve pilot yöneticisi rollerini [demo senaryosuyla](DEMO.md) dene.

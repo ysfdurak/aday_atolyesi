@@ -1,5 +1,11 @@
 # Sürüm geçmişi
 
+## 0.18.1 · 9 Kasım 2026
+
+- **GitHub Pages'te çalışan statik demo.** Uygulama artık `ysfdurak.github.io/aday_atolyesi` adresinde telefondan da açılıyor. Kökten başlayan yollar yayın klasörüne göre çözülüyor; modül sayfaları ortak dosyaları göreli yoldan yüklüyor.
+- **Statik mod notu:** Bu sürümde hesap, dosya teslimi, İK değerlendirmesi ve otomatik hesap kaydı kapalı. Uygulamanın üstünde, Hesap ekranında, vaka ve gelişim ekranlarında ve modül alt çubuğunda bu durum yazıyor; README'ye de not eklendi.
+- README'de `127.0.0.1` demo adresinin yalnızca komutu çalıştıran bilgisayarda açıldığı belirtildi.
+
 ## 0.18.0 · 9 Kasım 2026
 
 İK değerlendirmesi ve aday akışı revizyonu.

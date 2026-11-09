@@ -372,7 +372,12 @@
       c = cat().find(c => c.id === id),
       remote = c && root.PilotProgress?.phase(c.id, c.version);
     return (
-      `<div class="note">${remote ? esc(remote.title) + '. ' : ''}<b>İki yol var:</b> Bu ekranda yazıp kendi çalışmanı referans çözümle karşılaştırabilirsin (bu cihazda kalır, değerlendiriciye gitmez). İK değerlendiricisinden geri bildirim almak için yanıtını tek bir PDF, Word veya Excel dosyası olarak teslim et. ${link('#pilot' + (c ? '/' + c.id : ''), 'Dosyayla değerlendirmeye gönder')}</div>` +
+      (root.AA_STATIC
+        ? `<div class="note">Bu ekranda yazıp çalışmanı referans çözümle karşılaştırabilirsin. Dosyayla İK değerlendirmesine gönderme bu statik demoda kapalıdır.</div>`
+        : '') +
+      (root.AA_STATIC
+        ? ''
+        : `<div class="note">${remote ? esc(remote.title) + '. ' : ''}<b>İki yol var:</b> Bu ekranda yazıp kendi çalışmanı referans çözümle karşılaştırabilirsin (bu cihazda kalır, değerlendiriciye gitmez). İK değerlendiricisinden geri bildirim almak için yanıtını tek bir PDF, Word veya Excel dosyası olarak teslim et. ${link('#pilot' + (c ? '/' + c.id : ''), 'Dosyayla değerlendirmeye gönder')}</div>`) +
       baseView()
     );
   }

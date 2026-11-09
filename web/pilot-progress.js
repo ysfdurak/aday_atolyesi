@@ -5,6 +5,10 @@
     pending = null,
     checked = 0;
   async function refresh(force = false) {
+    if (root.AA_STATIC) {
+      status = 'static';
+      return;
+    }
     if (pending) return pending;
     if (!force && Date.now() - checked < 30000) return;
     pending = (async () => {
@@ -48,7 +52,9 @@
         ? 'Hesap bağlantısı kesildi · dosya durumu güncel olmayabilir'
         : status === 'loading'
           ? 'Hesap kontrol ediliyor · çalışma kaydı bu cihazda'
-          : 'Çalışma kaydı bu cihazda';
+          : status === 'static'
+            ? 'Statik demo · çalışma kaydı bu tarayıcıda'
+            : 'Çalışma kaydı bu cihazda';
   }
   root.addEventListener('visibilitychange', () => {
     if (!document.hidden) refresh();

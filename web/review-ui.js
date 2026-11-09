@@ -147,7 +147,9 @@
       mammothLoad ||
       new Promise((ok, no) => {
         const s = document.createElement('script');
-        s.src = '/vendor/mammoth.browser.min.js';
+        s.src = root.AA_URL
+          ? root.AA_URL('/vendor/mammoth.browser.min.js')
+          : '/vendor/mammoth.browser.min.js';
         s.onload = () => ok(root.mammoth);
         s.onerror = () => {
           mammothLoad = null;

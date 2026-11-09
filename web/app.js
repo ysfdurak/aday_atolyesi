@@ -83,7 +83,7 @@ function shell(body) {
       `<a href="#${id}" class="${current === id ? 'active' : ''}" ${current === id ? 'aria-current="page"' : ''}><span>${icon}</span>${name}</a>`
   ).join(
     ''
-  )}</nav><div class="bottom"><a class="guide-link ${route === 'guide' ? 'active' : ''}" href="#guide">? Nasıl çalışır?</a><span class="tag">Sürüm ${AA_VERSION}</span></div></aside><main class="main" id="main-content" tabindex="-1"><div class="top"><span>${p ? esc(Positions.get(Positions.load(localStorage)?.positionId)?.name || p.title) : 'Kendi başlangıç noktanı bul.'}</span><span class="tag">${esc(PilotProgress.label())}</span></div>${subnav()}${body}<footer>Hazırlık amaçlıdır; işe alınma olasılığı hesaplanmaz. <a href="#guide">Verilerin nerede saklanır?</a></footer></main></div><nav class="mobile-dock" aria-label="Hızlı gezinme">${[
+  )}</nav><div class="bottom"><a class="guide-link ${route === 'guide' ? 'active' : ''}" href="#guide">? Nasıl çalışır?</a><span class="tag">Sürüm ${AA_VERSION}</span></div></aside><main class="main" id="main-content" tabindex="-1"><div class="top"><span>${p ? esc(Positions.get(Positions.load(localStorage)?.positionId)?.name || p.title) : 'Kendi başlangıç noktanı bul.'}</span><span class="tag">${esc(PilotProgress.label())}</span></div>${window.AA_STATIC ? '<div class="static-banner" role="note"><b>Statik demo:</b> hesap, dosya teslimi ve İK değerlendirmesi bu sürümde kapalı. Çalışmaların bu tarayıcıda saklanır. <a href="#pilot">Ayrıntılar</a></div>' : ''}${subnav()}${body}<footer>Hazırlık amaçlıdır; işe alınma olasılığı hesaplanmaz. <a href="#guide">Verilerin nerede saklanır?</a></footer></main></div><nav class="mobile-dock" aria-label="Hızlı gezinme">${[
     ['home', 'Çalışmam'],
     ['plan', 'Plan'],
     ['modules', 'Atölyeler'],
@@ -93,7 +93,7 @@ function shell(body) {
     .map(([id, label]) => `<a href="#${id}" ${current === id ? 'aria-current="page"' : ''}>${label}</a>`)
     .join('')}</nav>`;
 }
-const AA_VERSION = '0.18.0';
+const AA_VERSION = '0.18.1';
 function home() {
   return WorkspaceUX.home(state, AA.snapshot(localStorage));
 }

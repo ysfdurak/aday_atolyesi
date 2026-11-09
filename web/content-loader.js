@@ -5,7 +5,8 @@
   function script(path) {
     return new Promise((resolve, reject) => {
       const el = document.createElement('script');
-      el.src = path;
+      // Alt klasörde yayında (ör. GitHub Pages) yolu yayın köküne göre çöz.
+      el.src = root.AA_URL ? root.AA_URL(path) : path;
       el.onload = resolve;
       el.onerror = () => {
         el.remove();

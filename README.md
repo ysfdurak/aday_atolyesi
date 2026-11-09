@@ -2,7 +2,7 @@
 
 Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri bildirim → revizyon → mülakat provası** akışında birleştiren Türkçe portföy projesidir. Aday kendi çalışmasını düzenler. İK değerlendiricisi atanmış vaka teslimini ölçüt ve dayanak üzerinden inceler.
 
-[Uygulama sürümü 0.16.0](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
+[Uygulama sürümü 0.17.0](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
 
 | Alan | Kullanıcı ne yapar? |
 | --- | --- |
@@ -10,13 +10,13 @@ Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri b
 | Rol Atölyesi | 24 yetkinlikte 187 senaryodan pozisyona göre seçilen soruları çözer ve karar gerekçesini yazar. |
 | Zihin Parkuru | Altı beceri alanında pratik yapar ve yanlışlarını hata defterinde izler. |
 | Mizaç | 96 ifade ve 6 senaryoyla çalışma tercihlerini değerlendirir ve gerçek örneklerle gözden geçirir. |
-| Assessment Atölyesi | 20 kurgusal şirket vakasında Word ve Excel belgelerini kullanır, bir karar üretir ve revize eder. |
+| Vaka Atölyesi | 20 kurgusal şirket vakasında Word ve Excel belgelerini kullanır, bir karar üretir ve revize eder. |
 | Mülakat hazırlığı | Seçtiği örnekleri bir dosyada toplar ve kendi dayanaklarıyla prova yapar. |
 | İK incelemesi | Atanmış teslimi ve revizyon zincirini açar, çıktı bazında dayanaklı görüş yazar. |
 
 ## Yerel demo
 
-Node.js 24 kurulu bir bilgisayarda proje klasörünü aç ve çalıştır:
+Node.js 22.13 veya üstü (önerilen: 24) kurulu bir bilgisayarda proje klasörünü aç ve çalıştır:
 
 ```sh
 npm run demo
@@ -32,19 +32,25 @@ npm test
 npm run build
 ```
 
-`npm test` kök dizindeki Node kontrol betiklerini çalıştırır. Word/Excel paketlerinin bağımsız OOXML kontrolü için `python check-office-packs.py` komutunu kullan. GitHub Actions bu kontrolleri ve derlemeyi çalıştıracak şekilde tanımlanmıştır.
+`npm test` `tests/` altındaki kontrol betiklerini çalıştırır. `npm run lint` ESLint, `npm run format` Prettier çalıştırır. Word/Excel paketlerinin bağımsız OOXML kontrolü için `python3 tests/check-office-packs.py` komutunu kullan. GitHub Actions lint, test, Office kontrolü ve derlemeyi çalıştırır.
 
-- `web/` aday arayüzü, atölyeler, vaka verileri ve indirilebilir örnekler
-- `pilot-service.mjs` teslim, atama, geri bildirim ve hesap kayıtları
-- `file-workspace.mjs` revizyon zinciri ve adayın kişisel dosya notları
-- `drizzle/` D1 şeması ve sıralı migration dosyaları
-- `scripts/demo.mjs` sentetik rolleri yerelde açan demo
-- `content/` düzenlenebilir rol ve pozisyon içeriği
+| Klasör | İçerik |
+| --- | --- |
+| `web/` | Aday arayüzü, atölyeler (`web/modules/`), vaka verileri ve indirilebilir dosyalar |
+| `server/` | Pilot API: teslim, atama, geri bildirim, hesap kaydı (`pilot-service.mjs`), kimlik katmanı (`identity.mjs`) |
+| `content/` | Düzenlenebilir rol, yetkinlik ve pozisyon içeriği |
+| `tools/` | İçerikten veri dosyalarını üreten betikler (`npm run cases` vakaları yeniden üretir) |
+| `tests/` | Otomatik kontroller |
+| `drizzle/` | D1 şeması ve sıralı migration dosyaları |
+| `scripts/` | Demo, derleme ve test çalıştırıcıları |
+| `docs/` | Mimari, demo, pilot protokolü, doğrulama kaydı ve geçmiş incelemeler |
+
+`web/case-data.js`, Office paketleri ve benzeri büyük dosyalar `tools/` betiklerinin çıktısıdır; demo kurulum gerektirmeden çalışsın diye repoda tutulur ve `.gitattributes` ile üretilmiş dosya olarak işaretlidir.
 
 ## Kapsam ve sınırlar
 
 Uygulama başvuru hazırlığı ve gelişim amaçlıdır. Mizaç ve senaryo sonuçları öz değerlendirmeyi destekler. İşe alınma olasılığı veya tek bir uygunluk puanı hesaplanmaz. İK görüşü, yayımlandığı teslim sürümüyle birlikte gösterilir. Vaka dosyalarındaki sayfa ve hücre referanslarını kullanıcı ekler ve değerlendirici kontrol eder.
 
-Gerçek aday pilotu, iki gerçek hesapla canlı kabul, masaüstü ve mobil görsel kabul ile psikometrik doğrulama açık çalışma kalemleridir. [Pilot kabul durumu](PREPILOT-ACCEPTANCE.md) · [Pilot planı](PILOT-PROTOCOL.md)
+Gerçek aday pilotu, iki gerçek hesapla canlı kabul, masaüstü ve mobil görsel kabul ile psikometrik doğrulama açık çalışma kalemleridir. [Pilot kabul durumu](docs/PREPILOT-ACCEPTANCE.md) · [Pilot planı](docs/PILOT-PROTOCOL.md)
 
 Projeyi geliştiren **Yusuf Durak**.

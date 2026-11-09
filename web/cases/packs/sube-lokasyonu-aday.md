@@ -128,7 +128,7 @@ Tutarlar ana yatırım tablosunun alt kırılımıdır. İlk ürün stoğu ve i�
 
 ## Beklenen çıktılar
 
-1. Yönetim kurulu karar dosyası: mevcut durum değerlendirmeniz, önerdiğiniz hedef durum ve başarı göstergeleri, kararınız ve gerekçesi.
+1. Yönetim kurulu karar dosyası: mevcut durum değerlendirmen, önerdiğin hedef durum ve başarı göstergeleri, kararın ve gerekçesi.
 2. Lokasyon karşılaştırma dosyası ve hesap eki.
 3. Beş slaytlık yönetim kurulu sunumu içeriği.
 4. Önerilen kararın uygulanmasına ilişkin 90 günlük plan.

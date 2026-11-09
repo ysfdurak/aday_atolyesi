@@ -53,7 +53,7 @@ for c in cases:
  d.add_heading('Numaralı çıktılar ve cevap alanları',1)
  for i,t in enumerate(c['tasks']):
   d.add_heading(str(i+1)+' '+t,2)
-  p=d.add_paragraph('Yanıtınızı bu alana yazın.');p.runs[0].font.color.rgb=RGBColor.from_string('777777');p.runs[0].italic=True
+  p=d.add_paragraph('Yanıtını bu alana yaz.');p.runs[0].font.color.rgb=RGBColor.from_string('777777');p.runs[0].italic=True
   d.add_paragraph()
  d.add_page_break();d.add_heading('Şirket bilgi dosyası',1)
  for src in c['docs']:

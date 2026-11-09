@@ -90,7 +90,7 @@ Ortak listede her iş için sahibi, son tarih ve durum alanı vardır. Devirler 
 
 ## Beklenen çıktılar
 
-1. 12.00’ye kadar kullanılacak kişisel çalışma ve görev devir çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. 12.00’ye kadar kullanılacak kişisel çalışma ve görev devir çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. İlgili mesajlara gönderilecek yanıt taslakları.
 3. Öğlen yöneticiye bırakılacak durum notu.
 4. Gün sonunda açık kalacak işler için devir listesi.

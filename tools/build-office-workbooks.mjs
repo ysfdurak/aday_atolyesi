@@ -42,7 +42,7 @@ for (const c of cases) {
     ['Vaka kodu', c.id],
     ['İçerik sürümü', c.version],
   ];
-  answer.getRange('A5:C5').values = [['No', 'Beklenen çıktı', 'Yanıtınız']];
+  answer.getRange('A5:C5').values = [['No', 'Beklenen çıktı', 'Yanıtın']];
   header(answer, 'A5:C5');
   rows(
     answer,

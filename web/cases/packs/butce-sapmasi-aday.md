@@ -79,7 +79,7 @@ Bütçe toplantısı 60 dakikadır. Teklif kararı için satın alma, operasyon 
 
 ## Beklenen çıktılar
 
-1. Bütçe toplantısı için yönetim değerlendirme notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Bütçe toplantısı için yönetim değerlendirme notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Finansal çalışma tabloları ve hesap eki.
 3. Sonraki ay için karar önerisi.
 4. Finans ve operasyon yöneticilerine toplantı sonrası gönderilecek özet mesaj.

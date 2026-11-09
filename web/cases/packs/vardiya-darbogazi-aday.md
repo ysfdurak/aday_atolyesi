@@ -88,7 +88,7 @@ Vardiya 08.30’da başlar. Net 300 dakika kişilerin molaları ve planlı faali
 
 ## Beklenen çıktılar
 
-1. Günlük vardiya ve görev dağılım çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Günlük vardiya ve görev dağılım çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Planı destekleyen çalışma tabloları ve hesap eki.
 3. Ekibe iletilecek vardiya başlangıcı bilgilendirmesi.
 4. Vardiya toplantısında kullanılacak bir sayfalık yönetici notu.

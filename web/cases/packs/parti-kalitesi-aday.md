@@ -84,7 +84,7 @@ Giriş ve sevk kayıtları adet bazındadır; ana tabloda 600 A sevk ve 400 A de
 
 ## Beklenen çıktılar
 
-1. İlk gün için olay ve operasyon planı. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. İlk gün için olay ve operasyon planı. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Yönetimin karar vereceği dosya ve hesap eki.
 3. Müşterilere gönderilecek ara bilgilendirme taslağı.
 4. Bölümler arası toplantı için görev ve karar kaydı.

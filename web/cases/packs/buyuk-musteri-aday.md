@@ -84,7 +84,7 @@ Küçük portföy dağılımı ana tablodaki 1.200.000 TL aylık satışın alt 
 
 ## Beklenen çıktılar
 
-1. Yeni iş alanı için karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Yeni iş alanı için karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Karşılaştırmalı finansal dosya ve hesap eki.
 3. Ticari görüşmede kullanılacak teklif/şart taslağı.
 4. İlk 90 günlük uygulama planı.

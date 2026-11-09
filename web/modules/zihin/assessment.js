@@ -129,14 +129,12 @@
       stages = [1, 2, 3].map(level => ({ level, ...metric(rows.filter(r => r.q.level === level)) }));
     let evidence = domains.filter(d => d.answered >= 3),
       ordered = evidence.slice().sort((a, b) => a.score - b.score),
-      priorities = ordered
-        .slice(0, 2)
-        .map(d => ({
-          id: d.id,
-          name: d.name,
-          evidence: `${d.total} soruda ${d.correct} doğru, ${d.wrong} yanlış, ${d.blank} boş.`,
-          action: actions[d.id],
-        }));
+      priorities = ordered.slice(0, 2).map(d => ({
+        id: d.id,
+        name: d.name,
+        evidence: `${d.total} soruda ${d.correct} doğru, ${d.wrong} yanlış, ${d.blank} boş.`,
+        action: actions[d.id],
+      }));
     let grouped = {};
     for (let r of rows) {
       let id = family(r.q);

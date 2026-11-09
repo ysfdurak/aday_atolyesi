@@ -1,7 +1,7 @@
 """Three pilot learning cycles. References and drills are shown only after submission."""
 PILOT={
 'sube-lokasyonu':dict(
- task='Yönetim kurulu karar dosyası: mevcut durum değerlendirmeniz, önerdiğiniz hedef durum ve başarı göstergeleri, kararınız ve gerekçesi.',
+ task='Yönetim kurulu karar dosyası: mevcut durum değerlendirmen, önerdiğin hedef durum ve başarı göstergeleri, kararın ve gerekçesi.',
  transfer='buyume-formati',
  sections=[
  ('Mevcut durum ve hedef','D01, D05, D06, D09','Şirketin tek mağazası ve çevrim içi kanalı var. Mevcut mağaza cirosu Mayıs–Ekim arasında 2,12 milyondan 2,48 milyon TL’ye çıkmış; bu tek başına yeni şube talebini kanıtlamaz. Hedef ikinci şubenin açılması kadar şirketin sürdürülebilir ek katkısıdır. Yönetimin açık sınırı yatırım sonrası 2 milyon TL rezervdir. Adayın katkı, açılış tarihi veya hizmet için önerdiği ek hedefler şirketçe onaylanmış veri değil, gerekçelendirilmesi gereken öneridir.'),

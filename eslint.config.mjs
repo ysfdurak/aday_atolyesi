@@ -10,7 +10,7 @@ const eslintConfig = defineConfig([
     files: ['**/*.cjs'],
     rules: { '@typescript-eslint/no-require-imports': 'off' },
   },
-  globalIgnores(['dist/**', 'public/**', '.vinext/**', '.wrangler/**', '.sites-runtime/**', 'outputs/**', 'work/**']),
+  globalIgnores(['dist/**', 'public/**', 'web/vendor/**', '.vinext/**', '.wrangler/**', '.sites-runtime/**', 'outputs/**', 'work/**']),
 ]);
 
 export default eslintConfig;

@@ -96,7 +96,7 @@ Toplam 300.000 TL ana kapanıştaki merkez gideridir.
 
 ## Beklenen çıktılar
 
-1. Ürün portföyü için karar önerisi. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Ürün portföyü için karar önerisi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Karşılaştırmalı çalışma tabloları ve hesap eki.
 3. Önerilen kararın ilk 60 günlük uygulama planı.
 4. Beş slaytlık yönetim sunumu içeriği.

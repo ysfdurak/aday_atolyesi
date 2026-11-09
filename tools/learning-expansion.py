@@ -105,7 +105,7 @@ EXTRA={
 for c in CASES:
  if c.get('learning'):continue
  p=EXTRA[c['id']];c['version']='3.0.0'
- c['tasks'][0]+=' Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.'
+ c['tasks'][0]+=' Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.'
  base_codes=', '.join(f'D{i+1:02d}' for i in range(min(5,len(c['docs']))))
  extra_codes=', '.join(f'D{i+1:02d}' for i in range(5,len(c['docs'])))
  calculations=' '.join(n['label']+': '+n['why'] for n in c['numbers']) if c['numbers'] else ' '.join(c['solution'])

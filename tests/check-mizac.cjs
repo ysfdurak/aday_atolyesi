@@ -45,6 +45,13 @@ ev('state.step=0; test();');
 for (let p = 0; p < 12; p++) {
   assert(elements.app.innerHTML.includes(`Bölüm ${p + 1} / 14`));
   ev(`ITEMS.slice(${p * 8},${p * 8 + 8}).forEach(q=>state.answers[q.id]=3);next();`);
+  // 4. ve 8. bölümden sonra oturum molası gösterilir; ara puan gösterilmez.
+  if (p === 3 || p === 7) {
+    assert(elements.app.innerHTML.includes(`Oturum ${p === 3 ? 1 : 2} / 3 tamamlandı`));
+    assert(!/\d+\s*\/\s*100/.test(elements.app.innerHTML));
+    assert(!ev('state.complete'));
+    ev("page('test')");
+  }
 }
 assert(elements.app.innerHTML.includes('Bölüm 13 / 14'));
 ev('SCENARIOS.forEach((s,i)=>state.scenarios[i]=0);next();');

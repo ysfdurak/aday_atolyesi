@@ -85,7 +85,7 @@ Kalite: “İş ortağının formu mevcut müşterilerimizin kabul standardıyla
 
 ## Beklenen çıktılar
 
-1. Kapasite modeli karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Kapasite modeli karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Ticari ve operasyonel çalışma tabloları.
 3. İlk sekiz haftanın uygulama takvimi.
 4. Yönetim toplantısında kullanılacak dört slaytlık sunum içeriği.

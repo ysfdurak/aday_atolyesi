@@ -84,7 +84,7 @@ Kurulum ön görüşmesinde iki iç personelin üç iş günü boyunca üretimde
 
 ## Beklenen çıktılar
 
-1. Yatırım komitesine karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Yatırım komitesine karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Karşılaştırmalı finansal çalışma dosyası.
 3. Uygulama ve izleme takvimi.
 4. Komite için beş slaytlık sunum içeriği.

@@ -83,7 +83,7 @@ Komite 15.000 TL ek dönem bütçesi için karar verecek. İlk 30 günlük kohor
 
 ## Beklenen çıktılar
 
-1. Yeni dönem pazarlama bütçesi için karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Yeni dönem pazarlama bütçesi için karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Karar dosyasında kullanılacak analiz ve hesap tabloları.
 3. Uygulama takvimi ve bütçe eki.
 4. Bütçe komitesine sunulacak dört slaytlık sunum içeriği.

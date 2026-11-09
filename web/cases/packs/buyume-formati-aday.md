@@ -100,7 +100,7 @@ Yerel ortakla ilk görüşme, karar veya sözleşme değildir.
 
 ## Beklenen çıktılar
 
-1. Yeni şehir için büyüme modeli karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Yeni şehir için büyüme modeli karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Yönetim kurulu çalışma tabloları ve hesap eki.
 3. İlk 90 günlük uygulama planı.
 4. Beş slaytlık sunum içeriği.

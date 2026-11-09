@@ -88,7 +88,7 @@ Bölüm yöneticisi: “Müşteri teslimleri için değişiklik gerekiyorsa topl
 
 ## Beklenen çıktılar
 
-1. Gelecek haftanın görev ve kaynak planı. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Gelecek haftanın görev ve kaynak planı. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Ece ile bire bir görüşme akışı.
 3. Ekip toplantısında paylaşılacak bilgilendirme.
 4. Bölüm yöneticisine sunulacak bir sayfalık değerlendirme notu.

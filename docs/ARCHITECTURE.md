@@ -9,7 +9,8 @@ Tarayıcıdaki hazırlık alanı, vaka motorları ve modüller `web/` dizininded
 | Vaka dosyası ve revizyonlar | R2 ve D1 teslim üst bilgisi | Teslim sahibi, pilot yöneticisi ve ilgili atanmış değerlendirici |
 | Yayımlanan İK görüşü | D1, teslim kimliğine bağlı | Yetkili teslim erişimi |
 | Adayın özel dosya karşılaştırması ve görüşme özeti | D1 | Teslim sahibi |
-| Değerlendirici taslağı | D1 ve sekme taslağı | Taslağın yazarı ve geçerli atama |
+| Değerlendirici taslağı (ölçüt seviyeleri dahil) | D1 ve sekme taslağı | Taslağın yazarı ve geçerli atama |
+| Pilot ayarları (kör değerlendirme) | D1 `pilot_settings` | Yönetici değiştirir; değerlendiriciler etkisini görür |
 
 CV metni hesap yedeğinden çıkarılır. Cihaz yedeği yerel kayıtları taşıyabilir. Bir cihazdan diğerine aktarmak için uygulamadaki yedekleme veya hesaba kaydetme seçenekleri kullanılır.
 
@@ -43,4 +44,8 @@ Yerel demo yalnız loopback adresine bağlanır. Sabit sentetik roller ve bellek
 
 Rol sorusu düzenlemek için `content/` kaynaklarını güncelle ve `node tools/build-role-bank.cjs` çalıştır. Genel katalogları `node scripts/prepare-workspace.mjs` üretir. Kurgu vakaların sürümünü değiştirirken eski teslimin ait olduğu vaka sürümünü koru. Ayrıntılı eski tasarım kararları [geliştirme geçmişinde](../HISTORY.md) bulunur.
 
-Üçüncü taraf kaynak bildirimleri [Sites Vite eklentisinin lisansı](../scripts/vite/sites-vite-plugin.LICENSE) bulunur.
+Üçüncü taraf kaynak bildirimleri: [Sites Vite eklentisinin lisansı](../scripts/vite/sites-vite-plugin.LICENSE) ve Word önizlemesi için kullanılan [mammoth 1.13.0 lisansı](../web/vendor/mammoth-1.13.0.LICENSE) (BSD-2).
+
+## Değerlendirme modeli
+
+Ölçütler `server/pilot-review-catalog.json` içinde vaka sürümüne bağlıdır ve `scripts/prepare-workspace.mjs` tarafından vaka verisinden üretilir. Değerlendirici her ölçüt için 0–3 seviye seçer; doğrulama `server/review-model.mjs` içindedir. Seviyeler toplanıp puana dönüştürülmez. Kör değerlendirme açıkken `submissions`, `file` ve `file-workspace` yanıtlarında değerlendiriciye (yönetici hariç) aday kimliği yerine kararlı bir takma ad ve gizlenmiş dosya adı döner. Yeni bir kurulumda `drizzle/0004_blind_review_settings.sql` dahil bütün migration dosyalarını sırayla uygula.

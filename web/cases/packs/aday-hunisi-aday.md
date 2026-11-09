@@ -85,7 +85,7 @@ Aday zaman kayıtları rastgele örneklem değildir, dosyayı açıklamak için 
 
 ## Beklenen çıktılar
 
-1. İşe alım programına ilişkin yönetim değerlendirme notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. İşe alım programına ilişkin yönetim değerlendirme notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Analiz tabloları ve hesap eki.
 3. Yeni dönem kaynak programı önerisi.
 4. İK ve işe alım yöneticileriyle yapılacak toplantının gündemi.

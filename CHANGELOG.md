@@ -1,5 +1,19 @@
 # Sürüm geçmişi
 
+## 0.18.0 · 9 Kasım 2026
+
+İK değerlendirmesi ve aday akışı revizyonu.
+
+- **Ölçüt seviyeli geri bildirim:** Değerlendirici her vaka ölçütü için 0–3 arası seviye seçer (seviye tanımları formda görünür) ve isteğe bağlı dayanak yazar. Seviyeler toplanmaz, tek puana dönüşmez; adaya ölçüt bazında çubuklarla gösterilir. Çıktı notları kısaltıldı: dayanak ve sonraki adım tek satır.
+- **Ekranda dosya önizleme:** Word, Excel ve PDF teslimleri indirmeden açılır. Aday dosyası betik çalıştıramayan bir çerçevede gösterilir; Excel için ek kütüphane yerine küçük, yerleşik bir okuyucu kullanılır.
+- **Kör değerlendirme:** Yönetici açtığında değerlendiriciler aday e-postası, kullanıcı kimliği ve dosya adı yerine sabit bir takma ad (ör. “Aday A-4DB451”) görür. İndirilen dosyanın adı da gizlenir.
+- **Kuyruk yönetimi:** Bekleyen teslimler en eskiden başlar; her teslimde bekleme süresi ve 3 günlük hedefi aşma uyarısı. Yöneticide bekleyen/geciken/atanmamış sayıları, tek değerlendiriciye veya eşit dağıtarak toplu atama.
+- **Role göre ekran:** Değerlendirici ve yönetici, aday metni yerine kendi işine yönelik başlık görür.
+- **Plan ekranı:** Günlük listenin üstünde “Şimdi yapılacak tek adım” kartı.
+- **Mizaç:** 96 ifade üç kısa oturuma bölündü; oturum sonlarında yanıtlar kaydedilir ve plana dönülebilir. Ara puan gösterilmez.
+- **Hitap:** Vaka görevleri, Word/Excel cevap alanları ve Mizaç aday raporu “sen” hitabına geçti.
+- Veritabanı: `0004_blind_review_settings` migration'ı (`pilot_settings` tablosu). Yeni test: `tests/check-review.mjs`.
+
 ## 0.17.0 · 9 Kasım 2026
 
 Kullanım kolaylığı ve kod düzeni revizyonu.

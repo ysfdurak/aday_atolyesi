@@ -109,7 +109,7 @@ Bu takvim mevcut 10 milyon TL aylık satışın yenileme görünümüdür.
 
 ## Beklenen çıktılar
 
-1. 90 günlük program karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. 90 günlük program karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Program bütçesi ve kaynak çizelgesi.
 3. 30/60/90 günlük uygulama takvimi.
 4. Yönetim kurulu için beş slaytlık sunum içeriği.

@@ -1983,3 +1983,19 @@ footer a {
     grid-template-columns: 1fr;
   }
 }
+.next-step {
+  border: 2px solid var(--green);
+  margin: 4px 0 22px;
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+.next-step h2 {
+  margin: 2px 0;
+}
+.next-step p {
+  margin: 0 0 8px;
+}
+.next-step.done {
+  border-color: var(--line);
+}

@@ -2,7 +2,7 @@
 
 Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri bildirim → revizyon → mülakat provası** akışında birleştiren Türkçe portföy projesidir. Aday kendi çalışmasını düzenler. İK değerlendiricisi atanmış vaka teslimini ölçüt ve dayanak üzerinden inceler.
 
-[Uygulama sürümü 0.17.0](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
+[Uygulama sürümü 0.18.0](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
 
 | Alan | Kullanıcı ne yapar? |
 | --- | --- |
@@ -12,7 +12,7 @@ Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri b
 | Mizaç | 96 ifade ve 6 senaryoyla çalışma tercihlerini değerlendirir ve gerçek örneklerle gözden geçirir. |
 | Vaka Atölyesi | 20 kurgusal şirket vakasında Word ve Excel belgelerini kullanır, bir karar üretir ve revize eder. |
 | Mülakat hazırlığı | Seçtiği örnekleri bir dosyada toplar ve kendi dayanaklarıyla prova yapar. |
-| İK incelemesi | Atanmış teslimi ve revizyon zincirini açar, çıktı bazında dayanaklı görüş yazar. |
+| İK incelemesi | Atanmış teslimi ekranda açar, her ölçüt için 0–3 seviye seçer ve çıktı bazında dayanaklı görüş yazar. Yönetici kör değerlendirmeyi açabilir, bekleyen teslimleri toplu atar. |
 
 ## Yerel demo
 

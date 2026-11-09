@@ -82,7 +82,7 @@ Aylık rapor son iş günü 23.59’da kapanır. Dönem sonrası düzeltme, kay�
 
 ## Beklenen çıktılar
 
-1. Aylık yönetim değerlendirme notu (en fazla 600 kelime). Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Aylık yönetim değerlendirme notu (en fazla 600 kelime). Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Sunumda kullanılacak analiz tabloları ve hesap eki.
 3. Bir sayfalık izleyen dönem çalışma planı.
 4. Genel müdüre sunulacak dört slaytlık sunum içeriği.

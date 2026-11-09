@@ -87,7 +87,7 @@ Ana görev süreleri bu vaka için planlama taahhüdüdür; geçmiş proje liste
 
 ## Beklenen çıktılar
 
-1. Proje takvimi ve kaynak çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Proje takvimi ve kaynak çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Sponsorun karar vereceği seçenekler dosyası.
 3. Önerilen teslim kapsamına ait kabul ve devir belgesi.
 4. İş birimine gönderilecek proje durumu mesajı.

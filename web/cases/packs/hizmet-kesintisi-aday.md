@@ -94,7 +94,7 @@ Ana kuyruk sayısı talepleri gösterir, tekil müşteri sayısını değil. Tal
 
 ## Beklenen çıktılar
 
-1. İlk iki saat için olay yönetimi çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. İlk iki saat için olay yönetimi çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Yönetim ve müşteri için ayrı iletişim taslakları.
 3. Operasyon çalışma tabloları ve hesap eki.
 4. Olayın devri ve kapanışında kullanılacak kayıt taslağı.

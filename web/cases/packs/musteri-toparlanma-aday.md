@@ -85,7 +85,7 @@ Ayrılma formu 120 yanıtı kapsar; toplam ayrılan 200 kişinin tamamı değild
 
 ## Beklenen çıktılar
 
-1. Yeni dönem müşteri programı karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Yeni dönem müşteri programı karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Çalışma tabloları ve hesap eki.
 3. Program uygulama takvimi ve bütçe eki.
 4. Genel müdüre sunulacak dört slaytlık içerik.

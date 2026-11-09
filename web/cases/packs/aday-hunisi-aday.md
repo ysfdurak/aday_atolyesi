@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Ladin Teknoloji
 
-Ladin Teknoloji,kurumsal yazılım ve destek hizmeti veren 210 çalışanlı bir şirkettir. İnsan kaynakları ekibi beş kişidir; teknik görüşmeleri birim yöneticileri yürütür. Yıl içinde yeni projeler için uzman alımları yapılır. Vaka aynı uzmanlık ailesine ait tamamlanmış başvuruları kapsar.
+Ladin Teknoloji, kurumsal yazılım ve destek hizmeti veren 210 çalışanlı bir şirkettir. İnsan kaynakları ekibi beş kişidir; teknik görüşmeleri birim yöneticileri yürütür. Yıl içinde yeni projeler için uzman alımları yapılır. Vaka aynı uzmanlık ailesine ait tamamlanmış başvuruları kapsar.
 
 İşe alımın ilk tanıtımı kaynak kanalından, ücret ve görev görüşmeleri şirketten yapılır. Teknik görüşme slotları haftalık onaylanır. Bazı pozisyonlar yeni kadro, bazıları ayrılan personel yerine açılmıştır. Teklif kabul kaydı ile fiili başlangıç kaydı farklı alanlardadır. Kaynak bütçeleri gider raporundan, aday aşamaları ise başvuru sisteminden alınır. İnsan kaynakları ve işe alım yöneticileri gelecek dönem 24 kabul hedefine göre ortak plan verecektir. Senin hazırlayacağın dosya bireysel aday seçimi için değil, program ve kaynak kararı içindir.
 

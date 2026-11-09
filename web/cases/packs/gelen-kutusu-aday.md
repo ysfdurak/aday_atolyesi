@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Lale İş Hizmetleri
 
-Lale İş Hizmetleri,62 çalışanlı, muhasebe ve idari destek sağlayan bir şirkettir. Merkez ofis üç kattadır; resepsiyon giriş kattadır. Müşterilere verilen aylık raporlar satış ve finans sistemlerinden üretilir. Müşteri yanıtları ortak e-posta kutusunda saklanır. Sen iki hafta önce destek koordinatörü olarak başladın.
+Lale İş Hizmetleri, 62 çalışanlı, muhasebe ve idari destek sağlayan bir şirkettir. Merkez ofis üç kattadır; resepsiyon giriş kattadır. Müşterilere verilen aylık raporlar satış ve finans sistemlerinden üretilir. Müşteri yanıtları ortak e-posta kutusunda saklanır. Sen iki hafta önce destek koordinatörü olarak başladın.
 
 Şirket aynı hafta bordro kapanışı ve yeni müşteri tanıtımı yürütmektedir. Müdür toplantıdayken işler ortak kutudan sana yönlendirilir. Kurumsal dosyalar şirketin erişim kontrollü alanındadır. Bordro istisnası ekranı yalnız yetkilendirilmiş kişilerde açılır. Görsel materyal ve teklif işleri için ilgili uzmanlar görev alabilir; yeni görevin kabulü ortak listede işaretlenir. Masandaki gündemler farklı kişilerden geldiği için her mesaj aynı yazım ve aciliyet dilini kullanmıyor. Öğlen müdürün dönmesi bekleniyor; telefonda sürekli erişilebilir olduğu teyit edilmedi.
 

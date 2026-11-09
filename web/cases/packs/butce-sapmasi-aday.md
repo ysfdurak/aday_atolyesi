@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / İlke Hizmet Merkezi
 
-İlke Hizmet Merkezi,iki farklı müşteri grubuna standart paket işleme hizmeti sunar. Şirket 54 çalışanlıdır; vaka tablosu tek hizmet hattının aylık kapanışını kapsar. Satış talepleri ay içinde güncellenir, bütçe ise dönem başında onaylanır. Paket tanımı sözleşmelerde sabittir.
+İlke Hizmet Merkezi, iki farklı müşteri grubuna standart paket işleme hizmeti sunar. Şirket 54 çalışanlıdır; vaka tablosu tek hizmet hattının aylık kapanışını kapsar. Satış talepleri ay içinde güncellenir, bütçe ise dönem başında onaylanır. Paket tanımı sözleşmelerde sabittir.
 
 Değişken giderler dış hizmet ve sarf alımlarından, sabit giderler alan ve vardiya altyapısından oluşur. Satın alma ve operasyonun hedef kartları farklıdır. Finans kapanış tablolarını maliyet merkezinden alır; fatura açıklamaları başka sistemde tutulur. Yönetim, gelecek ay dış kaynak kullanımını da değerlendirecektir. İlk teklif sayfası alınmış olsa da tedarikçi hizmet seviyeleri henüz hukuk ve operasyon toplantısından geçmemiştir. Yeni kapasitenin hangi gün devreye gireceği çalışma dosyasına eklenmemiştir. Senin rolün rapor ve öneri hazırlamaktır; sözleşme imza yetkin yoktur.
 

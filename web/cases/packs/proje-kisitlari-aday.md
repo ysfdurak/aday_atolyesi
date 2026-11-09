@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Atlas Sistemler
 
-Atlas Sistemler,120 çalışanlı bir iş yazılımı şirketidir. İç raporlama aracı finans ve satış ekiplerinin ortak kullanımına hazırlanıyor. Projede bir analist, bir geliştirici, bir test uzmanı ve ürün sahibi görev alıyor; başka ekiplerden destek kalıcı olarak ayrılmamış.
+Atlas Sistemler, 120 çalışanlı bir iş yazılımı şirketidir. İç raporlama aracı finans ve satış ekiplerinin ortak kullanımına hazırlanıyor. Projede bir analist, bir geliştirici, bir test uzmanı ve ürün sahibi görev alıyor; başka ekiplerden destek kalıcı olarak ayrılmamış.
 
 İş birimleri pilot ekranı daha önce gördü, ancak gerçek veri bağlantısı ve kabul testi tamamlanmadı. Canlıya geçiş tarihi aylık yönetim toplantısında sözlü olarak duyuruldu. Ürün sahibi haftanın belirli günlerinde erişilebilir; vaka takviminde gereken günlerde toplantıya katılabileceğini bildirdi. Erişim yetkisi ve dış ekip sözleşmesi bilgi güvenliği sürecinden geçer. İç geliştirici başka projeye bu süre içinde atanmayacaktır. Sen proje koordinatörüsün; teknik kapsamı veya iş birimi kabulünü tek başına değiştiremiyorsun.
 

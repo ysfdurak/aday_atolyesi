@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Meral E-Ticaret
 
-Meral E-Ticaret,ev yaşam ürünleri satan,46 çalışanlı bir çevrim içi perakendecidir. Ürün gamında fiyat ve brüt marjı farklı kategoriler vardır. Pazarlama üç ana kanalı ayrı ajans/ekiplerle yürütür. Müşteri hizmetleri ve depolama şirket içindedir.
+Meral E-Ticaret, ev yaşam ürünleri satan, 46 çalışanlı bir çevrim içi perakendecidir. Ürün gamında fiyat ve brüt marjı farklı kategoriler vardır. Pazarlama üç ana kanalı ayrı ajans/ekiplerle yürütür. Müşteri hizmetleri ve depolama şirket içindedir.
 
 Şirketin son iki çeyrekteki hedefi yeni müşteri kazanımı olmuştur. Kanal bütçeleri aylık, ürün alımları ise daha uzun dönemli planlanır. Satış raporu sipariş oluşumuna göre kapanır; iade dosyası sonradan güncellenir. Bazı kampanyalar birden fazla kanalda görülür, rapor son tıklamayı tek kaynak olarak yazar. Ürün ekibi, yeni dönemde içerik üretim kapasitesinin bir kısmını lansmana ayırmak istiyor. Yeni müşteri ve tekrar alışveriş ayrımı veri sisteminde var, fakat komite paketinin ilk sayfasında bulunmuyor. Sen bütçe komitesine dosya hazırlayan ticari analistsin.
 

@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Bora Endüstriyel Ürünler
 
-Bora Endüstriyel Ürünler,1998’den beri işletmelere ürün ve tamamlayıcı servis sağlayan 64 çalışanlı bir şirkettir. Portföy A/B/C kodlu üç hat altında raporlanır. Müşterilerin bir kısmı tek hat, bir kısmı birden fazla ürün alır. Satış organizasyonu müşteri bazında, üretim ve satın alma ise hat bazındadır.
+Bora Endüstriyel Ürünler, 1998’den beri işletmelere ürün ve tamamlayıcı servis sağlayan 64 çalışanlı bir şirkettir. Portföy A/B/C kodlu üç hat altında raporlanır. Müşterilerin bir kısmı tek hat, bir kısmı birden fazla ürün alır. Satış organizasyonu müşteri bazında, üretim ve satın alma ise hat bazındadır.
 
 Merkez giderleri yıllık planla maliyet merkezlerine dağıtılır. Kapanış raporu bu dağıtımı içerir. Hat sabit giderlerinin bir kısmı belirli tedarik/hizmet sözleşmelerine bağlıdır ve sona erme tarihleri vardır. Şirketin son üç ayındaki toplam sonuç beklentinin altında kaldı. Ürün yöneticileri fiyat ve ürün kapsamı değişikliği öneriyor; finans kapanış ihtimalini gündeme aldı. Yönetimden karar çıkmadan müşterilere yeni ürün listesi gönderilmeyecek. Sen strateji toplantısının dosyasını hazırlıyorsun; bütün teklif ve gerçekleşmeleri aynı varsayım setinde inceleme sorumluluğun var.
 

@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Mavi İşlem Merkezi
 
-Mavi İşlem Merkezi,beş kurumsal müşterinin belge işlerini yürüten 68 çalışanlı bir işletmedir. İşler farklı müşteri formatlarında gelir. Operasyon ekibi saat kazanımı, finans ekibi bütçe etkisi üzerinden yatırım dosyası hazırlıyor. İlk yıldaki müşteri hacimlerinin tamamı henüz sözleşmeyle garanti edilmedi.
+Mavi İşlem Merkezi, beş kurumsal müşterinin belge işlerini yürüten 68 çalışanlı bir işletmedir. İşler farklı müşteri formatlarında gelir. Operasyon ekibi saat kazanımı, finans ekibi bütçe etkisi üzerinden yatırım dosyası hazırlıyor. İlk yıldaki müşteri hacimlerinin tamamı henüz sözleşmeyle garanti edilmedi.
 
 Yüklenmiş saat maliyeti ücret, dolaylı işçilik ve genel destek kalemlerinden oluşur. İşçilik bütçesinin hangi kısmının gerçekten değişebileceği ayrı bir finans çalışmasıdır. İki tedarikçi mevcut işin farklı adımlarını otomatikleştirmeyi teklif etti. Tekliflerde hız, bakım ve ilk kurulum bedeli vardır; kalite örnekleri kısa tanıtımda gösterilmiştir. Ürün kabulü şirketin kendi müşteri standardına tabidir. Sen komite raportörüsün; hem operasyon hem finans görüşünü içeren dosya sunacaksın.
 

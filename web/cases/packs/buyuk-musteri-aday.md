@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Sera İş Hizmetleri
 
-Sera İş Hizmetleri,kurumsal müşterilere dış süreç desteği sağlayan 105 çalışanlı bir şirkettir. Mevcut iş alanından ayrı bir büyüme bütçesi oluşturuldu. Yeni alanın sözleşmeleri aynı yönetim şirketi üzerinden yürütülecek, ancak proje nakdi ve giderleri ayrı takip edilecektir. İlk toplantı için iki ticari teklif hazırlanmıştır.
+Sera İş Hizmetleri, kurumsal müşterilere dış süreç desteği sağlayan 105 çalışanlı bir şirkettir. Mevcut iş alanından ayrı bir büyüme bütçesi oluşturuldu. Yeni alanın sözleşmeleri aynı yönetim şirketi üzerinden yürütülecek, ancak proje nakdi ve giderleri ayrı takip edilecektir. İlk toplantı için iki ticari teklif hazırlanmıştır.
 
 Bir büyük müşteri tek sözleşmeyle yüksek hacim önermektedir. Bölge satış ekibi ise 40 küçük müşteriden oluşan bir liste topladı. Müşteri başına ihtiyaç ve görüşme zamanı farklıdır. Her iki modelin hizmet kapasitesi ana teklif hesabında yeterli varsayılmış olsa da kişi atamaları henüz kesinleşmedi. Büyük sözleşmede tahsilat vadesi, küçük portföyde ise edinim ve destek organizasyonu tartışılıyor. Komite ilk 90 gün ve sonraki dönem için bir karar dosyası istiyor. Sen dosyayı hazırlayan iş geliştirme yöneticisisin; ödeme ve sözleşme koşulları yetkili ticari ekip tarafından görüşülecek.
 
@@ -74,7 +74,7 @@ Kurumsal satış: “Büyük müşterinin ekipleri başlama takvimini hızlandı
 
 Bölge ekibi: “Küçük müşteri listesi 40 işletme. En büyük tek müşteri 96.000 TL aylık satış planında. İlk görüşmeleri yaptık; onboarding görüşmeleri iki bölge temsilcisinde toplanacak.”
 
-Finans: “4 milyon TL kaynak mevcut işlerden ayrıldı.500.000 TL rezerv bu proje için komite kararında yazılı. Büyük müşterinin vade teklifinde ilk üç ay ödeme görünmüyor; avans görüşmesi yapılabilir ama kabul edilmiş değil.”
+Finans: “4 milyon TL kaynak mevcut işlerden ayrıldı. 500.000 TL rezerv bu proje için komite kararında yazılı. Büyük müşterinin vade teklifinde ilk üç ay ödeme görünmüyor; avans görüşmesi yapılabilir ama kabul edilmiş değil.”
 
 Operasyon: “Başlangıç kapasitesinin yeterli olduğu kabulüyle teklif verdik. Hangi ekibin hangi müşteride başlayacağını planlayacağız; sözleşmedeki hizmet sürelerini son metinde görmek istiyoruz.”
 

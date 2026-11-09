@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Ekin Sipariş Hizmetleri
 
-Ekin Sipariş Hizmetleri,kurumsal müşterilerin sipariş hazırlama ve teslim koordinasyonunu yapan 76 çalışanlı bir işletmedir. Mevcut ekibi ve alanı sözleşmeli işler için kullanılır. Yeni talep iki müşterinin bölgesel kampanyalarından gelmiştir. Vaka bu ek 800 siparişin nasıl karşılanacağına ilişkindir; mevcut işlerin giderleri teklif tablosuna tekrar eklenmemiştir.
+Ekin Sipariş Hizmetleri, kurumsal müşterilerin sipariş hazırlama ve teslim koordinasyonunu yapan 76 çalışanlı bir işletmedir. Mevcut ekibi ve alanı sözleşmeli işler için kullanılır. Yeni talep iki müşterinin bölgesel kampanyalarından gelmiştir. Vaka bu ek 800 siparişin nasıl karşılanacağına ilişkindir; mevcut işlerin giderleri teklif tablosuna tekrar eklenmemiştir.
 
 Şirketin kendi alanını büyütmek için hazır bir bina teklifi vardır. Başka bir işletme ek siparişleri hizmet olarak almayı önerdi. Üçüncü seçenek, iş ortağı ile şirket içindeki sınırlı ek çalışmayı birleştirir. Kalite ve bilgi erişimi sorumluluğu müşterilere karşı Ekin’de kalacaktır; taşeron sözleşmesinin ekleri henüz tamamlanmadı. Operasyon geçmiş performansını, ticari ekip ise yeni talebin devamlılığını görüşüyor. Sen kapasite komitesine karar dosyası hazırlıyorsun. Mevcut müşterilerin alan ve personel tahsisi bu kararla otomatik değişmeyecek.
 
@@ -37,7 +37,7 @@ Sipariş başına 250 TL, bu ek siparişlerin yeni karşılama gideri öncesi ka
 
 ## D04 / Uygulama koşulları
 
-Karma modelde 600 sipariş iş ortağı,200 sipariş iç ekip üzerinden planlandı. İç ekipteki ek çalışma en fazla sekiz hafta için onaylanabilir. İş ortağı hizmet performansının pilot kaydı yok. Kendi kapasite teklifinde eğitim ve kurulum süresi için takvim teyidi bekleniyor.
+Karma modelde 600 sipariş iş ortağı, 200 sipariş iç ekip üzerinden planlandı. İç ekipteki ek çalışma en fazla sekiz hafta için onaylanabilir. İş ortağı hizmet performansının pilot kaydı yok. Kendi kapasite teklifinde eğitim ve kurulum süresi için takvim teyidi bekleniyor.
 
 ## D05 / Yönetim beklentisi
 

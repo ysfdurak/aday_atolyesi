@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Duru Abonelik
 
-Duru Abonelik,küçük işletmelere aylık dijital hizmet sağlayan 58 çalışanlı bir şirkettir. Üç abonelik paketi ve farklı giriş kampanyaları vardır. Satış ekibi yeni kayıt, müşteri hizmetleri devam ve destek, ürün ekibi kullanım verilerini takip eder. Aylık yönetim toplantısında bu raporlar birleştirilir.
+Duru Abonelik, küçük işletmelere aylık dijital hizmet sağlayan 58 çalışanlı bir şirkettir. Üç abonelik paketi ve farklı giriş kampanyaları vardır. Satış ekibi yeni kayıt, müşteri hizmetleri devam ve destek, ürün ekibi kullanım verilerini takip eder. Aylık yönetim toplantısında bu raporlar birleştirilir.
 
 Müşteri sayısı ile fatura başlangıcı her zaman aynı gün değildir. Vaka dönemi için aktif müşteri tanımı ay sonunda hizmeti devam eden kayıttır. Müşteri ayrılma nedenleri serbest metin formuyla alınır; formu herkes doldurmaz. Ürün ve kampanya ekranlarında yeni/eski müşteri bilgisi tutulur. Şirket bu yıl destek ekibini büyüttü, ancak hangi müşteri gruplarında kullanımın ve devamın değiştiğini ortak dosyada incelemedi. Yeni dönem bütçesi için satış, ürün ve hizmet ekipleri öneri verdi. Sen ticari analist olarak yönetim dosyasını hazırlayacaksın.
 
@@ -27,7 +27,7 @@ Yürürlükteki görev dağılımından alınan kayıt. Tablodaki kişiler kurgu
 
 ## D03 / Aylık müşteri hareketi
 
-Dönem başında 1.000 müşteri vardı. Bunların 800’ü devam etti,200’ü ayrıldı. Aynı ay 300 yeni müşteri katıldı. Planlama katkısı aktif müşteri başına 200 TL/ay; sabit gider 260.000 TL/ay olarak alınmıştı.
+Dönem başında 1.000 müşteri vardı. Bunların 800’ü devam etti, 200’ü ayrıldı. Aynı ay 300 yeni müşteri katıldı. Planlama katkısı aktif müşteri başına 200 TL/ay; sabit gider 260.000 TL/ay olarak alınmıştı.
 
 ## D04 / Aksiyon seçenekleri
 

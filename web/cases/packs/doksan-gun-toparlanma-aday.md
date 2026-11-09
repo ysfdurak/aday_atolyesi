@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Dora Hizmet
 
-Dora Hizmet,2011’den beri kurumsal müşterilere işlem ve saha destek hizmetleri sunan 180 çalışanlı bir şirkettir. Üç bölge ofisi, bir merkezi işlem ekibi ve ortak teknoloji altyapısı bulunur. Aylık müşteri faturaları yüksek hacimli az sayıda sözleşme ile küçük proje işlerinden oluşur. Operasyon ve satış farklı göstergelerle aylık rapor verir.
+Dora Hizmet, 2011’den beri kurumsal müşterilere işlem ve saha destek hizmetleri sunan 180 çalışanlı bir şirkettir. Üç bölge ofisi, bir merkezi işlem ekibi ve ortak teknoloji altyapısı bulunur. Aylık müşteri faturaları yüksek hacimli az sayıda sözleşme ile küçük proje işlerinden oluşur. Operasyon ve satış farklı göstergelerle aylık rapor verir.
 
 Son iki çeyrekte yeni müşteriler alındı; hizmete başlama sırasında ek düzeltme ve koordinasyon işleri oluştu. Yönetim kurulu şirketin aylık sonucundan memnun değil. Her bölüm farklı bir proje önerdi. Altı teklifin sahibi belli olsa da hepsini yürütecek ayrı ekip kurulmadı. Program için ilk 30 günde 6 kişi-hafta ve 1,2 milyon TL başlangıç bütçesi ayrıldı. Bu kaynaklar mevcut operasyonun personel sayısından ayrı bir uygulama havuzudur. Sen program yöneticisisin. İmzalanmış müşteri sözleşmesi, tedarik standardı ve mevcut insan kaynağı planı toplantı kararı olmadan değişmeyecek.
 
@@ -31,7 +31,7 @@ Aylık satış 10.000.000 TL; değişken gider 7.000.000 TL; sabit gider 3.400.0
 
 ## D04 / Aksiyon seçenekleri
 
-Tekliflerde fayda alanı tam uygulama sonrasındaki aylık beklentidir. F fiyat teklifinde hacim sabit kabul edilmiş. S stok teklifinde 500.000 TL bir defalık nakit girişi bekleniyor;50.000 TL başlangıç gideri var. Giriş defter değerindendir. Kişi-hafta tahminleri proje sahiplerinin bildirimidir.
+Tekliflerde fayda alanı tam uygulama sonrasındaki aylık beklentidir. F fiyat teklifinde hacim sabit kabul edilmiş. S stok teklifinde 500.000 TL bir defalık nakit girişi bekleniyor; 50.000 TL başlangıç gideri var. Giriş defter değerindendir. Kişi-hafta tahminleri proje sahiplerinin bildirimidir.
 
 |ID|Aksiyon|Başlangıç nakdi TL|Tam uygulamada aylık sonuç etkisi TL|Kişi-hafta|
 |---|---|---|---|---|

@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Safir Tüketim Ürünleri
 
-Safir Tüketim Ürünleri,üç satış bölgesi ve bir ana dağıtım merkezi olan 86 çalışanlı bir işletmedir. Ürünler parti numarasıyla izlenir. Kalite kayıtları tedarikçinin parti belgesi, depo kontrol kaydı ve müşteri olaylarından oluşur. Vaka yalnız A ve B partilerinin mevcut durumu üzerinden yürür.
+Safir Tüketim Ürünleri, üç satış bölgesi ve bir ana dağıtım merkezi olan 86 çalışanlı bir işletmedir. Ürünler parti numarasıyla izlenir. Kalite kayıtları tedarikçinin parti belgesi, depo kontrol kaydı ve müşteri olaylarından oluşur. Vaka yalnız A ve B partilerinin mevcut durumu üzerinden yürür.
 
 Satış ekipleri teslim tarihini müşteriye, depo ekipleri sevk tarihini taşıyıcıya bildirir. Kalite serbest bırakma kaydı depo ekranına işlendiğinde ilgili parti kullanılabilir. Geçmişte aynı üründe ambalaj ve kullanım farklılıkları ayrı uygunsuzluk türleri olarak tutulmuştur. Yeni açılan bu olayın teknik sınıfı henüz net değil. Yönetim müşterilerin etkilenme durumunu ve operasyonun gün içinde ne yapacağını bilmek istiyor. Sen partiye ilişkin teknik tanı veren kişi değilsin; operasyon ve iletişim dosyasını koordine ediyorsun.
 

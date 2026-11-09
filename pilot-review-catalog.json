@@ -287,7 +287,7 @@
     "rubric": [
       {
         "name": "Durum bütünlüğü",
-        "evidence": "1.500+350+150=2.000 sipariş olarak özetler;60 alt kümeyi toplamın üstüne eklemez."
+        "evidence": "1.500+350+150=2.000 sipariş olarak özetler; 60 alt kümeyi toplamın üstüne eklemez."
       },
       {
         "name": "Risk ve yetki",
@@ -295,7 +295,7 @@
       },
       {
         "name": "Kuyruk hesabı",
-        "evidence": "Geliş hızını kapasiteden ayırır;70 kişinin tamamını eğitimli saymaz."
+        "evidence": "Geliş hızını kapasiteden ayırır; 70 kişinin tamamını eğitimli saymaz."
       },
       {
         "name": "Koordinasyon",
@@ -411,7 +411,7 @@
       },
       {
         "name": "Geçiş ve sürekli durum",
-        "evidence": "30 günlük gider kalkışını,50.000 tek seferlik gideri ve sürekli sonucu ayrı gösterir."
+        "evidence": "30 günlük gider kalkışını, 50.000 tek seferlik gideri ve sürekli sonucu ayrı gösterir."
       },
       {
         "name": "Alternatif ve kanıt",

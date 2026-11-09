@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync, readdirSync } from 'node:fs';
-import { handlePilot, validateFile } from './pilot-service.mjs';
+import { handlePilot, validateFile } from '../server/pilot-service.mjs';
 const sqlite = new DatabaseSync(':memory:');
 for (const f of readdirSync('drizzle')
   .filter(f => f.endsWith('.sql'))
@@ -101,7 +101,7 @@ const pdf = new TextEncoder().encode('%PDF-1.4\n1 0 obj\n<<>>\nendobj\n%%EOF\n')
 assert.throws(() => validateFile(pdf, 'answer.exe'));
 assert.throws(() => validateFile(new Uint8Array(100), 'answer.docx'));
 assert.throws(() => validateFile(new TextEncoder().encode('%PDF-1.4\n/Encrypt 1 0 R\n%%EOF'), 'answer.pdf'));
-const catalog = JSON.parse(readFileSync('pilot-catalog.json'));
+const catalog = JSON.parse(readFileSync('server/pilot-catalog.json'));
 for (const c of catalog) {
   assert(!('solution' in c));
   for (const ext of ['docx', 'xlsx'])

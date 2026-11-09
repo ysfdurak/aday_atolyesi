@@ -7,7 +7,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT,WD_CELL_VERTICAL_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
-ROOT=Path(__file__).parent
+ROOT=Path(__file__).resolve().parent.parent
 OUT=ROOT/'outputs'/'office-packs';QA=ROOT.parent/'office-qa'/'docx';QA.mkdir(parents=True,exist_ok=True)
 cases=json.loads((OUT/'catalog.json').read_text())
 def cells_table(doc,headers,rows):

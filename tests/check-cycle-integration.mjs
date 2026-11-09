@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync, readdirSync } from 'node:fs';
 import vm from 'node:vm';
-import { handlePilot } from './pilot-service.mjs';
+import { handlePilot } from '../server/pilot-service.mjs';
 const sqlite = new DatabaseSync(':memory:');
 for (const f of readdirSync('drizzle')
   .filter(f => f.endsWith('.sql'))
@@ -117,7 +117,7 @@ const action = async a => {
 };
 assert.equal((await action({ action: 'practice', index: 0, answer: 'Answer' })).status, 400);
 await req('admin', 'assign', { id: first.id, reviewer: 'reviewer' });
-const outs = JSON.parse(readFileSync('pilot-catalog.json'))[0].outputs;
+const outs = JSON.parse(readFileSync('server/pilot-catalog.json'))[0].outputs;
 const feedback = {
   id: first.id,
   summary: 'Özet',

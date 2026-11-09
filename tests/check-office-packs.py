@@ -1,7 +1,7 @@
 """Read exported OOXML independently; no workbook authoring or recalculation."""
 from pathlib import Path
 import json,zipfile,xml.etree.ElementTree as ET,math,re
-ROOT=Path(__file__).parent
+ROOT=Path(__file__).resolve().parent.parent
 raw=(ROOT/'web/case-data.js').read_text();cases=json.loads(raw.split('window.CASE_CATALOG=')[1].rstrip(';\n'))
 ns={'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main','w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main','r':'http://schemas.openxmlformats.org/package/2006/relationships'}
 OFF=ROOT/'web/cases/office'

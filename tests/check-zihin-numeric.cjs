@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict');
-require('./web/modules/zihin/numeric.js');
-require('./web/modules/zihin/engine.js');
+require('../web/modules/zihin/numeric.js');
+require('../web/modules/zihin/engine.js');
 const fact = n => {
     let v = 1;
     for (let i = 2; i <= n; i++) v *= i;

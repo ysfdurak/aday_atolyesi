@@ -2,7 +2,7 @@ const assert = require('node:assert/strict'),
   fs = require('node:fs'),
   vm = require('node:vm');
 for (let f of ['numeric', 'engine', 'verbal', 'spatial', 'coach', 'discovery', 'assessment', 'pilot'])
-  require('./web/modules/zihin/' + f + '.js');
+  require('../web/modules/zihin/' + f + '.js');
 let sample = Assessment.sample();
 assert.equal(sample.sample, true);
 assert.equal(sample.overall.total, 36);

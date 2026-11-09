@@ -1,0 +1,13 @@
+# Üretilen dosyalar: kaynakları tools/ ve content/ altındadır.
+# `npm run cases` ve `node scripts/prepare-workspace.mjs` bunları yeniden üretir.
+web/case-data.js linguist-generated=true -diff
+web/case-archive-v1.js linguist-generated=true -diff
+web/case-index.js linguist-generated=true -diff
+web/response-data.js linguist-generated=true -diff
+web/module-contracts.js linguist-generated=true -diff
+web/position-context.js linguist-generated=true
+web/modules/rol/content.js linguist-generated=true -diff
+web/cases/packs/** linguist-generated=true
+web/cases/office/** linguist-generated=true binary
+web/cases/*.zip linguist-generated=true binary
+server/pilot-*.json linguist-generated=true -diff

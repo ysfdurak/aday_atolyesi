@@ -5,7 +5,7 @@ import { Readable } from 'node:stream';
 import { DatabaseSync } from 'node:sqlite';
 import { extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { handlePilot } from '../pilot-service.mjs';
+import { handlePilot } from '../server/pilot-service.mjs';
 
 const host = '127.0.0.1';
 const port = Number(process.env.ADAY_DEMO_PORT || 5173);

@@ -1,14 +1,14 @@
 const assert = require('node:assert/strict'),
   fs = require('node:fs'),
   vm = require('node:vm');
-require('./web/modules/zihin/numeric.js');
-require('./web/modules/zihin/engine.js');
-require('./web/modules/zihin/verbal.js');
-require('./web/modules/zihin/spatial.js');
-require('./web/modules/zihin/coach.js');
-require('./web/modules/zihin/discovery.js');
-require('./web/modules/zihin/assessment.js');
-require('./web/modules/zihin/pilot.js');
+require('../web/modules/zihin/numeric.js');
+require('../web/modules/zihin/engine.js');
+require('../web/modules/zihin/verbal.js');
+require('../web/modules/zihin/spatial.js');
+require('../web/modules/zihin/coach.js');
+require('../web/modules/zihin/discovery.js');
+require('../web/modules/zihin/assessment.js');
+require('../web/modules/zihin/pilot.js');
 const nodes = new Map(),
   events = {},
   storage = new Map();

@@ -2,7 +2,7 @@ const assert = require('node:assert/strict'),
   fs = require('node:fs'),
   vm = require('node:vm');
 for (let f of ['numeric', 'engine', 'verbal', 'spatial', 'coach', 'discovery', 'assessment', 'pilot'])
-  require('./web/modules/zihin/' + f + '.js');
+  require('../web/modules/zihin/' + f + '.js');
 const questions = Array.from({ length: 3 }, (_, i) => ({
     id: 'item' + i,
     cat: 'num',

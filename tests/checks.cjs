@@ -1,5 +1,5 @@
 const assert = require('node:assert/strict');
-const A = require('./web/core.js');
+const A = require('../web/core.js');
 const store = values => ({ getItem: k => (values[k] === undefined ? null : JSON.stringify(values[k])) });
 let p = {
   role: 'analyst',

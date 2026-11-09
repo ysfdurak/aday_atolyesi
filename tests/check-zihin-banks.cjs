@@ -1,5 +1,5 @@
 const assert = require('node:assert/strict');
-for (let f of ['numeric', 'engine', 'verbal', 'spatial']) require('./web/modules/zihin/' + f + '.js');
+for (let f of ['numeric', 'engine', 'verbal', 'spatial']) require('../web/modules/zihin/' + f + '.js');
 function valid(world, p) {
   let cells = [];
   for (let i = 0; i < 8; i++) if ((world & (2 ** i)) !== 0) cells.push(i);

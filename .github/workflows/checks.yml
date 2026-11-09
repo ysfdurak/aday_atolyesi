@@ -19,6 +19,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm ci
+      - run: npm run lint
       - run: npm test
-      - run: python check-office-packs.py
+      - run: python tests/check-office-packs.py
       - run: npm run build

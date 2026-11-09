@@ -1,7 +1,7 @@
 const assert = require('node:assert/strict');
-require('./web/modules/zihin/numeric.js');
-require('./web/modules/zihin/engine.js');
-require('./web/modules/zihin/coach.js');
+require('../web/modules/zihin/numeric.js');
+require('../web/modules/zihin/engine.js');
+require('../web/modules/zihin/coach.js');
 const NOW = Date.UTC(2026, 9, 30, 10),
   D = Coach.DAY;
 const trial = (ruleId, stage = 'mixed', correct = true, hinted = false, sec = 80, at = NOW) => ({

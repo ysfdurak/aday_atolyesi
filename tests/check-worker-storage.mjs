@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 const compiled = await build({
   stdin: {
     contents:
-      "import{handlePilot,validateFile}from './pilot-service.mjs';export default{async fetch(r,e){if(new URL(r.url).pathname==='/debug'){try{return Response.json({mime:validateFile(new Uint8Array(await r.arrayBuffer()),new URL(r.url).searchParams.get('name')||'answer.docx')})}catch(err){return Response.json({error:String(err),stack:err.stack})}}return handlePilot(r,e)}}",
+      "import{handlePilot,validateFile}from './server/pilot-service.mjs';export default{async fetch(r,e){if(new URL(r.url).pathname==='/debug'){try{return Response.json({mime:validateFile(new Uint8Array(await r.arrayBuffer()),new URL(r.url).searchParams.get('name')||'answer.docx')})}catch(err){return Response.json({error:String(err),stack:err.stack})}}return handlePilot(r,e)}}",
     resolveDir: process.cwd(),
   },
   bundle: true,
@@ -79,7 +79,7 @@ try {
   assert.equal(downloaded.status, 200);
   assert.deepEqual(Buffer.from(await downloaded.arrayBuffer()), file);
   assert.equal((await call('owner', 'assign', { id, reviewer: 'reviewer' })).status, 200);
-  const outputs = JSON.parse(readFileSync('pilot-catalog.json'))[0].outputs,
+  const outputs = JSON.parse(readFileSync('server/pilot-catalog.json'))[0].outputs,
     feedback = {
       id,
       summary: 'Genel değerlendirme',

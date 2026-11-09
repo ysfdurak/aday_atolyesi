@@ -2,7 +2,7 @@ const fs = require('node:fs'),
   vm = require('node:vm'),
   assert = require('node:assert/strict'),
   crypto = require('node:crypto').webcrypto;
-const M = require('./web/modules/mizac/engine.js');
+const M = require('../web/modules/mizac/engine.js');
 assert.equal(M.ITEMS.length, 96);
 assert.equal(M.DIMS.length, 8);
 assert.equal(M.SCENARIOS.length, 6);

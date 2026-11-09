@@ -7,8 +7,8 @@ vm.runInContext(fs.readFileSync('web/case-data.js', 'utf8'), data);
 const cases = JSON.parse(JSON.stringify(data.window.CASE_CATALOG));
 global.CASE_CATALOG = cases;
 global.CASE_ARCHIVE = JSON.parse(JSON.stringify(data.window.CASE_ARCHIVE));
-const E = require('./web/case-engine.js');
-const A = require('./web/core.js');
+const E = require('../web/case-engine.js');
+const A = require('../web/core.js');
 assert.equal(cases.length, 20);
 assert.equal(new Set(cases.map(c => c.id)).size, 20);
 assert.deepEqual(

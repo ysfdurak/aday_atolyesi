@@ -2,7 +2,7 @@ const fs = require('node:fs'),
   vm = require('node:vm'),
   assert = require('node:assert/strict');
 for (const f of ['numeric', 'engine', 'verbal', 'spatial', 'coach', 'discovery', 'assessment', 'pilot'])
-  require('./web/modules/zihin/' + f + '.js');
+  require('../web/modules/zihin/' + f + '.js');
 const nodes = new Map(),
   values = new Map(),
   node = () => ({
@@ -73,7 +73,7 @@ assert.equal(s.questions.length, 36);
 assert.equal(new Set(s.questions.map(q => q.cat)).size, 6);
 assert.deepEqual([...new Set(s.questions.map(q => q.level))], [1, 2, 3]);
 // Mizaç context uses conditions and positions; raw preference scores are invariant.
-const M = require('./web/modules/mizac/engine.js'),
+const M = require('../web/modules/mizac/engine.js'),
   m = { ...ctx, score: M.score };
 m.window = m;
 vm.createContext(m);

@@ -11,6 +11,8 @@
     "build": "node scripts/prepare-workspace.mjs && node scripts/run-framework.mjs build",
     "start": "node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 127.0.0.1 --inspector-port 0",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "format": "prettier --write .",
+    "cases": "python3 tools/build-cases.py && node scripts/prepare-workspace.mjs",
     "db:generate": "drizzle-kit generate",
     "demo": "node scripts/demo.mjs",
     "test": "node scripts/test.mjs"

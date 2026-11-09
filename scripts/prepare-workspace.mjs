@@ -1,15 +1,15 @@
 import { cpSync, rmSync, renameSync, readFileSync, writeFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
-execFileSync(process.execPath, ['build-positions.cjs']);
-execFileSync(process.execPath, ['build-role-bank.cjs']);
-execFileSync(process.execPath, ['build-module-contracts.cjs']);
-execFileSync(process.execPath, ['build-case-index.cjs']);
-execFileSync(process.execPath, ['build-feedback.cjs']);
+execFileSync(process.execPath, ['tools/build-positions.cjs']);
+execFileSync(process.execPath, ['tools/build-role-bank.cjs']);
+execFileSync(process.execPath, ['tools/build-module-contracts.cjs']);
+execFileSync(process.execPath, ['tools/build-case-index.cjs']);
+execFileSync(process.execPath, ['tools/build-feedback.cjs']);
 const context = { window: {} };
 vm.runInNewContext(readFileSync('web/case-data.js', 'utf8'), context);
 writeFileSync(
-  'pilot-catalog.json',
+  'server/pilot-catalog.json',
   JSON.stringify(
     context.window.CASE_CATALOG.map(c => ({
       id: c.id,
@@ -24,7 +24,7 @@ writeFileSync(
   ) + '\n'
 );
 writeFileSync(
-  'pilot-learning-catalog.json',
+  'server/pilot-learning-catalog.json',
   JSON.stringify(
     context.window.CASE_CATALOG.map(c => ({
       id: c.id,
@@ -37,7 +37,7 @@ writeFileSync(
   ) + '\n'
 );
 writeFileSync(
-  'pilot-review-catalog.json',
+  'server/pilot-review-catalog.json',
   JSON.stringify(
     context.window.CASE_CATALOG.map(c => ({
       id: c.id,

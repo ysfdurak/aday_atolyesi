@@ -1,8 +1,8 @@
 const assert = require('node:assert/strict');
-require('./web/modules/zihin/numeric.js');
-require('./web/modules/zihin/engine.js');
-require('./web/modules/zihin/verbal.js');
-require('./web/modules/zihin/spatial.js');
+require('../web/modules/zihin/numeric.js');
+require('../web/modules/zihin/engine.js');
+require('../web/modules/zihin/verbal.js');
+require('../web/modules/zihin/spatial.js');
 let count = 0,
   proved = 0;
 const fmt = n => Number(n.toFixed(2)).toLocaleString('tr-TR', { maximumFractionDigits: 2 });

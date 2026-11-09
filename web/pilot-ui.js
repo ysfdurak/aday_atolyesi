@@ -38,6 +38,8 @@
     if (!r.ok) throw Object.assign(Error(b.error || 'İşlem tamamlanamadı.'), { status: r.status });
     return b;
   };
+  const STATIC_NOTE =
+    'Bu sürüm GitHub Pages üzerinde çalışan statik bir demodur. Hazırlık planı, atölyeler, vaka çalışmaları ve mülakat hazırlığı açıktır; çalışmaların bu tarayıcıda saklanır. Sunucu gerektiren hesap, dosya teslimi, İK değerlendirmesi ve otomatik hesap kaydı bu sürümde kapalıdır.';
   const view = () =>
     `<div id="pilot-hero"><span class="eyebrow">Davetli pilot / Hesap ve teslim</span><h1>Çalışmanı koru.<br><em>Geri bildirimle ilerle.</em></h1><p class="muted">Buradaki hesap işlemleri ve dosyalar sunucuda saklanır. Atölyelerdeki çalışma kayıtları cihazında devam eder; aşağıdan hesabına kaydedebilir veya başka cihazdaki kaydını yükleyebilirsin. Yapay zekâya gönderim yapılmaz. Dosya teslimlerin, geri bildirimlerin ve gelişim adımların hazırlık planına yansır.</p></div><div id="pilot-message" role="status" aria-live="polite"></div><div id="pilot-content"><p>Hesap kontrol ediliyor…</p></div>`;
   function message(s) {
@@ -450,6 +452,14 @@ ${canReview ? '</details>' : ''}${
     const target = document.getElementById('pilot-content'),
       ticket = ++bindTicket;
     if (!target) return;
+    if (root.AA_STATIC) {
+      const hero = document.getElementById('pilot-hero');
+      if (hero)
+        hero.innerHTML =
+          '<span class="eyebrow">Statik demo / Kayıtlar</span><h1>Çalışman<br><em>bu tarayıcıda.</em></h1><p class="muted">Bu sürümde sunucu yok; hesap ve dosya teslimi kapalı. Hazırlık çalışmaların bu tarayıcıda saklanır.</p>';
+      target.innerHTML = `<section class="card static-note"><span class="eyebrow">Statik demo</span><h2>Hesap ve dosya teslimi bu sürümde kapalı</h2><p>${STATIC_NOTE}</p><p>Çalışmanı korumak için <a href="#settings">Hedef ve kayıtlar</a> sekmesinden cihaz yedeğini indirebilir, başka bir tarayıcıda aynı yerden yükleyebilirsin.</p><p class="muted">Tam sürümü (hesap, dosya teslimi, İK değerlendirmesi) denemek için projeyi bilgisayarına indirip <code>npm run demo</code> komutunu çalıştır. Ayrıntılar README dosyasındadır.</p></section>`;
+      return;
+    }
     try {
       // Misafir kullanıcıda kimlik isteği göndermeden giriş seçeneğini göster.
       if (root.PilotProgress) {

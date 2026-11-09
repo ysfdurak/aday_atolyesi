@@ -1999,3 +1999,19 @@ footer a {
 .next-step.done {
   border-color: var(--line);
 }
+
+/* Statik demo (GitHub Pages) */
+.static-banner {
+  margin: 14px 0 4px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #fbf3e4;
+  border: 1px solid #ecd9b4;
+  font-size: 13.5px;
+}
+.static-banner a {
+  font-weight: 650;
+}
+.static-note {
+  border-left: 4px solid #d8b56a;
+}

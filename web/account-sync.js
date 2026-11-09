@@ -82,7 +82,7 @@
   }
   async function tick() {
     const s = settings();
-    if (!s.on || busy) return;
+    if (!s.on || busy || root.AA_STATIC) return;
     if (root.PilotProgress?.status() !== 'ready') return;
     let p;
     try {

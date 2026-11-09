@@ -19,7 +19,9 @@
   const bar = document.createElement('div');
   bar.className = 'aa-return';
   bar.innerHTML =
-    '<a href="/">← Aday Atölyesi</a><small>İlerlemen planına ve gelişim raporuna otomatik yansır.</small><a href="/#plan">Planım ↗</a><a href="/#growth">Gelişimim ↗</a>';
+    '<a href="/">← Aday Atölyesi</a><small>İlerlemen planına ve gelişim raporuna otomatik yansır.' +
+    (window.AA_STATIC ? ' Statik demo: kayıtlar bu tarayıcıda.' : '') +
+    '</small><a href="/#plan">Planım ↗</a><a href="/#growth">Gelişimim ↗</a>';
   document.body.append(bar);
   if (kind === 'mizac') {
     if (profile && !Object.keys(state.answers || {}).length) {

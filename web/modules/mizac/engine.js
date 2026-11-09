@@ -8,7 +8,7 @@ const DIMS = [
     low: 'İşi ilerlerken şekillendirmeyi ve hareket alanını açık tutmayı tercih ediyor.',
     tradeH: 'Planın sık değiştiği işlerde yeniden planlama süresine ihtiyaç duyabilir.',
     tradeL: 'Bağımlılıkları yoğun işlerde ara kontrol noktaları yararlı olabilir.',
-    q: 'Son anda değişen bir işte planınızı nasıl güncellediniz?',
+    q: 'Son anda değişen bir işte planını nasıl güncelledin?',
     items: [
       'Bir işe başlamadan önce ara teslim noktalarını belirlerim.',
       'Günlük işlerimin sırasını önceden netleştirmeyi tercih ederim.',
@@ -27,7 +27,7 @@ const DIMS = [
     low: 'Önce genel sonucu görmeyi, ayrıntıları ihtiyaca göre ele almayı tercih ediyor.',
     tradeH: 'Düşük riskli işlerde de ayrıntılı kontrol yapmanın zaman maliyetini izlemesi yararlı olabilir.',
     tradeL: 'Hata maliyeti yüksek işlerde kontrol listeleri yararlı olabilir.',
-    q: 'Bir hatayı teslimden önce veya sonra fark ettiğiniz bir örneği anlatır mısınız?',
+    q: 'Bir hatayı teslimden önce veya sonra fark ettiğin bir örneği anlatır mısın?',
     items: [
       'Bir çıktıyı teslim etmeden önce ayrıntılarını tekrar incelerim.',
       'Benzer kayıtlar arasındaki küçük farkları kontrol ederim.',
@@ -46,7 +46,7 @@ const DIMS = [
     low: 'Önce dinlemeyi ve düşüncelerini olgunlaştırdıktan sonra paylaşmayı tercih ediyor.',
     tradeH: 'Diğer görüşleri dinlemek için bilinçli alan açması yararlı olabilir.',
     tradeL: 'Hızlı karar toplantılarında yazılı ön hazırlık görüşünün duyulmasına yardım edebilir.',
-    q: 'Çoğunluktan farklı düşündüğünüz bir toplantıda ne yaptınız?',
+    q: 'Çoğunluktan farklı düşündüğün bir toplantıda ne yaptın?',
     items: [
       'Bir toplantıda farklı düşünüyorsam görüşümü söylerim.',
       'Katılmadığım bir öneriye gerekçemle itiraz ederim.',
@@ -66,7 +66,7 @@ const DIMS = [
     tradeH:
       'Kesintisiz bireysel çalışma gerektiren işlerde iletişim zamanlarını belirlemek yararlı olabilir.',
     tradeL: 'Bağımlı ekip işlerinde paylaşım sıklığını açıkça belirlemek yararlı olabilir.',
-    q: 'Başka bir ekibe bağımlı bir işte bilgi akışını nasıl kurdunuz?',
+    q: 'Başka bir ekibe bağımlı bir işte bilgi akışını nasıl kurdun?',
     items: [
       'Bir sorunu çözerken erken aşamada ekip arkadaşlarımın fikrini alırım.',
       'Ortak bir çıktı üzerinde birlikte çalışmak bana uygundur.',
@@ -85,7 +85,7 @@ const DIMS = [
     low: 'Harekete geçmeden önce beklenti ve sorumluluk alanını netleştirmeyi tercih ediyor.',
     tradeH: 'Yetki sınırlarının belirsiz olduğu işlerde onay noktalarını açıkça belirlemek yararlı olabilir.',
     tradeL: 'Hız gerektiren işlerde önceden tanımlanmış karar alanları yararlı olabilir.',
-    q: 'Size doğrudan atanmamış bir sorunda ne yaptığınızı örnekler misiniz?',
+    q: 'Sana doğrudan atanmamış bir sorunda ne yaptığını örnekler misin?',
     items: [
       'Yetki alanımdaki bir sorunda ilk adımı kendim atarım.',
       'İş yapış biçiminde bir iyileştirme gördüğümde küçük bir deneme öneririm.',
@@ -104,7 +104,7 @@ const DIMS = [
     low: 'Kararlarında deneyimine ve ilk değerlendirmesine daha çok başvurmayı tercih ediyor.',
     tradeH: 'Süre kısıtlı kararlarda yeterli kanıt eşiğini belirlemek yararlı olabilir.',
     tradeL: 'Yeni veya yüksek etkili kararlarda varsayımları ayrıca kontrol etmek yararlı olabilir.',
-    q: 'İlk kanaatinizin veriyle değiştiği bir kararınızı anlatır mısınız?',
+    q: 'İlk kanaatinin veriyle değiştiği bir kararını anlatır mısın?',
     items: [
       'Bir karar öncesinde alternatiflerin dayanaklarını karşılaştırırım.',
       'Bir sayı beklenmedik görünüyorsa kaynağını kontrol ederim.',
@@ -123,7 +123,7 @@ const DIMS = [
     low: 'İşe yaradığı bilinen yöntemleri sürdürmeyi tercih ediyor.',
     tradeH: 'Değişikliklerin standarda dönüşmesi için sonuçları takip etmek yararlı olabilir.',
     tradeL: 'Yeni yöntemleri sınırlı ve geri alınabilir denemelerle tanımak yararlı olabilir.',
-    q: 'Alıştığınız bir yöntemi değiştirdiğiniz son örnek neydi?',
+    q: 'Alıştığın bir yöntemi değiştirdiğin son örnek neydi?',
     items: [
       'Yeni bir iş yöntemini küçük ölçekte denemekten hoşlanırım.',
       'Alıştığım araç yerine başka bir aracı öğrenmeye zaman ayırırım.',
@@ -142,7 +142,7 @@ const DIMS = [
     low: 'İlk adım öncesinde düşünme payı bırakmayı tercih ediyor.',
     tradeH: 'Geri dönüşü zor kararlarda başlangıç kontrolü koymak yararlı olabilir.',
     tradeL: 'Kısa süreli işlerde küçük ilk adımlar ve süre sınırları yararlı olabilir.',
-    q: 'Kısa süre içinde sonuç üretmeniz gereken bir durumda nasıl ilerlediniz?',
+    q: 'Kısa süre içinde sonuç üretmen gereken bir durumda nasıl ilerledin?',
     items: [
       'Bir işte ilk taslağı erken çıkarmayı tercih ederim.',
       'Küçük bir adım atıp geri bildirimle ilerlemek bana uygundur.',
@@ -273,7 +273,7 @@ function facetScores(answers) {
 const SCENARIOS = [
   {
     title: 'Teslim saati yaklaşıyor',
-    text: 'Rapor iki saat sonra teslim edilecek. Birkaç kayıt beklenmedik görünüyor. Genellikle ilk adımınız hangisine yakın olur?',
+    text: 'Rapor iki saat sonra teslim edilecek. Birkaç kayıt beklenmedik görünüyor. Genellikle ilk adımın hangisine yakın olur?',
     options: [
       ['Şüpheli kayıtları ve kaynağı kontrol ederek başlayırım.', 'detail', 'Kontrol odağı'],
       ['Önce kullanılabilir bir taslak çıkarır, açık noktaları işaretlerim.', 'pace', 'Erken çıktı'],
@@ -283,7 +283,7 @@ const SCENARIOS = [
   },
   {
     title: 'İlk ekip toplantısı',
-    text: 'Yeni katıldığınız ekipte iş bölümü konuşuluyor. İlk yaklaşımınız hangisine yakın?',
+    text: 'Yeni katıldığın ekipte iş bölümü konuşuluyor. İlk yaklaşımın hangisine yakın?',
     options: [
       ['Önce ekip üyelerini dinleyerek çalışma biçimini anlamaya çalışırım.', 'voice', 'Önce dinleme', -1],
       ['Yapabileceğimi düşündüğüm bir iş için sorumluluk teklif ederim.', 'initiative', 'İlk adımı üstlenme'],
@@ -293,7 +293,7 @@ const SCENARIOS = [
   },
   {
     title: 'Yeni bir araç',
-    text: 'Ekip, mevcut araç yerine yeni bir aracı denemeyi konuşuyor. Siz nasıl yaklaşırsınız?',
+    text: 'Ekip, mevcut araç yerine yeni bir aracı denemeyi konuşuyor. Sen nasıl yaklaşırsın?',
     options: [
       ['Küçük bir işte deneyerek farkını görmek isterim.', 'change', 'Sınırlı deneme'],
       ['Karşılaştırmalı örnek sonuçlara bakmak isterim.', 'evidence', 'Kanıt toplama'],
@@ -303,7 +303,7 @@ const SCENARIOS = [
   },
   {
     title: 'Sorumlusu belirsiz iş',
-    text: 'Ekipler arasında kalan bir talep geldi. Kendi yetkiniz içinde küçük bir adım atabiliyorsunuz. İlk tercihiniz?',
+    text: 'Ekipler arasında kalan bir talep geldi. Kendi yetkin içinde küçük bir adım atabiliyorsun. İlk tercihin?',
     options: [
       ['Yetkim içindeki ilk adımı atar, ilgili kişilere haber veririm.', 'initiative', 'Başlatma'],
       ['Önce sorumluluk ve teslim beklentisini netleştiririm.', 'initiative', 'Çerçeveyi netleştirme', -1],
@@ -313,7 +313,7 @@ const SCENARIOS = [
   },
   {
     title: 'Farklı görüş',
-    text: 'Toplantıda sizin farklı düşündüğünüz bir öneri destek görüyor. Genellikle ne yaparsınız?',
+    text: 'Toplantıda senin farklı düşündüğün bir öneri destek görüyor. Genellikle ne yaparsın?',
     options: [
       ['Görüşümü ve gerekçemi toplantıda paylaşırım.', 'voice', 'Açık görüş'],
       ['Önce düşüncelerimi toparlayıp sonrasında yazılı paylaşırım.', 'voice', 'Düşünerek paylaşım', -1],
@@ -323,7 +323,7 @@ const SCENARIOS = [
   },
   {
     title: 'Yeni görev',
-    text: 'Daha önce yapmadığınız bir görev aldınız. İlk yarım saatinizi nasıl kullanmayı tercih edersiniz?',
+    text: 'Daha önce yapmadığın bir görev aldın. İlk yarım saatini nasıl kullanmayı tercih edersin?',
     options: [
       ['İşin adımlarını ve ara teslimleri çıkarırım.', 'plan', 'Ön planlama'],
       ['Küçük bir ilk çıktı oluşturmaya başlarım.', 'pace', 'Erken çıktı'],
@@ -385,7 +385,7 @@ function quality(answers) {
   ).filter(p => p.a && p.b && Math.abs(p.a - (6 - p.b)) >= 3);
   if (pairs.length >= 4)
     flags.push(
-      'Benzer içerikli maddelerde farklı yanıtlar var. Bağlam veya ifade farklarını görüşmede açıklığa kavuşturun.'
+      'Benzer içerikli maddelerde farklı yanıtlar var. Bağlam veya ifade farklarını görüşmede açıklığa kavuştur.'
     );
   return { flags, pairs };
 }

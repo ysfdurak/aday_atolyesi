@@ -42,9 +42,16 @@
       choice = root.Positions.load(localStorage),
       pos = root.Positions.get(choice?.positionId),
       co = root.AA.caseOverview(st),
-      days = p ? root.AA.days(root.AA.today(), p.deadline) : null;
+      days = p ? root.AA.days(root.AA.today(), p.deadline) : null,
+      // Gelişim raporu kartı ancak yorumlanacak bir çalışma varsa gösterilir.
+      hasActivity =
+        !!s.report ||
+        Object.keys(s.r?.answers || {}).length > 0 ||
+        Object.keys(s.m?.answers || {}).length > 0 ||
+        co.started > 0 ||
+        (st.examples || []).length > 0;
     return `<section class="dashboard-hero"><div><span class="eyebrow">${p ? 'Kendi hızında, somut bir sonraki adım' : 'Hazırlığına buradan başla'}</span><h1>${p ? 'Bugün neye<br><em>odaklanalım?</em>' : 'Hedefin belli olsun.<br><em>İlk adımın da.</em>'}</h1><p class="muted">${p ? safe(pos?.name || p.title) + ' · Günde ' + p.minutes + ' dakika. Çalışmalarını kendi deneyiminle ilişkilendir.' : 'Pozisyonunu seç; sınav pratiği, rol kararları ve şirket vakaları için bir çalışma sırası oluştur.'}</p><div class="pillrow">${p ? `<span>${days < 0 ? 'Hedef tarihi geçti' : days === 0 ? 'Hedef günün bugün' : days + ' gün kaldı'}</span><span>${safe(displayDate(p.deadline + 'T12:00Z'))}</span>` : '<span>Sınav, deneyim ve vaka hazırlığı tek yerde</span>'}</div>${p ? btn('#settings', 'Hedefimi düzenle') : ''}</div><article class="next-action" id="dashboard-next"><span class="eyebrow">${p ? 'Sıradaki çalışman' : 'İlk adım · yaklaşık 2 dakika'}</span><h2>${safe(n.title)}</h2><p>${safe(n.detail)}</p><div class="actions">${btn(n.href, p ? 'Kaldığım yerden devam et' : 'Hedefimi belirle', true)}</div><small>${n.minutes || 10} dk çalışma bloğu${p ? ' · ' + btn('#plan', 'Günlük planın tamamı') : ''}</small></article></section>
-<section class="card growth-entry"><h2>Cevaplarım bana ne söylüyor?</h2><p>Kendi seçimini, dayanağını ve önce çalışabileceğin iki alanı birlikte incele. Revizyonla yeni vakadaki kullanımını karşılaştır.</p>${btn('#growth', 'Gelişim raporumu aç', true)}</section><div class="workspace-overview"><h2>Çalışmaların bir bakışta</h2><p class="muted">Tamamlanma kayıtları; işe hazır olma puanı değildir.</p><div class="grid status-cards">${checklist(
+${hasActivity ? `<section class="card growth-entry"><h2>Cevaplarım bana ne söylüyor?</h2><p>Kendi seçimini, dayanağını ve önce çalışabileceğin iki alanı birlikte incele.</p>${btn('#growth', 'Gelişim raporumu aç', true)}</section>` : ''}<div class="workspace-overview"><h2>Çalışmaların bir bakışta</h2><p class="muted">Tamamladığın çalışmaların sayısı.</p><div class="grid status-cards">${checklist(
       s
     )
       .map(
@@ -53,7 +60,7 @@
       )
       .join('')}</div></div>
 <div class="grid2" style="margin-top:20px"><section class="card"><span class="num">UYGULAMAYA TAŞI</span><h2>Şirket vakalarında karar ver</h2><p id="dashboard-case-progress">${co.started} başlanan · ${co.submitted} teslimi olan · ${co.reviewed} insan incelemesi bulunan vaka.</p>${btn('#cases', co.started ? 'Vaka çalışmalarıma dön' : 'İlk şirket dosyasını keşfet')}</section><section class="card"><span class="num">GÖRÜŞMEYE HAZIRLAN</span><h2>Deneyimini dayanağıyla anlat</h2><p>${st.examples.length} deneyim kaydı. Kendi katkını, alternatifini ve sonucunu seçtiğin örneklerle görünür kıl.</p><div class="actions">${btn('#examples', 'Deneyim örneği yaz')}${btn('#dossier', 'Mülakat dosyam')}${btn('#rehearsal', 'Mülakat provam')}</div></section></div>
-<section class="save-strip"><div><b>Çalışmanın nerede kayıtlı olduğunu bil.</b><p>Yazdıkların bu cihazda korunur. Başka cihazda devam etmek için hesabına kaydet ve orada yükle.</p></div>${btn('#pilot', 'Hesap kaydımı kontrol et')}</section>`;
+<section class="save-strip"><div><b>${root.AccountSync?.settings().on ? 'Çalışman hesabına otomatik kaydediliyor.' : 'Çalışman şu an yalnız bu cihazda.'}</b><p>${root.AccountSync?.settings().on ? 'Başka cihazda devam etmek için orada hesabından yükleyebilirsin.' : 'Tarayıcı verisi silinirse kaybolabilir. Hesabında otomatik kaydı açarak koruyabilirsin.'}</p></div>${btn('#pilot', root.AccountSync?.settings().on ? 'Hesap kaydımı gör' : 'Otomatik kaydı aç')}</section>`;
   }
   function start() {
     if (state.profile)

@@ -42,7 +42,7 @@ function page(p) {
   if (p === 'research') research();
 }
 function home() {
-  el.innerHTML = `<div class="hero"><div><span class="eyebrow">İnsanı bir etikete sığdırmadan</span><h1>İşte nasıl<br>çalışmayı<br>tercih ediyorsunuz?</h1><p class="muted">Çalışma tercihlerini görünür kılan, görüşmeyi somut örneklere taşıyan bir davranış haritası.</p><div class="actions"><button class="primary" onclick="page('setup')">${Object.keys(state.answers).length ? 'Değerlendirmeye devam et' : 'Kendi haritamı çıkar'} →</button><button onclick="demo()">Örnek aday özetini aç</button><a class="report-pdf-link" href="ornek-kapsamli-ik-raporu.pdf" download>Örnek tam rapor · PDF ↓</a></div><span class="tag">96 ifade + 6 iş senaryosu</span><span class="tag">Süre sınırı yok</span><span class="tag">AI / API gerektirmez</span></div><div class="paper"><div class="row"><span class="eyebrow">Örnek davranış haritası</span><span class="badge">Demo</span></div><h3>Bir puanın ötesinde,<br>konuşmaya değer ipuçları.</h3>${[
+  el.innerHTML = `<div class="hero"><div><span class="eyebrow">İnsanı bir etikete sığdırmadan</span><h1>İşte nasıl<br>çalışmayı<br>tercih ediyorsun?</h1><p class="muted">Çalışma tercihlerini görünür kılan, görüşmeyi somut örneklere taşıyan bir davranış haritası.</p><div class="actions"><button class="primary" onclick="page('setup')">${Object.keys(state.answers).length ? 'Değerlendirmeye devam et' : 'Kendi haritamı çıkar'} →</button><button onclick="demo()">Örnek aday özetini aç</button><a class="report-pdf-link" href="ornek-kapsamli-ik-raporu.pdf" download>Örnek tam rapor · PDF ↓</a></div><span class="tag">96 ifade + 6 iş senaryosu</span><span class="tag">Süre sınırı yok</span><span class="tag">AI / API gerektirmez</span></div><div class="paper"><div class="row"><span class="eyebrow">Örnek davranış haritası</span><span class="badge">Demo</span></div><h3>Bir puanın ötesinde,<br>konuşmaya değer ipuçları.</h3>${[
     { n: 'Karar için kanıt', s: 79, l: 'Deneyim', r: 'Veri ve karşılaştırma' },
     { n: 'Birlikte çalışma', s: 54, l: 'Bağımsız', r: 'Sık fikir alışverişi' },
     { n: 'Yöntem değişikliği', s: 71, l: 'Bilinen yöntem', r: 'Yeni yöntem' },
@@ -53,21 +53,21 @@ function home() {
     )
     .join(
       ''
-    )}<div class="note"><small>Görüşmede açılacak konu</small><p>“İlk kanaatinizin veriyle değiştiği bir kararınızı anlatır mısınız?”</p></div></div></div><div class="grid"><div class="card"><span class="number">1</span><h3>Tercihini anlat</h3><p class="muted">Doğru cevap aramadan, işte genellikle nasıl davrandığını düşün.</p></div><div class="card"><span class="number">2</span><h3>Bağlamla karşılaştır</h3><p class="muted">İş senaryoları ve çalışma koşullarıyla öz bildirimi birlikte ele al.</p></div><div class="card"><span class="number">3</span><h3>Örnekle doğrula</h3><p class="muted">İK ve aday için açık, gerekçesi izlenebilir görüşme rehberi al.</p></div></div><div class="notice"><b>Pilot sürüm.</b> Sorular özgündür; Türkçe psikometrik geçerlik, güvenirlik ve norm çalışması henüz yapılmadı. Bu sürüm gerçek işe alımda eleme, sıralama veya işe alım kararı için kullanılmamalıdır.</div>`;
+    )}<div class="note"><small>Görüşmede açılacak konu</small><p>“İlk kanaatinin veriyle değiştiği bir kararını anlatır mısın?”</p></div></div></div><div class="grid"><div class="card"><span class="number">1</span><h3>Tercihini anlat</h3><p class="muted">Doğru cevap aramadan, işte genellikle nasıl davrandığını düşün.</p></div><div class="card"><span class="number">2</span><h3>Bağlamla karşılaştır</h3><p class="muted">İş senaryoları ve çalışma koşullarıyla öz bildirimi birlikte ele al.</p></div><div class="card"><span class="number">3</span><h3>Örnekle doğrula</h3><p class="muted">İK ve aday için açık, gerekçesi izlenebilir görüşme rehberi al.</p></div></div><div class="notice"><b>Pilot sürüm.</b> Sorular özgündür; Türkçe psikometrik geçerlik, güvenirlik ve norm çalışması henüz yapılmadı. Bu sürüm gerçek işe alımda eleme, sıralama veya işe alım kararı için kullanılmamalıdır.</div>`;
 }
 function setup() {
-  el.innerHTML = `<div class="narrow"><span class="eyebrow">Başlamadan önce</span><h1>Kendi çalışma biçiminiz.</h1><div class="card"><p>Son dönemdeki tipik iş, eğitim veya proje deneyiminizi düşünün. İdeal görünmeye çalışmadan size yakın seçeneği işaretleyin. Deneyiminiz yoksa benzer bir ekip çalışmasını esas alın.</p><p class="muted">Tahmini 20–30 dakika; bu süre henüz pilot verisiyle doğrulanmadı. Hız ölçülmez. Geri dönebilir, yanıtları değiştirebilirsiniz.</p><label for="alias">Katılımcı kodu (isteğe bağlı)</label><input type="text" id="alias" maxlength="40" placeholder="Örn. K-001" value="${esc(state.alias)}"><label for="role">Görüşme bağlamı</label><select id="role">${Object.entries(
+  el.innerHTML = `<div class="narrow"><span class="eyebrow">Başlamadan önce</span><h1>Kendi çalışma biçimin.</h1><div class="card"><p>Son dönemdeki tipik iş, eğitim veya proje deneyimini düşün. İdeal görünmeye çalışmadan sana yakın seçeneği işaretle. Deneyimin yoksa benzer bir ekip çalışmasını esas al.</p><p class="muted">Tahmini 20–30 dakika; bu süre henüz pilot verisiyle doğrulanmadı. Hız ölçülmez. Geri dönebilir, yanıtları değiştirebilirsin.</p><label for="alias">Katılımcı kodu (isteğe bağlı)</label><input type="text" id="alias" maxlength="40" placeholder="Örn. K-001" value="${esc(state.alias)}"><label for="role">Görüşme bağlamı</label><select id="role">${Object.entries(
     ROLES
   )
     .map(([k, r]) => `<option value="${k}" ${state.role === k ? 'selected' : ''}>${r.name}</option>`)
     .join(
       ''
-    )}</select><div class="note">Yanıtlar bu tarayıcının yerel depolamasında tutulur; sunucuya veya AI servisine gönderilmez. Ortak cihaz kullanıyorsanız sonunda verileri silin. Bu prototipte aday daveti ve ortak İK paneli yoktur.</div><label class="check"><input type="checkbox" id="consent">Pilot niteliğini ve yerel kayıt bilgisini okudum; yanıtlamaya başlamak istiyorum.</label><div id="setup-error" role="alert" class="error"></div><div class="actions"><button class="primary" onclick="begin()">Başla / devam et →</button><button onclick="clearData()">Kayıtlı verileri sil</button></div></div></div>`;
+    )}</select><div class="note">Yanıtlar bu tarayıcının yerel depolamasında tutulur; sunucuya veya AI servisine gönderilmez. Ortak cihaz kullanıyorsan sonunda verileri sil. Bu prototipte aday daveti ve ortak İK paneli yoktur.</div><label class="check"><input type="checkbox" id="consent">Pilot niteliğini ve yerel kayıt bilgisini okudum; yanıtlamaya başlamak istiyorum.</label><div id="setup-error" role="alert" class="error"></div><div class="actions"><button class="primary" onclick="begin()">Başla / devam et →</button><button onclick="clearData()">Kayıtlı verileri sil</button></div></div></div>`;
 }
 function begin() {
   if (!document.getElementById('consent').checked) {
     document.getElementById('setup-error').textContent =
-      'Devam etmek için bilgilendirmeyi okuduğunuzu belirtin.';
+      'Devam etmek için bilgilendirmeyi okuduğunuzu belirt.';
     return;
   }
   state.alias = document.getElementById('alias').value.trim();
@@ -93,9 +93,9 @@ function test() {
         `<div class="question"><small>Senaryo ${i + 1} / 6 · Tercih sorusu, doğru cevap aranmaz</small><h3>${s.title}</h3><p>${s.text}</p><div class="options">${s.options.map((o, j) => `<button aria-pressed="${state.scenarios[i] === j}" class="${state.scenarios[i] === j ? 'selected' : ''}" onclick="scenario(${i},${j})">${o[0]}</button>`).join('')}</div></div>`
     ).join('');
   } else {
-    body = `<h2>Sizi destekleyen çalışma koşulları</h2><p>En çok tercih ettiğiniz <b>iki koşulu</b> seçin. Bu bölüm kişilik puanına katılmaz; görüşmede konuşulacak bir öz bildirimdir.</p><div class="motives">${['Net beklenti ve düzen', 'Bağımsız karar alanı', 'Birlikte üretme', 'Öğrenme ve yenilik', 'Görünür takdir', 'İlerleme ve sorumluluk'].map((m, i) => `<button class="${state.motives.includes(i) ? 'selected' : ''}" aria-pressed="${state.motives.includes(i)}" onclick="motive(${i})">${m}</button>`).join('')}</div>`;
+    body = `<h2>Sizi destekleyen çalışma koşulları</h2><p>En çok tercih ettiğin <b>iki koşulu</b> seç. Bu bölüm kişilik puanına katılmaz; görüşmede konuşulacak bir öz bildirimdir.</p><div class="motives">${['Net beklenti ve düzen', 'Bağımsız karar alanı', 'Birlikte üretme', 'Öğrenme ve yenilik', 'Görünür takdir', 'İlerleme ve sorumluluk'].map((m, i) => `<button class="${state.motives.includes(i) ? 'selected' : ''}" aria-pressed="${state.motives.includes(i)}" onclick="motive(${i})">${m}</button>`).join('')}</div>`;
   }
-  el.innerHTML = `<div class="narrow"><div class="row"><span class="eyebrow">${k < 12 ? 'Çalışma tercihleri' : k === 12 ? 'İş senaryoları' : 'Çalışma koşulları'}</span><span>Bölüm ${k + 1} / ${total}</span></div><div class="bar"><i style="width:${Math.round((count / 102) * 100)}%"></i></div><p class="muted">${count} / 102 yanıt · Kayıt otomatik · Süre sınırı yok</p><div class="card">${body}</div><div id="test-error" role="alert" class="error"></div><div class="sticky"><button onclick="prev()">${k ? '← Önceki' : 'Başlangıç'}</button><small>${k < 12 ? 'Tipik davranışınızı düşünün.' : 'Tercihlerinizi belirtin.'}</small><button class="primary" onclick="next()">${k === 13 ? 'Raporu oluştur' : 'Sonraki →'}</button></div></div>`;
+  el.innerHTML = `<div class="narrow"><div class="row"><span class="eyebrow">${k < 12 ? 'Çalışma tercihleri' : k === 12 ? 'İş senaryoları' : 'Çalışma koşulları'}</span><span>Bölüm ${k + 1} / ${total}</span></div><div class="bar"><i style="width:${Math.round((count / 102) * 100)}%"></i></div><p class="muted">${count} / 102 yanıt · Kayıt otomatik · Süre sınırı yok</p><div class="card">${body}</div><div id="test-error" role="alert" class="error"></div><div class="sticky"><button onclick="prev()">${k ? '← Önceki' : 'Başlangıç'}</button><small>${k < 12 ? 'Tipik davranışını düşün.' : 'Tercihlerini belirt.'}</small><button class="primary" onclick="next()">${k === 13 ? 'Raporu oluştur' : 'Sonraki →'}</button></div></div>`;
 }
 function answer(id, v) {
   const y = window.scrollY;
@@ -130,7 +130,7 @@ function next() {
         ? SCENARIOS.every((_, i) => Number.isInteger(state.scenarios[i]))
         : state.motives.length === 2;
   if (!ok) {
-    document.getElementById('test-error').textContent = 'Devam etmeden bu bölümdeki seçimleri tamamlayın.';
+    document.getElementById('test-error').textContent = 'Devam etmeden bu bölümdeki seçimleri tamamla.';
     return;
   }
   if (state.step === 13) {
@@ -169,7 +169,7 @@ function demo() {
 function report(input) {
   const s = input || state;
   if (!s.complete || !isComplete(s)) {
-    el.innerHTML = `<div class="narrow card"><h1>Haritanız henüz hazır değil.</h1><p>Rapor için tüm ifadeleri, senaryoları ve iki çalışma koşulunu tamamlayın.</p><div class="actions"><button class="primary" onclick="page('setup')">Devam et</button><button onclick="demo()">Örnek raporu aç</button></div></div>`;
+    el.innerHTML = `<div class="narrow card"><h1>Haritan henüz hazır değil.</h1><p>Rapor için tüm ifadeleri, senaryoları ve iki çalışma koşulunu tamamla.</p><div class="actions"><button class="primary" onclick="page('setup')">Devam et</button><button onclick="demo()">Örnek raporu aç</button></div></div>`;
     return;
   }
   const scores = score(s.answers),
@@ -185,11 +185,11 @@ function report(input) {
         : d.low;
   const trade = d =>
     d.band === 'mid'
-      ? 'Tercihin görev türüne göre nasıl değiştiğini somut örnekle araştırın.'
+      ? 'Tercihin görev türüne göre nasıl değiştiğini somut örnekle araştır.'
       : d.band === 'high'
         ? d.tradeH
         : d.tradeL;
-  el.innerHTML = `<div class="row"><div><span class="eyebrow">${s.demo ? 'Kurgusal örnek · gerçek aday değildir' : 'Öz bildirime dayalı pilot rapor'}</span><h1>Çalışma biçiminizin haritası.</h1><p>${esc(s.alias || 'İsimsiz katılımcı')} · ${role.name} · Model 0.2 / Kural 0.2</p></div><div class="actions no-print"><button onclick="window.print()">Yazdır / PDF</button><button onclick="exportReport(${s.demo ? 'true' : 'false'})">JSON indir</button><button onclick="page('method')">Kuralları gör</button><button onclick="exportPilotRow(${s.demo ? 'true' : 'false'})">Pilot satırı · CSV</button></div></div><div class="notice"><b>Yorum sınırı:</b> 0–100 değerleri yanıt ölçeğinin dönüşümüdür; yüzdelik dilim, yetenek, başarı olasılığı veya adaylar arası sıralama değildir. Bu pilot rapor işe alım kararı için kullanılamaz.</div><div class="two"><div class="card"><span class="eyebrow">İK için görüşme özeti</span><h2>Önce şu başlıkları açın</h2>${role.focus
+  el.innerHTML = `<div class="row"><div><span class="eyebrow">${s.demo ? 'Kurgusal örnek · gerçek aday değildir' : 'Öz bildirime dayalı pilot rapor'}</span><h1>Çalışma biçiminin haritası.</h1><p>${esc(s.alias || 'İsimsiz katılımcı')} · ${role.name} · Model 0.2 / Kural 0.2</p></div><div class="actions no-print"><button onclick="window.print()">Yazdır / PDF</button><button onclick="exportReport(${s.demo ? 'true' : 'false'})">JSON indir</button><button onclick="page('method')">Kuralları gör</button><button onclick="exportPilotRow(${s.demo ? 'true' : 'false'})">Pilot satırı · CSV</button></div></div><div class="notice"><b>Yorum sınırı:</b> 0–100 değerleri yanıt ölçeğinin dönüşümüdür; yüzdelik dilim, yetenek, başarı olasılığı veya adaylar arası sıralama değildir. Bu pilot rapor işe alım kararı için kullanılamaz.</div><div class="two"><div class="card"><span class="eyebrow">İK için görüşme özeti</span><h2>Önce şu başlıkları aç</h2>${role.focus
     .map(id => {
       let d = scores.find(x => x.id === id);
       return `<p><b>${d.name}:</b> ${text(d)}</p>`;
@@ -215,18 +215,18 @@ function report(input) {
       const o = sc.options[s.scenarios[i]],
         d = scores.find(x => x.id === o[1]);
       const opposite = (o[3] === -1 && d.band === 'high') || (o[3] !== -1 && d.band === 'low');
-      return `<div class="pref"><b>${i + 1}. ${sc.title}</b><p>${o[0]}</p><span class="tag">${o[2]}</span><p class="muted">${opposite ? 'Öz bildirimle farklı yönde bir tercih var. Çelişki olarak etiketlemeden, bu senaryoda seçimi neyin değiştirdiğini sorun.' : 'Bu senaryoda bu yaklaşımın neden tercih edildiğini, gerçek bir örnek ve sonucu üzerinden araştırın.'}</p></div>`;
+      return `<div class="pref"><b>${i + 1}. ${sc.title}</b><p>${o[0]}</p><span class="tag">${o[2]}</span><p class="muted">${opposite ? 'Öz bildirimle farklı yönde bir tercih var. Çelişki olarak etiketlemeden, bu senaryoda seçimi neyin değiştirdiğini sorun.' : 'Bu senaryoda bu yaklaşımın neden tercih edildiğini, gerçek bir örnek ve sonucu üzerinden araştır.'}</p></div>`;
     }
   ).join(
     ''
   )}</section><section class="two section"><div class="card"><span class="eyebrow">Yapılandırılmış görüşme</span><h2>Kanıt toplayan sorular</h2>${role.focus
     .map((id, i) => {
       const d = scores.find(x => x.id === id);
-      return `<p><b>${i + 1}. ${d.q}</b></p><p class="muted">Durum neydi? Sizin somut eyleminiz neydi? Sonuç ne oldu? Başka nasıl davranabilirdiniz?</p>`;
+      return `<p><b>${i + 1}. ${d.q}</b></p><p class="muted">Durum neydi? Senin somut eylemin neydi? Sonuç ne oldu? Başka nasıl davranabilirdin?</p>`;
     })
     .join(
       ''
-    )}<div class="note">Görüşmeci çıpası: 0 = örnek yok; 1 = genel anlatım; 2 = somut eylem; 3 = somut eylem ve gözlenebilir sonuç. Bu, anlatılan örneğin kanıt düzeyidir; kişilik puanına katılmaz. Karşılaştırılacak adaylara aynı çekirdek sorular sorulmalıdır.</div></div><div class="card"><span class="eyebrow">Aday geri bildirimi</span><h2>Sizi destekleyen koşullar</h2>${s.motives.map(i => `<span class="tag">${['Net beklenti ve düzen', 'Bağımsız karar alanı', 'Birlikte üretme', 'Öğrenme ve yenilik', 'Görünür takdir', 'İlerleme ve sorumluluk'][i]}</span>`).join('')}<p>Bunlar doğrudan seçtiğiniz koşullardır. Motivasyonunuzun kesin veya değişmez bir ölçümü değildir.</p><h3>Bir sonraki görüşmede</h3><p>Bir tercihinizin işe yaradığı, bir de değiştirmeniz gereken iki örnek hazırlayın. Rolün günlük iş akışını ve sizden hangi durumlarda farklı davranış beklendiğini sorun.</p><h3>Gelişim denemesi</h3><p>${trade(scores.find(d => d.band !== 'mid') || scores[0])} Küçük bir görevde deneyip çıkan farkı not edin.</p></div></section>${expandedReport(s, scores)}<div class="actions no-print"><button onclick="page('setup')">Yanıtları gözden geçir</button><button onclick="clearData()">Bu cihazdaki verilerimi sil</button></div>`;
+    )}<div class="note">Görüşmeci çıpası: 0 = örnek yok; 1 = genel anlatım; 2 = somut eylem; 3 = somut eylem ve gözlenebilir sonuç. Bu, anlatılan örneğin kanıt düzeyidir; kişilik puanına katılmaz. Karşılaştırılacak adaylara aynı çekirdek sorular sorulmalıdır.</div></div><div class="card"><span class="eyebrow">Aday geri bildirimi</span><h2>Sizi destekleyen koşullar</h2>${s.motives.map(i => `<span class="tag">${['Net beklenti ve düzen', 'Bağımsız karar alanı', 'Birlikte üretme', 'Öğrenme ve yenilik', 'Görünür takdir', 'İlerleme ve sorumluluk'][i]}</span>`).join('')}<p>Bunlar doğrudan seçtiğin koşullardır. Motivasyonunuzun kesin veya değişmez bir ölçümü değildir.</p><h3>Bir sonraki görüşmede</h3><p>Bir tercihinin işe yaradığı, bir de değiştirmen gereken iki örnek hazırla. Rolün günlük iş akışını ve sizden hangi durumlarda farklı davranış beklendiğini sorun.</p><h3>Gelişim denemesi</h3><p>${trade(scores.find(d => d.band !== 'mid') || scores[0])} Küçük bir görevde deneyip çıkan farkı not et.</p></div></section>${expandedReport(s, scores)}<div class="actions no-print"><button onclick="page('setup')">Yanıtları gözden geçir</button><button onclick="clearData()">Bu cihazdaki verilerimi sil</button></div>`;
   window.scrollTo(0, 0);
 }
 function interactions(scores) {
@@ -234,11 +234,11 @@ function interactions(scores) {
   let out = [];
   if (m.plan.band === 'high' && m.change.band === 'high')
     out.push(
-      'Önceden yapılandırma ve yeni yöntem deneme birlikte belirgin. Planlı bir deneme tasarlamaya yatkınlık hipotezi araştırılabilir. “Bir yeniliği nasıl planlayıp sınadınız?”'
+      'Önceden yapılandırma ve yeni yöntem deneme birlikte belirgin. Planlı bir deneme tasarlamaya yatkınlık hipotezi araştırılabilir. “Bir yeniliği nasıl planlayıp sınadın?”'
     );
   if (m.evidence.band === 'high' && m.pace.band === 'low')
     out.push(
-      'Veriyle karşılaştırma ve harekete geçmeden düşünme birlikte belirgin. Süre kısıtlı işlerde yeterli bilgi eşiğini nasıl belirlediğini araştırın.'
+      'Veriyle karşılaştırma ve harekete geçmeden düşünme birlikte belirgin. Süre kısıtlı işlerde yeterli bilgi eşiğini nasıl belirlediğini araştır.'
     );
   if (m.detail.band === 'high' && m.pace.band === 'high')
     out.push(
@@ -250,11 +250,11 @@ function interactions(scores) {
     );
   if (m.initiative.band === 'high' && m.plan.band === 'low')
     out.push(
-      'Başlatma ve akış içinde şekillendirme birlikte belirgin. Bağımlılıkların ve yetki sınırlarının nasıl takip edildiğini araştırın.'
+      'Başlatma ve akış içinde şekillendirme birlikte belirgin. Bağımlılıkların ve yetki sınırlarının nasıl takip edildiğini araştır.'
     );
   if (!out.length)
     out.push(
-      'Tanımlı birleşim kuralları tetiklenmedi. Bu, profilin sıradan veya yetersiz olduğu anlamına gelmez. Her tercihi görev bağlamında ayrı örneklerle araştırın.'
+      'Tanımlı birleşim kuralları tetiklenmedi. Bu, profilin sıradan veya yetersiz olduğu anlamına gelmez. Her tercihi görev bağlamında ayrı örneklerle araştır.'
     );
   return out.map(t => `<p>• ${t}</p>`).join('');
 }

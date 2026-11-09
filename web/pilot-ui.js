@@ -53,7 +53,7 @@
     if (!n || !me) return;
     const canReview = ['reviewer', 'admin'].includes(me.user.role),
       admin = me.user.role === 'admin';
-    n.innerHTML = `${canReview ? `<section class="card"><div class="sectionhead"><h2>${e(me.user.email)}</h2><a class="btn" href="/signout-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">Çıkış yap</a></div><p>Atanmış teslimleri aşağıdan incele. Kendi hazırlık araçlarını istersen açabilirsin.</p></section><details class="pilot-personal"><summary>Kendi hazırlık kayıtlarım ve dosya teslimim</summary>` : ''}<section class="card"><div class="sectionhead"><h2>${e(me.user.email)}</h2><a class="btn" href="/signout-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">Çıkış yap</a></div><p>Hesap türü: ${e({ admin: 'Yönetici', reviewer: 'Değerlendirici', candidate: 'Aday' }[me.user.role])}</p><p class="muted">Pilot kotası: ${me.maxFiles} dosya · toplam ${Math.round(me.maxStorageBytes / 1048576)} MB. Dosya başına 10 MB.</p><h3>Hazırlık kaydım</h3><p>Hedef, deneyim örnekleri, vaka ve atölye kayıtları dahil edilir. CV metni dahil edilmez. Hesaptan yükleme bu cihazdaki çalışma kayıtlarını değiştirir; önce mevcut yedeğini indir.</p><div class="actions"><button id="pilot-save">Bu cihazdaki çalışmayı hesabıma kaydet</button><button id="pilot-load">Hesabımdaki çalışmayı bu cihaza yükle</button><button id="pilot-account-export">Hesap kayıtlarımı indir</button><a class="btn" href="#settings">Cihaz yedeği indir</a></div><p class="muted">Otomatik eşitleme yoktur. Başka cihazda değiştirilmiş kayıtların üzerine yazılmaz.</p></section>
+    n.innerHTML = `${canReview ? `<section class="card"><div class="sectionhead"><h2>${e(me.user.email)}</h2><a class="btn" href="/signout-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">Çıkış yap</a></div><p>Atanmış teslimleri aşağıdan incele. Kendi hazırlık araçlarını istersen açabilirsin.</p></section><details class="pilot-personal"><summary>Kendi hazırlık kayıtlarım ve dosya teslimim</summary>` : ''}<section class="card"><div class="sectionhead"><h2>${e(me.user.email)}</h2><a class="btn" href="/signout-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">Çıkış yap</a></div><p>Hesap türü: ${e({ admin: 'Yönetici', reviewer: 'Değerlendirici', candidate: 'Aday' }[me.user.role])}</p><p class="muted">Pilot kotası: ${me.maxFiles} dosya · toplam ${Math.round(me.maxStorageBytes / 1048576)} MB. Dosya başına 10 MB.</p><h3>Hazırlık kaydım</h3><p>Hedef, deneyim örnekleri, vaka ve atölye kayıtları dahil edilir. CV metni dahil edilmez. Hesaptan yükleme bu cihazdaki çalışma kayıtlarını değiştirir; önce mevcut yedeğini indir.</p><div class="actions"><button id="pilot-save">Bu cihazdaki çalışmayı hesabıma kaydet</button><button id="pilot-load">Hesabımdaki çalışmayı bu cihaza yükle</button><button id="pilot-account-export">Hesap kayıtlarımı indir</button><a class="btn" href="#settings">Cihaz yedeği indir</a></div><label class="check autosync"><input type="checkbox" id="pilot-autosync" ${root.AccountSync?.settings().on ? 'checked' : ''}> Bu cihazdaki çalışmayı hesabıma otomatik kaydet</label><p class="muted" id="pilot-autosync-status" aria-live="polite">${e(root.AccountSync?.label() || '')}</p><p class="muted">Açıkken değişiklikler birkaç dakikada bir gönderilir. Başka bir cihazda daha yeni kayıt varsa üzerine yazılmaz; otomatik kayıt durur ve sana sorulur.</p></section>
 <section class="card" style="margin-top:20px"><h2>Vaka dosyamı teslim et</h2><p>Önce vaka belgelerini ve senden beklenen çıktıları incele. Yanıtlarını tek dosyada, çıktılarla aynı numaraları kullanarak hazırla.</p><form id="pilot-submit"><label class="field">Vaka<select name="case" id="pilot-case">${me.cases.map(c => `<option value="${e(c.id)}">${e(c.title)}</option>`).join('')}</select></label><div id="pilot-outputs"></div><label class="field">Teslim biçimi<select name="parent" id="pilot-parent"><option value="">Yeni çalışma</option></select></label><label class="field">Revizyonda neleri değiştirdin?<textarea name="note" maxlength="2000" rows="3"></textarea></label><label class="field">Tek yanıt dosyası · PDF / DOCX / XLSX · En fazla 10 MB<input name="file" type="file" accept=".pdf,.docx,.xlsx" required></label><label class="check"><input name="confirmed" type="checkbox" required> Beklenen tüm çıktıları dosyamda aynı numaralarla yanıtladım.</label><p class="muted">Dosya biçimi ve boyutu kontrol edilir. Numaralı yanıtların içeriği insan tarafından incelenir. Şifresiz, makrosuz dosya kullan. Dosyanı sen, yönetici ve atanmış değerlendirici görebilir.</p><button class="primary">Dosyamı teslim et</button></form></section>
 ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><div class="sectionhead"><h2>${canReview ? 'Teslimler ve incelemeler' : 'Teslimlerim'}</h2><button id="pilot-refresh">Teslimleri yenile</button></div><label class="field">Teslimlerde ara<input id="pilot-search" type="search" placeholder="Vaka, dosya veya kişi"></label><label class="field">Görüş durumu<select id="pilot-status-filter"><option value="all">Tümü</option><option value="pending">Geri bildirim bekleyen</option><option value="reviewed">Geri bildirim verilen</option></select></label><p id="pilot-list-count" role="status"></p>${
       rows.length
@@ -213,8 +213,42 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
         AA.validateBackup(payload);
         const r = await api('save', { revision, payload }, 'PUT');
         revision = r.revision;
+        root.AccountSync?.remember(revision);
         message('Hazırlık kaydın hesabına kaydedildi. Sürüm ' + revision + '.');
       });
+    const auto = document.getElementById('pilot-autosync');
+    if (auto)
+      auto.onchange = () =>
+        job(async () => {
+          if (!auto.checked) {
+            root.AccountSync.disable();
+            message('Otomatik kayıt kapatıldı.');
+            return;
+          }
+          if (
+            !confirm(
+              'Bu cihazdaki hazırlık kaydı hesabına gönderilecek ve sonraki değişiklikler otomatik kaydedilecek. Hesabındaki mevcut kaydın yerine bu cihazdaki geçer. CV metni gönderilmez. Devam edilsin mi?'
+            )
+          ) {
+            auto.checked = false;
+            return;
+          }
+          try {
+            revision = await root.AccountSync.enable();
+          } catch (err) {
+            auto.checked = false;
+            throw err;
+          }
+          message('Otomatik kayıt açıldı. Sürüm ' + revision + '.');
+        });
+    if (!root.__aaSyncListener)
+      ((root.__aaSyncListener = true),
+        root.addEventListener('account-sync', () => {
+          const out = document.getElementById('pilot-autosync-status'),
+            box = document.getElementById('pilot-autosync');
+          if (out) out.textContent = root.AccountSync.label();
+          if (box) box.checked = root.AccountSync.settings().on;
+        }));
     document.getElementById('pilot-load').onclick = () =>
       job(async () => {
         const b = await api('save');
@@ -231,6 +265,7 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
         loaded.cv = localCv;
         values[AA.KEY] = JSON.stringify(loaded);
         applyRecords(localStorage, AA.keys, values);
+        root.AccountSync?.remember(b.revision);
         location.reload();
       });
     document.getElementById('pilot-submit').onsubmit = ev => {

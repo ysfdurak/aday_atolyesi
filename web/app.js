@@ -25,38 +25,75 @@ function toast(t) {
 }
 const link = (url, text, primary = false) =>
   `<a class="btn ${primary ? 'primary' : ''}" href="${url}">${text} ↗</a>`;
-function shell(body) {
-  const p = state.profile;
-  return `<a href="#main-content" class="skip-link" data-skip>İçeriğe geç</a><div class="mobile-toolbar"><a href="#home" class="mobile-title">↗ aday atölyesi</a><button type="button" id="menu-toggle" aria-controls="workspace-menu" aria-expanded="false">Menü <span aria-hidden="true">☰</span></button></div><div class="shell"><aside id="workspace-menu" class="side"><a class="brand" href="#home"><i>↗</i><span>aday atölyesi<small>BAŞVURUDAN GÖRÜŞMEYE</small></span></a><nav aria-label="Ana gezinme">${[
-    ['home', '◈', 'Çalışma alanım'],
-    ['plan', '◷', 'Hazırlık planım'],
-    ['growth', '↗', 'Gelişim raporum'],
-    ['modules', '▦', 'Atölyeler'],
-    ['cases', '◇', 'Assessment Atölyesi'],
-    ['examples', '◎', 'Deneyim arşivim'],
-    ['dossier', '▤', 'Mülakat dosyam'],
-    ['rehearsal', '◉', 'Mülakat provam'],
-    ['results', '↗', 'Sonuçlarım'],
-    ['guide', '?', 'Nasıl çalışır?'],
-    ['pilot', '◎', 'Hesabım ve teslimler'],
-    ['settings', '⚙', 'Hedef ve kayıtlar'],
-    ['cv', '▤', 'CV ve ilan'],
-  ]
+// Ana gezinme: yedi başlık. Aynı işe hizmet eden ekranlar tek başlık altında alt sekmelerle açılır.
+const NAV = [
+  { id: 'home', icon: '◈', name: 'Çalışma alanım', routes: ['home', 'start'] },
+  { id: 'plan', icon: '◷', name: 'Hazırlık planım', routes: ['plan'] },
+  { id: 'modules', icon: '▦', name: 'Atölyeler', routes: ['modules'] },
+  { id: 'cases', icon: '◇', name: 'Vaka Atölyesi', routes: ['cases', 'file-work'] },
+  {
+    id: 'examples',
+    icon: '◎',
+    name: 'Mülakat hazırlığı',
+    routes: ['examples', 'dossier', 'rehearsal', 'cv'],
+    tabs: [
+      ['examples', 'Deneyim örneklerim'],
+      ['dossier', 'Mülakat dosyam'],
+      ['rehearsal', 'Prova'],
+      ['cv', 'CV ve ilan'],
+    ],
+  },
+  {
+    id: 'growth',
+    icon: '↗',
+    name: 'Gelişimim',
+    routes: ['growth', 'results'],
+    tabs: [
+      ['growth', 'Gelişim raporu'],
+      ['results', 'Modül sonuçları'],
+    ],
+  },
+  {
+    id: 'pilot',
+    icon: '⚙',
+    name: 'Hesap ve ayarlar',
+    routes: ['pilot', 'settings'],
+    tabs: [
+      ['pilot', 'Hesabım ve teslimler'],
+      ['settings', 'Hedef ve kayıtlar'],
+    ],
+  },
+];
+const navGroup = id => NAV.find(n => n.routes.includes(id)) || NAV[0];
+function subnav() {
+  const g = navGroup(route);
+  if (!g.tabs) return '';
+  return `<nav class="subnav" aria-label="${esc(g.name)}">${g.tabs
     .map(
-      ([id, icon, name]) =>
-        `<a href="#${id}" class="${route === id ? 'active' : ''}" ${route === id ? 'aria-current="page"' : ''}><span>${icon}</span>${name}</a>`
+      ([id, label]) =>
+        `<a href="#${id}" class="${route === id ? 'active' : ''}" ${route === id ? 'aria-current="page"' : ''}>${label}</a>`
     )
-    .join(
-      ''
-    )}</nav><div class="bottom"><b>Bir sonraki adıma hazırlan.</b><p>Ortak hedef, somut örnekler.<br>Kendi hızında ilerleme.</p><span class="tag">Portföy sürümü · 0.16.0</span></div></aside><main class="main" id="main-content" tabindex="-1"><div class="top"><span>${p ? esc(Positions.get(Positions.load(localStorage)?.positionId)?.name || p.title) : 'Kendi başlangıç noktanı bul.'}</span><span class="tag">${esc(PilotProgress.label())}</span></div>${body}<footer>Hazırlık ve öz değerlendirme amaçlıdır. İşe alınma olasılığı veya tek bir uygunluk puanı hesaplanmaz. AI çağrısı yoktur. Hesaba kaydettiğin çalışmalar ve teslim ettiğin dosyalar sunucuda saklanır.</footer></main></div><nav class="mobile-dock" aria-label="Hızlı gezinme">${[
-    ['home', 'Çalışmam'],
-    ['plan', 'Planım'],
-    ['modules', 'Atölyeler'],
-    ['dossier', 'Dosyam'],
-  ]
-    .map(([id, label]) => `<a href="#${id}" ${route === id ? 'aria-current="page"' : ''}>${label}</a>`)
     .join('')}</nav>`;
 }
+function shell(body) {
+  const p = state.profile,
+    current = navGroup(route).id;
+  return `<a href="#main-content" class="skip-link" data-skip>İçeriğe geç</a><div class="mobile-toolbar"><a href="#home" class="mobile-title">↗ aday atölyesi</a><button type="button" id="menu-toggle" aria-controls="workspace-menu" aria-expanded="false">Menü <span aria-hidden="true">☰</span></button></div><div class="shell"><aside id="workspace-menu" class="side"><a class="brand" href="#home"><i>↗</i><span>aday atölyesi<small>BAŞVURUDAN GÖRÜŞMEYE</small></span></a><nav aria-label="Ana gezinme">${NAV.map(
+    ({ id, icon, name }) =>
+      `<a href="#${id}" class="${current === id ? 'active' : ''}" ${current === id ? 'aria-current="page"' : ''}><span>${icon}</span>${name}</a>`
+  ).join(
+    ''
+  )}</nav><div class="bottom"><a class="guide-link ${route === 'guide' ? 'active' : ''}" href="#guide">? Nasıl çalışır?</a><span class="tag">Sürüm ${AA_VERSION}</span></div></aside><main class="main" id="main-content" tabindex="-1"><div class="top"><span>${p ? esc(Positions.get(Positions.load(localStorage)?.positionId)?.name || p.title) : 'Kendi başlangıç noktanı bul.'}</span><span class="tag">${esc(PilotProgress.label())}</span></div>${subnav()}${body}<footer>Hazırlık amaçlıdır; işe alınma olasılığı hesaplanmaz. <a href="#guide">Verilerin nerede saklanır?</a></footer></main></div><nav class="mobile-dock" aria-label="Hızlı gezinme">${[
+    ['home', 'Çalışmam'],
+    ['plan', 'Plan'],
+    ['modules', 'Atölyeler'],
+    ['cases', 'Vakalar'],
+    ['examples', 'Mülakat'],
+  ]
+    .map(([id, label]) => `<a href="#${id}" ${current === id ? 'aria-current="page"' : ''}>${label}</a>`)
+    .join('')}</nav>`;
+}
+const AA_VERSION = '0.17.0';
 function home() {
   return WorkspaceUX.home(state, AA.snapshot(localStorage));
 }
@@ -96,7 +133,7 @@ function moduleCards(s = AA.snapshot(localStorage)) {
     .join('')}</div>`;
 }
 function modules() {
-  return `<span class="eyebrow">Hazırlık araçların</span><h1>Birlikte çalışan<br>üç farklı atölye.</h1><p class="muted">Hazırlık sırasını planından takip edebilir veya istediğin çalışmaya doğrudan girebilirsin.</p>${moduleCards()}<div class="sectionhead"><h2>Geliştirme sırası</h2></div><div class="grid2"><div class="card"><span class="tag">Bu sürümde çalışıyor</span><h3>CV metni ve ilan kontrolü</h3><p>CV metnini düzenle; ilandan seçtiğin gereksinimleri deneyiminle karşılaştır. Metin dosyası indir veya yazdır.</p>${link('#cv', 'CV alanını aç')}</div><div class="card"><span class="tag">${CaseUI.summary().total} özgün vaka hazır</span><h3>Assessment Atölyesi</h3><p>Üç düzeyde veri analizi, önceliklendirme, yönetim görüşmesi ve karar sunumu. Aday belgeleri, CSV tabloları, çözüm kaydı ve referans inceleme.</p>${link('#cases', 'Vaka havuzunu aç')}</div></div>`;
+  return `<span class="eyebrow">Hazırlık araçların</span><h1>Birlikte çalışan<br>üç farklı atölye.</h1><p class="muted">Hazırlık sırasını planından takip edebilir veya istediğin çalışmaya doğrudan girebilirsin.</p>${moduleCards()}<div class="sectionhead"><h2>Geliştirme sırası</h2></div><div class="grid2"><div class="card"><span class="tag">Bu sürümde çalışıyor</span><h3>CV metni ve ilan kontrolü</h3><p>CV metnini düzenle; ilandan seçtiğin gereksinimleri deneyiminle karşılaştır. Metin dosyası indir veya yazdır.</p>${link('#cv', 'CV alanını aç')}</div><div class="card"><span class="tag">${CaseUI.summary().total} özgün vaka hazır</span><h3>Vaka Atölyesi</h3><p>Üç düzeyde veri analizi, önceliklendirme, yönetim görüşmesi ve karar sunumu. Aday belgeleri, CSV tabloları, çözüm kaydı ve referans inceleme.</p>${link('#cases', 'Vaka havuzunu aç')}</div></div>`;
 }
 function plan() {
   if (!state.profile)
@@ -110,7 +147,7 @@ function plan() {
   const mode = p.employed
     ? 'Mevcut işindeki olaylardan örnek toplayabilirsin.'
     : 'İş deneyimi gerektiren görevleri eğitim, proje, gönüllülük veya kurgusal alıştırmalarla çalışabilirsin.';
-  return `<span class="eyebrow">${AA.today()} / Günlük çalışma</span><h1>Bugün bir adım<br><em>daha hazır.</em></h1><div class="grid2"><section class="card"><div class="sectionhead" style="margin:0"><h2>Bugünkü planın</h2><span class="tag">${done}/${ts.length} tamamlandı</span></div><div class="bar"><i style="width:${ts.length ? (100 * done) / ts.length : 0}%"></i></div>${ts.map((t, i) => `<div class="task ${t.done ? 'done' : ''}"><span class="step">${t.done ? '✓' : i + 1}</span><div><h3>${t.title}</h3><p>${t.detail}</p><small>Yaklaşık ${t.minutes} dk ${t.minutes > p.minutes ? '· birkaç güne bölebilirsin' : ''}</small><label class="check" style="margin-top:8px"><input type="checkbox" data-check="${t.id}" ${t.done ? 'checked' : ''}>${t.done ? 'Tamamlandı' : 'Çalıştım olarak işaretle'}</label></div>${link(t.href, 'Aç')}</div>`).join('')}<p class="muted">İşaretleme yalnız günlük çalışma kaydıdır; vaka aşamasını ilerletmez veya teslim oluşturmaz. Sınav ve tercih formu sonuçlarını değiştirmez. Süreler tahminidir.</p></section><section><div class="focus"><span class="eyebrow">Hedefin</span><h2>${esc(p.title)}</h2><p>Günde ${p.minutes} dakika · ${esc(p.deadline)}</p><p>${mode}</p>${AA.days(AA.today(), p.deadline) < 0 ? '<p>Hedef tarihin geçmiş. Takvimini güncelleyebilirsin.</p>' : ''}${link('#settings', 'Hedefi düzenle')}</div><div class="note">${s.report ? 'Sınav odağı son gerçek denemendeki yeterli yanıt bulunan alanlardan seçilir. Vaka sırası hedef rolünden, devam adımı gerçek teslim ve inceleme kayıtlarından gelir.' : 'Henüz deneme verisi yok. İlk öneriler hedefinden gelir; beceri ölçümü sayılmaz. Vaka çalışmalarında mevcut taslak ve teslim aşaması esas alınır.'} Mizaç tercihleri sınav puanına veya liderlik puanına eklenmez.</div></section></div><div class="sectionhead"><h2>Vaka çalışma yolun</h2></div><section class="card"><p>${co.started} başlanan · ${co.submitted} ilk teslimi bulunan · ${co.reviewed} insan incelemesi bulunan · ${co.revised} revizyon yapılan vaka.</p>${ct ? `<h3>${esc(ct.title)}</h3><p>${esc(ct.detail)}</p>${link(ct.href, 'Vaka çalışmasına devam et', true)}` : '<p>Rolüne uygun mevcut vaka döngülerindeki çalışma kayıtların tamamlandı. Teslimlerin kalitesini geri bildirimle ayrıca inceleyebilirsin.</p>'}<p class="muted">Günlük programda bu çalışma için yer olmadığında bu karttan devam edebilirsin. Sayılar çalışma kayıtlarıdır; yetkinlik veya işe hazır olma puanı değildir.</p></section><div class="sectionhead"><h2>Önündeki 7 gün</h2></div><div class="card tablewrap"><table><thead><tr><th>Tarih</th><th>Çalışma sırası</th><th>Tahmini süre</th></tr></thead><tbody>${Array.from(
+  return `<span class="eyebrow">${AA.today()} / Günlük çalışma</span><h1>Bugün bir adım<br><em>daha hazır.</em></h1><div class="grid2"><section class="card"><div class="sectionhead" style="margin:0"><h2>Bugünkü planın</h2><span class="tag">${done}/${ts.length} tamamlandı</span></div><div class="bar"><i style="width:${ts.length ? (100 * done) / ts.length : 0}%"></i></div>${ts.map((t, i) => `<div class="task ${t.done ? 'done' : ''}"><span class="step">${t.done ? '✓' : i + 1}</span><div><h3>${t.title}</h3><p>${t.detail}</p><small>Yaklaşık ${t.minutes} dk ${t.minutes > p.minutes ? '· birkaç güne bölebilirsin' : ''}</small><label class="check" style="margin-top:8px"><input type="checkbox" data-check="${t.id}" ${t.done ? 'checked' : ''}>${t.done ? 'Tamamlandı' : 'Çalıştım olarak işaretle'}</label></div>${link(t.href, 'Aç')}</div>`).join('')}<p class="muted">İşaretleme yalnız günlük planını günceller; süreler tahminidir.</p></section><section><div class="focus"><span class="eyebrow">Hedefin</span><h2>${esc(p.title)}</h2><p>Günde ${p.minutes} dakika · ${esc(p.deadline)}</p><p>${mode}</p>${AA.days(AA.today(), p.deadline) < 0 ? '<p>Hedef tarihin geçmiş. Takvimini güncelleyebilirsin.</p>' : ''}${link('#settings', 'Hedefi düzenle')}</div><div class="note">${s.report ? 'Sınav odağı son gerçek denemendeki yeterli yanıt bulunan alanlardan seçilir. Vaka sırası hedef rolünden, devam adımı gerçek teslim ve inceleme kayıtlarından gelir.' : 'Henüz deneme verisi yok. İlk öneriler hedefinden gelir; beceri ölçümü sayılmaz. Vaka çalışmalarında mevcut taslak ve teslim aşaması esas alınır.'} Mizaç tercihleri sınav puanına veya liderlik puanına eklenmez.</div></section></div><div class="sectionhead"><h2>Vaka çalışma yolun</h2></div><section class="card"><p>${co.started} başlanan · ${co.submitted} ilk teslimi bulunan · ${co.reviewed} insan incelemesi bulunan · ${co.revised} revizyon yapılan vaka.</p>${ct ? `<h3>${esc(ct.title)}</h3><p>${esc(ct.detail)}</p>${link(ct.href, 'Vaka çalışmasına devam et', true)}` : '<p>Rolüne uygun mevcut vaka döngülerindeki çalışma kayıtların tamamlandı. Teslimlerin kalitesini geri bildirimle ayrıca inceleyebilirsin.</p>'}<p class="muted">Günlük programda bu çalışma için yer olmadığında bu karttan devam edebilirsin.</p></section><div class="sectionhead"><h2>Önündeki 7 gün</h2></div><div class="card tablewrap"><table><thead><tr><th>Tarih</th><th>Çalışma sırası</th><th>Tahmini süre</th></tr></thead><tbody>${Array.from(
     { length: Math.min(7, Math.max(1, AA.days(AA.today(), p.deadline) + 1)) },
     (_, i) => {
       const date = AA.plusDay(AA.today(), i),
@@ -175,7 +212,7 @@ function results() {
   const s = AA.snapshot(localStorage),
     r = s.report,
     ma = Object.keys(s.m.answers || {}).length;
-  return `<span class="eyebrow">Bulgu → anlamı → sonraki adım</span><h1>Hazırlığını<br><em>ayrı dayanaklarla gör.</em></h1><p class="muted">Sınav, çalışma tercihleri ve rol senaryoları farklı şeyler gösterir. Bunlardan toplam bir aday puanı üretmiyoruz.</p><div class="grid"><article class="card"><span class="num">SINAV PERFORMANSI</span><h3>${r ? r.overall.correct + '/' + r.overall.total + ' doğru' : 'Henüz deneme yok'}</h3><p>${r ? `${r.overall.answered} soru yanıtlandı. Bu soru setindeki performans; işe alınma olasılığı veya yüzdelik değil.` : 'Bir deneme tamamladığında gerçek sonuçların burada görünür.'}</p>${link('/modules/zihin/index.html#' + (r ? 'report/latest' : 'exam/graded'), r ? 'Deneme raporum' : 'Başlangıç denemesi')}</article><article class="card"><span class="num">ÖZ BİLDİRİM</span><h3>${s.m.complete ? 'Tercih haritan hazır' : ma + '/96 ifade'}</h3><p>Çalışma tercihlerini, destekleyici koşulları ve konuşmak istediğin gerçek deneyimleri incele.</p>${link('/modules/mizac/index.html' + (s.m.complete ? '?view=candidate' : ''), 'Mizaç alanım')}</article><article class="card"><span class="num">SENARYO SEÇİMLERİ</span><h3>${s.r.profile ? (s.r.activeAnswered ?? Object.keys(s.r.answers || {}).length) + ' / ' + (s.r.activeTotal ?? '—') + ' rol sorusu' : 'Henüz rol paketi seçilmedi'}</h3><p>Seçilen beklentilerde yaklaşımını incele. Anahtarlar uzman incelemesi bekleyen taslaklardır.</p>${link('/modules/rol/index.html' + (s.r.completed ? '?view=report' : ''), 'Rol çalışmam')}</article></div><div class="sectionhead"><h2>Assessment çalışmaları</h2></div><div class="card"><h3>${CaseUI.summary().submitted} güncel dosya çalışması teslim edildi</h3><p>${CaseUI.summary().archived} önceki sürüm çalışması arşivde korunuyor.</p><p>${CaseUI.summary().drafts} taslak · ${CaseUI.summary().total} vaka. Bu kayıtlar çalışma tamamlanmasını gösterir; açık uçlu yanıtlar otomatik yetkinlik puanına çevrilmez.</p>${link('#cases', 'Vaka çalışmalarımı aç')}</div><section class="card report-handoff" style="margin-top:20px"><h2>Bu çalışmalardan mülakatta ne anlatacaksın?</h2><p>Kendi katkını, alternatifini ve sonucun dayanağını seçtiğin örneklerle bir dosyada topla. Aday beyanı ve kurgusal çalışmalar ayrı görünür.</p>${link('#dossier', 'Mülakat dosyamı oluştur', true)}</section><div class="actions">${link('#growth', 'Yanıtlarıma dayalı gelişim raporum', true)}</div><div class="sectionhead"><h2>Sonraki çalışma odağın</h2></div><section class="card">${r?.priorities?.length ? r.priorities.map(p => `<h3>${esc(p.name)}</h3><p>${esc(p.evidence)} ${esc(p.action)}</p>`).join('') : '<p>Başlangıç denemesi tamamlanınca çalışma önerileri oluşacak. Şu an hedef rolüne göre başlangıç sırası kullanılıyor.</p>'}${link('#plan', 'Planıma dön', true)}${link('#examples', 'Deneyim örneği ekle')}</section><div class="note">Örnek / demo raporlar kişisel ilerlemeye katılmaz. Farklı rastgele denemelerin puan farkı tek başına yetenek artışı anlamına gelmez.</div>`;
+  return `<span class="eyebrow">Bulgu → anlamı → sonraki adım</span><h1>Hazırlığını<br><em>ayrı dayanaklarla gör.</em></h1><p class="muted">Sınav, çalışma tercihleri ve rol senaryoları farklı şeyler gösterir. Bunlardan toplam bir aday puanı üretmiyoruz.</p><div class="grid"><article class="card"><span class="num">SINAV PERFORMANSI</span><h3>${r ? r.overall.correct + '/' + r.overall.total + ' doğru' : 'Henüz deneme yok'}</h3><p>${r ? `${r.overall.answered} soru yanıtlandı. Bu soru setindeki performans; işe alınma olasılığı veya yüzdelik değil.` : 'Bir deneme tamamladığında gerçek sonuçların burada görünür.'}</p>${link('/modules/zihin/index.html#' + (r ? 'report/latest' : 'exam/graded'), r ? 'Deneme raporum' : 'Başlangıç denemesi')}</article><article class="card"><span class="num">ÖZ BİLDİRİM</span><h3>${s.m.complete ? 'Tercih haritan hazır' : ma + '/96 ifade'}</h3><p>Çalışma tercihlerini, destekleyici koşulları ve konuşmak istediğin gerçek deneyimleri incele.</p>${link('/modules/mizac/index.html' + (s.m.complete ? '?view=candidate' : ''), 'Mizaç alanım')}</article><article class="card"><span class="num">SENARYO SEÇİMLERİ</span><h3>${s.r.profile ? (s.r.activeAnswered ?? Object.keys(s.r.answers || {}).length) + ' / ' + (s.r.activeTotal ?? '—') + ' rol sorusu' : 'Henüz rol paketi seçilmedi'}</h3><p>Seçilen beklentilerde yaklaşımını incele. Anahtarlar uzman incelemesi bekleyen taslaklardır.</p>${link('/modules/rol/index.html' + (s.r.completed ? '?view=report' : ''), 'Rol çalışmam')}</article></div><div class="sectionhead"><h2>Vaka çalışmaları</h2></div><div class="card"><h3>${CaseUI.summary().submitted} güncel dosya çalışması teslim edildi</h3><p>${CaseUI.summary().archived} önceki sürüm çalışması arşivde korunuyor.</p><p>${CaseUI.summary().drafts} taslak · ${CaseUI.summary().total} vaka. Bu kayıtlar çalışma tamamlanmasını gösterir; açık uçlu yanıtlar otomatik yetkinlik puanına çevrilmez.</p>${link('#cases', 'Vaka çalışmalarımı aç')}</div><section class="card report-handoff" style="margin-top:20px"><h2>Bu çalışmalardan mülakatta ne anlatacaksın?</h2><p>Kendi katkını, alternatifini ve sonucun dayanağını seçtiğin örneklerle bir dosyada topla. Aday beyanı ve kurgusal çalışmalar ayrı görünür.</p>${link('#dossier', 'Mülakat dosyamı oluştur', true)}</section><div class="actions">${link('#growth', 'Yanıtlarıma dayalı gelişim raporum', true)}</div><div class="sectionhead"><h2>Sonraki çalışma odağın</h2></div><section class="card">${r?.priorities?.length ? r.priorities.map(p => `<h3>${esc(p.name)}</h3><p>${esc(p.evidence)} ${esc(p.action)}</p>`).join('') : '<p>Başlangıç denemesi tamamlanınca çalışma önerileri oluşacak. Şu an hedef rolüne göre başlangıç sırası kullanılıyor.</p>'}${link('#plan', 'Planıma dön', true)}${link('#examples', 'Deneyim örneği ekle')}</section><div class="note">Örnek / demo raporlar kişisel ilerlemeye katılmaz. Farklı rastgele denemelerin puan farkı tek başına yetenek artışı anlamına gelmez.</div>`;
 }
 let renderTicket = 0,
   lastRoute = null;
@@ -507,5 +544,5 @@ function guide() {
     )
     .join(
       ''
-    )}</div><section class="card" style="margin-top:20px"><h2>Başlamadan önce</h2><p>Bu davetli pilotta giriş ChatGPT hesabıyla yapılır. Dosya başına 10 MB sınırı vardır. Numaralı çıktıların içerik uygunluğunu insan değerlendirici inceler; geri bildirim takvimi pilot başlangıcında belirlenir.</p><p>Atölye çalışmaların önce cihazına kaydolur. Başka cihazda devam etmek için hesabına kaydet, sonra yeni cihazda hesaptan yükle. Dosya teslimleri ve gelişim adımları doğrudan hesabında saklanır.</p><p>Çalışmalar işe kabul garantisi veya tek bir işe uygunluk puanı üretmez. Çalışma tercihleri öz bildirime dayanır; taslak ölçüm araçlarının psikometrik doğrulaması henüz yapılmadı.</p></section><section class="card" style="margin-top:20px"><h2>Dosyadan görüşmeye geçiş</h2><p>Teslimindeki “Dosya karşılaştırması ve görüşme özeti” bağlantısını aç. İlk ve son dosyayı indirip çıktı bazında dayanaklarını yaz. Görüşme özetini bu cihaza aktar; mülakat dosyasında kutusunu seçtikten sonra provada kullanabilirsin. Dosyanın içeriği otomatik okunmaz.</p><p>Zihin Parkuru içindeki Hata defterim, yanlış yanıtından bir kontrol yöntemi çıkarmana yardım eder. Mizaç raporunda tercihlerini gerçek örnek, ters örnek ve gözlemle araştırabilirsin. Bu notlar otomatik beceri puanı değildir.</p><p>Sekmede korunan değerlendirme taslağını hesabına ayrıca kaydet. Başka cihazda devam etmeden önce hazırlık kaydını hesabına kaydet veya tam yedeğini indir.</p></section>`;
+    )}</div><section class="card" style="margin-top:20px"><h2>Başlamadan önce</h2><p>Dosya teslimi için hesabınla giriş yapman gerekir. Dosya başına 10 MB sınırı vardır. Numaralı çıktıların içerik uygunluğunu insan değerlendirici inceler; geri bildirim takvimi pilot başlangıcında belirlenir.</p><p>Atölye çalışmaların önce cihazına kaydolur. Başka cihazda devam etmek için hesabına kaydet, sonra yeni cihazda hesaptan yükle. Dosya teslimleri ve gelişim adımları doğrudan hesabında saklanır.</p><p>Çalışmalar işe kabul garantisi veya tek bir işe uygunluk puanı üretmez. Çalışma tercihleri öz bildirime dayanır; taslak ölçüm araçlarının psikometrik doğrulaması henüz yapılmadı.</p></section><section class="card" style="margin-top:20px" id="veri"><h2>Verilerin nerede saklanır?</h2><div class="tablewrap"><table><thead><tr><th>Ne</th><th>Nerede</th><th>Kim görür?</th></tr></thead><tbody><tr><td>Atölye yanıtları, plan, CV metni, deneyim örnekleri, prova</td><td>Bu tarayıcı</td><td>Yalnız sen</td></tr><tr><td>Hesaba kaydettiğin hazırlık yedeği</td><td>Sunucu</td><td>Yalnız sen</td></tr><tr><td>Teslim ettiğin vaka dosyası ve revizyonları</td><td>Sunucu</td><td>Sen, atanmış değerlendirici ve pilot yöneticisi</td></tr><tr><td>Değerlendirici görüşü</td><td>Sunucu, teslim sürümüne bağlı</td><td>Sen ve teslime erişimi olanlar</td></tr></tbody></table></div><p>Yapay zekâ çağrısı yapılmaz. CV metnin hesap yedeğine alınmaz.</p><h3>Sonuçlar neyi göstermez?</h3><p>Uygulama işe alınma olasılığı, tek bir uygunluk puanı veya adaylar arası sıralama üretmez. Mizaç öz bildirime dayanır; Zihin Parkuru güçlük düzeyleri ve rol sorusu anahtarları henüz uzman ve psikometrik doğrulamadan geçmedi. Vakalar kurgusaldır.</p></section><section class="card" style="margin-top:20px"><h2>Dosyadan görüşmeye geçiş</h2><p>Teslimindeki “Dosya karşılaştırması ve görüşme özeti” bağlantısını aç. İlk ve son dosyayı indirip çıktı bazında dayanaklarını yaz. Görüşme özetini bu cihaza aktar; mülakat dosyasında kutusunu seçtikten sonra provada kullanabilirsin. Dosyanın içeriği otomatik okunmaz.</p><p>Zihin Parkuru içindeki Hata defterim, yanlış yanıtından bir kontrol yöntemi çıkarmana yardım eder. Mizaç raporunda tercihlerini gerçek örnek, ters örnek ve gözlemle araştırabilirsin. Bu notlar otomatik beceri puanı değildir.</p><p>Sekmede korunan değerlendirme taslağını hesabına ayrıca kaydet. Başka cihazda devam etmeden önce hazırlık kaydını hesabına kaydet veya tam yedeğini indir.</p></section>`;
 }

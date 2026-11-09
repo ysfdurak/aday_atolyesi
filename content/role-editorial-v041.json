@@ -1,0 +1,1094 @@
+{
+  "revision": "0.4.1",
+  "options": {
+    "S01": [
+      "Hata örneklerini paylaşır, vardiya sonunda hedefe göre kontrol ederim.",
+      "Kritik işi devralır, sonraki uygulamayı sakin vardiyaya bırakırım.",
+      "Adımı uygularken gözlemler, zorlandığı noktaya kısa uygulama ve kontrol planlarım.",
+      "Talimatı baştan anlatır, sonraki uygulamada yanında dururum."
+    ],
+    "S02": [
+      "Eğitim sonunda toplanan memnuniyet ve içerik değerlendirmelerini.",
+      "Örnek görevde neyi bağımsız yaptığına ve nerede destek aldığına bakarım.",
+      "Eğitmenin uygulama sırasındaki katılım ve soru sorma notlarını.",
+      "Çalışanın hangi adımlarda kendini hazır hissettiğine ilişkin açıklamasını."
+    ],
+    "S03": [
+      "Kısa bir ekip toplantısı yönetmesini ve geribildirim almasını planlarım.",
+      "Liderlik videosu izletir, toplantıda öğrendiği noktaları anlatmasını isterim.",
+      "Bir hedef davranış için gözlem ve takip tarihi belirlerim.",
+      "Yeni görevleri bir ay ona toplar, farklı işleri deneyimlemesini sağlarım.",
+      "Mevcut çıktı hedefini artırır, terfi öncesinde istikrarını izlerim."
+    ],
+    "S04": [
+      "Her işlem için kısa onay turu koyup gecikmeleri günlük izlerim.",
+      "Karar sınırını ve haber verme koşulunu netleştiririm.",
+      "Günlük süre hedefi belirler, kritik kararları bana getirmesini isterim.",
+      "Sık gelen kararları örneklerle anlatır, haftalık kontrol koyarım."
+    ],
+    "S06": [
+      "Kontrol sırasını korur, diğer işlerimi daha sonraya planlarım.",
+      "Kontrolü çalışana devreder, sorun bildirdiğinde müdahale ederim.",
+      "Görevleri dönüşümlü dağıtarak kontrol yükümü ekip içinde yayarım.",
+      "Çıktı kontrolüyle istisna bildirim sınırında anlaşırım."
+    ],
+    "S07": [
+      "İş türü, kesinti süresi ve üzerinde anlaşılan hedef bazında performansını.",
+      "Çalışma arkadaşlarının görev sırasında gözlediği çaba ve destek ihtiyacını.",
+      "Son iki haftanın günlük toplam çıktı miktarını ve hedef farkını.",
+      "Çalışanın iş dağılımı değişikliğiyle yaşadığı engellere ilişkin anlatımını."
+    ],
+    "S08": [
+      "Ekip çalışması beklentisini açıklayıp tutumunu değiştirmesini isterim.",
+      "Son iki olayı ve başkalarının katkısına etkisini anlatıp görüşünü sorarım.",
+      "Toplantı kurallarını bütün ekiple yeniden görüşüp uygulamayı izlerim.",
+      "Söz almadan önce beklemesini ister, sonraki toplantıyı gözlemlerim."
+    ],
+    "S09": [
+      "Kontrol davranışını örnek liste üzerinden birlikte netleştiririm.",
+      "Hedefi tekrar paylaşır, iki hafta sonra sonucunu değerlendireceğimi söylerim.",
+      "İki haftanın çıktı adetlerini önceki dönemle karşılaştırırım.",
+      "Örnek işlerde kontrol uyumunu izler, haftalık görüşürüm.",
+      "Hatalı işleri kendim düzeltir, çalışanın üretim akışını sürdürmesini sağlarım."
+    ],
+    "S10": [
+      "Bugünkü görevi kıdemli çalışanın önerdiği iş bölümüne göre düzenlerim.",
+      "İki tarafın çözüm önerisiyle gelmesini ister, işlerine devam etmelerini sağlarım.",
+      "Devri güvenceye alıp iki anlatımı kayıtlarla karşılaştırırım.",
+      "Bugünkü işi başkasına verir, iki kişiyle ayrı görüşürüm."
+    ],
+    "S12": [
+      "İletişimi bir süre üzerimden yürütür, yeni tartışma çıkıp çıkmadığını izlerim.",
+      "Somut devir örnekleriyle doğrudan iletişim ve takip koşulunu belirlerim.",
+      "İlişkiyi yumuşatmak için ikisine ortak bir sosyal görev veririm.",
+      "Birbirlerine doğrudan yazmalarını ister, haftaya durumu kontrol ederim."
+    ],
+    "S13": [
+      "Çalışanların yazılımın hangi adımlarında zorlandığına ilişkin açıklamalarını.",
+      "Kurulum öncesi ve sonrası haftaların toplam hata adetlerini.",
+      "Eşleşen iş ve deneyim gruplarındaki hata oranlarını.",
+      "Günlük hata oranını ve aynı günlerin işlem hacmini."
+    ],
+    "S14": [
+      "Yeni personel düzenini korur, bir hafta daha sonuç toplamayı öneririm.",
+      "Personel kararını gözden geçirip onay akışında ölçülü deneme yaparım.",
+      "Onay aşamasını devreden çıkararak beklemenin ortadan kalkmasını sağlarım.",
+      "Onay sorumlusuyla bekleme nedenlerini ve olası çözümleri çıkarırım."
+    ],
+    "S16": [
+      "Sunumu tamamlayıp kalan sürede evrak işini yetkilendiririm.",
+      "Evrakı yetkilendirir, teslim kontrolüyle günün planını güncellerim.",
+      "Sunum, evrak ve raporu eş zamanlı yürütmek üzere dağıtırım.",
+      "Evrakı kendim tamamlar, sunumun hazırlanması için destek isterim."
+    ],
+    "S17": [
+      "Teslim süresi, bağımlılık ve iş etkisine göre öncelik sırası oluştururum.",
+      "Mevcut iş listesini korur, ekipten gün içi hızlanma planı isterim.",
+      "Kaynak ve erteleme seçeneklerini paydaşla netleştiririm.",
+      "Gün sonundaki gerçekleşmeye göre yetişmeyen işler için ek süre isterim.",
+      "İş sayılarını eşitleyerek kişiler arasındaki yük farkını azaltırım."
+    ],
+    "S18": [
+      "Müşteri planını değiştirmeden önce gecikmenin kesinleşmesini beklerim.",
+      "Gecikmenin diğer ekipten kaynaklandığını müşteriye hemen iletirim.",
+      "Teslim etkisi ve alternatifleri yetkili paydaşla paylaşırım.",
+      "Ekibimin boş kalan zamanını gün içindeki başka işlere ayırırım."
+    ],
+    "S19": [
+      "Kararlaştırılan geçiş takvimini korur, soruları uygulama sonrasında toplarım.",
+      "Örnek işlemi birlikte yapıp tekrarın yerini ve geçiş hedefini incelerim.",
+      "Sistemin beklenen faydalarını ekibe yeniden anlatıp katılım isterim.",
+      "İtiraz örneklerini yazılı toplayıp çözüm için proje ekibine iletirim."
+    ],
+    "S20": [
+      "İş türlerine göre hata, süre ve kullanım sonuçlarını.",
+      "Deneme ekibinin yöntemin faydalarına ilişkin genel değerlendirmesini.",
+      "Listenin kaç kişiye ulaştığını ve indirilme sayısını.",
+      "Listenin kullanıldığı işlerde ölçülen toplam hata oranını."
+    ],
+    "S22": [
+      "Çalışanın yüksek çıktısını dikkate alıp bu olayı sözlü hatırlatmayla kapatırım.",
+      "Kontrol ihlalini ekip toplantısında isim vererek örnek olay olarak anlatırım.",
+      "İşi güvenceye alır, özel görüşmede diğerleriyle aynı davranış ölçütünü uygularım.",
+      "Kontrol adımını ekibe hatırlatır, çalışanla ayrıca nedenini konuşurum."
+    ],
+    "S23": [
+      "Düzenlemenin anlaşılması için gerekçeyi yalnız ilgili ekip arkadaşlarına açıklarım.",
+      "İş dağılımı ölçütünü açıklar, kişisel ayrıntıyı yetkili süreçte tutarım.",
+      "Yeni dağılımın yönetim kararı olduğunu bildirip ayrıntılı soruları kapatırım.",
+      "Çalışana, düzenlemeyi anlayabilmeleri için ekibe açıklama yapmasını öneririm."
+    ],
+    "S24": [
+      "Kontrolü vardiya sonuna alır, teslimattan önce görsel gözlemle yetinirim.",
+      "Kontrolü korur, güvenli alternatif kapasiteyi değerlendirip teslim etkisini yetkili kişiye bildiririm.",
+      "Kontrol bitene kadar bekler, gecikmeyi gün sonunda açıklarım.",
+      "Deneyimli çalışandan riski değerlendirmesini isteyip çıkış kararını ona veririm."
+    ],
+    "S25": [
+      "Kritik adımları gözetimli çalıştırıp yedek kişiyle bağımsız deneme planlarım.",
+      "Talimat hazırlatır, deneyimli çalışanın yedeğe bir örnek göstermesini isterim.",
+      "İzin öncesi işleri öne çekip deneyimli kişinin tamamlamasını planlarım.",
+      "İzin sırasında destek için deneyimli kişiye ulaşılacak saatleri belirlerim."
+    ],
+    "S26": [
+      "İkisine ortak uygulama yaptırır, sonuçta kişiye özel geribildirim veririm.",
+      "İkisine aynı süre hedefini verir, günlük hız değişimini izlerim.",
+      "Hızlı çalışanı örnek alarak işi birlikte yapmalarını planlarım.",
+      "Hız ve kontrol ihtiyaçlarını ayrı uygulamalarla takip ederim."
+    ],
+    "S27": [
+      "Canlı görevde bütün kararları önce bana getirmesini isterim.",
+      "Canlı işi tek başına verip karar cesareti kazanmasını beklerim.",
+      "Deneme alanında sınırlı karar ve sonuç incelemesi yaparım.",
+      "Bir örneği ben tamamlar, aynısını gözetimimde tekrarlatırım."
+    ],
+    "S28": [
+      "Mentorun önceki aylardaki görev yetiştirme ve hata kayıtlarını.",
+      "Hangi desteğin ne kadar sürdüğüne ve yeni kişilerin bağımsızlığına bakarım.",
+      "Mentorun gün içinde desteğe ayırdığı toplam zamanı.",
+      "Yeni çalışanların hangi konularda mentordan memnun kaldığına ilişkin görüşlerini."
+    ],
+    "S29": [
+      "Yeni ürünle eski örnek arasındaki farkı birlikte inceletip farklı örneklerde uygulama izlerim.",
+      "Yeni ürün üzerinde örnek gösterir, sonraki işi kontrol ederim.",
+      "Eğitimde çözdüğü örnekleri daha hızlı tamamlaması için tekrar yaptırırım.",
+      "Yeni ürünleri diğer çalışana verip bu kişinin bilinen ürünlerde uzmanlaşmasını sağlarım."
+    ],
+    "S30": [
+      "Deneyimli kişinin başka bir işini erteleyip raporu ona devrederim.",
+      "İlk bölümü ikisine de verip hızlı bitirene kalan raporu veririm.",
+      "Zamanı olan kişiye raporun tamamını verip teslimde kontrol ederim.",
+      "Zamanı olan kişiye gereken destek ve kontrol noktasıyla raporu devrederim."
+    ],
+    "S31": [
+      "Bu engeli kendim çözer, sonraki benzer işi ona bırakırım.",
+      "Mevcut yetkisini hatırlatır, kendi çözümüyle geri gelmesini isterim.",
+      "Seçeneklerini sorar, yetki sınırını teyit edip çözüm seçimini ona bırakırım.",
+      "Benzer bir örnek gösterir, aynı yaklaşımı denemesini isterim."
+    ],
+    "S32": [
+      "Kritik maliyetler için bundan sonra bütün ara kararları da onayıma alırım.",
+      "Harcama etkisini durdurup sınırın neden aşıldığını ve yeni anlaşmayı görüşürüm.",
+      "Değişikliği onaya sunar, yetki sınırını yazılı hatırlatırım.",
+      "Beklenen kazancı karşılaştırır, olumluysa değişikliği bu seferlik kabul ederim."
+    ],
+    "S33": [
+      "Tek çıktı sahibini, diğerlerinin katkısını ve son kabul noktasını tanımlarım.",
+      "İki kişinin de son kontrol yapmasını ve sonucu kaydetmesini isterim.",
+      "Son kontrolü kendime alır, ekibin hazırlık işlerini sürdürmesini sağlarım.",
+      "Ortak sorumluluğu korur, görev öncesinde daha sık görüşmelerini isterim."
+    ],
+    "S34": [
+      "Kişinin kendi işlem süresini ayrıca izler, toplam hedefi korurum.",
+      "Ekip genelinde aynı hedefi korur, kişiye daha fazla takip koyarım.",
+      "Dış onayın etkisi bitene kadar kişinin performans takibini askıya alırım.",
+      "Ortak sonuca ve kişinin kontrolündeki katkıya ayrı takip kurarım."
+    ],
+    "S35": [
+      "Mevcut dönem değerlendirmesinde çıktı hedefini esas alıp paylaşımı sonraya bırakırım.",
+      "Bilgi paylaşımı düzelene kadar yüksek çıktıya ilişkin takdiri bekletirim.",
+      "Çıktısını tanır, bilgi paylaşımını somut örnek ve takip hedefiyle görüşürüm.",
+      "Başarısını belirtir, gelecek dönem için devir dokümanı isterim."
+    ],
+    "S36": [
+      "Değerlendirme ölçütünü tekrar açıklar, görüşmeyi belirlenen sürede kapatırım.",
+      "İtiraz kanıtını dinler, ayrışan noktalar için takip belirlerim.",
+      "Kendi verilerimi paylaşır, yazılı itirazını sonra incelemeyi öneririm.",
+      "Görüşmeyi sürdürmek için bu dönemin değerlendirmesini yukarı yönlü esnetirim."
+    ],
+    "S37": [
+      "Günlük uygulama, destek kullanımı ve ilk hafta değişen çalışma koşullarına.",
+      "İki haftanın gün bazında çıktı ve hata değerlerine.",
+      "İlk haftanın yüksek çıktısının iki haftalık ortalamaya katkısına.",
+      "Görüşmede çalışanın taahhüt ettiği hedefin yazılı ifadesine."
+    ],
+    "S38": [
+      "Dikkatini takdir eder, çıktı hedefini ayrı görüşmede ele alırım.",
+      "Hedefle tutarlı olmak için takdiri çıktısının yüksek olduğu güne bırakırım.",
+      "Bu olaydan sonra adet hedefini ekip değerlendirmesinden çıkarmayı öneririm.",
+      "Önlenen tekrar işini tanır, adedi bağlamıyla değerlendiririm."
+    ],
+    "S39": [
+      "İki öneriden eşit miktarda uygulayarak tarafların katılımını korurum.",
+      "Tartışmayı sertleştiren kişinin önerisini bu sefer değerlendirme dışı bırakırım.",
+      "İletişim sınırını koruyup iddiaları ortak ölçütle denerim.",
+      "Her birine eşit söz verir, öneri gerekçelerini kaydederim."
+    ],
+    "S40": [
+      "İsimleri açık bir ekip görüşmesinde tarafların anlatımlarını karşılaştırırım.",
+      "İki tarafın örneklerini iş kayıtlarıyla karşılaştırıp görev ölçütünü açıklarım.",
+      "İkisiyle ayrı görüşür, gelecek haftanın dağılımını kendim hazırlarım.",
+      "Yeni kişinin öğrenme döneminde daha çok iş almasını deneyim kazanımı sayarım."
+    ],
+    "S41": [
+      "İhlal örneklerini görüşüp neden, sorumluluk ve uygun takip sürecini kurarım.",
+      "Standardı hatırlatır, bir hafta boyunca tüm devirleri kontrol ederim.",
+      "Devri aksatmamak için kayıtları diğer çalışanın tamamlamasını isterim.",
+      "Kayıtları kendim tamamlayıp iki çalışanın iş akışını sürdürmesini sağlarım."
+    ],
+    "S42": [
+      "Kullanımı durdurur, teknik ekip gelene kadar işleri bekletirim.",
+      "Deneyimli kullanıcının değerlendirmesiyle kısa bir gözlem turu daha yaparım.",
+      "Uyarıyı kaydeder, teslimat tamamlanınca teknik inceleme planlarım.",
+      "Kullanımı durdurup yetkili kontrolü ve güvenli alternatifi başlatırım."
+    ],
+    "S43": [
+      "Uygulama öncesinde bütün ayrıntıları tamamlamaya yönelik veri toplamayı sürdürürüm.",
+      "Mevcut temel verilere dayanıp yöntemi bütün ekibe aynı anda geçiririm.",
+      "Başarı ve durdurma ölçütüyle küçük deneme yapar, ek veri gelince yeniden değerlendiririm.",
+      "Denemeyi küçük ekipte başlatır, haftalık sonucu gözden geçiririm."
+    ],
+    "S44": [
+      "Yoğunluk azaldığında değerlendirmek üzere sorunu toplantı gündemine yazarım.",
+      "Geçici sınırı kaydedip kalıcı çözümün sahibini belirlerim.",
+      "Kalıcı çözüm kaydı açar, ek yükü günlük planda gösteririm.",
+      "Teslimatı koruduğu için mevcut geçici adımı kalıcı iş standardına eklerim."
+    ],
+    "S45": [
+      "Toplam etkiyi ortak maliyet ve risk varsayımlarıyla karşılaştırırım.",
+      "İlk yatırım ve beklenen hata azalmasını yan yana koyarım.",
+      "Mevcut bütçeye sığan en düşük başlangıç maliyetli seçeneği öneririm.",
+      "Aynı sektörde başarıyla kullanılan çözümü ek karşılaştırma yapmadan öneririm."
+    ],
+    "S46": [
+      "Yetkimdeki çözümü başlatır, bütçeli seçeneği ayrıca bildiririm.",
+      "Beklenen kazancı gerekçe göstererek bütçe onayı gelmeden harcamayı başlatırım.",
+      "Yetki kararının çıkmasını beklerken iki seçeneği de askıya alırım.",
+      "İki seçeneğin etkisini ve önerimi yetkiliye sunup geçici sınırda anlaşırım."
+    ],
+    "S47": [
+      "Hız kazancını esas alıp ek kalite kontrolüyle yöntemi yaygınlaştırırım.",
+      "Eski yönteme döner, denemeyi yeniden ele almak için başka öneri beklerim.",
+      "Yaygınlaştırmayı durdurup hız ve hatayı birlikte inceleyerek denerim.",
+      "Küçük grupta denemeyi uzatır, oluşan hata örneklerini kaydederim."
+    ],
+    "S48": [
+      "Kritik işi sertifikasız kişiye, deneyimli çalışan gözetiminde tamamlatırım.",
+      "Zorunlu işe sertifikalıları ayırıp kalan yükü süre ve kapasiteyle dağıtırım.",
+      "Bir sertifikalı kişiyi kritik işe ayırır, ikinciyi ilerlemeye göre yönlendiririm.",
+      "Kişi başına iş adedini eşitlemek için bütün görevleri dönüşümlü dağıtırım."
+    ],
+    "S49": [
+      "Kritik çıktıya kontrol ve sapmada yardım noktası koyarım.",
+      "Bütün görevler için aynı saatlik ilerleme kaydını isterim.",
+      "Gecikmeyi erken görmek için her on dakikada durum sorarım.",
+      "Deneyimli kişilere işi devreder, tamamlandığında toplu sonuç bilgisi isterim."
+    ],
+    "S50": [
+      "İşin tahmini tamamlanma süresini ve talebin geliş zamanını.",
+      "Talep sahibinin kurumdaki karar yetkisini ve kıdemini.",
+      "Talebi gönderen bölümün geçmiş dönem hatırlatma sıklığını.",
+      "Son tarihi, gecikme etkisini ve iş bağımlılıklarını."
+    ],
+    "S51": [
+      "Kalan işleri listeler, ayrıntıları sabah vardiya sorumlusunun tamamlamasını beklerim.",
+      "Önceki vardiyadan açıklama gelene kadar sonraki ekibin başlamamasını isterim.",
+      "Kalan iş, kontrol durumu ve sonraki sahibi kısa bir devir kaydına bağlarım.",
+      "İşi yapan kişinin sonraki sorumluya telefonla anlatmasını isterim."
+    ],
+    "S52": [
+      "Önce geçişi başlatıp ekiplerin sonuçları görerek anlaşmasını öneririm.",
+      "Hız ve hata için ortak kabul ve geçiş eşiği kurarım.",
+      "İki ölçütü ayrı raporlayıp ekiplerle haftalık görüşme yaparım.",
+      "Değişimi isteyen ekibin ölçütünü ilk dönem için öncelikli kabul ederim."
+    ],
+    "S53": [
+      "Gerçek görevdeki kullanım engelini ve eski dosyanın işlevini.",
+      "Yeni ekrana giriş yapılan saatleri ve kullanıcı bazında kullanım sıklığını.",
+      "Eğitime katılan çalışan sayısını ve imza listelerindeki dağılımını.",
+      "Eski dosyayı en çok kullanan kişileri ve çalıştıkları vardiyaları."
+    ],
+    "S54": [
+      "Gece ekibine ek eğitim verip uygulamanın ilk haftasını izlerim.",
+      "Gündüzdeki olumlu sonuca dayanarak aynı akışı geceye de geçiririm.",
+      "Destek şartları aynı olmadığı için gece ekibini mevcut düzende bırakırım.",
+      "Gece desteğinin farkına göre küçük deneme ve eskiye dönüş planı yaparım."
+    ],
+    "S55": [
+      "Performansı daha yüksek çalışanın talebini ödüllendirme gerekçesiyle öne alırım.",
+      "Tarafların kendi aralarında anlaşmasını isteyip ortak cevap beklerim.",
+      "İzin kuralı ve alternatiflerle tutarlı karar ölçütü uygularım.",
+      "İlk başvuru zamanını esas alır, sonraki dönem için kural belirlerim."
+    ],
+    "S56": [
+      "İşini daha yakından bildiğim kişiyi seçip kararın sorumluluğunu alırım.",
+      "Yakın ilişkiyi bildirip ortak ölçüt ve bağımsız incelemeyle seçimi yürütürüm.",
+      "Önceden belirlenmiş ölçütlerle kayıtları karşılaştırır, gerekçeyi yazarım.",
+      "Tarafsızlık tartışması yaşanmaması için arkadaşımı baştan değerlendirme dışı tutarım."
+    ],
+    "S57": [
+      "Örnek durumu kendi sözüyle anlatıp istisnada ne yapacağını göstermesini isterim.",
+      "Kritik istisnaları tekrar anlatır, sorusu olup olmadığını sorarım.",
+      "Talimatı ayrıca e-postayla gönderip gerektiğinde bakabileceği bir kaynak oluştururum.",
+      "Hazır olduğunu söylediğinde işi devreder, tamamlanmış çıktıyı beklerim."
+    ],
+    "S58": [
+      "Aynı kısa özeti paylaşır, isteyen gruba ek ayrıntı sunarım.",
+      "Bütün teknik ayrıntıları iki gruba da aynı sunumla anlatırım.",
+      "Her grubun destekleyeceği sonuçları seçip sunumdaki risk ayrıntısını azaltırım.",
+      "Kanıtı korur, ekipte işlem adımını ve yönetimde karar ihtiyacını öne alırım."
+    ],
+    "S59": [
+      "Raporun görsel düzenini sadeleştirip bir sonraki toplantıya gönderirim.",
+      "Bütün ayrıntıları ekler, kullanıcının ihtiyacı olan kısmı seçmesini beklerim.",
+      "Karar amacını örnek çıktı üzerinden netleştiririm.",
+      "İki örnek taslak gösterir, hangisini tercih ettiğini sorarım."
+    ],
+    "S60": [
+      "Kendi toplantı notuma göre görevleri dağıtıp takibi başlatırım.",
+      "Çıktı, sahip, tarih ve açık kalan konuları birlikte teyit edip kısa karar kaydı paylaşırım.",
+      "Toplantı sonunda kararları sözlü özetleyip katılanlardan onay alırım.",
+      "Toplantının konuşma dökümünü düzenlemeden paylaşarak herkese aynı bilgiyi veririm."
+    ],
+    "S61": [
+      "Karara yetecek bilgi akışını kullanıcıyla netleştiririm.",
+      "En çok kullanılan raporları seçip önce onları saatlik sunarım.",
+      "İstenen raporların hepsini saatlik hazırlamak için mevcut işimi yeniden planlarım.",
+      "İş yükünü azaltmak için saatlik talebi görüşmeden haftalık rapora dönüştürürüm."
+    ],
+    "S62": [
+      "Tamamının yarın olacağını bildirir, bugün kısmi teslim öneririm.",
+      "Bugün teslim sözü verip ek destekle yetiştirmek için çalışırım.",
+      "Tamamı hazır olmadan eksik izlenim yaratmamak için teslimi yarına bırakırım.",
+      "Kritik ihtiyacı sorup bugün ve yarın teslim edilebilenleri açıkça sunarım."
+    ],
+    "S63": [
+      "Kaydı kapatan kişinin aynı dönemde çözdüğü başvuru sayısını.",
+      "Müşterinin daha önce açtığı başvuruların sayısını ve sıklığını.",
+      "Son müşteri durumu ve düzeltmenin karşıladığı ihtiyacı.",
+      "Düzeltmenin teknik olarak tamamlandığını gösteren kapanış kaydını."
+    ],
+    "S64": [
+      "Anlaşma kapsamını korumak için ek talebi yeni görüşmeye kadar geri çeviririm.",
+      "Kapsam ve teslim seçeneklerinin etkisini birlikte netleştiririm.",
+      "Ek çıktıyı sonraki güne planlayıp müşteriye bilgi veririm.",
+      "Müşterinin talebini karşılamak için diğer işlerimin tarihini haber vermeden kaydırırım."
+    ],
+    "S65": [
+      "İlk yanıtı, çözümü ve tekrar başvuruyu birlikte incelerim.",
+      "Tekrar açılan başvuruları örnekler, eksik yanıtlar için geribildirim veririm.",
+      "Yanıt süresi hedefi tutulduğu için mevcut yaklaşımı izlemeyi sürdürürüm.",
+      "Ekibin dikkatini çözüme çekmek için ilk yanıt süresi takibini kaldırırım."
+    ],
+    "S66": [
+      "B'nin oranı daha yüksek; bunun nedenini ayrıca incelerim.",
+      "Hata adedi yüksek olduğu için önce A ekibinin performansını düşük değerlendiririm.",
+      "Daha az hata yaptığı için B'nin yöntemini diğer ekibe de geçiririm.",
+      "A %2, B %4 hata oranında; neden yorumu için iş karışımını incelerim."
+    ],
+    "S67": [
+      "Ay boyunca yapılan işlemlerin toplam süresine ve çıktı miktarına.",
+      "Ortalama değişmediği için gecikme şikâyetlerini kişisel algı olarak değerlendiririm.",
+      "Süre dağılımına, uzun kuyruktaki işlemlere ve iş türlerine.",
+      "Gün bazındaki ortalama sürelerin ay boyunca gösterdiği değişime."
+    ],
+    "S68": [
+      "Ölçüt değiştiği için iki dönemin karşılaştırmasını tamamen bırakırım.",
+      "İki dönemi aynı saat tanımıyla hesaplayıp tanımın yarattığı farkı ayırırım.",
+      "Artışın yanına tanım değişikliği notu ekler, eski hesabı isterim.",
+      "Yeni tanımı esas alıp değişimi mevcut raporda yüzde 12 artışla gösteririm."
+    ],
+    "S69": [
+      "Başlangıç ve deneyim farkları ayrılmadan neden söylenemez.",
+      "Eğitimle yüksek çıktı birlikte görülmüş; ön bulgu olarak incelenebilir.",
+      "Yüksek çıktıyı eğitime bağlayıp aynı eğitimi ekibin tamamına öneririm.",
+      "Grupların özellikleri farklı olduğundan bu karşılaştırmanın hiçbir değer taşımadığını söylerim."
+    ],
+    "S70": [
+      "Eksik oranını raporlar, tam kayıtların sonucunu ayrı gösteririm.",
+      "Eksik bitişleri ortalama süreyle doldurup bütün işlemler için tek sonuç sunarım.",
+      "Eksik bitişleri başlangıç saatiyle eşitleyip bu işlemlere sıfır süre veririm.",
+      "Eksiklerin örüntüsünü ve etkisini inceleyip raporun sınırını belirtirim."
+    ],
+    "S71": [
+      "Genel eğilimi korumak için bu günü düzenli rapor hesabından çıkarırım.",
+      "En yüksek gözlenen sonucu iyi uygulama örneği sayıp hedef öneririm.",
+      "Kaynak ve aktarımı kontrol edip kayıt etkisini ayırırım.",
+      "Aykırı gün dahil ve hariç sonuçları birlikte hesaplarım."
+    ],
+    "S72": [
+      "Hata sayısının yüzde 25 düştüğünü, hacim artışını da hesaba katarak söylerim.",
+      "Bir yüzde puan ve göreli %25 düşüşü hacim ve dönem kapsamıyla açıklarım.",
+      "Hata oranının başlangıç değerine göre yüzde 25 azaldığını belirtirim.",
+      "İki dönem arasında hata oranında yüzde 1 azalma olduğunu söylerim."
+    ],
+    "S73": [
+      "Bilmediğim ayarın etkisini resmi kaynaktan öğrenir, deneme alanında doğrulayıp yetkim içinde uygularım.",
+      "Deneyimli birinin örneğini izler, deneme alanında tekrarlarım.",
+      "Eski sistemdeki benzer ayarı esas alıp aynı değerleri doğrudan kullanırım.",
+      "Canlı sistemde küçük ayar değişiklikleri yaparak en uygun sonucu bulurum."
+    ],
+    "S74": [
+      "Sunuma kısa bir karar özeti ekleyip tekrar paylaşırım.",
+      "Mevcut içeriğin eksiksizliğini açıklayıp aynı sunum üzerinden görüşme isterim.",
+      "Yeni sunumda bütün ayrıntıları kaldırarak tek sayfa bir özet hazırlarım.",
+      "Belirsiz kalan karar için örnek isteyip yeni düzenlediğim bölümü sınarım."
+    ],
+    "S75": [
+      "Önceki uygulamanın başarısını esas alıp listeyi aynı biçimde uygulatırım.",
+      "Uyumsuz adımlar nedeniyle kontrol listesini bırakıp kişisel deneyime dönerim.",
+      "Geçerli ilkeyi bağlama bağlı adımdan ayırıp ekiple uyarlanmış deneme yaparım.",
+      "Kullanılmayan adımları işaretler, sonuçlarını bir süre izlerim."
+    ],
+    "S76": [
+      "Gecikme giderildiği için aynı kararı tekrar incelemek yerine sonraki işe geçerim.",
+      "Kaçırdığım bilgiyi ve varsayımı kaydedip sonraki iş için kontrol koyarım.",
+      "Gecikme nedenini not eder, benzer işi erken takip ederim.",
+      "Sonraki işte daha dikkatli davranmak için kendime hatırlatma koyarım."
+    ],
+    "R01": [
+      "Önceki rapora göre ilerler, varsayımı teslim notunda açıklarım.",
+      "İki raporu da hazırlayıp toplantıdaki onayı bütün kapsam için kullanırım.",
+      "İki çıktıyı da bekletir, talep sahibinden ayrıntılı yazılı tanım isterim.",
+      "Çıktıları kısa teyitle netleştirirken ortak, geri alınabilir işi sürdürürüm."
+    ],
+    "R02": [
+      "Geciken örneklerde erişim zamanı ve talimat sürümünü, aynı tür zamanında teslimlerle karşılaştırırım.",
+      "Geciken işi yapanlardan yaşadıkları engeli somut örnekle anlatmalarını isterim.",
+      "En sık bildirilen engeli öncelikli neden olarak rapora yazarım.",
+      "En deneyimli kişinin açıklamasını esas alıp çözüm önerisi geliştiririm."
+    ],
+    "R03": [
+      "Belirsizliğin raporun tümünü etkileyebileceğini düşünerek teslimin tamamını bekletirim.",
+      "Belirsiz kısmı yedek sorumluya iletip doğrulanmış kısmın teslimini öneririm.",
+      "Şüpheli kayıtları ek notla birlikte rapora koyarım.",
+      "Önceki ayın düzenini esas alıp şüpheli kayıtları ona göre değiştiririm."
+    ],
+    "R05": [
+      "Müşteri notunu bitirir, sonra iç raporun ilk taslağına başlarım.",
+      "İki işi de bugün tamamlama taahhüdü verip gerekli ek zamanı bulmaya çalışırım.",
+      "Uzun sürecek iç rapora başlar, müşteri notunu ertesi güne kaydırırım.",
+      "Veriyi erken isteyip bugünkü not ve yarınki rapor için kapasite ayırırım."
+    ],
+    "R06": [
+      "Geçerli dosyayı, açık işi ve kaynakları işaretlerim.",
+      "Bir örneği birlikte açıp devralanın ilk kontrol zamanı ve sorularında anlaşırım.",
+      "Bütün yazışma geçmişini gönderip ihtiyaç duyduğu bilgiyi oradan seçmesini beklerim.",
+      "Dosyayı son sürüm adıyla paylaşır, açıklamayı soru gelirse yaparım."
+    ],
+    "R07": [
+      "En geniş kapsamlı sayıyı veren alanla raporu kurmaya başlarım.",
+      "Müşterinin tekil tanımını ve dönemi, raporun kullanılacağı karara göre sorarım.",
+      "Müşteri kimliği dolu olan satırların sayısını ön inceleme olarak çıkarırım.",
+      "Son rapordaki tanımı kullanmadan önce doğrulatmak üzere paylaşırım."
+    ],
+    "R08": [
+      "İşin tamamını netleştirip tek seferde bilgi vermek için gün sonunu beklerim.",
+      "Güncel dosyayı paylaşır, eksik alanların dosya üzerinden fark edilmesini beklerim.",
+      "Hazır kısmı, gecikme etkisini ve seçenekleri güncelleme saatiyle paylaşırım.",
+      "Gecikeceğimi söyler, bitiş zamanını sonra bildireceğimi eklerim."
+    ],
+    "R10": [
+      "A %10, B %20; oran farklı, performans nedeni için iş zorluğu eksik.",
+      "A'daki hata adedi yüksek; önce toplam kayıp etkisini incelemek gerekir.",
+      "A'da iki kat hata olduğu için performansını B'nin yarısı sayarım.",
+      "İkisinde de hata görüldüğü için aynı iyileştirme önceliğini öneririm."
+    ],
+    "R11": [
+      "İptal edilen 20 satırı çıkarıp 100 aktif tekil kişi hesaplarım.",
+      "Kimlikler tekilleşmeden kesinleşmez; 80–100 kişi olabilir.",
+      "İptal listesinde hangi kimliklerin bulunduğunu ayrıca sorarım.",
+      "Başlangıçtaki 100 tekil kişiden 20 iptali düşüp sonucu 80 hesaplarım."
+    ],
+    "R12": [
+      "Doğruluk düştüğü için eğitimden sonra performansımın gerilediğini söylerim.",
+      "Daha zor soruları çözmüş olmamı gelişimin kesin göstergesi kabul ederim.",
+      "İki set eşdeğer değil; gelişim miktarı için eşleşen görevler gerekir.",
+      "Son setteki hata türlerini inceleyip sonraki çalışma ihtiyacımı seçebilirim."
+    ],
+    "R13": [
+      "Bir hafta aynı tabloyu hazırlar, nasıl kullanıldığını gözlemlerim.",
+      "Günlük talebi karşılamayı kabul eder, süre planını çalışırken düzenlerim.",
+      "İş yükü yüksek olduğu için tabloyu görüşme yapmadan haftalık gönderirim.",
+      "Tablonun desteklediği kararı sorup kapsam ve sıklığı birlikte seçerim."
+    ],
+    "R14": [
+      "Yapabileceğim kontrolü ve dönüş saatini söyler, nihai süreyi teyit ederim.",
+      "Talebi öncelik isteğiyle ilgili ekibe aktarır, kullanıcıya aktarımı bildiririm.",
+      "Ekibi hızlandırabileceğimi düşünüp kullanıcıya bugün tamamlanacağı sözünü veririm.",
+      "İlgili ekibin iletişim bilgisini verip kendi kaydımı tamamlanmış kapatırım."
+    ],
+    "R15": [
+      "Kullanıcıya memnuniyetini sorup aynı yönlendirmeyi yeniden paylaşırım.",
+      "Önceki çözüm ile tekrar koşullarını aynı başvurunun somut kayıtları üzerinden karşılaştırırım.",
+      "Kayıt sahibi ve sonraki bilgilendirme zamanını netleştiririm.",
+      "Önceki açıklamayı daha ayrıntılı yazarak mevcut kaydı tekrar kapatırım."
+    ],
+    "R16": [
+      "İşini daha iyi bildiğim arkadaşın dosyasını geçerli kabul ederim.",
+      "İki kişiden dosyalardaki farkları birlikte göstermelerini isterim.",
+      "İki dosyanın değişiklik ve karar izlerini karşılaştırıp ortak sürüm ve sahip öneririm.",
+      "Kendi bölümümü iki dosyada da güncel tutarak ekibin seçim yapmasını beklerim."
+    ],
+    "R17": [
+      "Önerinin hangi bölümünü daha faydalı bulduğunu ve tercih nedenini.",
+      "Benzer bir işte daha önce denediği çözümü ve elde ettiği sonucu.",
+      "Ekip üyelerinin hangi öneriyi daha çok desteklediğini ve oy dağılımını.",
+      "Hangi koşul ve kısıtta aksayacağını gösteren somut örneği sorarım."
+    ],
+    "R18": [
+      "Sunumun kabul ölçütüne göre mutlaka aktarılacak bilgileri birlikte çıkarırım.",
+      "Bölüm süreleri belirleyip zamanlı ortak prova öneririm.",
+      "Herkesin altı dakika kullanmasını, aşımı sunum sonunda açıklamayı öneririm.",
+      "İçerikleri incelemeden kişi başına eşit dört dakika vermeyi öneririm."
+    ],
+    "R19": [
+      "Tek cihazdaki sorunu genel uyumsuzluk sayıp mevcut yönteme tamamen dönerim.",
+      "Gerçek dosyayı farklı cihazlarda deneyip erişim çözülmeden zorunlu kılmam.",
+      "Açılmayan cihazı öğrenir, başka biçimde göndermeyi denerim.",
+      "Çoğunlukta çalıştığı için geçişi tamamlar, diğer kullanıcıların cihaz değiştirmesini isterim."
+    ],
+    "R20": [
+      "Yeni şablonla birkaç rapor daha hazırlayıp hata türlerini kaydetme.",
+      "İlk denemedeki 15 dakikalık farkı bütün rapor sayısıyla çarpma.",
+      "Eşleşen kapsamda süreyi, hatayı ve kullanım ihtiyacını karşılaştırma.",
+      "Şablonu kullanan kişinin memnuniyet puanını ve genel değerlendirmesini toplama."
+    ],
+    "R21": [
+      "Eski formun bir kopyasını saklar, yeni formdaki sonuçları izlerim.",
+      "İki sürümle çalışmayı önlemek için eski formu kullanımdan tamamen kaldırırım.",
+      "İlk günün yorumlarından sonra kontrol ölçütünü ve dönüş ihtiyacını seçerim.",
+      "Alan eşleşmesini, kontrol eşiğini ve eskiye dönüş yolunu denemeden belirlerim."
+    ],
+    "R22": [
+      "Toplu sayıları kullanıp kişisel sütunları çıkarırım.",
+      "Kişisel alan bulunduğunu açıklayan bir notla bütün kaynak dosyayı eklerim.",
+      "Telefon sütununu görünümden gizleyerek aynı dosyayı sunum ekinde paylaşırım.",
+      "Kişisel ayrıntının neden istendiğini sorup paylaşımı bekletirim."
+    ],
+    "R23": [
+      "Herkesin dönem içinde teslim ettiği görevlerin listesi ve adetleri.",
+      "Önceden belirlenmiş ortak katkı ölçütünü teslim ve destek kaydıyla uygularım.",
+      "Arkadaşımın her görevde harcadığı emeğe ilişkin ayrıntılı anlatımı.",
+      "Ekip üyelerinin kimden daha çok yardım gördüğüne ilişkin genel kanaati."
+    ],
+    "R24": [
+      "Dosyayı düzeltip aynı adrese kaydeder, talep olursa değişikliği açıklarım.",
+      "Önceki kararla tutarlılık için yeni hesabı sonraki dönem raporunda kullanırım.",
+      "Eski sürümü koruyup değişen sonuçla etkilenen kararı yeni sürümde bildiririm.",
+      "Yeni sürümü paylaşır, istenirse değişikliğin nedenini anlatırım."
+    ],
+    "R25": [
+      "Eğitimin en yüksek puan alan bölümleri ve konu anlatım süreleri.",
+      "Benzer tabloya ait kısa örnek ve kendi denememde zorlandığım yer.",
+      "Aracın bütün menülerini sırayla öğrenip ardından görevin tamamına başlarım.",
+      "Çıktının kabul ölçütünü ve o çıktıya ulaşmak için eksik olduğum adımları."
+    ],
+    "R26": [
+      "Karar önerisini tek mesaj etrafında örnek verilerle yeniden kurgularım.",
+      "Yeni provayı gösterip karar önerisini kendi cümlesiyle anlatmasını isterim.",
+      "Yazı boyutunu küçültüp bütün ayrıntıları aynı sunum akışında korurum.",
+      "Daha çok veri ve açıklama ekleyerek eksik anlaşılma ihtimalini azaltırım."
+    ],
+    "R27": [
+      "Doğru cevabı hatırlamayı yöntemi öğrenmiş olmamın yeterli kanıtı sayarım.",
+      "Farklı koşullu soruyu çözüp yöntemimi ve hatamı karşılaştırırım.",
+      "Aynı soruyu süre tutarak çözmeye devam edip hız farkımı izlerim.",
+      "Mevcut örneğin çözüm adımlarını bir başkasına sözlü anlatırım."
+    ],
+    "R28": [
+      "Birim maliyet %10 düşmüş; toplam değişim için hacmi de incelemek gerekir.",
+      "Hacim %20 arttığından toplam maliyetteki artışı da yüzde 20 hesaplarım.",
+      "Hacim +4.000, fiyat −2.400 TL etki yaratır; toplam sapma +1.600 TL olur.",
+      "Toplam maliyet yükseldiği için birim maliyetin de yükseldiği sonucuna varırım."
+    ],
+    "R29": [
+      "Kullanım koşulundan bağımsız tek bir saniyelik hedefi kabul ölçütü yaparım.",
+      "Mevcut iki ölçümü geliştirme ekibine iletip inceleme isterim.",
+      "Talebi genel performans iyileştirme başlığına alıp ayrıntıyı geliştiriciye bırakırım.",
+      "Hacim ve yoğunluğa göre ölçülebilir süreyi kullanıcıyla belirlerim."
+    ],
+    "R30": [
+      "Birleştirme anahtarını, bire-çok ilişkiyi ve sipariş tutarının tekrarını.",
+      "Satır sayısı üç katına çıktığı için sipariş sayısını da üç kat hesaplarım.",
+      "Sipariş kimliğine göre tekil sayımı birleştirme öncesiyle karşılaştırırım.",
+      "Üç kat satır oluştuğundan bütün tutarları üçe bölerek düzeltirim."
+    ],
+    "R31": [
+      "A'yı bitirir, B'nin kalanını sonraki vardiyaya bildiririm.",
+      "A'yı kontrolle bitirip B'nin bölünebilir hazırlığına geçerim.",
+      "Daha uzun süreceği için B'yi önce alır, A'yı kalan zamanda tamamlarım.",
+      "İki işi eş zamanlı tamamlamak üzere iş planıma aynı süreyi veririm."
+    ],
+    "R32": [
+      "96 sayısını not eder, farkın incelenmesi için yetkiliye iletirim.",
+      "Fiili sayımı doğru kabul edip belgedeki 100 adedi kendim 96 yaparım.",
+      "Farkı yeniden sayımla teyit eder, onay vermeden yetkili sürece aktarırım.",
+      "Belge ve sistem tutarlılığı için 100 adedi onaylayıp farkı sonra araştırırım."
+    ],
+    "R33": [
+      "Kişi başına adet yüksek olduğundan ikinci vardiyayı yüzde 20 daha verimli sayarım.",
+      "Toplam iş adedi yüksek olduğu için ilk vardiyayı daha verimli değerlendiririm.",
+      "Çalışılan saatleri ve her vardiyanın iş türlerini ayrıca toplarım.",
+      "Kişi başına 100/120; saat ve iş karışımı eksik."
+    ],
+    "R34": [
+      "Faydayı ve artan yükü alternatiflerle birlikte yetkili karar sahibine sunarım.",
+      "Önce yalnız beklenen faydayı paylaşır, ek yükü uygulama aşamasında ele alırım.",
+      "İki birimden uygulama görüşü alıp önerinin ekine kaydederim.",
+      "Uzmanlık değerlendirmemi esas alıp ilgili birimlere doğrudan uygulama talimatı gönderirim."
+    ],
+    "R35": [
+      "Hesap doğruluğu sağlandığı için kullanıcı sorunlarını eğitim ihtiyacı olarak kapatırım.",
+      "Gerçekçi görevde alan kullanımını gözleyip tanım ve kontrolleri yeniden sınarım.",
+      "Daha ayrıntılı kullanım dokümanı yollar, kullanıcıların belgeyi incelemesini isterim.",
+      "Kullanıcılardan anlaşılmayan alanları işaretlemelerini isterim."
+    ],
+    "R36": [
+      "Bütün talepleri kabul eder, yetişmeyen işler için teslim gününde süre isterim.",
+      "Her talebin süre ihtiyacını ayrı ayrı tahmin ederim.",
+      "Ortak bağımlılık ve kapasiteyle kapsamları karar sahiplerine sıralatırım.",
+      "Talebin geliş sırasını esas alıp ilk gelen işi koşulsuz önce tamamlarım."
+    ],
+    "T001": [
+      "Daha çok kullanılan tanımı iki birim için ortak kabul ederim.",
+      "Kullanıcı alışkanlığı bozulmasın diye aynı etiketi iki anlamda korurum.",
+      "İki durumun geçiş yetkisini ve kabul koşullarını ayrı tanımlarım.",
+      "Durum tablosunu hazırlayıp iki birimden teyit isterim."
+    ],
+    "T002": [
+      "Eksik senaryoları risk listesine yazıp geliştirme ekibine iletirim.",
+      "Normal akışı teslim eder, istisnaları ilk kullanımda netleştirmeyi öneririm.",
+      "Normal akışın sorunsuz açılmasını bütün form için yeterli kabul ederim.",
+      "Hata ve istisna sonucunu normal akışa ekleyip önceliğini teyit ederim."
+    ],
+    "T003": [
+      "Kod eşlemesini, eşleşmeyen kayıt davranışını ve kaynak tanımı birlikte netleştiririm.",
+      "İki kod listesini aynı tabloda yan yana çıkarırım.",
+      "Yazımı aynı olan kodları öncelikle eşleyip kalanlarını sonraya bırakırım.",
+      "Eşleşmeyen kayıtları aktarmayıp aktarımın toplam sonucuyla kontrol yaparım."
+    ],
+    "T004": [
+      "Ekranın sade kalması için kullanışlı bulduğum sütunları kendim seçerim.",
+      "Karar ihtiyacına göre asgari kabul kapsamını belirlerim.",
+      "Kullanılmayan sütunları işaretler, kaldırmak için kullanıcıdan teyit isterim.",
+      "Mevcut dosyada bulunduğu için bütün sütunları zorunlu kapsam kabul ederim."
+    ],
+    "T005": [
+      "İlk adımdaki hız artışını esas alıp sonraki kapasiteyi ayrı projeye bırakırım.",
+      "Sonraki adımın kuyruğunu başka bölümün performans konusu olarak değerlendiririm.",
+      "Toplam süre ve sonraki kapasite üzerinden uçtan uca deneme yaparım.",
+      "Sonraki adımın kuyruk büyüklüğünü ayrıca ölçüp rapora eklerim."
+    ],
+    "T006": [
+      "Bir haftalık teslim sürelerini toplayıp günler arasındaki değişimi çıkarırım.",
+      "İşlem süresini yarıya indirip teslimin de aynı oranda kısalmasını beklerim.",
+      "İki günlük süreyi kişi başına iş hızını artırmaya yönelik hedefe dönüştürürüm.",
+      "Aynı dosyanın işlem ve bekleme izinde kuyruk noktalarını gözlerim."
+    ],
+    "T007": [
+      "Aynı kayıtların yakalanan ve kaçan hatalarıyla kaldırma koşulunu seçerim.",
+      "İki kontrolün amaçlarını ve harcadığı süreleri çıkarırım.",
+      "Amaç tanımları benzer olduğu için kısa süren kontrolü korurum.",
+      "İki kontrolden birini sırayla kaldırıp toplam işlem süresindeki değişime bakarım."
+    ],
+    "T008": [
+      "Yöntemi bilen kişinin bütün uygulamalarda destek vermesini kalıcı düzen yaparım.",
+      "Standardı ve takibi kurup başka kullanıcının aynı sonucu üretmesini sınarım.",
+      "Yöntemin işlem adımlarını dokümana ekleyip ekip erişimine açarım.",
+      "Bir haftalık zaman farkını yıllık hacimle çarpıp gerçekleşmiş kazanç gösteririm."
+    ],
+    "T009": [
+      "Raporu otomatikleştirip hazırlama süresini düşürerek düzenli üretimi korurum.",
+      "Alıcılardan talep gelene kadar raporu haber vermeden durdururum.",
+      "Karar ihtiyacını teyit edip kontrollü durdurma veya sadeleştirme denerim.",
+      "Kullanım kayıtlarını, dağıtım listesini ve son erişimleri çıkarırım."
+    ],
+    "T010": [
+      "Hata türlerini ve artışın başladığı tarihleri aynı çizelgeye koyarım.",
+      "Artış aynı gün başladığından öncelikle talimat değişikliğini neden kabul ederim.",
+      "Talimatı hazırlayan ekibin yeniden eğitim vermesini yeterli çözüm sayarım.",
+      "Talimat ve ürün etkisini ayırabilecek eşleşmiş grupları karşılaştırırım."
+    ],
+    "T011": [
+      "İş türüne göre ayrıştırılmış örneklerle iki hipotezin farklı öngörüsünü sınarım.",
+      "Daha uzun dönemin toplam hata sayılarını toplayıp iki açıklamayı karşılaştırırım.",
+      "İlk hipotezin görüldüğü örnekleri artırıp açıklamanın gücünü test ederim.",
+      "Çoğu çalışanın desteklediği açıklamayı esas alıp önlem tasarlarım."
+    ],
+    "T012": [
+      "Tanım birliği için eski kayıtları yeni eşikle değiştirip eskilerini kaldırırım.",
+      "Aynı kayıtları iki eşikle hesaplayıp ölçüm etkisini gerçek değişimden ayırırım.",
+      "Eşik değişikliğini sonuç raporunun açıklama notuna eklerim.",
+      "Yeni hata oranını önceki oranla karşılaştırıp farkı süreç kazancı sayarım."
+    ],
+    "T013": [
+      "Deneyimli kişilerin sonucunu örnek alıp yöntemi bütün kullanıcılara geçiririm.",
+      "İlk denemede başarılı olan iş türlerini seçerek genel başarı oranını hesaplarım.",
+      "Farklı deneyimdeki kişilerle sınırlı denemede kaliteyi ve süreyi izlerim.",
+      "İki kişinin yöntemi uygularken kullandığı adımları ayrıntılı kaydederim."
+    ],
+    "T014": [
+      "Olası başarı ölçütlerini listeleyip karar sahibinden seçim isterim.",
+      "Veriler açılınca en büyük iyileşmenin görüldüğü ölçütü ana başarı yaparım.",
+      "Başarıyı anlatmak için olumlu sonuçların görüldüğü örnekleri rapora alırım.",
+      "Sonuçlar açılmadan ana ölçütü, yan etkiyi ve kabul sınırını belirlerim."
+    ],
+    "T015": [
+      "Geçici kontrolü izler, neden hipoteziyle kalıcı önlemi ayrıca sınarım.",
+      "Ek kontrolün zaman yükünü ve tuttuğu hata sayısını ölçerim.",
+      "Ek kontrol hatayı tuttuğu için kök neden aksiyonunu tamamlanmış kapatırım.",
+      "Asıl nedeni görünür kılmak için ikinci kontrolü ara vererek kaldırırım."
+    ],
+    "T016": [
+      "İlerleme yüzdesini korumak için dış onayı ayrı rapor dışında takip ederim.",
+      "Hazır çıktıyla dış onayı ayrı teslim koşullarında izlerim.",
+      "Kalan işleri bir listeye alıp güncel ilerlemeye eklerim.",
+      "İşin yüzde 90'ı bittiğinden teslim tarihini güvence altında gösteririm."
+    ],
+    "T017": [
+      "Kullanıcı memnuniyetini korumak için alanı ekler, tarihi değiştirmemeyi üstlenirim.",
+      "Tarih sabit olduğu için değişikliği etki incelemeden geri çeviririm.",
+      "Kapsam, süre ve kalite etkisini seçeneklerle sunup değişiklik kararı alırım.",
+      "Yeni alanın geliştirme ve test süresini tahmin ederim."
+    ],
+    "T018": [
+      "Her iş için ayrı bir teslim tarihi ve durum alanı yazarım.",
+      "Uzun süren işi kritik kabul edip diğerlerinin ilerlemesini ona göre varsayarım.",
+      "Kaynaklar hazırken üçüncü işi başlatıp eksik girdileri sonra tamamlatırım.",
+      "İki girdinin teslim ve kabulünü üçüncü işin başlangıç koşuluna bağlarım."
+    ],
+    "T019": [
+      "Teknik hazırlığı kabulden ayırıp kullanıcı örnekleriyle tamamlanmayı sınarım.",
+      "Test etmesi için kullanıcıya dosyayı ve erişim bilgisini gönderirim.",
+      "Teknik test çalıştığı için kullanıcı kabulünü de tamamlanmış raporlarım.",
+      "İtiraz gelmemesini kabul sayıp kullanıcı onayını proje kaydına işlerim."
+    ],
+    "T020": [
+      "Ders çıkarma notlarını kişisel dosyamda tutup ortak kapanışa eklemem.",
+      "Neden ve işe yarayan kontrolü sonraki projeye aktarırım.",
+      "Projede oluşan gecikme günlerini kalem bazında toplarım.",
+      "Teslim tamamlandığı için kapanışı yalnız çıktı ve bütçe hesabıyla bitiririm."
+    ],
+    "T021": [
+      "Pozitif katkının ilk ödemeyi de karşılayacağını varsayıp ek kaynak planlamam.",
+      "Faturadaki 30.000 TL'yi bugünden kullanılabilecek nakit olarak bütçeye alırım.",
+      "10.000 TL katkı ile bugünkü 20.000 TL finansman ihtiyacını ayrı gösteririm.",
+      "Tahsilat tarihini ve maliyetin ödeme koşullarını ayrıca teyit ederim."
+    ],
+    "T022": [
+      "Toplam maliyetin 20.000'den 21.000 TL'ye yükseldiğini belirtirim.",
+      "Birim fiyat azaldığı için toplam maliyet değişimini de olumlu sayarım.",
+      "Toplamdaki 1.000 TL artışı alım sürecinin verimsizlik maliyeti kabul ederim.",
+      "Hacim +4.000, fiyat −3.000 TL; toplam maliyet sapması +1.000 TL olur."
+    ],
+    "T023": [
+      "Geri alınamayan ortak ödemeyi ayırıp değişen gelecek nakitlerini karşılaştırırım.",
+      "İki seçeneğin gelecek ödeme takvimini ve tutarlarını çıkarırım.",
+      "Geçmiş yatırımın boşa gitmemesi için mevcut seçeneğe devam etmeyi öneririm.",
+      "Geçmiş harcamayla gelecek harcamayı tek toplamda karşılaştırıp düşük olanı seçerim."
+    ],
+    "T024": [
+      "Saat maliyetiyle çarpıp bütçeden aynı tutarın düşürülebileceğini taahhüt ederim.",
+      "Serbest süreyi nakit kazancından ayırıp kullanım ve gerçekleşme koşulunu yazarım.",
+      "Ölçülen saatleri ve hesapta kullanılan varsayımları teyit ederim.",
+      "Serbest kalan saatleri aynı ayın gerçekleşmiş nakit tasarrufu hanesine yazarım."
+    ],
+    "T025": [
+      "Olay sayısı sıfır olduğundan kontrol etkinliğini yüksek olarak raporlarım.",
+      "Olay görülmeyen kontrollerin sıklığını başka kanıt aramadan sıfıra indiririm.",
+      "Kontrolün tasarımını ve uygulamasını örnekle doğrularım.",
+      "Kontrol kayıtlarının nerede ve kim tarafından tutulduğunu sorarım."
+    ],
+    "T026": [
+      "Riskin güncel durumunu bir sonraki koordinasyon toplantısına taşırım.",
+      "Risk listesinde bulunduğu için ayrıca bir takip görevi açmam.",
+      "Takip edecek kişi belirlenene kadar riski aktif listeden arşive alırım.",
+      "Risk sahibini, göstergeyi ve eskalasyon eşiğini belirlerim."
+    ],
+    "T027": [
+      "Etkiye uygun bağımsız kontrol veya telafi edici kontrolü süreç sahibiyle tasarlarım.",
+      "Hazırlama ve onay adımlarını görev akışında görünür kılarım.",
+      "Deneyimli hazırlayıcının öz kontrolünü nihai onay için yeterli kabul ederim.",
+      "İş akışını hızlandırmak için ikinci kontrol imzasını hazırlayan kişiye devrederim."
+    ],
+    "T028": [
+      "İlk hizmet sorunu ortaya çıktığında ayrıntılı izleme kaydını başlatırım.",
+      "Dış firmanın görevinden ayrı olarak kurum göstergelerini ve ihlal yolunu kurarım.",
+      "Sözleşmedeki hizmet görevlerini ve taraf sorumluluklarını çıkarırım.",
+      "Riski dış firmaya devredilmiş sayıp kurum içi takip sahibini kaldırırım."
+    ],
+    "T029": [
+      "Olay sıklığını esas alır, en çok tekrar eden riske kaynak ayırırım.",
+      "Nadir olay için geçmişte örnek bulunmadığından özel bir müdahale planlamam.",
+      "Olasılık ve etkiyi mevcut kontrol ve müdahale süresiyle birlikte tartarım.",
+      "İki riskin parasal kayıp ve hizmet etkilerini ayrı çıkarırım."
+    ],
+    "T030": [
+      "Örneklerin alındığı ürünleri ve seçim yapılan konumları kaydederim.",
+      "On örnekte kusur çıkmadığı için partiyi bütünüyle hatasız kabul ederim.",
+      "Kontrol edilmemiş ürünlere de örneklerle aynı uygunluk sonucunu işlerim.",
+      "Seçim yöntemini kabul planıyla eşleyip on üründen genelleme sınırını belirlerim."
+    ],
+    "T031": [
+      "Geçerli sürümün erişimini netleştirip eski çıktıları aynı ölçütle incelerim.",
+      "İki kullanıcının elindeki sürümleri ve tarihlerini listelerim.",
+      "Her kullanıcının alıştığı sürümle devam etmesine bir süre daha izin veririm.",
+      "Karışıklık bitmesi için eski sürümleri arşiv izi bırakmadan sistemden kaldırırım."
+    ],
+    "T032": [
+      "Form tamamlandığından uygunsuz çıktıları kontrol kapsamı dışında değerlendiririm.",
+      "Kontrolün nasıl yapıldığını ve ölçütün anlaşılmasını gerçek çıktıda sınarım.",
+      "Uygun olmayan örnekleri toplayıp hangi koşulda oluştuğunu kaydederim.",
+      "Kontrol kutularını işaretlenmiş görüp çıktının kabul şartını sağladığını varsayarım."
+    ],
+    "T033": [
+      "Değişiklik kaydına dayanarak düzeltmenin etkinliğini kabul ederim.",
+      "Aynı hatanın tekrarını önceki düzeltmeyle bağlamadan yeni aksiyon olarak açarım.",
+      "İlk hata koşulunu ve ilgili yan etkileri tekrar sınayıp düzeltmenin etkinliğini kaydederim.",
+      "Yapılan değişikliği ve uygulayan sorumluyu kayda geçiririm."
+    ],
+    "T034": [
+      "Kaynak alanlarını ve mevcut dönüşüm adımlarını listelerim.",
+      "Mevcut rapordaki alanları aynı biçimde otomasyona taşımayı önceliklendiririm.",
+      "Tanıma uymayan satırları aktarmadan kalan kayıtlarla raporu tamamlarım.",
+      "Tanım ve veri doğrulamasını netleştirip otomasyonun hata durumlarını tasarlarım."
+    ],
+    "T035": [
+      "Tekil anahtarla tekrar işlem davranışını sınarım.",
+      "Başarılı ve başarısız işlemler için ayrı durum kaydı tutarım.",
+      "Bağlantı kesilince her kaydı yeni bir işlem olarak yeniden gönderirim.",
+      "Bağlantı kurulduğunda önceki denemelerin hepsini başarılı durumuna geçiririm."
+    ],
+    "T036": [
+      "Dosya ve sütun adlarını değiştirip gerçek veriyi bu biçimde denerim.",
+      "Veri türünü, hedefi ve kurum onayını netleştirmeden gerçek veriyi aktarmam.",
+      "Aracın işlevini gerçek dosya yerine sentetik veriyle denerim.",
+      "Deneme ortamını yeterli koruma sayarak gerçek dosyanın tamamını yüklerim."
+    ],
+    "T037": [
+      "Bir kez başarıyla çalıştığı için kesintide yeniden başlatmayı yeterli plan sayarım.",
+      "Kritik işi sürdürmek için elle yapılan değişiklikleri ayrıca kaydetmeden uygularım.",
+      "Bildirim, sorumlu, elle devam ve sonradan uzlaştırma adımlarını tasarlarım.",
+      "Kesintinin iş etkisini ve durduğu işlem noktasını çıkarırım."
+    ],
+    "T038": [
+      "Değişiklikten etkilenen görevleri ve birimleri listelerim.",
+      "İki bölümün onayını bütün uygulama kapsamı için yeterli kabul ederim.",
+      "Üçüncü bölüme planı gönderir, cevap gelmezse katılımını tamamlanmış sayarım.",
+      "Etkilenen üçüncü bölümü işi değiştiren somut karar üzerinden sürece katarım."
+    ],
+    "T039": [
+      "Hizmet ve maliyet seçeneklerini ortak karar sorusuyla yetkiliye sunarım.",
+      "İki tarafın ölçütlerini ve mevcut sonuçlarını aynı tabloda gösteririm.",
+      "Yetkisi daha güçlü bölümün önceliğine göre diğer hedefi geri plana alırım.",
+      "Mevcut kaynakla iki hedefi de koşulsuz karşılayacağımı taahhüt ederim."
+    ],
+    "T040": [
+      "Yöneticinin hızlı karar vermesi için risk ayrıntısını yalnız uygulayıcıya veririm.",
+      "Aynı kanıtla yöneticiye karar özetini, uygulayıcıya işlem ayrıntısını sunarım.",
+      "İki grubun öneriye ilişkin sorularını toplayıp sınıflandırırım.",
+      "Bilgi eşitliği için bütün ayrıntıları iki gruba da aynı sunumla yollarım."
+    ],
+    "T041": [
+      "Herkesin aynı öncelikte anlaşmasını bekler, bu sırada karar tarihini açık bırakırım.",
+      "Çoğunluk desteklediği için sonucu tam uzlaşma olarak tutanağa geçiririm.",
+      "Açık kalan kararın sahibini, seçenekleri ve etkilerini kayda geçirip karar yolunu işletirim.",
+      "Uzlaşılmayan noktaları ve tarafların gerekçelerini özetlerim."
+    ],
+    "T042": [
+      "Katılımcılardan toplantıda tuttukları kişisel notlarını paylaşmalarını isterim.",
+      "En yüksek karar yetkisine sahip kişinin hatırladığı tarihi geçerli kabul ederim.",
+      "Takip tarihini geçmiş kayıtları değiştirecek şekilde yeniden yazarım.",
+      "Çıktı, sorumlu ve takip tarihini katılanların kısa teyidiyle ortaklaştırırım."
+    ],
+    "T043": [
+      "Eğitim sayısını faaliyet sayar, davranış ve iş sonucu için ayrı takip kurarım.",
+      "Katılan kişileri ve eğitimde işlenen konuların kapsamını çıkarırım.",
+      "Planlanan eğitim sayısı tamamlandığından hata azaltma hedefini gerçekleşmiş sayarım.",
+      "Eğitim sonrası hataları değerlendirmeye almayıp yalnız eğitim oturumlarını raporlarım."
+    ],
+    "T044": [
+      "Bitmiş bir sonuç sunabilmek için teslim gününe kadar güncelleme yapmam.",
+      "Kendi açığımı ve bağımlılığı ayırıp seçeneklerle erken güncelleme paylaşırım.",
+      "Bağımlılığın sahibine güncel durumu ve beklenen tarihi sorarım.",
+      "İşin bütün gecikmesini bağımlı olduğum kişinin sorumluluğunda raporlarım."
+    ],
+    "T045": [
+      "Durum kapalı göründüğünden beklenen çıktıyı ayrıca kontrol etmem.",
+      "Aksiyon kaydındaki hedefi mevcut işe uyacak biçimde sonradan değiştiririm.",
+      "Çıktı ve kabul kanıtını kontrol ederek kapanışı doğrularım.",
+      "Aksiyon sahibinden yaptığı işi kısa bir metinle özetlemesini isterim."
+    ],
+    "T046": [
+      "Dosyayı ve gönderim zamanını kendi iş listeme kaydederim.",
+      "Dosyayı göndermeyi bölümümün tamamlanma ölçütü sayıp sonraki işi takip etmem.",
+      "Bilgi açığına rağmen devri tamamlandı gösterip sonraki kişiden devam etmesini isterim.",
+      "Sonraki kişinin başlayabilmesi için devir çıktısı ve açık girdileri doğrularım."
+    ],
+    "T047": [
+      "Bu ayın kazancını gelecek bakım ve hizmet etkisiyle aynı çerçevede tartarım.",
+      "Gelecek bakım yüklerini ve hesapta kullanılan varsayımları listelerim.",
+      "Kararı bu ayın bütçe sonucuna göre verip gelecek yükü sonraki döneme bırakırım.",
+      "Karar tablosuna yalnız bu yıl oluşan tutarları alarak gelecek etkileri dışlarım."
+    ],
+    "T048": [
+      "Üst yönetimde en çok görünür olan girişimi doğrudan ilk sıraya koyarım.",
+      "Hedef katkısı ve kapasiteyle girişimleri sıralayıp erteleme kararını kaydederim.",
+      "Girişimlerin kaynak ihtiyaçlarını ve sürelerini ayrı ayrı çıkarırım.",
+      "Her girişimi aynı hafta başlatıp kaynak sorununu ilerledikçe çözmeyi üstlenirim."
+    ],
+    "T049": [
+      "En yüksek talep tahminini hedef kabul edip diğer olasılıkları hesaba katmam.",
+      "Kararın değişmemesi için tahmin aralığını sunumda tek rakam olarak gösteririm.",
+      "Alternatif talep koşullarında sonucu ve geri dönüş seçeneğini incelerim.",
+      "Temel tahmini üreten kaynağı ve hesap varsayımını teyit ederim."
+    ],
+    "T050": [
+      "Göstergenin hesabını ve veri kaynağını açık bir tanıma bağlarım.",
+      "Hızlı ölçülebildiği için göstergeyi doğrudan müşteri başarısı hedefi yaparım.",
+      "Göstergeyi yükseltmek için zor müşteri gruplarını hesap kapsamından çıkarırım.",
+      "Gösterge ile müşteri sonucu arasındaki varsayımı ve ters teşviki sınarım."
+    ],
+    "T051": [
+      "−5.000 TL katkıyla fiyat ve kapsamı değerlendiririm.",
+      "Ek hizmetin 20.000 TL tutarını ve hangi koşulda oluştuğunu teyit ederim.",
+      "Sözleşmenin 100.000 TL cirosunu işin sağlayacağı kazanç olarak gösteririm.",
+      "85.000 TL maliyeti hesaba alıp özel hizmeti sözleşme değerlendirmesinden çıkarırım."
+    ],
+    "T052": [
+      "İade kısıtını hesaplanamadığı için karşılaştırma tablosuna almam.",
+      "Birim fiyatı toplam maliyet, stok ve teslim riskleriyle karşılaştırırım.",
+      "Tekliflerin fiyat dışındaki koşullarını ortak bir tabloda toplarım.",
+      "Talep değişimini incelemeden birim fiyatı en düşük teklifi seçerim."
+    ],
+    "T053": [
+      "Satışı korumak için onay sınırımın üzerindeki indirim sözünü peşinen veririm.",
+      "İndirimin katkı etkisini teklif dışında tutup yalnız satış büyümesini sunarım.",
+      "İndirimin katkı etkisini miktar, ödeme ve hizmet karşılıklarıyla müzakere ederim.",
+      "Müşterinin indirimin arkasındaki ihtiyacını ve önceliklerini netleştiririm."
+    ],
+    "T054": [
+      "Yeni müşteri için gereken kapasiteyi ve hizmet zamanlamasını çıkarırım.",
+      "Büyük ciroyu yeterli gerekçe sayıp mevcut kapasiteyle taahhüt veririm.",
+      "Mevcut müşterilerdeki hizmet etkisini karar sunumunun kapsamına almam.",
+      "Katkıyı kapasite, bağımlılık ve mevcut hizmet etkisiyle birlikte senaryolarım."
+    ],
+    "T055": [
+      "Taahhüt kapsamı, değişen maliyet ve ek hizmetleri takip ederek gerçek katkıyı kontrol ederim.",
+      "Sözleşmenin kapsamını ve taahhütlerini hizmeti verecek ekibe aktarırım.",
+      "Satış tamamlandığı için sonuç takibini yalnız müşteri yenileme dönemine bırakırım.",
+      "Müşteri ilişkisini korumak için ek hizmetleri kapsam değişikliği kaydı açmadan sürdürürüm."
+    ],
+    "P001": [
+      "Toplama ile paketlemenin işlem sürelerini ayrı ayrı ölçerim.",
+      "Toplamayı hızlandırdığı için öneriyi şirket genelinde başarılı değerlendiririm.",
+      "Yalnız toplama kazancını sunar, kuyruk etkisini başka bölümün raporuna bırakırım.",
+      "Uçtan uca süre, kuyruk ve zamanında çıkışla darboğaz etkisini araştırırım."
+    ],
+    "P002": [
+      "Ekranın açılmasını yetki kuralının çalıştığını gösteren yeterli örnek sayarım.",
+      "Bölümler arası erişim denemesini kullanıcı kabulünden çıkarıp canlı kullanıma bırakırım.",
+      "Kendi ve bölüm dışı kayıtlar dahil yetkili/yetkisiz erişimi kabulde sınarım.",
+      "Yetki matrisi taslağını hazırlayıp kullanıcıdan kapsam teyidi isterim."
+    ],
+    "P003": [
+      "Toplamı ortalama sipariş sayısına bölüp bütün müşteriler için düzeltirim.",
+      "Tane düzeyini ve birleşim çokluğunu kontrol ederim.",
+      "Tekil müşteri sayısını birleştirme öncesi ve sonrası karşılaştırırım.",
+      "Artan toplamı yeni analizde ortaya çıkan ek gelir olarak yorumlarım."
+    ],
+    "P004": [
+      "Aynı kayıtları ortak KPI zaman tanımıyla eşlerim.",
+      "İki panonun filtrelerini ve veri güncelleme tarihlerini çıkarırım.",
+      "Daha yeni yüklenen panonun sonucunu varsayılan doğru değer kabul ederim.",
+      "Tutarsızlık görünmemesi için diğer panoyu nedenini incelemeden kullanımdan kaldırırım."
+    ],
+    "P005": [
+      "Kontrolün yapılıp yapılmadığını işlemin kaynağından teyit ederim.",
+      "Fiziksel bir sorun görünmediği için kontrolü yapılmış sayıp devam ederim.",
+      "Kesim yetişsin diye eksik onayı kendim tamamlayıp kaydı sonradan doğrulatırım.",
+      "Eksik kontrolü sorumluya bildirip yetkiyi aşmadan çıkış seçeneğini eskale ederim."
+    ],
+    "P006": [
+      "Farkların tümünü sayım ekibine bağlayıp yeniden sayım talep ederim.",
+      "Fiili stok tutarlı görünsün diye hareket izi oluşturmadan kaydı değiştiririm.",
+      "Hareket sırasını ve düzeltmeleri diğer saatlerle karşılaştırırım.",
+      "Fark görülen ürünleri ve lokasyonları ayrı listeler halinde çıkarırım."
+    ],
+    "P007": [
+      "Standart süreli işleri öne alıp zor işleri plana göstermeden ertelerim.",
+      "130 eşdeğer yük için öncelik ve kapasite seçeneği kurarım.",
+      "İş türlerine göre süreleri ve son tarihleri çıkarırım.",
+      "Toplam iş adedi 100 olduğu için mevcut kapasiteyi yeterli kabul ederim."
+    ],
+    "P008": [
+      "Kabul planına göre zamanları temsil eden örneklem isterim.",
+      "Kontrol edilen saatleri ve bu ürünlere ait kayıtları isterim.",
+      "On iki ürün temiz çıktığından bütün vardiyayı uygun kabul ederim.",
+      "Hata görülen saatleri kabul kapsamı dışında tutarak vardiya sonucunu kapatırım."
+    ],
+    "P009": [
+      "Ölçülen süreyi ve saat hesabında kullanılan varsayımları doğrularım.",
+      "Serbest kalan 40 saati aynı ayın doğrudan bütçe azalması gösteririm.",
+      "Bordro değişmeyeceği halde saat ücretini çarpıp gerçekleşmiş bordro kazancı yazarım.",
+      "Kapasite kazanımını nakit tasarrufundan ayırıp kullanım ve gerçekleşme planını netleştiririm."
+    ],
+    "P010": [
+      "Veri bekleme süresinin kabul tarihini etkilemeyeceğini varsayıp yeşil raporlarım.",
+      "Test verisi hazır olmadan kullanıcı kabulünü tamamlanmış proje adımı gösteririm.",
+      "Takvim etkisi ve alternatifleri karar sahibine sunarım.",
+      "Veri sahibinden mümkün olan ilk teslim tarihini teyit ederim."
+    ],
+    "P011": [
+      "Beklenen sonucu değiştiren rolleri açıklamadan analizin karşılaştırma kapsamından çıkarırım.",
+      "Rol, dönem ve huni adımlarını eşleyip kanal kıyasının sınırını açıklarım.",
+      "Başvuru ve ilerleme sayılarını kanallar için ayrı ayrı toplarım.",
+      "Ham işe alım oranı farkını kanal kalitesinin doğrudan göstergesi sayarım."
+    ],
+    "P012": [
+      "Tahakkukla ödemeyi ayırıp maliyet tablosunu nakit takvimine bağlarım.",
+      "Giderlerin ödeme koşullarını ve güncel tutarlarını teyit ederim.",
+      "Giderin bütçeye alındığı ayı nakit çıkışının ayı olarak kullanırım.",
+      "İki aylık farkı açıklama kaydı açmadan mevcut maliyet tablosunda değiştiririm."
+    ],
+    "P013": [
+      "İndirimden sonra oluşacak yeni fiyat ve maliyeti çıkarırım.",
+      "Fiyat yüzde 10 düştüğünden birim katkının da yüzde 10 düşeceğini hesaplarım.",
+      "Katkı hesabını paylaşmadan indirimi onaylayıp mevcut hizmeti taahhüt ederim.",
+      "Katkı 20'den 10 TL'ye iner; koşulları müzakere ederim."
+    ],
+    "P014": [
+      "Talep ve vade farklarını incelemeden düşük birim fiyatlı teklifi seçerim.",
+      "Minimum miktarı fiyat karşılaştırması dışında tutup A teklifini öneririm.",
+      "Talep, stok tutma, hizmet ve tedarik riskiyle toplam maliyeti karşılaştırırım.",
+      "İki teklifin bütün koşullarını ortak karşılaştırma tablosuna taşırım."
+    ],
+    "P015": [
+      "Tekrarları açıklama kaydı tutmadan silip yeni sayıyı önceki dönemle karşılaştırırım.",
+      "İşlem başına oranı, tekil şikâyeti ve türleri ayırıp adet yorumunu sınırlarım.",
+      "İşlem hacminin ve şikâyet kaydının tanımını teyit ederim.",
+      "Şikâyet adedi yüzde 20 arttığı için hizmetin kesin kötüleştiğini söylerim."
+    ],
+    "P016": [
+      "Zorlandığı canlı koşulu gözleyip kademeli uygulama ve aynı ölçütle takip kurarım.",
+      "Deneme ortamıyla canlı işin farklı olduğu noktaları çıkarırım.",
+      "Denemeyi doğru yaptığından canlı işi tamamen bağımsız yapmaya hazır sayarım.",
+      "Canlı görevlerde zorlandığından yeni iş öğrenmesini süresiz durdururum."
+    ],
+    "P017": [
+      "Ek kontrol yükünü ve ertesi gün oluşacak tekrar işini ölçerim.",
+      "Bugünün hacim hedefini esas alıp sonraki günün yükünü ayrı planlarım.",
+      "Yeniden işi sonraki rapor döneminden çıkararak bugünkü başarıya dahil etmem.",
+      "Hacim, kalite ve yeniden işle uygulanabilir seçenek kurarım."
+    ],
+    "P018": [
+      "İlk bölümün maliyet azalmasını toplam şirket kazancı olarak raporlarım.",
+      "İkinci bölümdeki maliyeti kapsam dışında tutarak önerinin kazancını hesaplarım.",
+      "İki bölümü ortak süreç sınırında maliyet ve hizmet etkisiyle karşılaştırırım.",
+      "İki bölümün maliyet sürücülerini ayrı ayrı çıkarırım."
+    ],
+    "P019": [
+      "Kaynak çakışmasını göstermeden iki projenin başlangıç takvimini korurum.",
+      "Çakışan bağımlılığı hedef katkısı ve erteleme seçenekleriyle portföye taşırım.",
+      "İki projenin uzmana ihtiyaç duyduğu tarihleri ortak takvimde eşlerim.",
+      "Bir uzmanın aynı haftada iki projeye de tam zamanlı yetişeceğini planlarım."
+    ],
+    "P020": [
+      "Karar amacı ve kabul örneğini sorup küçük taslakla erken geribildirim alırım.",
+      "Daha önce hazırlanmış benzer bir çıktı örneği isterim.",
+      "Kapsamı kendim genişletip mümkün olan en ayrıntılı raporu hazırlamaya başlarım.",
+      "Talebi anlamasam da görevi kabul edilmiş çıktı gibi tamamlandı bildiririm."
+    ]
+  }
+}

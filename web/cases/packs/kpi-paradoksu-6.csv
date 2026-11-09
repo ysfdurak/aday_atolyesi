@@ -1,0 +1,9 @@
+﻿Kayıt;Kanal;İş türü;Söz verilen gün;Gerçekleşen gün;Bölüm notu
+T 01;Web;Kurulum;5 Ekim;5 Ekim;Normal
+T 02;Mağaza;Kurulum;6 Ekim;8 Ekim;Adres teyidi bekledi
+T 03;Mağaza;Bakım;7 Ekim;7 Ekim;Normal
+T 04;Mağaza;Kurulum;8 Ekim;10 Ekim;Ürün hazır değildi
+T 05;Web;Bakım;9 Ekim;9 Ekim;Normal
+T 06;Mağaza;Bakım;12 Ekim;13 Ekim;Müşteri zaman değişikliği
+T 07;Mağaza;Kurulum;13 Ekim;13 Ekim;Normal
+T 08;Web;Kurulum;14 Ekim;14 Ekim;Normal

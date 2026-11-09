@@ -1,0 +1,2405 @@
+{
+  "dimensions": [
+    {
+      "id": "sistem",
+      "name": "Gereksinim ve sistem analizi",
+      "subtitle": "İhtiyacı doğrulanabilir sistem davranışına bağlama",
+      "expectation": "İş ihtiyacını kullanıcı, veri, istisna ve kabul ölçütüyle tanımlar.",
+      "risk": "Çözüm isteğini doğrulanmış ihtiyaç sayma; istisna ve yetkiyi atlama.",
+      "interview": "Gereksinim ve sistem analizi gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Bir talep için kullanıcı akışı, üç istisna ve test edilebilir kabul ölçütleri yaz.",
+      "indicator": "İhtiyaçtan kabul testine izlenebilirlik ve açık kalan sorular.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "surec",
+      "name": "Süreç tasarımı ve iyileştirme",
+      "subtitle": "Uçtan uca akış ve sürdürülebilir iyileştirme",
+      "expectation": "Akışı uçtan uca inceler; bekleme, tekrar iş ve darboğaz etkisini ayırır.",
+      "risk": "Tek adımı hızlandırırken toplam teslim süresini veya kaliteyi kötüleştirme.",
+      "interview": "Süreç tasarımı ve iyileştirme gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Bir akışın işlem ve bekleme sürelerini çıkar; küçük bir değişimi aynı ölçütle karşılaştır.",
+      "indicator": "Toplam çevrim süresi, tekrar iş ve çıktı kalitesindeki değişim.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "kokneden",
+      "name": "Kök neden ve deney tasarımı",
+      "subtitle": "Neden iddiasını ayırt edici kanıtla sınama",
+      "expectation": "Alternatif nedenleri ayırır; iddiayı karşılaştırılabilir gözlem veya deneyle sınar.",
+      "risk": "Birlikte değişen iki durumu neden sayma; aynı anda çok sayıda değişiklik yapma.",
+      "interview": "Kök neden ve deney tasarımı gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Bir sorun için üç hipotez ve her birini ayıracak gözlem planı hazırla.",
+      "indicator": "Hipotez, karşı kanıt, karşılaştırma koşulu ve sonucun sınırları.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "proje",
+      "name": "Proje ve bağımlılık yönetimi",
+      "subtitle": "Kapsam, bağımlılık ve kabul ile ilerleme",
+      "expectation": "Kapsamı, bağımlılıkları, sorumluları ve kabul ölçütlerini birlikte yönetir.",
+      "risk": "Faaliyet tamamlanmasını teslimat kabulü sayma; kritik bağımlılığı geç fark etme.",
+      "interview": "Proje ve bağımlılık yönetimi gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Küçük bir proje için bağımlılık haritası ve teslimat kabul listesi hazırla.",
+      "indicator": "Bağımlılık sahipleri, karar tarihleri ve kabul edilmiş teslimatlar.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "finans",
+      "name": "Finansal farkındalık",
+      "subtitle": "Maliyet, katkı ve nakit etkisini ayırma",
+      "expectation": "Gelir, maliyet, katkı ve nakit zamanlamasını ayrı değerlendirir.",
+      "risk": "Ciro artışını kârlılık veya tahsilatla eş tutma.",
+      "interview": "Finansal farkındalık gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "İki seçeneği maliyet, katkı ve nakit takvimiyle karşılaştır; varsayımları yaz.",
+      "indicator": "Hesap dayanakları, tahsilat vadeleri ve duyarlılık karşılaştırması.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "risk",
+      "name": "Risk ve kontrol",
+      "subtitle": "Olası kaybı uygun kontrol ve sahiplikle yönetme",
+      "expectation": "Riskin olasılığını, etkisini ve kontrol sahipliğini birlikte ele alır.",
+      "risk": "Kontrol varlığını etkinlik kanıtı sayma; artık riski görünmez bırakma.",
+      "interview": "Risk ve kontrol gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Bir iş için risk, önleyici kontrol, tespit kontrolü ve sorumlu tablosu kur.",
+      "indicator": "Kontrol kanıtı, istisna kaydı ve kalan riskin kabul sahibi.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "kalite",
+      "name": "Kalite ve standardizasyon",
+      "subtitle": "Çıktı uygunluğu ve süreç tutarlılığı",
+      "expectation": "Uygunluk ölçütünü açıklar; örnekleme, süreç kararlılığı ve izlenebilirliği gözetir.",
+      "risk": "Son kontrolü tek güvence sayma; örnek sonuçlarını bütün çıktıya genelleme.",
+      "interview": "Kalite ve standardizasyon gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Bir çıktı için kritik kabul ölçütleri ve uygunsuzluk takip düzeni hazırla.",
+      "indicator": "Örnekleme gerekçesi, hata türleri ve düzeltmenin tekrar üzerindeki etkisi.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "dijital",
+      "name": "Dijital araç ve otomasyon",
+      "subtitle": "İhtiyaca uygun, izlenebilir otomasyon",
+      "expectation": "Aracı iş ihtiyacına göre seçer; erişim, hata ve geri dönüş düzenini tasarlar.",
+      "risk": "Çalışan bir otomasyonu güvenli ve sürdürülebilir sayma.",
+      "interview": "Dijital araç ve otomasyon gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Küçük bir otomasyon için girdi kontrolü, hata kaydı ve manuel dönüş planı yaz.",
+      "indicator": "Tekrarlı işlem kontrolü, erişim sınırı ve başarısızlıkta kurtarma kaydı.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "paydas",
+      "name": "Paydaş ve etki yönetimi",
+      "subtitle": "Karar ihtiyacını ve etkilenen tarafları koordine etme",
+      "expectation": "Tarafların karar ihtiyacını ve etki alanını netleştirir; anlaşmazlığı görünür kılar.",
+      "risk": "Herkesi bilgilendirmeyi karar mutabakatı sayma.",
+      "interview": "Paydaş ve etki yönetimi gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Bir karar için etkilenen taraf, karar sahibi, çekince ve iletişim zamanını çıkar.",
+      "indicator": "Açık karar sahibi, çözülen çekinceler ve teyit edilmiş beklentiler.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "sonuc",
+      "name": "Sonuç ve sorumluluk alma",
+      "subtitle": "Taahhüdü takip edip etkiyi görünür kılma",
+      "expectation": "Taahhüdün sahibini ve sonucunu takip eder; engeli ve kendi katkısını açıklar.",
+      "risk": "Yoğun faaliyeti sonuç sayma; gecikmeyi görünmez bırakma.",
+      "interview": "Sonuç ve sorumluluk alma gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Bir taahhüt için başlangıç, hedef çıktı, kontrol tarihi ve engel kaydı tut.",
+      "indicator": "Kabul edilmiş çıktı, zamanında bildirilen engel ve somut katkı.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "strateji",
+      "name": "Stratejik düşünme",
+      "subtitle": "Kısa vadeyi uzun vadeli hedef ve seçenekle bağlama",
+      "expectation": "Kısa vadeli kararı uzun vadeli hedef, kapasite ve seçeneklerle ilişkilendirir.",
+      "risk": "Tek senaryoya bağlanma; fırsat maliyeti ve vazgeçilen seçeneği dışlama.",
+      "interview": "Stratejik düşünme gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "Bir büyüme kararı için üç seçenek, belirsizlikler ve yeniden değerlendirme eşikleri yaz.",
+      "indicator": "Hedef bağlantısı, kaynak sınırı ve senaryolar arasında kararın değiştiği eşik.",
+      "category": "Mesleki ve yönetsel uygulama"
+    },
+    {
+      "id": "ticari",
+      "name": "Ticari muhakeme",
+      "subtitle": "Müşteri değeri, katkı ve koşulları birlikte değerlendirme",
+      "expectation": "Müşteri değerini, katkıyı ve sözleşme koşullarını birlikte değerlendirir.",
+      "risk": "İndirim veya satış hacmini tek başarı ölçütü sayma.",
+      "interview": "Ticari muhakeme gerektiren bir iş veya proje örneğini anlatır mısın? Kendi katkın, dayanağın ve sonuç neydi?",
+      "anchor": "Karar, kaynak, sınır ve kendi katkısı somut bir örnekte ayrışır.",
+      "action": "İki teklif seçeneğini müşteri değeri, katkı, vade ve hizmet yüküyle karşılaştır.",
+      "indicator": "Katkı hesabı, taahhüt sınırı ve müşteri ihtiyacına ilişkin kanıt.",
+      "category": "Mesleki ve yönetsel uygulama"
+    }
+  ],
+  "items": [
+    {
+      "id": "T001",
+      "dim": "sistem",
+      "title": "İki farklı “tamamlandı”",
+      "sub": "İki farklı “tamamlandı”",
+      "scene": "İki birim aynı işlem için “tamamlandı” diyor: biri dosya yüklenmesini, diğeri onayı kastediyor. Yeni ekranı tanımlayacaksın. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Daha sık kullanılan anlamı tek tanım kabul ederim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "İki birime aynı etiketi kullanmalarını söylerim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "İki durumun giriş/çıkış koşullarını, geçiş yetkisini ve kabul örneklerini ayrı tanımlarım.",
+          "score": 3,
+          "why": "İş durumu ile ekran etiketini ayırır; geçişin sınanmasını sağlar."
+        },
+        {
+          "text": "Bir durum tablosu hazırlayıp iki birime teyit ettiririm.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T002",
+      "dim": "sistem",
+      "title": "İstisna yolu",
+      "sub": "İstisna yolu",
+      "scene": "Form için yalnız normal akış yazılmış. Yetki reddi ve eksik veri örnekleri var; geliştirme yarın başlayacak. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Eksik senaryoları risk listesine yazarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "İstisnaları kullanıcıya bırakırım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Normal akış çalışınca bütün işin bittiğini sayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Normal akışa hata/istisna koşulları ve beklenen geri dönüşleri ekleyip önceliğini teyit ederim.",
+          "score": 3,
+          "why": "Sistem davranışını başarısızlık koşullarında da doğrulanabilir yapar."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T003",
+      "dim": "sistem",
+      "title": "Yeni alanın anlamı",
+      "sub": "Yeni alanın anlamı",
+      "scene": "Aynı müşteri alanı iki sistemde farklı kod listesi kullanıyor. Aktarım kuralı isteniyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Kod eşlemesini, eşleşmeyen kayıt davranışını ve kaynak tanımı birlikte netleştiririm.",
+          "score": 3,
+          "why": "Eşleme ile veri kaybı ve istisna kararını birlikte ele alır."
+        },
+        {
+          "text": "İki kod listesini yan yana çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Aynı görünen kodları anlamını kontrol etmeden eşlerim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Eşleşmeyenleri sessizce silerim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T004",
+      "dim": "sistem",
+      "title": "Ekran mı ihtiyaç mı?",
+      "sub": "Ekran mı ihtiyaç mı?",
+      "scene": "Kullanıcı mevcut Excelin bütün sütunlarını yeni ekrana istiyor. Bazı sütunlar hiç kullanılmıyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Sütunları kendi tercihime göre kaldırırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Her sütunun desteklediği karar ve kullanıcı akışını inceleyip asgari kabul kapsamını belirlerim.",
+          "score": 3,
+          "why": "Talep edilen çözüm ile iş ihtiyacını ayırır."
+        },
+        {
+          "text": "Kullanılmayan sütunları işaretleyip teyit isterim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Hepsini taşımayı zorunlu gereksinim sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T005",
+      "dim": "surec",
+      "title": "Yerel hız, toplam bekleme",
+      "sub": "Yerel hız, toplam bekleme",
+      "scene": "Bir adımı hızlandıran öneri, sonraki kontrolün önünde daha büyük kuyruk yaratıyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "İlk adımın hızını tek başarı ölçütü alırım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Sonraki adımın sorunu olduğunu söyleyip sonucu dışlarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Toplam akış süresi ve sonraki kapasiteyi birlikte inceleyip öneriyi uçtan uca denerim.",
+          "score": 3,
+          "why": "Yerel kazanç ile sistem sonucunu ayırır."
+        },
+        {
+          "text": "Kuyruk büyüklüğünü ayrıca ölçerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T006",
+      "dim": "surec",
+      "title": "Görünmeyen bekleme",
+      "sub": "Görünmeyen bekleme",
+      "scene": "Bir dosyanın işlem süresi 15 dakika, teslim süresi iki gün. Bekleme kaydı yok. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Bir haftalık teslim sürelerini toplarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "İşlem süresini yarıya indirmenin iki günü yarıya indireceğini varsayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "İki günü çalışanların yavaşlığına bağlarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "İşlem ve bekleme zamanlarını aynı dosya iziyle ayırır, kuyruk ve devir noktalarını gözlerim.",
+          "score": 3,
+          "why": "İşlem dışındaki akış kaybını görünür kılar."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T007",
+      "dim": "surec",
+      "title": "Kaldırılan kontrol",
+      "sub": "Kaldırılan kontrol",
+      "scene": "Mükerrer görünen kontrolü kaldırmak zaman kazandıracak; iki kontrolün yakaladığı hata türleri bilinmiyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Aynı kayıtlar üzerinde yakalanan hata ve kaçan riskleri karşılaştırıp kaldırma koşulunu belirlerim.",
+          "score": 3,
+          "why": "Tekrar görüntüsü yerine kontrol işlevini sınar."
+        },
+        {
+          "text": "İki kontrolün amaçlarını ve sürelerini çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Adları benzer olduğu için birini kaldırırım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Kontrollerden birini haber vermeden atlarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T008",
+      "dim": "surec",
+      "title": "İyileştirme kalıcılığı",
+      "sub": "İyileştirme kalıcılığı",
+      "scene": "Bir haftalık denemede süre azaldı; yöntemi yalnız denemeyi yapan kişi biliyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Denemeyi yapan kişinin sürekli yardım etmesini çözüm sayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "İş standardı, eğitim ve takip ölçütünü kurup başka kullanıcıyla aynı sonucu denerim.",
+          "score": 3,
+          "why": "Tek kişilik başarıyı tekrarlanabilir sürece dönüştürmeyi sınar."
+        },
+        {
+          "text": "Yöntemi dokümana eklerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Bir haftalık kazancı bütün yıla kesin sonuç diye yazarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T009",
+      "dim": "surec",
+      "title": "İşin gerçekten gerekliliği",
+      "sub": "İşin gerçekten gerekliliği",
+      "scene": "Bir rapor her hafta iki saat sürüyor. Kimse son altı ayda hangi kararda kullanıldığını söyleyemiyor. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Önce raporu otomatikleştiririm.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Kimseye haber vermeden raporu keserim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Kullanıcı ve karar ihtiyacını doğrular, durdurma veya sadeleştirmeyi kontrollü bir denemeyle değerlendiririm.",
+          "score": 3,
+          "why": "Gereksiz işi hızlandırmadan önce ihtiyacı sorgular."
+        },
+        {
+          "text": "Kullanım kayıtlarını ve alıcıları çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T010",
+      "dim": "kokneden",
+      "title": "Tek olaydan neden",
+      "sub": "Tek olaydan neden",
+      "scene": "Bir hata yeni talimatın yayımlandığı gün arttı. Aynı gün ürün karışımı da değişti. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Hata türlerini ve tarihini çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Aynı gün olduğu için talimatı kesin neden yazarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Talimatı hazırlayanı sorumlu ilan ederim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Talimat ve ürün etkisini ayıracak karşılaştırmayı kurar; zaman birlikteliğini kesin neden saymam.",
+          "score": 3,
+          "why": "Birliktelik ve nedenselliği ayırır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T011",
+      "dim": "kokneden",
+      "title": "Ayırt edici deneme",
+      "sub": "Ayırt edici deneme",
+      "scene": "İki neden aynı toplam hata sayısını açıklıyor. Birinin öngörüsü yalnız belirli iş türünde hata artışı. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "İş türüne göre ayrıştırılmış örneklerle iki hipotezin farklı öngörüsünü sınarım.",
+          "score": 3,
+          "why": "Herhangi bir ek veri yerine açıklamaları ayıran veriyi seçer."
+        },
+        {
+          "text": "Daha fazla toplam hata verisi toplarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "İlk açıklamayı destekleyen örnekleri seçerim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "İki açıklamadan popüler olanı kabul ederim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T012",
+      "dim": "kokneden",
+      "title": "Ölçüm değişti",
+      "sub": "Ölçüm değişti",
+      "scene": "Hata oranı iyileşti. Aynı dönemde hatanın kayda alınma eşiği yükseltildi. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Eski tanımlı kayıtları silerim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Eski ve yeni tanımla aynı kayıtları karşılaştırıp gerçek değişim ile ölçüm etkisini ayırırım.",
+          "score": 3,
+          "why": "Sonuçtaki değişimi veri üretim sürecinden ayırır."
+        },
+        {
+          "text": "Yeni eşik değişikliğini rapor notuna eklerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Düşüşü doğrudan süreç başarısı sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T013",
+      "dim": "kokneden",
+      "title": "Denemenin sınırı",
+      "sub": "Denemenin sınırı",
+      "scene": "Yeni yöntemi yalnız en deneyimli iki kişi denedi ve sonuç iyi çıktı. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Sonucu bütün kullanıcılar için kesin kabul ederim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Başarılı olmayan denemeleri kapsamdan çıkarırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Farklı deneyim düzeyinde sınırlı deneme ve kalite/süre takibiyle genellenebilirliği araştırırım.",
+          "score": 3,
+          "why": "Seçilmiş deneme grubunun sınırını korur."
+        },
+        {
+          "text": "İki kişinin kullandığı adımları kaydederim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T014",
+      "dim": "kokneden",
+      "title": "Sonucu görmeden ölçüt",
+      "sub": "Sonucu görmeden ölçüt",
+      "scene": "Bir deneme için başarı ölçütü henüz yazılmadı; sonuç verileri yarın açılacak. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Olası ölçütleri listeleyip karar sahibine sunarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "En iyi görünen sonucu başarı ölçütü seçerim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Sadece olumlu örnekleri raporlarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Birincil ölçütü, yan etkileri ve kabul sınırlarını sonuçları görmeden netleştiririm.",
+          "score": 3,
+          "why": "Sonradan ölçüt seçiminin yanlılığını sınırlar."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T015",
+      "dim": "kokneden",
+      "title": "Geçici ve kalıcı önlem",
+      "sub": "Geçici ve kalıcı önlem",
+      "scene": "Hata şimdilik ikinci kontrolle tutuluyor. Ek kontrol sürekli zaman harcıyor; neden henüz doğrulanmadı. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Geçici korumayı izlerken neden hipotezini ve kalıcı önlem denemesini ayrı takip ederim.",
+          "score": 3,
+          "why": "Koruma ile nedenin ortadan kaldırılmasını ayırır."
+        },
+        {
+          "text": "Ek kontrolün yükünü ve hata sayısını ölçerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Ek kontrol eklendiği için kök nedenin giderildiğini söylerim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Neden bulunana kadar koruyucu kontrolü kaldırırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T016",
+      "dim": "proje",
+      "title": "Tamamlandı yüzdesi",
+      "sub": "Tamamlandı yüzdesi",
+      "scene": "Bir görev %90 bitti deniyor; son %10 kritik dış onaya bağlı ve tarihi belirsiz. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Bağımlılığı ilerleme raporundan çıkarırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Teslim edilebilir çıktıyı ve dış bağımlılığı ayrı gösterip onay sahibi/tarihini netleştiririm.",
+          "score": 3,
+          "why": "Emek ilerlemesini teslim güvencesinden ayırır."
+        },
+        {
+          "text": "Açık kalan işi listelerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "%90 olduğu için teslimi garanti sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T017",
+      "dim": "proje",
+      "title": "Kapsam ekleme",
+      "sub": "Kapsam ekleme",
+      "scene": "Paydaş yeni alan istiyor. Teslim tarihi sabit; değişikliğin test ve veri etkisi var. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Sessizce ekleyip tarihi koruyacağıma söz veririm.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Talebi açıklama yapmadan reddederim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Etkiyi kapsam/süre/kalite seçenekleriyle sunup yetkili değişiklik kararını kaydederim.",
+          "score": 3,
+          "why": "Yeni talebi görünür bir kapsam kararı yapar."
+        },
+        {
+          "text": "Ek iş süresini tahmin ederim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T018",
+      "dim": "proje",
+      "title": "Kritik bağımlılık",
+      "sub": "Kritik bağımlılık",
+      "scene": "İki iş paralel ilerleyebilir; üçüncü iş ikisinin de çıktısını gerektiriyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Üç işin tarihlerini ayrı yazarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Yalnız en uzun işi takip ederim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Üçüncü işi girdiler gelmeden tamamlandı sayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "İki girdinin teslim ve kabul koşullarını üçüncü işin başlangıcıyla birlikte izlerim.",
+          "score": 3,
+          "why": "Takvimi bağımlılık ve kabul koşuluyla bağlar."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T019",
+      "dim": "proje",
+      "title": "Teslim kabulü",
+      "sub": "Teslim kabulü",
+      "scene": "Çıktı teknik olarak çalışıyor fakat kullanıcı kabul örnekleri denenmedi. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Tamamlanma durumunu teknik hazır ve kullanıcı kabulü bekliyor diye ayırır, örnekleri birlikte sınarım.",
+          "score": 3,
+          "why": "Teknik üretim ve kullanım kabulünü ayırır."
+        },
+        {
+          "text": "Kullanıcıya test için dosyayı gönderirim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Teknik çalışmayı nihai kabul sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Kabul imzasını geriye dönük varsayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T020",
+      "dim": "proje",
+      "title": "Kapanıştan öğrenme",
+      "sub": "Kapanıştan öğrenme",
+      "scene": "Proje bitti; tekrar eden bir gecikme nedeni biliniyor ama kaydı yok. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Sorunu yalnız kişisel bir yorum olarak saklarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Nedeni, işe yarayan önlemi ve sonraki projede kullanılacak kontrolü kapanışa eklerim.",
+          "score": 3,
+          "why": "Deneyimi sonraki işte kullanılabilir kontrol haline getirir."
+        },
+        {
+          "text": "Gecikme günlerini toplarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Teslim edildiği için öğrenmeyi gereksiz sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T021",
+      "dim": "finans",
+      "title": "Kâr ile nakit",
+      "sub": "Kâr ile nakit",
+      "scene": "Bir iş 30.000 TL gelir, 20.000 TL maliyet yaratıyor. Maliyet bugün ödenecek, tahsilat 60 gün sonra. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Katkı pozitif olduğu için nakit ihtiyacı yok derim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Gelirin tamamını bugünkü kullanılabilir para sayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "10.000 TL katkı ile bugünkü 20.000 TL finansman ihtiyacını ayrı gösteririm.",
+          "score": 3,
+          "why": "Kârlılık ile zamanlanan nakit akışını ayırır."
+        },
+        {
+          "text": "Tahsilat tarihini ve ödeme planını teyit ederim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T022",
+      "dim": "finans",
+      "title": "Hacim ve birim maliyet",
+      "sub": "Hacim ve birim maliyet",
+      "scene": "Bütçe 500 adet × 40 TL; gerçekleşen 600 adet × 35 TL. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Toplam maliyetin 20.000’den 21.000’e çıktığını belirtirim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Birim fiyat düştüğü için toplam maliyet de düşmüştür derim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Toplam artışı yalnız verimsizlik sayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Bütçe fiyatıyla hacim +4.000 TL, gerçekleşen hacimde fiyat −3.000 TL; net +1.000 TL etkisini açıklarım.",
+          "score": 3,
+          "why": "Tutarlı bazlarla fiyat ve hacim etkilerini ayrıştırır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T023",
+      "dim": "finans",
+      "title": "Batık harcama",
+      "sub": "Batık harcama",
+      "scene": "Geçmişte yapılan ve geri alınamayacak ödeme iki seçenek için de aynı. Gelecek nakit etkileri farklı. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Gelecekte değişen maliyet ve faydaları karşılaştırır; geri alınamayan ortak harcamayı karar farkı yapmam.",
+          "score": 3,
+          "why": "İlgili gelecek farkı ile batık maliyeti ayırır."
+        },
+        {
+          "text": "Gelecek ödeme takvimini çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Geçmiş harcamayı kurtarmak için mutlaka devam ederim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Sadece geçmiş toplam bütçeyi karşılaştırırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T024",
+      "dim": "finans",
+      "title": "Tasarrufun gerçekleşmesi",
+      "sub": "Tasarrufun gerçekleşmesi",
+      "scene": "Öneri ayda 100 saat kazandırıyor. Fazla mesai azalması veya başka işte kullanım henüz belirlenmedi. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Saat ücretini çarpıp bütçe düşüşünü garanti ederim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Serbest kalan süreyi nakit tasarrufundan ayırır; kullanım ve gerçekleşme koşulunu açıklarım.",
+          "score": 3,
+          "why": "Kapasite kazanımı ile gerçekleşen parasal faydayı ayırır."
+        },
+        {
+          "text": "Saatleri ve hesap varsayımını belgeleyip teyit ederim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "100 saati doğrudan nakit kazanç yazarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T025",
+      "dim": "risk",
+      "title": "Risk sıfır mı?",
+      "sub": "Risk sıfır mı?",
+      "scene": "Son üç ay olay yaşanmadı; kritik kontrolün çalıştığına dair kayıt yok. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Olay olmadığı için riskin kalktığını yazarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Kontrolü gereksiz diye kapatırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Olay olmamasını kontrol kanıtı saymadan kontrolün tasarım ve işleyişini örnekle doğrularım.",
+          "score": 3,
+          "why": "Olay gözlemi ile kontrol güvencesini ayırır."
+        },
+        {
+          "text": "Kontrol kayıtlarının nerede tutulduğunu sorarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T026",
+      "dim": "risk",
+      "title": "Sorumlusu belirsiz risk",
+      "sub": "Sorumlusu belirsiz risk",
+      "scene": "Risk listesinde yüksek etkili bir bağımlılık var; herkes başka birinin takip ettiğini düşünüyor. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Güncel durumu toplantıya taşırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Listeye yazıldığı için yönetildiğini sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Sorumlu bulunana kadar riski listeden çıkarırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Risk sahibini, izleme göstergesini ve eskalasyon eşiğini yetkiliyle netleştiririm.",
+          "score": 3,
+          "why": "Liste kaydını işleyen sorumluluk düzenine çevirir."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T027",
+      "dim": "risk",
+      "title": "Tek kontrol noktası",
+      "sub": "Tek kontrol noktası",
+      "scene": "Kritik dosyayı hazırlayan kişi aynı zamanda kendi dosyasına nihai onay veriyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Etkiye uygun bağımsız kontrol veya telafi edici kontrolü süreç sahibiyle tasarlarım.",
+          "score": 3,
+          "why": "Hata ve çıkar çatışması riskini kişi güveninden bağımsız ele alır."
+        },
+        {
+          "text": "Hazırlama ve onay adımlarını görünür kılarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Kişi deneyimli olduğu için kontrol gerekmez derim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Hız için mevcut bağımsız kontrolü de kaldırırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T028",
+      "dim": "risk",
+      "title": "Risk devri",
+      "sub": "Risk devri",
+      "scene": "Bir hizmet dış firmaya verildi. Sözleşmede takip göstergeleri ve ihlal süreci açık değil. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Sorun olana kadar kayıt toplamam.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Dış kaynağın sorumluluğu ile kurumun izleme yükünü ayrı tanımlayıp göstergeleri ve ihlal yolunu kurarım.",
+          "score": 3,
+          "why": "İşi devretmenin riski bütünüyle kaldırmadığını dikkate alır."
+        },
+        {
+          "text": "Sözleşmedeki görevleri çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Dış firmaya geçtiği için kurumun riski kalmadı derim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T029",
+      "dim": "risk",
+      "title": "Düşük olasılık yüksek etki",
+      "sub": "Düşük olasılık yüksek etki",
+      "scene": "İki risk aynı sıklıkta değil; nadir olanın etkisi operasyonu durdurabiliyor. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Yalnız en sık olanı yönetirim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Nadir olanı hiç olmayacak sayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Olasılık ve etkiyi, mevcut kontrol ve müdahale süresiyle birlikte değerlendiririm.",
+          "score": 3,
+          "why": "Tek sıklık ölçüsünün kritik etkiyi gizlemesini önler."
+        },
+        {
+          "text": "Etkileri parasal ve hizmet boyutuyla çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T030",
+      "dim": "kalite",
+      "title": "Küçük örnek",
+      "sub": "Küçük örnek",
+      "scene": "1000 üründen rastgele seçilmeyen 10 örnek hatasız. Tüm parti için karar isteniyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Örneklerin nereden alındığını kaydederim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "10 temiz olduğu için 1000 ürün kusursuz derim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Kontrol edilmeyenleri hatasız kaydederim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Seçim yöntemini ve kabul planını teyit etmeden 10 örneği bütün partiye genellemem.",
+          "score": 3,
+          "why": "Örnek kanıtının temsil sınırını korur."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T031",
+      "dim": "kalite",
+      "title": "Standart sürümü",
+      "sub": "Standart sürümü",
+      "scene": "İki kullanıcı aynı işlemi farklı talimat sürümleriyle yapıyor; sonuçlar farklı. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Geçerli sürüm, yürürlük ve erişimi netleştirip etkilenen çıktıları aynı ölçütle incelerim.",
+          "score": 3,
+          "why": "Standart kontrolü ile çıktı uygunluğunu birlikte izler."
+        },
+        {
+          "text": "Kullanılan sürümleri listelerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Her kullanıcının alıştığı sürümü geçerli sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Eski sürümün izini silerim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T032",
+      "dim": "kalite",
+      "title": "Kontrol formu dolu",
+      "sub": "Kontrol formu dolu",
+      "scene": "Bütün kontrol kutuları işaretli; bazı çıktılar kabul şartını karşılamıyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Kutuları yeniden işaretleyip dosyayı kapatırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Kontrolün gerçekten nasıl uygulandığını ve ölçütün anlaşılmasını somut çıktıyla doğrularım.",
+          "score": 3,
+          "why": "Kayıt tamlığını gerçek uygunluğun yerine koymaz."
+        },
+        {
+          "text": "Uygun olmayan örnekleri toplarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Form dolu olduğu için çıktıyı uygun sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T033",
+      "dim": "kalite",
+      "title": "Düzeltme sonrası doğrulama",
+      "sub": "Düzeltme sonrası doğrulama",
+      "scene": "Hata düzeltildi deniyor; aynı koşul yeniden denenmedi. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Düzeltme yapıldı bilgisini etkinlik kanıtı sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Tekrarlayan hatayı yeni bir olay diye bağlantısız tutarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "İlk hata koşulunu ve ilgili yan etkileri tekrar sınayıp düzeltmenin etkinliğini kaydederim.",
+          "score": 3,
+          "why": "Aksiyon tamamlanması ile etkinlik doğrulamasını ayırır."
+        },
+        {
+          "text": "Yapılan değişikliği ve sorumlusunu yazarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T034",
+      "dim": "dijital",
+      "title": "Bozuk veriyi hızlandırmak",
+      "sub": "Bozuk veriyi hızlandırmak",
+      "scene": "Raporu otomatikleştireceksin; iki kaynak aynı sütuna farklı anlam veriyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Kaynak alanlarını ve dönüşümleri listelerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Mevcut tutarsızlığı aynen daha hızlı üretirim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Hatalı satırları sessizce atarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Tanım ve veri doğrulamasını netleştirip otomasyonun hata durumlarını tasarlarım.",
+          "score": 3,
+          "why": "Otomasyon öncesi veri sözleşmesi ve kontrolü kurar."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T035",
+      "dim": "dijital",
+      "title": "Tekrar çalıştırma",
+      "sub": "Tekrar çalıştırma",
+      "scene": "Bir otomasyon bağlantı kesilince yeniden başlıyor. Aynı kayıt ikinci kez işlenebilir. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Tekil işlem anahtarı ve tekrar çalıştırma davranışını sınar; tamamlanmış işi çoğaltmam.",
+          "score": 3,
+          "why": "Tekrar denemenin yinelenen işlem üretmesini önler."
+        },
+        {
+          "text": "Başarı ve hata kayıtlarını ayrı tutarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Her yeniden denemede yeni işlem oluştururum.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Hata mesajını kapatıp başarılı sayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T036",
+      "dim": "dijital",
+      "title": "Dış araca veri",
+      "sub": "Dış araca veri",
+      "scene": "Yeni araç rapor üretimini kolaylaştırıyor; hangi verinin nereye gönderildiği belirsiz. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Dosya adını değiştirerek içeriğin gizlendiğini varsayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Veri türü, hedef, erişim ve kurum onayını netleştirmeden gerçek veriyi dışarı aktarmam.",
+          "score": 3,
+          "why": "Araç faydası ile veri aktarımı kararını ayırır."
+        },
+        {
+          "text": "Sentetik veriyle işlevi denerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Deneme olduğu için tüm gerçek dosyayı yüklerim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T037",
+      "dim": "dijital",
+      "title": "Elle devam yolu",
+      "sub": "Elle devam yolu",
+      "scene": "Otomasyon durduğunda kritik günlük iş yapılamıyor; elle devam adımı tanımlı değil. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Bir kez çalıştığı için elle yola gerek yok derim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Kesintide veriyi kayıtsız elle değiştiririm.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Hata bildirimi, sorumlu, elle devam ve sonradan kayıt uzlaştırmasını birlikte tasarlarım.",
+          "score": 3,
+          "why": "Otomasyonun başarısızlık koşulunda da iş sürekliliği kurar."
+        },
+        {
+          "text": "Kesinti etkisini ve durma noktasını çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T038",
+      "dim": "paydas",
+      "title": "Görünmeyen etkilenen taraf",
+      "sub": "Görünmeyen etkilenen taraf",
+      "scene": "İki bölüm öneriyi onaylıyor; uygulamada işi yapacak üçüncü bölüm görüşe dahil edilmedi. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Etkilenen görevleri ve birimleri listelerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "İki onayı bütün uygulama için yeterli sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Üçüncü bölümden itiraz gelmesini beklerim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "İşi ve karar yetkisini etkileyen üçüncü bölümü somut değişiklik üzerinden sürece katarım.",
+          "score": 3,
+          "why": "Görüş alınanlarla gerçekten etkilenenleri ayırır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T039",
+      "dim": "paydas",
+      "title": "Çelişen ölçüt",
+      "sub": "Çelişen ölçüt",
+      "scene": "Satış hızlı teslim, operasyon düşük maliyet istiyor; aynı kaynak kısıtlı. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Ortak karar sorusunu ve hizmet/maliyet seçeneklerini görünür kılıp yetkili kararını netleştiririm.",
+          "score": 3,
+          "why": "Çelişkiyi gizlemek yerine açık ödünleşim kararı oluşturur."
+        },
+        {
+          "text": "İki tarafın ölçütünü aynı tabloda gösteririm.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Daha güçlü bölümün ölçütünü sessizce seçerim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Her iki hedefi koşulsuz karşılayacağıma söz veririm.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T040",
+      "dim": "paydas",
+      "title": "Unvana göre iletişim",
+      "sub": "Unvana göre iletişim",
+      "scene": "Aynı öneri için yönetici karar özeti, uygulayıcı işlem ayrıntısı istiyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Yöneticiye riskleri göstermemeyi seçerim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Aynı kanıtı koruyarak karar özeti ve uygulama ayrıntısını alıcı ihtiyacına göre ayırırım.",
+          "score": 3,
+          "why": "Mesajı uyarlarken kanıt ve riskin tutarlılığını korur."
+        },
+        {
+          "text": "İki grubun sorularını toplarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Her gruba bütün ayrıntıları aynı biçimde yollarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T041",
+      "dim": "paydas",
+      "title": "Görüş birliği yok",
+      "sub": "Görüş birliği yok",
+      "scene": "Paydaşlar bilgi eksikliği yüzünden değil öncelik farkıyla anlaşamıyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Herkes aynı düşünene kadar takvimi belirsiz bırakırım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Uzlaşma varmış gibi tutanak yazarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Açık kalan kararın sahibini, seçenekleri ve etkilerini kayda geçirip karar yolunu işletirim.",
+          "score": 3,
+          "why": "Uzlaşma ile yetkili karar mekanizmasını ayırır."
+        },
+        {
+          "text": "Uzlaşılmayan noktaları özetlerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T042",
+      "dim": "paydas",
+      "title": "Taahhüt kaydı",
+      "sub": "Taahhüt kaydı",
+      "scene": "Toplantıda üç kişi farklı takip tarihleri hatırlıyor; yazılı karar yok. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Katılımcılardan kendi notlarını isterim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "En yüksek unvanlının hatırladığını doğru kabul ederim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Tarihi geçmişe dönük değiştirip farkı saklarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Çıktı, sorumlu ve tarihi kısa teyit kaydıyla ortaklaştırırım.",
+          "score": 3,
+          "why": "Ortak taahhüdü izlenebilir hale getirir."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T043",
+      "dim": "sonuc",
+      "title": "Faaliyet ile sonuç",
+      "sub": "Faaliyet ile sonuç",
+      "scene": "On eğitim verildi; işte hata azalıp azalmadığı bilinmiyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Eğitim sayısını faaliyet olarak raporlar, hedef davranış ve iş sonucu takibini ayrıca kurarım.",
+          "score": 3,
+          "why": "Yapılan iş ile beklenen etkiyi ayırır."
+        },
+        {
+          "text": "Katılımı ve eğitim kapsamını çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Eğitim verildiği için hedefin gerçekleştiğini söylerim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Olumsuz sonuçları eğitim kapsamı dışında sayarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T044",
+      "dim": "sonuc",
+      "title": "Geciken kendi işim",
+      "sub": "Geciken kendi işim",
+      "scene": "Kendi sorumluluğundaki iş gecikecek; bir bölümü hazır ve başka kişiye bağımlılık var. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Son gün gelene kadar bilgi vermem.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Durumu erken bildirir, kendi açık işimi ve bağımlılığı ayırıp yeni seçenek ve takip zamanı sunarım.",
+          "score": 3,
+          "why": "Kendi payını ve dış bağımlılığı birlikte görünür tutar."
+        },
+        {
+          "text": "Bağımlılığın sahibine durum sorarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Gecikmenin tamamını başka kişiye yüklerim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T045",
+      "dim": "sonuc",
+      "title": "Aksiyon kapanışı",
+      "sub": "Aksiyon kapanışı",
+      "scene": "Bir aksiyon “yapıldı” olarak kapatılmış; beklenen çıktı eklenmemiş. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Durum alanı kapalıysa sonucu olmuş sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Kanıt eksikliğini sonradan kayıtla gizlerim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Çıktı ve kabul kanıtını kontrol ederek kapanışı doğrularım.",
+          "score": 3,
+          "why": "Kapanış etiketini sonuç kanıtından ayırır."
+        },
+        {
+          "text": "Sorumludan yapılan işi özetlemesini isterim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T046",
+      "dim": "sonuc",
+      "title": "Bir sonraki sahibin işi",
+      "sub": "Bir sonraki sahibin işi",
+      "scene": "Kendi bölümün bitti fakat sonraki kişi eksik bilgi yüzünden başlayamıyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Dosyayı ve gönderim tarihini kaydederim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Gönderdim diyerek sonucu ilgisiz sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Eksik bilgiyi biliyorken tamamlandı yazarım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Devir çıktısının kullanılabilirliğini ve açık girdileri sonraki kişiyle doğrularım.",
+          "score": 3,
+          "why": "Sorumluluğu yalnız gönderime değil kullanılabilir devre bağlar."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T047",
+      "dim": "strateji",
+      "title": "Kısa kazanç, kalıcı yük",
+      "sub": "Kısa kazanç, kalıcı yük",
+      "scene": "Bir öneri bu ay maliyeti düşürüyor ama sonraki yıl zorunlu bakım ve hizmet etkisi yaratıyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Zaman ufuklarını ve toplam etkiyi aynı karar çerçevesinde karşılaştırırım.",
+          "score": 3,
+          "why": "Kısa vadeli kazanç ile kalıcı sonucu birlikte değerlendirir."
+        },
+        {
+          "text": "Gelecek yükleri ve varsayımları listelerim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Yalnız bu ayın sonucuna bakarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Gelecek etkileri rapordan çıkarırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T048",
+      "dim": "strateji",
+      "title": "Her girişim öncelikli",
+      "sub": "Her girişim öncelikli",
+      "scene": "Aynı ekip beş girişimi aynı anda üstlenemiyor; hepsi stratejik diye adlandırılıyor. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Yalnız en görünür yöneticinin işini seçerim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Hedef katkısı, bağımlılık ve kapasiteyle girişimleri sıralayıp vazgeçme/erteleme kararını görünür kılarım.",
+          "score": 3,
+          "why": "Stratejiyi kaynak ve açık tercih kararına bağlar."
+        },
+        {
+          "text": "Girişimlerin kaynak ihtiyacını çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Hepsini aynı anda başlatmayı taahhüt ederim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T049",
+      "dim": "strateji",
+      "title": "Tek tahmin",
+      "sub": "Tek tahmin",
+      "scene": "Karar yalnız tek talep tahmininde iyi görünüyor; talep belirsiz. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "En olumlu tahmini kesin kabul ederim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Belirsizliği göstermekten kaçınırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Alternatif talep koşullarında sonucu ve geri dönüş seçeneğini incelerim.",
+          "score": 3,
+          "why": "Tek noktaya bağlı kararı senaryolar ve esneklikle sınar."
+        },
+        {
+          "text": "Temel tahminin kaynağını teyit ederim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T050",
+      "dim": "strateji",
+      "title": "Hedef ile gösterge",
+      "sub": "Hedef ile gösterge",
+      "scene": "Yeni gösterge kolay ölçülüyor fakat kurumun hedeflediği müşteri sonucunu temsil etmeyebilir. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Gösterge tanımını açık yazarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Kolay ölçüldüğü için başarı ölçütü kabul ederim.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Göstergeyi tutturmak için müşteri kapsamını daraltırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Gösterge ile hedef sonucu arasındaki varsayımı ve olası ters teşvikleri sınarım.",
+          "score": 3,
+          "why": "Ölçüm kolaylığı ile stratejik anlamı ayırır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T051",
+      "dim": "ticari",
+      "title": "Ciro var, katkı düşük",
+      "sub": "Ciro var, katkı düşük",
+      "scene": "Bir sözleşme 100.000 TL ciro, 85.000 TL değişken maliyet ve 20.000 TL ek özel hizmet gerektiriyor. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Ek hizmetle katkının −5.000 TL olduğunu gösterir; fiyat, kapsam ve stratejik gerekçeyi ayrı değerlendiririm.",
+          "score": 3,
+          "why": "Ciro ile kararın değişen maliyet sonrası katkısını ayırır."
+        },
+        {
+          "text": "Ek hizmetin maliyetini teyit ederim.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "100.000 TL ciroyu kâr sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Özel hizmeti maliyete katmam.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T052",
+      "dim": "ticari",
+      "title": "Ucuz teklif",
+      "sub": "Ucuz teklif",
+      "scene": "Bir teklif daha ucuz; daha uzun teslim, yüksek minimum miktar ve iade kısıtı var. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Riskli koşulları karşılaştırmadan çıkarırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Fiyatı toplam maliyet, stok/teslim riski ve koşullarla birlikte karşılaştırırım.",
+          "score": 3,
+          "why": "Görünür fiyat ile toplam ticari etkiyi ayırır."
+        },
+        {
+          "text": "Teklif koşullarını aynı tabloda toplarım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Yalnız birim fiyatı karşılaştırırım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T053",
+      "dim": "ticari",
+      "title": "İndirim karşılığı",
+      "sub": "İndirim karşılığı",
+      "scene": "Müşteri indirim istiyor; miktar, ödeme ve hizmet kapsamı değişebilir. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": true,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Onay yetkim dışında koşulsuz indirim sözü veririm.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Satış artsın diye katkıyı gizlerim.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "İndirimin katkı etkisini ve karşılığındaki koşulları birlikte müzakere seçeneği yaparım.",
+          "score": 3,
+          "why": "İndirimi tek başına değil koşul ve değer değişimiyle ele alır."
+        },
+        {
+          "text": "Müşterinin asıl ihtiyacını netleştiririm.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T054",
+      "dim": "ticari",
+      "title": "Yoğunlaşan müşteri",
+      "sub": "Yoğunlaşan müşteri",
+      "scene": "Yeni büyük müşteri kapasitenin çoğunu kullanacak; mevcut müşterilerin hizmeti etkilenebilir. En uygun yaklaşım hangisi?",
+      "type": "choice",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Gerekli kapasiteyi ve zamanlamayı çıkarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Büyük ciroyu tek karar gerekçesi sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Mevcut müşterilerin etkisini görünmez bırakırım.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        },
+        {
+          "text": "Katkıyı kapasite, bağımlılık ve mevcut hizmet etkisiyle birlikte senaryolarım.",
+          "score": 3,
+          "why": "Tek müşteri fırsatını sistem ve yoğunlaşma riskiyle birlikte ele alır."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    },
+    {
+      "id": "T055",
+      "dim": "ticari",
+      "title": "Sözleşme kazanıldı",
+      "sub": "Sözleşme kazanıldı",
+      "scene": "Teklif kazanıldı fakat hizmetin sürdürülebilir maliyeti ve kapsam dışı işler izlenmiyor. En uygun yaklaşım hangisi?",
+      "type": "info",
+      "core": false,
+      "roles": [
+        "team",
+        "operations",
+        "analyst",
+        "operations_specialist",
+        "specialist",
+        "graduate",
+        "custom"
+      ],
+      "options": [
+        {
+          "text": "Taahhüt kapsamı, değişen maliyet ve ek hizmetleri takip ederek gerçek katkıyı kontrol ederim.",
+          "score": 3,
+          "why": "Ticari kararı satış anıyla sınırlamaz."
+        },
+        {
+          "text": "Sözleşme kapsamını teslim ekibine aktarırım.",
+          "score": 2,
+          "why": "İlgili bilgi veya ilk adımı sağlar; tek başına senaryodaki karar, uygulama veya doğrulama koşulunu tamamlamaz."
+        },
+        {
+          "text": "Satış tamamlandığı için sonraki etkiyi ilgisiz sayarım.",
+          "score": 1,
+          "why": "Durumdaki önemli koşulların bir bölümünü dışarıda bırakır."
+        },
+        {
+          "text": "Kapsam dışı işi kayıtsız ücretsiz sürdürürüm.",
+          "score": 0,
+          "why": "Verilen kayıt, yetki veya karar bütünlüğünü korumaz."
+        }
+      ],
+      "status": "Özgün hazırlık durumu · uzman incelemesi bekliyor"
+    }
+  ]
+}

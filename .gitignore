@@ -1,0 +1,17 @@
+outputs/
+__pycache__/
+
+node_modules/
+.sites-runtime/
+.wrangler/
+.vinext/
+public/
+.env*
+.dev.vars*
+*.tsbuildinfo
+dist/
+.next/
+*.log
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

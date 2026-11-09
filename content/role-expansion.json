@@ -1,0 +1,1379 @@
+[
+  {
+    "id": "R01",
+    "dim": "karar",
+    "title": "Onay var, kapsam belirsiz",
+    "sub": "Geri alınabilir karar",
+    "scene": "Bir proje raporunu hazırlıyorsun. Talep sahibi toplantıda “tamam” dedi, fakat iki farklı çıktıdan hangisini onayladığı açık değil. İlk taslak yarın; hangi yolla ilerlersin?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Daha önce istenen raporu esas alıp varsayımı teslim notuna eklerim.",
+        "score": 2,
+        "why": "Varsayımı görünür kılar; teslim öncesi teyit fırsatını kullanmaz."
+      },
+      {
+        "text": "Onayı kapsamın tamamı için sayıp iki raporu da bitiririm.",
+        "score": 1,
+        "why": "Kapsamı doğrulamadan emek ve teslim riski yaratır."
+      },
+      {
+        "text": "Talep sahibi ayrıntılı yazana kadar hiçbir hazırlık yapmam.",
+        "score": 0,
+        "why": "Geri alınabilir hazırlığı da durdurur."
+      },
+      {
+        "text": "İki çıktı seçeneğini ve farklarını kısa bir teyitle netleştirir, bu arada ortak ve geri alınabilir hazırlığı sürdürürüm.",
+        "score": 3,
+        "why": "Belirsiz kararı teyit ederken iki seçenek için de kullanılabilecek işi durdurmaz."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R02",
+    "dim": "karar",
+    "title": "Birbirine uymayan açıklamalar",
+    "sub": "Ayırt edici kanıt",
+    "scene": "Bir eğitim projesinde teslimler gecikti. İki kişi dosya erişiminin, bir kişi talimatın belirsizliğinin neden olduğunu söylüyor. Sadece bir kısa kontrol yapabilecek vaktin var. Hangisi en ayırt edicidir?",
+    "type": "info",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Geciken örneklerde erişim zamanı ve talimat sürümünü, aynı tür zamanında teslimlerle karşılaştırırım.",
+        "score": 3,
+        "why": "İki açıklamanın farklı öngörülerini benzer işler üzerinde sınar."
+      },
+      {
+        "text": "Gecikenlerden yaşadıkları engeli somut örnekle anlatmalarını isterim.",
+        "score": 2,
+        "why": "Açıklamaları somutlaştırır; karşılaştırma grubu henüz yoktur."
+      },
+      {
+        "text": "Çoğunluk erişim dediği için bu açıklamayı rapora kesin neden yazarım.",
+        "score": 1,
+        "why": "Görüş sayısını neden kanıtı sayar."
+      },
+      {
+        "text": "En deneyimli kişinin açıklamasını doğru kabul ederim.",
+        "score": 0,
+        "why": "Kanıt yerine kişiye dayanır."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R03",
+    "dim": "karar",
+    "title": "Sorunu görünür tutmak",
+    "sub": "Risk ve eskalasyon",
+    "scene": "Sana ait veri kontrolünde üç kayıt tutarsız çıktı. Düzeltme yetkin yok. Çıktının gönderilmesine yarım saat var; sorumluya ulaşamıyorsun. Ne yaparsın?",
+    "type": "choice",
+    "core": false,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Raporun tamamını açıklamasız geciktiririm.",
+        "score": 1,
+        "why": "Hatalı gönderimi önler ama karar sahibini ve teslim etkisini bilgilendirmez."
+      },
+      {
+        "text": "Etkilenen kısmı ve belirsizliği işaretler, tanımlı yedek sorumluya iletir; doğrulanmış kısmın teslimini ayrı öneririm.",
+        "score": 3,
+        "why": "Yetkiyi aşmadan etkiyi ve karar ihtiyacını görünür kılar."
+      },
+      {
+        "text": "Şüpheli kayıtları ek notla birlikte rapora koyarım.",
+        "score": 2,
+        "why": "Belirsizliği açıklar; eskalasyon ve kullanılabilir kapsam ayrımı eksiktir."
+      },
+      {
+        "text": "Kayıtları önceki aya benzeterek düzeltirim.",
+        "score": 0,
+        "why": "Yetki ve dayanak olmadan veri değiştirir."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R04",
+    "dim": "plan",
+    "title": "Birbirine bağlı dört iş",
+    "sub": "Bağımlılık sırası",
+    "scene": "Bir proje için önce talep kapsamı teyit edilecek; veri erişimi bu kapsama göre açılacak. Taslak erişimden sonra hazırlanabilir; son kontrol taslak üzerinden yapılır. Dört adımı sırala.",
+    "type": "rank",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "İlk taslağı hazırla.",
+        "score": 1,
+        "why": "Kontrol edilecek çıktı oluşur."
+      },
+      {
+        "text": "Taslağı kabul ölçütüyle kontrol et.",
+        "score": 0,
+        "why": "Oluşan çıktı en sonda doğrulanır."
+      },
+      {
+        "text": "Talep kapsamını teyit et.",
+        "score": 3,
+        "why": "Erişim ve çıktı bu karara bağlıdır."
+      },
+      {
+        "text": "Gerekli veri erişimini sağla.",
+        "score": 2,
+        "why": "Taslağın girdisi hazırlanır."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R05",
+    "dim": "plan",
+    "title": "Güne sığmayan işler",
+    "sub": "Kapasite ve öncelik",
+    "scene": "Bugün net 4 saatin var. 2 saatlik müşteri notu bugün 15.00’te, 3 saatlik iç rapor yarın öğlen isteniyor. İç raporun bir saatlik verisi bugün bir başka kişiden gelecek. Ne yaparsın?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Müşteri notunu bitirir, sonra iç rapora başlarım.",
+        "score": 2,
+        "why": "Yakın teslimi korur; veri bağımlılığı gecikebilir."
+      },
+      {
+        "text": "Her ikisini de bugün tam bitireceğimi söylerim.",
+        "score": 0,
+        "why": "Beş saatlik işi dört saate koşulsuz sığdırır."
+      },
+      {
+        "text": "İç rapor daha uzun olduğu için ona başlar, müşteri notunu yarına bırakırım.",
+        "score": 1,
+        "why": "Süre uzunluğunu teslim etkisinin önüne koyar."
+      },
+      {
+        "text": "Bağımlı veriyi erkenden ister, bugünkü müşteri notuna yer ayırır; iç raporun kalan işi için yarınki kapasiteyi ve gerekirse kapsamı teyit ederim.",
+        "score": 3,
+        "why": "Son tarih, dış bağımlılık ve gerçek kapasite birlikte ele alınır."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R06",
+    "dim": "plan",
+    "title": "Başkasının devam edeceği dosya",
+    "sub": "Devir teslim",
+    "scene": "Bir grup projesindeki görevine üç gün ara vereceksin. Bir arkadaşın senin dosyan üzerinden devam edecek. İki hazırlık adımı seç.",
+    "type": "plan",
+    "core": false,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Son geçerli dosyayı, açık işleri ve kaynak konumlarını tek yerde işaretlerim.",
+        "score": 3,
+        "why": "Devam edecek kişinin güncel durum ve girdilere erişmesini sağlar."
+      },
+      {
+        "text": "Birlikte kısa bir örnek üzerinden geçip ilk kontrol noktasını netleştiririm.",
+        "score": 3,
+        "why": "Devrin anlaşılmasını ve takibi doğrular."
+      },
+      {
+        "text": "Yaptığım bütün yazışmaları açıklama olmadan iletirim.",
+        "score": 1,
+        "why": "Bilgi vardır; güncel durum ve sonraki adım ayrışmaz."
+      },
+      {
+        "text": "Dosyanın adını “son” yapmamın yeterli olduğunu düşünürüm.",
+        "score": 0,
+        "why": "Sürüm, açık iş ve kullanım bilgisi eksik kalır."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R07",
+    "dim": "iletisim",
+    "title": "Aynı kelime, farklı beklenti",
+    "sub": "Talebi netleştirme",
+    "scene": "Talep sahibi “müşteri sayısını” istiyor. Dosyada müşteri, sözleşme ve işlem kimlikleri var. Raporu kurmadan önce hangi bilgiyi önceliklendirirsin?",
+    "type": "info",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "En büyük sayıyı veren alanı kullanırım.",
+        "score": 0,
+        "why": "İletişim ihtiyacını karşılamayan keyfi ölçü seçer."
+      },
+      {
+        "text": "Sayının hangi karar için kullanılacağını, tekil müşteri tanımını ve tarih aralığını sorarım.",
+        "score": 3,
+        "why": "Ölçüm birimini, kullanım amacını ve dönemi netleştirir."
+      },
+      {
+        "text": "Önce müşteri kimliğinin kaç satırda dolu olduğunu çıkarırım.",
+        "score": 1,
+        "why": "Veriyi tanır; istenen ölçünün tanımını kurmaz."
+      },
+      {
+        "text": "Son raporda kullanılan tanımı doğrulatmak üzere paylaşırım.",
+        "score": 2,
+        "why": "Somut bir başlangıç sağlar; amaç ve dönem ayrıca gerekebilir."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R08",
+    "dim": "iletisim",
+    "title": "Kötü haberi son dakikaya bırakmak",
+    "sub": "Erken bildirim",
+    "scene": "Proje ödevinin kendi bölümünün planlanan saatte bitmeyeceğini fark ettin. Bir bölüm hazır, kaynak kontrolü sürüyor. Grup sunumu yarın. Nasıl haber verirsin?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Tam bitirmeden haber verip endişe yaratmak istemem.",
+        "score": 0,
+        "why": "Ekibin önlem alma süresini tüketir."
+      },
+      {
+        "text": "Sadece dosyayı paylaşır, eksikleri fark etmelerini beklerim.",
+        "score": 1,
+        "why": "Durumun yorumlanmasını karşı tarafa bırakır."
+      },
+      {
+        "text": "Şimdi tamamlanan kısmı, gecikmenin etkisini, seçenekleri ve sonraki güncelleme saatini paylaşırım.",
+        "score": 3,
+        "why": "Ekibin somut bilgiyle yeniden plan yapmasını sağlar."
+      },
+      {
+        "text": "Gecikeceğimi söyler, ne zaman biteceğini sonra bildireceğimi eklerim.",
+        "score": 2,
+        "why": "Erken uyarı verir; seçenek ve yeni kontrol zamanı eksiktir."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R09",
+    "dim": "iletisim",
+    "title": "Karar notunun iskeleti",
+    "sub": "Mesajı yapılandırma",
+    "scene": "Bir önerinin kısa karar notunda önce karar sorusu, sonra veri dayanağı, ardından seçenek ve öneri, en sonda gerekli onay yer alması isteniyor. Bölümleri bu briefteki sıraya koy.",
+    "type": "rank",
+    "core": false,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "İlgili veriyi ve belirsizlikleri özetle.",
+        "score": 2,
+        "why": "Seçenek değerlendirmesine dayanak verir."
+      },
+      {
+        "text": "Seçenekleri ve gerekçeli öneriyi sun.",
+        "score": 1,
+        "why": "Dayanaktan sonra karar alternatifleri gelir."
+      },
+      {
+        "text": "Gerekli onayı, sorumluyu ve tarihi yaz.",
+        "score": 0,
+        "why": "Uygulama kararı için kapanış oluşturur."
+      },
+      {
+        "text": "Hangi kararın verilmesi gerektiğini belirt.",
+        "score": 3,
+        "why": "Okuyucuya karar çerçevesi sağlar."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R10",
+    "dim": "analitik",
+    "title": "Oran mı, adet mi?",
+    "sub": "Payda ve oran",
+    "scene": "A grubunda 200 işten 20, B grubunda 50 işten 10 hata var. Yalnız bu veriye göre hangi yorum desteklenir?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "A’da hata oranı %10, B’de %20; B oranı daha yüksek. İşlerin zorluğu bilinmediği için performans nedeni çıkarılamaz.",
+        "score": 3,
+        "why": "Paydaları eşitmiş gibi davranmaz ve nedensellik sınırını korur."
+      },
+      {
+        "text": "A’da daha çok hata adedi var; öncelikle bunun etkisini de incelemek gerekir.",
+        "score": 2,
+        "why": "Adet etkisini doğru görür; oran karşılaştırmasını tamamlamaz."
+      },
+      {
+        "text": "A’nın performansı B’den iki kat kötü.",
+        "score": 0,
+        "why": "Adet farkından, ters yöndeki oranı ve nedeni çıkarır."
+      },
+      {
+        "text": "İki grupta da hata olduğundan aynı durumdalar.",
+        "score": 1,
+        "why": "Farklı paydaları ve oranları göz ardı eder."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R11",
+    "dim": "analitik",
+    "title": "Toplam ile tekil kayıt",
+    "sub": "Tekilleştirme",
+    "scene": "Bir etkinlikte 120 kayıt satırı, 100 farklı katılımcı kimliği var. 20 satırın iptal olduğu biliniyor; iptal satırlarının kimlikleri henüz ayrılmadı. Kaç aktif tekil katılımcı olduğunu soruyorlar.",
+    "type": "info",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "120−20=100 aktif tekil kişi var derim.",
+        "score": 1,
+        "why": "Aktif satır sayısını tekil kişi sayısıyla karıştırır."
+      },
+      {
+        "text": "80–100 arasında olabilir; iptal ve kalan satırlarda kimlikleri tekilleştirmeden kesin sayı veremem.",
+        "score": 3,
+        "why": "İptalin tekrar eden mi ayrı kimliklere mi ait olduğu bilinmediğinden doğru sınırı verir."
+      },
+      {
+        "text": "İptal listesinde hangi kimliklerin olduğunu isterim.",
+        "score": 2,
+        "why": "Gerekli ayrımı hedefler; eldeki sayılarla aralığı henüz açıklamaz."
+      },
+      {
+        "text": "100−20=80 kesin aktif kişi var derim.",
+        "score": 0,
+        "why": "Satır iptalini doğrudan tekil kişi düşüşü sayar."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R12",
+    "dim": "analitik",
+    "title": "Önce ve sonra",
+    "sub": "Karşılaştırılabilirlik",
+    "scene": "Bir eğitim öncesi 10 kolay görevde 8, sonrasında 10 zor görevde 7 doğru yaptın. Hangi sonuca varabilirsin?",
+    "type": "choice",
+    "core": false,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Doğruluk düştüğü için eğitim zarar verdi.",
+        "score": 0,
+        "why": "Karşılaştırılamayan setlerden neden sonucu çıkarır."
+      },
+      {
+        "text": "Sorular zor olduğu için kesin geliştim.",
+        "score": 1,
+        "why": "Güçlük bilgisi gelişimi tek başına doğrulamaz."
+      },
+      {
+        "text": "Bu iki set, güçlük ve kapsam eşitlenmediği için gelişim miktarını tek başına göstermez; benzer koşullu görev ve hata türleri gerekir.",
+        "score": 3,
+        "why": "Set farkı ile öğrenme etkisini ayırır."
+      },
+      {
+        "text": "Son setteki yanlışları inceleyerek çalışma ihtiyacı seçebilirim.",
+        "score": 2,
+        "why": "Sonuçtan yararlı çalışma adımı üretir; gelişim farkını ölçmez."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R13",
+    "dim": "musteri",
+    "title": "Talebi mi, ihtiyacı mı?",
+    "sub": "Hizmet ihtiyacını anlama",
+    "scene": "Bir proje paydaşı her gün ayrıntılı tablo istiyor. Hazırlaması bir saat; hangi kararı desteklediği belirsiz. İlk yaklaşımın?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Bir hafta aynı tabloyu hazırlayıp kullanımını gözlemlerim.",
+        "score": 2,
+        "why": "Kullanım verisi sağlayabilir; ihtiyacı önceden netleştirmez."
+      },
+      {
+        "text": "Talep geldiği için süresini konuşmadan her gün göndermeyi taahhüt ederim.",
+        "score": 1,
+        "why": "Talebi karşılar ama kapasite ve kullanım ihtiyacını sınamaz."
+      },
+      {
+        "text": "Zaman aldığı için açıklama yapmadan haftalığa çeviririm.",
+        "score": 0,
+        "why": "Hizmet beklentisini tek taraflı değiştirir."
+      },
+      {
+        "text": "Tabloyla hangi kararı ne sıklıkta verdiğini sorar; yeterli kapsam ve sıklığı birlikte netleştiririm.",
+        "score": 3,
+        "why": "İhtiyaç ile çözüm biçimini ayırarak sürdürülebilir hizmet kurar."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R14",
+    "dim": "musteri",
+    "title": "Yetkinin ötesindeki söz",
+    "sub": "Gerçekçi taahhüt",
+    "scene": "Bir kullanıcı çözümün bugün tamamlanmasını istiyor. Sen kaydı kontrol edebilirsin; nihai düzeltme başka ekibin onayında. Ne söylersin?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Bugün yapabileceğim kontrolü ve dönüş saatini söyler; nihai süre için yetkili ekiple teyit ederek bilgi veririm.",
+        "score": 3,
+        "why": "Kendi kontrolündeki taahhüt ile dış bağımlılığı açık ayırır."
+      },
+      {
+        "text": "Talebi öncelik isteğiyle ilgili ekibe aktarır ve kullanıcıya aktarımı bildiririm.",
+        "score": 2,
+        "why": "Sorumluya iletir; kendi dönüş kontrolünü henüz belirlemez."
+      },
+      {
+        "text": "Kullanıcı rahatlasın diye bugün kesin biter derim.",
+        "score": 0,
+        "why": "Yetki ve kapasite dışındaki sonuca söz verir."
+      },
+      {
+        "text": "Başka ekibin işi olduğunu söyleyip kaydı kapatırım.",
+        "score": 1,
+        "why": "Sahiplenme ve takip bağını koparır."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R15",
+    "dim": "musteri",
+    "title": "Tekrarlanan başvuru",
+    "sub": "Sorunu takip etme",
+    "scene": "Aynı konuda üçüncü kez başvuran kullanıcı önceki iki kaydı paylaştı. İki adım seç.",
+    "type": "plan",
+    "core": false,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Kullanıcının ne kadar rahatsız olduğunu ayrıca sorarım.",
+        "score": 1,
+        "why": "Deneyimi dinler; tekrar sorununu çözmeye tek başına yetmez."
+      },
+      {
+        "text": "Önceki çözüm ve tekrar koşullarını kayıtlardan karşılaştırırım.",
+        "score": 3,
+        "why": "Tekrarın ne zaman ve neden olabileceğine somut veri sağlar."
+      },
+      {
+        "text": "Kayıt sahibini ve sonraki bilgilendirme zamanını netleştiririm.",
+        "score": 3,
+        "why": "Süreçte sahiplik ve izlenebilir takip sağlar."
+      },
+      {
+        "text": "Bu kez daha kesin bir dille aynı hazır yanıtı yollarım.",
+        "score": 0,
+        "why": "Tekrarın koşullarını ve çözüm başarısını incelemez."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R16",
+    "dim": "catisma",
+    "title": "Ortak dosyada iki sürüm",
+    "sub": "İş uyuşmazlığı",
+    "scene": "İki proje arkadaşı farklı dosyaları son sürüm sayıyor. Sen bölüm çıktını bugün bağlayacaksın; ikisi de gerekçeli konuşuyor. Ne yaparsın?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Daha yakın olduğum arkadaşın dosyasını seçerim.",
+        "score": 0,
+        "why": "İş ölçütü yerine kişisel yakınlığa dayanır."
+      },
+      {
+        "text": "İki kişiden farkları birlikte göstermelerini isterim.",
+        "score": 2,
+        "why": "Anlamayı kolaylaştırır; geçerli sürüm ve takip kararı eksik kalabilir."
+      },
+      {
+        "text": "İki dosyanın değişikliklerini ve karar kayıtlarını karşılaştırıp ekipçe tek geçerli sürüm ve sahip belirlemeyi öneririm.",
+        "score": 3,
+        "why": "Kişilerden çok izlenebilir iş kararını ortaklaştırır."
+      },
+      {
+        "text": "Kendi bölümümü iki dosyaya da eklerim.",
+        "score": 1,
+        "why": "Geçici devam sağlar; sürüm uyuşmazlığını büyütebilir."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R17",
+    "dim": "catisma",
+    "title": "İtirazın dayanağı",
+    "sub": "Farklı görüşü araştırma",
+    "scene": "Bir ekip arkadaşı önerinin uygulanamayacağını söylüyor. Sen uygulanabilir olduğunu düşünüyorsun. Önce hangi bilgiyi istersin?",
+    "type": "info",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Önerinin hangi kısmını daha faydalı bulduğunu.",
+        "score": 1,
+        "why": "Ortak zemin arar; uygulanamazlık itirazını açıklamaz."
+      },
+      {
+        "text": "Benzer işte daha önce ne denediğini.",
+        "score": 2,
+        "why": "Deneyim sağlar; mevcut kısıt ayrıca netleşmelidir."
+      },
+      {
+        "text": "Diğer ekip üyelerinin kimin tarafında olduğunu.",
+        "score": 0,
+        "why": "Kanıt yerine taraf sayar."
+      },
+      {
+        "text": "Hangi koşulda, hangi kısıt nedeniyle aksayacağını somut örnekle açıklamasını.",
+        "score": 3,
+        "why": "Görüş ayrılığını sınanabilir bir iş kısıtına dönüştürür."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R18",
+    "dim": "catisma",
+    "title": "Paylaşılan sunum süresi",
+    "sub": "Ortak kaynak anlaşması",
+    "scene": "Üç kişilik proje sunumunda toplam 12 dakika var. Herkes kendi bölümüne 6 dakika istiyor. İki adım seç.",
+    "type": "plan",
+    "core": false,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Sunumun kabul ölçütlerine göre hangi bilgilerin zorunlu olduğunu birlikte çıkarırım.",
+        "score": 3,
+        "why": "Kaynağın dağıtımını ortak çıktı ihtiyacına bağlar."
+      },
+      {
+        "text": "Bölümler için süre sınırı koyup birlikte zamanlı prova yapmayı öneririm.",
+        "score": 3,
+        "why": "Anlaşmayı gerçek toplam süreyle sınar."
+      },
+      {
+        "text": "Herkesin altışar dakika kullanmasını, süre aşımını sonra açıklamayı öneririm.",
+        "score": 0,
+        "why": "Toplam kısıtı ihlal eder."
+      },
+      {
+        "text": "Süreyi tartışmamak için herkese koşulsuz dört dakika öneririm.",
+        "score": 1,
+        "why": "Toplamı korur; içerik ve ölçüt farklarını incelemez."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R19",
+    "dim": "degisim",
+    "title": "Yeni dosya yöntemi",
+    "sub": "Küçük deneme",
+    "scene": "Grup çalışmasında yeni bir dosya paylaşma yöntemi öneriyorsun. Bir arkadaşın telefonunda açılmadığını söylüyor. Nasıl ilerlersin?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Tek cihazda sorun çıktığı için yöntemi incelemeden bırakırım.",
+        "score": 1,
+        "why": "Alternatif çözüm ve deneme olanağını sınamaz."
+      },
+      {
+        "text": "Küçük bir gerçek dosyayla farklı cihazlarda dener, erişim sorunu çözülmeden tek yöntem olarak zorunlu kılmam.",
+        "score": 3,
+        "why": "Kullanıcı koşulunu denemeye dahil eder ve erken yaygınlaştırma riskini sınırlar."
+      },
+      {
+        "text": "Açılmayan cihazı öğrenip başka biçim göndermeyi denerim.",
+        "score": 2,
+        "why": "Somut engeli ele alır; ortak yöntem kararı ve test kapsamı eksiktir."
+      },
+      {
+        "text": "Çoğu kişide çalıştığı için herkesin kullanmasını isterim.",
+        "score": 0,
+        "why": "Etkilenen kullanıcının erişim engelini göz ardı eder."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R20",
+    "dim": "degisim",
+    "title": "Karşılaştırma olmadan yaygınlaştırma",
+    "sub": "Deneme sonucunu yorumlama",
+    "scene": "Yeni şablonla ilk rapor 30 dakikada, eskiyle son rapor 45 dakikada hazırlandı. Yeni rapor daha kısa kapsamlıydı. Hangi bilgi yaygınlaştırma kararını güçlendirir?",
+    "type": "info",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Yeni şablonla birkaç rapor daha hazırlayıp hatalarını kaydetme.",
+        "score": 2,
+        "why": "Tek gözlemi genişletir; eş kapsamlı karşılaştırma hâlâ gerekir."
+      },
+      {
+        "text": "İlk 15 dakikalık farkı bütün rapor sayısıyla çarpma.",
+        "score": 0,
+        "why": "Karşılaştırılabilirliği sağlamadan kazancı geneller."
+      },
+      {
+        "text": "Aynı kapsam ve benzer veriyle süre, hata ve kullanıcı ihtiyacını birlikte karşılaştırma.",
+        "score": 3,
+        "why": "Kapsam farkını denetleyip yan etkileri de inceler."
+      },
+      {
+        "text": "Yeni şablonu kullanan kişinin memnuniyetini öğrenme.",
+        "score": 1,
+        "why": "Kullanılabilirliği gösterir; süre ve kalite iddiasını doğrulamaz."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R21",
+    "dim": "degisim",
+    "title": "Eski yönteme dönüş koşulu",
+    "sub": "Kontrollü uygulama",
+    "scene": "Yeni veri toplama formunu üç gün deneyeceksiniz. Eski form çalışıyor; yeni formun bazı alanları farklı. En uygun hazırlık?",
+    "type": "choice",
+    "core": false,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Eski formun bir kopyasını saklarım.",
+        "score": 2,
+        "why": "Geri dönüş girdisi vardır; eşik ve alan eşleşmesi açık değildir."
+      },
+      {
+        "text": "Yeniye geçişi kesinleştirmek için eski formu silerim.",
+        "score": 0,
+        "why": "Deneme sırasında geri dönüşü kaldırır."
+      },
+      {
+        "text": "İlk gün kullanıcıların yorumlarını bekler, sonra kontrol ölçütü seçerim.",
+        "score": 1,
+        "why": "Sonucu gördükten sonra ölçüt seçme yanlılığı yaratır."
+      },
+      {
+        "text": "Alan eşleşmesini ve kontrol ölçütünü yazar; sorun eşiğinde eskiye dönüş yolunu deneme öncesi belirlerim.",
+        "score": 3,
+        "why": "Veri bütünlüğü ve geri dönüş koşulu uygulamadan önce korunur."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R22",
+    "dim": "adalet",
+    "title": "Paylaşılmaması gereken sütun",
+    "sub": "Veri erişimi",
+    "scene": "Proje arkadaşın herkesin göreceği sunum dosyasına kişisel telefon numaraları içeren listeyi eklemeni istedi. Sunum için yalnız bölüm bazında sayılar gerekiyor. Ne yaparsın?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Sunumun ihtiyacı olan toplu sayıları kullanır, kişisel sütunları sunumdan çıkarırım.",
+        "score": 3,
+        "why": "Amaca uygun en az bilgiyi paylaşır."
+      },
+      {
+        "text": "Dosyayı kişisel bilgiler bulunduğunu belirten bir notla eklerim.",
+        "score": 1,
+        "why": "Uyarı, gereksiz erişimi önlemez."
+      },
+      {
+        "text": "Telefon sütununu gizleyip aynı dosyayı gönderirim.",
+        "score": 0,
+        "why": "Gizlenen sütun alıcı tarafından açılabilir."
+      },
+      {
+        "text": "Önce bu ayrıntıların neden istendiğini sorup paylaşımı bekletirim.",
+        "score": 2,
+        "why": "Gerekliliği sorgular; mevcut toplu veri seçeneğini henüz kullanmaz."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R23",
+    "dim": "adalet",
+    "title": "Herkese aynı ölçüt",
+    "sub": "Tutarlı değerlendirme",
+    "scene": "Bir grup projesinde katkı puanı verilecek. Yakın arkadaşın daha az görev teslim etti ama çok çalıştığını söylüyor. Önce hangi dayanak gerekir?",
+    "type": "info",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Teslim edilen görevlerin listesi.",
+        "score": 2,
+        "why": "Somut çıktı sağlar; destek katkısı ve ortak ölçüt ayrıca gerekir."
+      },
+      {
+        "text": "Önceden belirlenen katkı ölçütü, teslim ve destek kayıtları; herkes için aynı biçimde.",
+        "score": 3,
+        "why": "İşle ilgili ve tutarlı kanıtı esas alır."
+      },
+      {
+        "text": "Arkadaşımın kendi emek anlatımı.",
+        "score": 1,
+        "why": "Bir bakış açısıdır; ortak ölçüt ve diğer kanıtlar yoktur."
+      },
+      {
+        "text": "Ekipteki çoğunluğun kanaati.",
+        "score": 0,
+        "why": "İş kanıtının yerine grup izlenimini koyar."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R24",
+    "dim": "adalet",
+    "title": "Hata düzeltmesinin izi",
+    "sub": "Kayıt dürüstlüğü",
+    "scene": "Kendi hazırladığın tabloda yanlış bir formül buldun. Dosya daha önce paylaşılmış; düzelttiğinde bir sonuç değişiyor. Nasıl ilerlersin?",
+    "type": "choice",
+    "core": false,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Kimse sormadığı için sessizce dosyanın üzerine yazarım.",
+        "score": 0,
+        "why": "Önceki kararı kullananlar değişiklikten habersiz kalır."
+      },
+      {
+        "text": "Sonucu değiştirmemek için formülü olduğu gibi bırakırım.",
+        "score": 1,
+        "why": "Görünür tutarlılık uğruna bilinen hatayı sürdürür."
+      },
+      {
+        "text": "Eski sürümü korur, değişen sonucu ve etkilenen kararı açıklayarak düzeltilmiş sürümü bildiririm.",
+        "score": 3,
+        "why": "Düzeltmenin izini ve karar etkisini korur."
+      },
+      {
+        "text": "Yeni sürümü paylaşır, istenirse neden değiştiğini anlatırım.",
+        "score": 2,
+        "why": "Doğru çıktıyı sağlar; etkiyi kendiliğinden açıklamaz."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R25",
+    "dim": "ogrenme",
+    "title": "Bilmediğin göreve başlamak",
+    "sub": "Öğrenme ihtiyacını seçme",
+    "scene": "İlk kez bir analiz aracı kullanacaksın. İki günün var; kapsamlı eğitim 12 saat, beklenen çıktı basit bir özet tablo. Hangi bilgiyle öğrenme yolunu seçersin?",
+    "type": "info",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Eğitimin en yüksek puan alan bölümleri.",
+        "score": 1,
+        "why": "Popülerlik, göreve uygunluğu tek başına göstermez."
+      },
+      {
+        "text": "Benzer tabloyu üreten kısa örnek ve kendi denememde zorlandığım yer.",
+        "score": 2,
+        "why": "Göreve yakın pratik sağlar; kabul ölçütü ayrıca netleşmelidir."
+      },
+      {
+        "text": "Aracın bütün menülerini öğrenmeden işe başlamam.",
+        "score": 0,
+        "why": "Sınırlı ihtiyacı gereksiz kapsamla geciktirir."
+      },
+      {
+        "text": "Beklenen çıktının kabul ölçütü ve bu çıktıyı üretmek için eksik olduğum adımlar.",
+        "score": 3,
+        "why": "Öğrenme ihtiyacını somut göreve bağlar."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R26",
+    "dim": "ogrenme",
+    "title": "Geri bildirimi denemeye çevirmek",
+    "sub": "Uygulama ve kontrol",
+    "scene": "Sunumunda veriler doğru, fakat dinleyenler karar önerini anlayamadı. Bir sonraki prova için iki adım seç.",
+    "type": "plan",
+    "core": true,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Tek bir karar mesajı yazıp örnek verilerle yeniden kurgularım.",
+        "score": 3,
+        "why": "Geri bildirimi değiştirilebilir somut davranışa çevirir."
+      },
+      {
+        "text": "Yeni provayı birine gösterip karar önerisini kendi cümlesiyle anlatmasını isterim.",
+        "score": 3,
+        "why": "Anlaşılırlığı bağımsız bir geri anlatımla kontrol eder."
+      },
+      {
+        "text": "Sunum tasarımını değiştirip yazı tipini küçültürüm.",
+        "score": 0,
+        "why": "Belirlenen iletişim sorununu hedeflemez."
+      },
+      {
+        "text": "Daha fazla veri ekleyerek ayrıntıyı artırırım.",
+        "score": 1,
+        "why": "Sorunun bilgi eksikliğinden geldiği doğrulanmamıştır."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R27",
+    "dim": "ogrenme",
+    "title": "Aynı örneği ezberlemek",
+    "sub": "Yeni bağlama aktarım",
+    "scene": "Çözümlü örneği birkaç kez tekrarlayıp doğru sonuca ulaştın. Aynı yöntemi yeni bir problemde kullanıp kullanamadığını nasıl araştırırsın?",
+    "type": "choice",
+    "core": false,
+    "roles": [
+      "analyst",
+      "operations_specialist",
+      "specialist",
+      "graduate",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Doğru cevabı hatırladığım için yöntemi tamamen öğrendim derim.",
+        "score": 0,
+        "why": "Sonucu hatırlamayı öğrenmenin tümü sayar."
+      },
+      {
+        "text": "Çözümü görmeden farklı koşullu yeni bir soruyu çözer, yöntem seçimi ve hatalarımı karşılaştırırım.",
+        "score": 3,
+        "why": "Hatırlama ile yeni bağlamda yöntem seçmeyi ayırır."
+      },
+      {
+        "text": "Aynı örneği daha hızlı çözerim.",
+        "score": 1,
+        "why": "Akıcılığı gösterebilir; aktarımı göstermez."
+      },
+      {
+        "text": "Çözüm adımlarını sözlü anlatırım.",
+        "score": 2,
+        "why": "Anlamayı incelemeye yardım eder; yeni bağlamda uygulama gerekir."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R28",
+    "dim": "analitik",
+    "title": "Bütçe sapmasının bileşenleri",
+    "sub": "Hacim ve birim maliyet",
+    "scene": "Analist olarak 1.000 adet × 20 TL bütçeyi, 1.200 adet × 18 TL gerçekleşenle karşılaştırıyorsun. Toplam maliyet 1.600 TL artmış. Hangi açıklama veriye dayanır?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Birim maliyet %10 düştü; toplam artış için hacmi de incelemek gerekir.",
+        "score": 2,
+        "why": "Yönü doğru ayırır; sapma bileşenlerini tamamlamaz."
+      },
+      {
+        "text": "Hacim %20 arttığı için toplam maliyet de %20 artmıştır.",
+        "score": 1,
+        "why": "Birim fiyat değişimini dışlar."
+      },
+      {
+        "text": "Bütçe birim fiyatıyla hacim etkisi +4.000 TL, gerçekleşen hacimde fiyat etkisi −2.400 TL; net +1.600 TL.",
+        "score": 3,
+        "why": "Tutarlı bazlarla hacim ve fiyat etkileri toplam sapmayı açıklar."
+      },
+      {
+        "text": "Toplam maliyet arttığı için birim maliyet de artmıştır.",
+        "score": 0,
+        "why": "Birim maliyetin 20’den 18’e düşmesini göz ardı eder."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R29",
+    "dim": "karar",
+    "title": "Gereksinimin kabul ölçütü",
+    "sub": "İş analizi",
+    "scene": "İş analisti olarak “rapor hızlı olsun” talebini geliştirme ekibine aktaracaksın. Mevcut rapor yoğun saatte 40 saniye, sakin saatte 8 saniyede açılıyor. En uygun sonraki adım?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Bütün koşullarda 1 saniye hedefi yazarım.",
+        "score": 0,
+        "why": "Dayanağı ve uygulanabilirliği olmayan eşik seçer."
+      },
+      {
+        "text": "Mevcut iki ölçümü geliştirme ekibine iletirim.",
+        "score": 2,
+        "why": "Başlangıç verisini sağlar; kabul beklentisini netleştirmez."
+      },
+      {
+        "text": "Talebi “performans iyileştirme” diye kaydedip kapatırım.",
+        "score": 1,
+        "why": "Doğrulanabilir tamamlanma koşulu yoktur."
+      },
+      {
+        "text": "Kullanım senaryosu, veri hacmi ve yoğunluk altında hedef süreyi talep sahibiyle ölçülebilir kabul ölçütüne bağlarım.",
+        "score": 3,
+        "why": "Muğlak beklentiyi koşulları belli doğrulanabilir gereksinime çevirir."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R30",
+    "dim": "analitik",
+    "title": "İki tabloda çoğalan satırlar",
+    "sub": "Birleştirme anahtarı",
+    "scene": "Analist olarak 100 siparişi 300 sipariş satırıyla birleştirdin. Son tabloda 300 satır var; sipariş tablosundaki toplam tutarı yeniden topladığında tutar büyüyor. Önce neyi incelersin?",
+    "type": "info",
+    "core": false,
+    "roles": [
+      "analyst",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Birleştirme anahtarı, bire-çok ilişki ve sipariş tutarının satırlarda tekrarlanmasını.",
+        "score": 3,
+        "why": "Verinin tane düzeyi ile toplama hatası arasındaki bağı hedefler."
+      },
+      {
+        "text": "300 satır oluşmasını sipariş sayısının üç katına çıkması sayarım.",
+        "score": 0,
+        "why": "Satır ile sipariş birimini karıştırır."
+      },
+      {
+        "text": "Sipariş kimliğine göre tekil sayımı karşılaştırırım.",
+        "score": 2,
+        "why": "Çoğalmayı gösterir; tutarın hangi düzeyde toplanacağını ayrıca kurmak gerekir."
+      },
+      {
+        "text": "Toplamı üçe bölerek düzeltirim.",
+        "score": 1,
+        "why": "Her siparişin satır sayısının aynı olduğu bilinmiyor."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R31",
+    "dim": "plan",
+    "title": "Kesim saatinden önce",
+    "sub": "Operasyon önceliği",
+    "scene": "Operasyon uzmanı olarak 16.00 araç kesimine 40 dakika kaldı. A işi 20 dakika sürüyor ve bu araca bağlı. B işi 30 dakika sürüyor, yarın sabah çıkacak. Aynı kaynağı kullanıyorlar. Hangi plan uygundur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "operations_specialist",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Yalnız A’yı bitirip kalan B işini sonraki vardiyaya bildiririm.",
+        "score": 2,
+        "why": "Kesimi korur ve devri yapar; kullanılabilir hazırlık fırsatını sınamaz."
+      },
+      {
+        "text": "A’yı önce tamamlayıp kontrol eder; kalan sürede B’nin güvenle bölünebilen hazırlığını yaparım.",
+        "score": 3,
+        "why": "Kritik kesimi ve toplam kapasiteyi birlikte korur."
+      },
+      {
+        "text": "Uzun sürdüğü için B’den başlarım.",
+        "score": 0,
+        "why": "Bugünkü kesimi kaçırır."
+      },
+      {
+        "text": "İki işi aynı anda yapacağıma söz veririm.",
+        "score": 1,
+        "why": "Tek kaynak kısıtını göz ardı eder."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R32",
+    "dim": "karar",
+    "title": "Adet uyuşmazlığında işlem sınırı",
+    "sub": "Operasyon istisnası",
+    "scene": "Operasyon uzmanı olarak teslim belgesinde 100 koli, fiziksel sayımda 96 koli gördün. Sayım farkını düzeltme yetkin yok; araç sürücüsü ayrılmak istiyor. Ne yaparsın?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "operations_specialist",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "96 sayısını not edip yetkiliye iletirim.",
+        "score": 2,
+        "why": "Farkı görünür kılar; teyit ve işlem sınırı açık değildir."
+      },
+      {
+        "text": "Belgeyi kendim 96 yapıp işlemi kapatırım.",
+        "score": 1,
+        "why": "Yetki sınırını aşar ve uyuşmazlığı tek taraflı kapatır."
+      },
+      {
+        "text": "Farkı yeniden sayımla teyit eder, tanımlı kayıt/istisna sürecinde yetkiliye aktarır; 100 teslim alındı onayı vermem.",
+        "score": 3,
+        "why": "Fiziksel kanıtı, yetkiyi ve kayıt doğruluğunu birlikte korur."
+      },
+      {
+        "text": "İşi aksatmamak için belgeyi 100 olarak onaylarım.",
+        "score": 0,
+        "why": "Bilinen farkı doğrulanmış teslim gibi kaydeder."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R33",
+    "dim": "analitik",
+    "title": "Vardiya veriminin tanımı",
+    "sub": "Operasyon verisi",
+    "scene": "Operasyon uzmanı olarak ilk vardiyada 800 iş/8 kişi, ikinci vardiyada 600 iş/5 kişi raporladın. Kişi sayısı dışında çalışma süresi ve iş karışımı yok. Hangi yorum doğrudur?",
+    "type": "choice",
+    "core": false,
+    "roles": [
+      "operations_specialist",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "İkinci vardiya bütün koşullarda %20 daha verimli.",
+        "score": 1,
+        "why": "Kişi başına adedi saat ve iş türünden bağımsız geneller."
+      },
+      {
+        "text": "İlk vardiya daha çok iş yaptığı için daha verimli.",
+        "score": 0,
+        "why": "Kaynak miktarını dışlar."
+      },
+      {
+        "text": "Çalışılan saat ve iş türlerini ayrıca toplarım.",
+        "score": 2,
+        "why": "Eksik girdiyi hedefler; mevcut kişi başı hesabı henüz açıklamaz."
+      },
+      {
+        "text": "Kişi başına adetler 100 ve 120; saat ve iş karışımı olmadan işçilik verimliliği üstünlüğünü kesinleştiremem.",
+        "score": 3,
+        "why": "Doğru ara hesabı yapıp ölçü tanımının sınırını korur."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R34",
+    "dim": "iletisim",
+    "title": "Uzman önerisinin karar sahibi",
+    "sub": "Paydaş iletişimi",
+    "scene": "Uzman olarak iki birimi etkileyen bir süreç önerisi hazırladın. Teknik olarak mümkün; karar yetkisi sende değil ve bir birimin iş yükü artacak. Öneriyi nasıl sunarsın?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Faydayı, artan iş yükünü ve alternatifleri birlikte gösterir; ilgili birimlerin görüşüyle yetkili karar sahibine sunarım.",
+        "score": 3,
+        "why": "Teknik uygulanabilirliği paydaş etkisi ve yetkiyle birlikte ele alır."
+      },
+      {
+        "text": "Faydayı göstermek için artan iş yükünü ilk sunuma koymam.",
+        "score": 0,
+        "why": "Karar için önemli maliyeti saklar."
+      },
+      {
+        "text": "İki birimden görüş alıp öneriye eklerim.",
+        "score": 2,
+        "why": "Paydaş görüşünü içerir; alternatif ve karar sahibi açık değildir."
+      },
+      {
+        "text": "Uzman olduğum için uygulama talimatı gönderirim.",
+        "score": 1,
+        "why": "Uzmanlığı karar yetkisiyle eşitler."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R35",
+    "dim": "degisim",
+    "title": "Uzman çözümünün kullanıcı testi",
+    "sub": "Benimseme",
+    "scene": "Uzman olarak kurduğun şablon doğru sonuç veriyor; kullanıcılar alanları farklı yorumluyor. Çözümü kapatmadan önce ne yaparsın?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Hesap doğru olduğu için kullanıcı sorunlarını kapsam dışında sayarım.",
+        "score": 0,
+        "why": "Çıktının sahada doğru üretilebilmesini göz ardı eder."
+      },
+      {
+        "text": "Gerçekçi görevde kullanıcıların alanları nasıl doldurduğunu gözler, tanım ve kontrolleri düzeltip yeniden denerim.",
+        "score": 3,
+        "why": "Teknik doğruluk ile kullanıcı tarafından doğru kullanımın farkını sınar."
+      },
+      {
+        "text": "Daha uzun bir kullanım dokümanı yollarım.",
+        "score": 1,
+        "why": "Sorunun hangi alanda oluştuğunu doğrulamadan çözüm seçer."
+      },
+      {
+        "text": "Kullanıcılardan anlaşılmayan alanları işaretlemelerini isterim.",
+        "score": 2,
+        "why": "Sorunu daraltır; gerçek kullanım doğrulaması ayrıca gerekir."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "R36",
+    "dim": "plan",
+    "title": "Parçalı uzman talebi",
+    "sub": "Bağımlılık ve kapsam",
+    "scene": "Uzman olarak üç birimden aynı hafta talep aldın. Bir talep diğer ikisi için ortak veri sözlüğü gerektiriyor; teslim günleri yakın. İlk yaklaşımın?",
+    "type": "choice",
+    "core": false,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "options": [
+      {
+        "text": "Hepsini kabul eder, süre yetişmezse son gün haber veririm.",
+        "score": 0,
+        "why": "Öngörülebilir kapasite riskini saklar."
+      },
+      {
+        "text": "Her talebin süresini ayrı tahmin ederim.",
+        "score": 2,
+        "why": "Kapasite girdisi sağlar; ortak iş ve sıra henüz net değildir."
+      },
+      {
+        "text": "Ortak bağımlılığı görünür kılar; kabul kapsamlarını ve kapasiteyi karar sahipleriyle birlikte sıralarım.",
+        "score": 3,
+        "why": "Ortak işi ve gerçek kapasiteyi talepler arası önceliğe bağlar."
+      },
+      {
+        "text": "İlk gelen talebi koşulsuz önce yaparım.",
+        "score": 1,
+        "why": "Bağımlılık ve karar etkisini dışlar."
+      }
+    ],
+    "status": "Özgün hazırlık sorusu · uzman incelemesi bekliyor"
+  }
+]

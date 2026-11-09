@@ -1,0 +1,7 @@
+﻿ID;Aksiyon;Başlangıç nakdi TL;Tam uygulamada aylık sonuç etkisi TL;Kişi-hafta
+F;"Fiyat%2; hacim sabit varsayımı";100000;200000;2
+T;Tedarik koşullarını iyileştir;0;150000;2
+S;Fazla stoktan nakit çıkar;50000;500000 tek seferlik nakit girişi;1
+K;Yeniden işlemi azalt;200000;100000;3
+E;Yeni ERP;900000;"İlk 3 ay fayda yok; ay 6 sonrası belirsiz";8
+P;Yeni müşteri segmenti pilotu;250000;Henüz ölçülmedi;3

@@ -1,0 +1,4 @@
+﻿Model;Başlangıç TL;Kapasite sipariş/ay;Aylık sabit TL;Sipariş başı karşılama TL
+Kendi kapasitesi;2400000;1000;150000;60
+İş ortağı;200000;800;30000;140
+Karma geçiş;250000;800;35000;"600 sipariş×140;200 sipariş×90"

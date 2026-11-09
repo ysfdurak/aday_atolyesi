@@ -1,0 +1,7 @@
+﻿Kayıt;Müşteri;Tutar TL;Beklenen hafta;Durum
+R 1;Müşteri A;200000;1;Kabul tamam
+R 2;Müşteri B;250000;2;Fatura teyitli
+R 3;Müşteri C;200000;3;Erken ödeme görüşmesi
+R 4;Müşteri D;300000;3;Kabul imzası bekliyor
+R 5;Müşteri E;450000;4;Planlı tarih
+R 6;Diğer;600000;5 ve sonrası;Farklı vadeler

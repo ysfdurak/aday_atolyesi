@@ -1,0 +1,11 @@
+﻿Dosya;Kaynak;Kayıt açıklaması;Kapanış durumu
+D 01;İç kontrol;Yeni alan eksik;Düzeltildi
+D 02;Müşteri;Talep kapsamı değişti notu;İncelemede
+D 03;Müşteri;Ek belge talebi;İncelemede
+D 04;İç kontrol;Kod uyumsuzluğu;Düzeltildi
+D 05;Müşteri;Sonradan yeni kapsam;İncelemede
+D 06;İç kontrol;Yeni alan eksik;Düzeltildi
+D 07;Müşteri;Belge seti değişti;İncelemede
+D 08;Müşteri;Teslim kapsamı değişti;İncelemede
+D 09;İç kontrol;Tarih alanı eksik;Düzeltildi
+D 10;Müşteri;Yeni sürüm kullanımı;İncelemede

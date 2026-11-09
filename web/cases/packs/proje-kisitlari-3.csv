@@ -1,0 +1,6 @@
+﻿ID;Görev;Süre gün;Öncül;Kaynak
+A;Gereksinimi netleştir;2;Yok;Analist
+B;Veri bağlantısı;3;A;Geliştirici
+C;Rapor ekranı;4;A;Aynı geliştirici
+D;Kabul testi;2;B ve C;Test uzmanı
+E;Canlıya geçiş onayı;1;D;Ürün sahibi

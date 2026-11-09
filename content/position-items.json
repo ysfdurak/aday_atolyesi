@@ -1,0 +1,782 @@
+[
+  {
+    "id": "P001",
+    "dim": "surec",
+    "title": "Daha hızlı toplama, geç sevkiyat",
+    "sub": "Süreç geliştirme analisti bağlamı",
+    "scene": "Depo sürecini inceleyen analistsin. Toplama süresi %15 azaldı; paketleme kuyruğu ve gün sonu geç çıkan sipariş arttı. Yalnız toplama kazancı raporlanmak isteniyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "custom"
+    ],
+    "positions": [
+      "process_analyst"
+    ],
+    "options": [
+      {
+        "text": "Toplama ile paketleme sürelerini ayrı ölçerim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Toplama hızını toplam süreç başarısı sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Geç sevkiyatı rapordan çıkarırım.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Uçtan uca sipariş süresi, kuyruk ve zamanında çıkışı birlikte gösterip darboğaz etkisini araştırırım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P002",
+    "dim": "sistem",
+    "title": "Kabul örneğinde yetki",
+    "sub": "İş / sistem analisti bağlamı",
+    "scene": "İş analisti olarak bir talep ekranı tanımlıyorsun. Normal kullanıcı kendi kaydını, yetkili kişi bölüm kayıtlarını görebilecek. Yalnız başarılı açılış örneği yazılmış. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "custom"
+    ],
+    "positions": [
+      "business_analyst"
+    ],
+    "options": [
+      {
+        "text": "Ekran açıldığı için erişim kuralını tamamlanmış sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Dış bölüm verisinin görünmesini test dışında bırakırım.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Kendi/bölüm/dış bölüm ve yetkisiz istek örnekleriyle görünürlük kabul ölçütlerini sınarım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Yetki matrisi taslağını kullanıcıya teyit ettiririm.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P003",
+    "dim": "analitik",
+    "title": "Birleşimde artan gelir",
+    "sub": "Veri analisti bağlamı",
+    "scene": "Veri analisti olarak müşteri tablosunu çok satırlı sipariş tablosuyla birleştirdin. Müşteri düzeyindeki yıllık tutar her siparişte tekrar ediyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "custom"
+    ],
+    "positions": [
+      "data_analyst"
+    ],
+    "options": [
+      {
+        "text": "Tutarı ortalama sipariş sayısına bölüp kesin düzeltirim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Tane düzeyi ve birleştirme çokluğunu kontrol edip tutarı doğru anahtar/düzeyde toplarım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Tekil müşteri sayısını önce ve sonra karşılaştırırım.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Yeni toplamı gelir artışı sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P004",
+    "dim": "kalite",
+    "title": "Panoda farklı kapanış",
+    "sub": "Raporlama / iş zekâsı uzmanı bağlamı",
+    "scene": "BI uzmanısın. İki pano aynı KPI için farklı sonuç veriyor: biri yükleme saatini, biri olay kapanış saatini kullanıyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "custom"
+    ],
+    "positions": [
+      "bi_analyst"
+    ],
+    "options": [
+      {
+        "text": "KPI zaman tanımını, kesim saatini ve aynı kayıt örneklerini eşleyip farkın kaynağını doğrularım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "İki panonun filtre ve veri tarihlerini çıkarırım.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Daha yeni görünen panoyu koşulsuz doğru sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Diğer panoyu sessizce kapatırım.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P005",
+    "dim": "risk",
+    "title": "Kesim saati ve belirsiz kontrol",
+    "sub": "Depo operasyon uzmanı bağlamı",
+    "scene": "Operasyon uzmanısın. Araç kesimine 15 dakika var. Bir sevkiyatın kontrol kaydı eksik; onay yetkisi sende değil. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "operations_specialist",
+      "custom"
+    ],
+    "positions": [
+      "warehouse_ops"
+    ],
+    "options": [
+      {
+        "text": "Kontrolün yapılıp yapılmadığını kaynağından teyit ederim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Hız için kaydı yapılmış sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Onay bilgisi üretip çıkışı tamamlarım.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Eksik kontrolü tanımlı sorumluya görünür kılar, yetkisiz onay vermeden çıkış seçeneğini eskale ederim.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P006",
+    "dim": "kokneden",
+    "title": "Stok farkını ne açıklıyor?",
+    "sub": "Stok kontrol uzmanı bağlamı",
+    "scene": "Stok uzmanısın. Farklar yalnız belirli saat dilimindeki transferlerde görünüyor. Sayım düzeltmeleri bu işlemlerle eş zamanlı. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "operations_specialist",
+      "custom"
+    ],
+    "positions": [
+      "inventory"
+    ],
+    "options": [
+      {
+        "text": "Bütün farkı sayım yapan kişinin hatası sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Kayıtları iz bırakmadan fiili stoğa eşitlerim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "İşlem zamanı, hareket sırası ve düzeltme izini eşleyip diğer saatlerle karşılaştırırım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Farklı ürün ve lokasyonları ayrı listelerim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P007",
+    "dim": "plan",
+    "title": "Kapasite aynı, iş türü farklı",
+    "sub": "Planlama uzmanı bağlamı",
+    "scene": "Planlama uzmanısın. Günlük 100 iş kapasitesi deniyor; bugün 30 iş iki kat süre, kalan 70 iş standart süre istiyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "operations_specialist",
+      "custom"
+    ],
+    "positions": [
+      "planning"
+    ],
+    "options": [
+      {
+        "text": "Zor işleri kayda almadan ertelerim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Standart eşdeğer iş yükünün 130 olduğunu gösterir; hizmet önceliği ve ek kapasite seçeneklerini planlarım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "İş türlerine göre süreleri ve son tarihleri çıkarırım.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "100 iş olduğu için kapasite yeter derim.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P008",
+    "dim": "kalite",
+    "title": "Seçilmiş temiz örnekler",
+    "sub": "Kalite uzmanı bağlamı",
+    "scene": "Kalite uzmanısın. Tedarikçi yalnız vardiya başındaki 12 ürünü kontrol etmiş; hata başka saatlerde yoğunlaşıyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "positions": [
+      "quality"
+    ],
+    "options": [
+      {
+        "text": "Temsil edilen zaman ve koşulları gözden geçirip kabul planına uygun örneklemeyle karar veririm.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Kontrol edilen saat ve ürün kayıtlarını isterim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "12 temiz ürünü tüm vardiyaya genellerim.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Diğer saatleri kontrol kapsamından gizlerim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P009",
+    "dim": "finans",
+    "title": "Yalın kazancın türü",
+    "sub": "Operasyonel mükemmellik / yalın uzmanı bağlamı",
+    "scene": "İyileştirme uzmanısın. Öneri haftada 40 saat serbest bırakıyor. Çalışan sayısı ve fazla mesai değişmeyecek; yeni iş kullanımı planlı değil. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "positions": [
+      "improvement"
+    ],
+    "options": [
+      {
+        "text": "Süre ölçümünü ve hesap varsayımını doğrularım.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "40 saati doğrudan bütçe düşüşü diye raporlarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Nakit etkisi yokken bordro tasarrufu yazarım.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Kapasite kazanımını nakit tasarrufundan ayırıp kullanım ve gerçekleşme planını netleştiririm.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P010",
+    "dim": "proje",
+    "title": "Koordinatörün dış bağımlılığı",
+    "sub": "Proje uzmanı / koordinatörü bağlamı",
+    "scene": "Proje koordinatörüsün. Kullanıcı kabulü cuma; test verisi çarşamba gelecek. Kaynağın sorumlusu perşembeden önce taahhüt veremiyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "positions": [
+      "project"
+    ],
+    "options": [
+      {
+        "text": "Kabul tarihini etkisiz varsayarak yeşil raporlarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Test yapılmadan kabulü tamamlandı sayarım.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Bağımlılığın takvim etkisini ve alternatif veri/kabul kapsamını karar sahibine seçeneklerle sunarım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Veri sahibinden mümkün olan ilk tarihi teyit ederim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P011",
+    "dim": "adalet",
+    "title": "Aday hunisinde yanlış karşılaştırma",
+    "sub": "İnsan kaynakları uzmanı bağlamı",
+    "scene": "İK uzmanısın. İki kanalın işe alım oranı karşılaştırılıyor; birinde yeni mezun, diğerinde kıdemli roller ağırlıkta. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "positions": [
+      "hr"
+    ],
+    "options": [
+      {
+        "text": "İstenen sonucu vermeyen rolleri karşılaştırmadan gizlerim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Rol, dönem ve huni adımlarını eşleyip kanalların karşılaştırılabilirliğini açıklarım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Başvuru ve ilerleme sayılarını ayrı toplarım.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Ham oran farkını doğrudan kanal kalitesi sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P012",
+    "dim": "finans",
+    "title": "Bütçe ile nakit tarihi",
+    "sub": "Finans / bütçe uzmanı bağlamı",
+    "scene": "Bütçe uzmanısın. Bir gider ilgili ayın maliyetine giriyor; ödeme iki ay sonra. Yönetici aynı tabloyu nakit planı için kullanmak istiyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "analyst",
+      "custom"
+    ],
+    "positions": [
+      "finance"
+    ],
+    "options": [
+      {
+        "text": "Tahakkuk ve ödeme tarihlerini ayırarak maliyet tablosundan nakit köprüsü kurarım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Ödeme koşullarını ve tutarları teyit ederim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Bütçe ayını ödeme ayı sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "İki aylık farkı kayıtsız değiştiririm.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P013",
+    "dim": "ticari",
+    "title": "İndirim sonrası katkı",
+    "sub": "Satış / müşteri yöneticisi bağlamı",
+    "scene": "Satış uzmanısın. Fiyat 100 TL, değişken maliyet 80 TL. Müşteri %10 indirim ve aynı hizmeti istiyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "positions": [
+      "sales"
+    ],
+    "options": [
+      {
+        "text": "İndirimden sonra fiyat ve maliyeti yeniden çıkarırım.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Fiyat %10 düştüğü için katkı da yalnız %10 düşer derim.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "İndirimin katkı etkisini saklayıp söz veririm.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Birim katkının 20’den 10 TL’ye düştüğünü gösterip miktar, ödeme ve kapsam seçeneklerini birlikte değerlendiririm.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P014",
+    "dim": "ticari",
+    "title": "İki teklifin toplam etkisi",
+    "sub": "Satın alma uzmanı bağlamı",
+    "scene": "Satın alma uzmanısın. A teklifinin birim fiyatı düşük; yüksek minimum miktar ve uzun teslimi var. B pahalı ama küçük parti ve kısa teslim sunuyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "positions": [
+      "procurement"
+    ],
+    "options": [
+      {
+        "text": "Yalnız en düşük birim fiyatı seçerim.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Minimum miktar koşulunu karar notundan çıkarırım.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Talep, stok tutma, hizmet ve tedarik riskiyle toplam maliyeti karşılaştırırım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Teklif koşullarını ortak tabloda eşlerim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P015",
+    "dim": "kokneden",
+    "title": "Şikâyet adedi yükseldi",
+    "sub": "Müşteri deneyimi / hizmet uzmanı bağlamı",
+    "scene": "Müşteri deneyimi uzmanısın. Şikâyet sayısı %20, işlem hacmi %50 arttı. Şikâyet türleri ve tekrar kayıtları henüz ayrılmadı. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "specialist",
+      "custom"
+    ],
+    "positions": [
+      "customer"
+    ],
+    "options": [
+      {
+        "text": "Tekrar kayıtları açıklamadan silerim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "İşlem başına oranı ve tekil/tür dağılımını ayırır; yalnız adetle hizmetin kötüleştiğini söylemem.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Hacim ve şikâyet tanımlarını teyit ederim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Adet arttığı için hizmet kesin kötüleşti derim.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P016",
+    "dim": "gelisim",
+    "title": "İlk uygulamanın sınırı",
+    "sub": "Ekip lideri bağlamı",
+    "scene": "Ekip liderisin. Yeni çalışan güvenli deneme ortamında doğru, canlı işte değişken durumda zorlanıyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "team",
+      "custom"
+    ],
+    "positions": [
+      "team_lead"
+    ],
+    "options": [
+      {
+        "text": "Zorlandığı koşulu gözleyip kademeli canlı uygulama, destek ve aynı ölçütle takip planlarım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Deneme ile canlı işin farklarını çıkarırım.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Deneme doğruysa tamamen bağımsız hazır sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Öğrenme fırsatını süresiz kaldırırım.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P017",
+    "dim": "strateji",
+    "title": "Vardiya sonucunun bedeli",
+    "sub": "Depo / operasyon yöneticisi bağlamı",
+    "scene": "Operasyon yöneticisisin. Hacim hedefi için önerilen plan, kontrol kapasitesini aşıyor ve ertesi gün yeniden iş yaratıyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "operations",
+      "custom"
+    ],
+    "positions": [
+      "warehouse_manager"
+    ],
+    "options": [
+      {
+        "text": "Ek yükü ve sonraki gün etkisini ölçerim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Yalnız bugünkü hacim hedefini optimize ederim.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Yeniden işi sonraki dönemden gizlerim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Hacim, uygunluk, yeniden iş ve kaynak etkisini birlikte değerlendiren uygulanabilir seçenekleri karşılaştırırım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P018",
+    "dim": "surec",
+    "title": "Bölüm kazancı, şirket kaybı",
+    "sub": "Süreç / operasyonel mükemmellik yöneticisi bağlamı",
+    "scene": "Süreç yöneticisisin. Bir bölüm maliyeti düşerken başka bölümde daha yüksek ek maliyet oluşuyor. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "team",
+      "custom"
+    ],
+    "positions": [
+      "process_manager"
+    ],
+    "options": [
+      {
+        "text": "İlk bölümün kazancını şirket kazancı sayarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "İkinci bölüm maliyetini kapsam dışına gizlerim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Uçtan uca maliyet ve hizmeti aynı sınırla gösterip yerel hedeflerin etkisini düzeltirim.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "İki bölümün maliyet sürücülerini ayrı çıkarırım.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P019",
+    "dim": "proje",
+    "title": "Aynı kritik kaynak",
+    "sub": "Proje yöneticisi bağlamı",
+    "scene": "Proje yöneticisisin. İki kritik proje aynı uzmana aynı hafta tam zamanlı ihtiyaç duyuyor. Onaylı kapasite bir kişi. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "team",
+      "custom"
+    ],
+    "positions": [
+      "project_manager"
+    ],
+    "options": [
+      {
+        "text": "Çakışmayı takvimden gizlerim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      },
+      {
+        "text": "Ortak bağımlılığı, hedef katkısını ve erteleme/kapsam seçeneklerini portföy kararına taşırım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "İki projenin kaynak takvimini eşlerim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Uzmanın iki projeye de tam zamanlı yetişeceğini yazarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  },
+  {
+    "id": "P020",
+    "dim": "ogrenme",
+    "title": "İlk görev, belirsiz çıktı",
+    "sub": "Yeni mezun / ilk iş adayı bağlamı",
+    "scene": "İlk işindeki ilk görev için “kısa bir analiz hazırla” denildi. Süre yarın öğlen; örnek çıktı ve karar amacı verilmedi. İlk yaklaşımın ne olur?",
+    "type": "choice",
+    "core": true,
+    "roles": [
+      "graduate",
+      "custom"
+    ],
+    "positions": [
+      "graduate"
+    ],
+    "options": [
+      {
+        "text": "Kullanım amacını ve kabul örneğini kısaca netleştirip küçük bir taslakla erken geri bildirim alırım.",
+        "score": 3,
+        "why": "Pozisyona özgü veri, yetki, bağımlılık ve sonuç sınırını birlikte korur."
+      },
+      {
+        "text": "Benzer bir örnek çıktı isterim.",
+        "score": 2,
+        "why": "İlgili bir ilk adımı kurar; karar ve sonuç takibini bütünüyle tamamlamaz."
+      },
+      {
+        "text": "Sormadan en ayrıntılı raporu hazırlamaya başlarım.",
+        "score": 1,
+        "why": "Senaryodaki temel ayrımı dışlayarak karar verir."
+      },
+      {
+        "text": "Anlamadığım halde tamamladım derim.",
+        "score": 0,
+        "why": "Kayıt, yetki veya karar bütünlüğünü bozabilecek bir yol seçer."
+      }
+    ],
+    "status": "Pozisyon uygulaması · uzman incelemesi bekliyor"
+  }
+]

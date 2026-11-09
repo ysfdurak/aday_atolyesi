@@ -1,0 +1,2710 @@
+{
+  "version": "0.2.0",
+  "dimensions": [
+    {
+      "id": "gelisim",
+      "name": "Ekip geliştirme",
+      "subtitle": "Öğrenmeyi günlük işin parçası yapma",
+      "expectation": "Beceri açığını kanıtla teşhis eder; uygulama ve takip fırsatı oluşturur.",
+      "risk": "Eğitim vermeyi gelişimin tamamlanması sanma veya desteği erteleme.",
+      "interview": "Bir çalışanınızın gelişim ihtiyacını nasıl belirlediniz? Başlangıç ve sonuç için hangi veriyi kullandınız?",
+      "anchor": "İhtiyacı, uygulamayı ve sonucu somutlaştırır; kendi katkısıyla çalışanın katkısını ayırır.",
+      "action": "Bir çalışanla tek beceri seç; başlangıç gözlemi yap, iki uygulama fırsatı planla ve iki hafta sonra aynı ölçütle değerlendir.",
+      "indicator": "Hata tekrarı, bağımsız tamamlanan iş ve gözlem notu.",
+      "poolSize": 8,
+      "coreCount": 5,
+      "coverageRationale": "Teşhis, uyarlama, uygulama, güvenli pratik, mentorluk yükü, bilgi yayılımı ve öğrenme transferini kapsar.",
+      "category": "İnsan yönetimi"
+    },
+    {
+      "id": "delegasyon",
+      "name": "Delegasyon",
+      "subtitle": "İşle birlikte karar alanı verme",
+      "expectation": "Kişiye uygun sorumluluk, açık yetki sınırı ve orantılı kontrol noktası belirler.",
+      "risk": "İşi devrederken bütün kararları kendinde tutma veya desteği tamamen çekme.",
+      "interview": "Önemli bir işi devrettiğinizde kişi hangi kararları size danışmadan alabiliyordu?",
+      "anchor": "Sonuç, yetki, kaynak ve kontrol noktalarını açık örnekle anlatır.",
+      "action": "Bir görev için sonuç, karar yetkisi, kaynak ve kontrol noktalarını çalışanla yaz; ilk kontrolü birlikte değerlendir.",
+      "indicator": "Gereksiz onay talebi ve sınır dışına çıkan karar örnekleri.",
+      "poolSize": 7,
+      "coreCount": 4,
+      "coverageRationale": "Kişi-görev eşleşmesi, yetki, hazırlık, takip, geri devir, sınır aşımı ve ortak sahipliği kapsar.",
+      "category": "İnsan yönetimi"
+    },
+    {
+      "id": "performans",
+      "name": "Performans yönetimi",
+      "subtitle": "Beklenti, geri bildirim ve takip",
+      "expectation": "Beklentileri açıklar, davranışa dayalı geri bildirim verir ve takip eder.",
+      "risk": "Kişiyi etiketleme, hedefi bağlamsız uygulama veya görüşmeyi takipsiz bırakma.",
+      "interview": "Performans görüşmesinden sonra değişimi nasıl takip ettiniz? Beklentiyi nasıl netleştirdiniz?",
+      "anchor": "Somut davranış, karşılıklı anlaşma, destek ve tarihli takip sunar.",
+      "action": "Bir performans görüşmesini örnek olay, beklenen davranış, destek ve takip tarihiyle hazırla; görüşme sonrası anlaşmayı kontrol et.",
+      "indicator": "Üzerinde anlaşılan davranışın gözlenmesi ve takip görüşmesinin gerçekleşmesi.",
+      "poolSize": 8,
+      "coreCount": 5,
+      "coverageRationale": "Beklenti, bağlam, davranış, destek, takip, kontrol alanı, takdir ve zor görüşmeleri kapsar.",
+      "category": "İnsan yönetimi"
+    },
+    {
+      "id": "catisma",
+      "name": "Çatışma yönetimi",
+      "subtitle": "Sorunun kaynağını birlikte çözme",
+      "expectation": "Tarafların kanıtlarını dinler, iş ilişkisini onarır ve anlaşmayı takip eder.",
+      "risk": "Yüzeysel uzlaşma, kıdeme göre karar veya kişileri etiketleme.",
+      "interview": "İki çalışanın anlaşmazlığında kendi ilk yorumunuzu değiştirdiğiniz bir örnek var mı?",
+      "anchor": "İki tarafı, iş etkisini ve sonradan izlenen anlaşmayı açıklar.",
+      "action": "Bir anlaşmazlık için iki tarafın gözlemini ayrı al; ortak iş standardı ve takip zamanı belirle.",
+      "indicator": "Tekrarlanan anlaşmazlıklar ve ortak standarda uyum.",
+      "poolSize": 6,
+      "coreCount": 4,
+      "coverageRationale": "Dinleme, anlaşma, takip, iş-fikir ayrımı, güç dengesi ve tekrarlayan ihlali kapsar.",
+      "category": "İnsan yönetimi"
+    },
+    {
+      "id": "karar",
+      "name": "Karar ve problem çözme",
+      "subtitle": "Belirsizlikte kanıtla ilerleme",
+      "expectation": "İlgili bilgiyi seçer, hipotezleri karşılaştırır ve yeni kanıta göre kararını günceller.",
+      "risk": "İlk açıklamaya bağlanma, gereksiz veri bekleme veya sorunu geçici çözümle kapatma.",
+      "interview": "Yeni bilgi nedeniyle değiştirdiğiniz bir kararı anlatır mısınız? Ne sizi ikna etti?",
+      "anchor": "Başlangıç varsayımını, karşı kanıtı ve karar değişikliğinin gerekçesini ayırır.",
+      "action": "Bir sorun için iki olası neden yaz; ayırt edici veri topla, küçük bir deneme yap ve sonucu kaydet.",
+      "indicator": "Doğrulanan varsayım, deneme sonucu ve tekrarlayan hata.",
+      "poolSize": 9,
+      "coreCount": 6,
+      "coverageRationale": "Bilgi, hipotez, risk, geri alınabilirlik, alternatif, yetki, geçici çözüm ve denemeden öğrenmeyi kapsar.",
+      "category": "İşi yönetme"
+    },
+    {
+      "id": "plan",
+      "name": "İş ve öncelik yönetimi",
+      "subtitle": "Kapasiteyi kritik işe yöneltme",
+      "expectation": "Kritik süreleri, bağımlılıkları ve kapasiteyi birlikte ele alır.",
+      "risk": "Görünür talebe koşma, kaynakları aşırı yükleme veya sessiz gecikme.",
+      "interview": "Aynı anda yetişmeyen iki önemli işte nasıl öncelik verdiniz? Kimi ne zaman bilgilendirdiniz?",
+      "anchor": "İş etkisi, bağımlılık, kapasite ve açık bir yeniden planlama gösterir.",
+      "action": "Bir haftalık iş listesini süre, etki ve bağımlılıkla çıkar; kapasite açığını görünür kılıp paydaşla yeniden planla.",
+      "indicator": "Kapasite aşımı, geciken bağımlılıklar ve zamanında bildirim.",
+      "poolSize": 7,
+      "coreCount": 5,
+      "coverageRationale": "Öncelik, kapasite, erken bildirim, beceri kısıtı, ara kontrol, talep ve devir sürekliliğini kapsar.",
+      "category": "İşi yönetme"
+    },
+    {
+      "id": "degisim",
+      "name": "Değişim ve iş birliği",
+      "subtitle": "Katılımla kontrollü uygulama",
+      "expectation": "Etkilenen tarafları dahil eder, küçük uygulamadan öğrenir ve takip eder.",
+      "risk": "Direnci isteksizlik sayma, kanıtsız yaygınlaştırma veya sonuçları saklama.",
+      "interview": "Bir değişimde çalışan itirazının haklı çıktığı bir örnek anlatır mısınız?",
+      "anchor": "İtirazın içeriğini, deneme tasarımını ve değiştirilen kararı somutlaştırır.",
+      "action": "Bir değişimi küçük grupta dene; kullanıcı geri bildirimini, iş etkisini ve yaygınlaştırma koşullarını birlikte kaydet.",
+      "indicator": "Benimseme, iş yükü, hata ve kullanıcı geri bildirimi.",
+      "poolSize": 6,
+      "coreCount": 4,
+      "coverageRationale": "Direnç, deneme, paydaş, ortak ölçüt, benimseme ve ölçeklemeyi kapsar.",
+      "category": "İşi yönetme"
+    },
+    {
+      "id": "adalet",
+      "name": "Adil ve sorumlu yönetim",
+      "subtitle": "Tutarlı ölçütlerle sorumluluk alma",
+      "expectation": "Kararlarını işle ilgili ölçütlere dayandırır; gizliliği ve güvenli çalışmayı korur.",
+      "risk": "Kişiye göre istisna, gereksiz bilgi paylaşımı veya baskıyla standardı esnetme.",
+      "interview": "Yüksek performanslı bir çalışan için de aynı standardı uygulamak zorunda kaldığınız bir örnek nedir?",
+      "anchor": "Standart, bağlam, uygun yetki ve tutarlı süreç gösterir.",
+      "action": "Bir ekip kararının ölçütlerini yaz; benzer çalışanlara tutarlı uygulanmasını ve kişisel bilgilerin erişimini gözden geçir.",
+      "indicator": "Gerekçeli karar kaydı, tutarlılık ve gereksiz bilgi paylaşımı.",
+      "poolSize": 5,
+      "coreCount": 4,
+      "coverageRationale": "Tutarlı standart, gizlilik, güvenlik, izin ölçütü ve çıkar çatışmasını kapsar.",
+      "category": "İnsan yönetimi"
+    },
+    {
+      "id": "iletisim",
+      "name": "İletişim ve beklenti netliği",
+      "subtitle": "Anlaşılır ve iki yönlü iletişim",
+      "expectation": "Mesajı alıcıya uyarlar, belirsizliği giderir ve ortak anlayışı kontrol eder.",
+      "risk": "Bilgiyi iletmeyi anlaşılmış olmakla karıştırma.",
+      "interview": "Yanlış anlaşılan bir talimatınızı nasıl fark edip düzelttiniz?",
+      "anchor": "Mesaj, karşı tarafın anladığı, kontrol yöntemi ve düzeltmeyi örnekler.",
+      "action": "Bir görev devrinde beklenen çıktıyı ve sınırları yaz; alıcının kendi sözleriyle özetlemesini iste.",
+      "indicator": "Yeniden açıklama ihtiyacı ve yanlış anlaşılan iş adımları.",
+      "poolSize": 4,
+      "coreCount": 3,
+      "coverageRationale": "Anlayış teyidi, alıcıya uyarlama, talep netliği ve karar kaydını kapsar.",
+      "category": "Ortak iş yetkinlikleri"
+    },
+    {
+      "id": "musteri",
+      "name": "Müşteri ve hizmet odağı",
+      "subtitle": "İhtiyacı sürdürülebilir çözüme bağlama",
+      "expectation": "İhtiyacı doğrular, gerçekçi taahhüt verir ve çözümün sonucunu takip eder.",
+      "risk": "İhtiyacı anlamadan söz verme veya kısa vadeli memnuniyet için standardı esnetme.",
+      "interview": "Müşteri isteğiyle verebileceğiniz hizmetin uyuşmadığı bir durumu nasıl çözdünüz?",
+      "anchor": "İhtiyaç, sınırlar, seçenekler, taahhüt ve takip açıkça ayrılır.",
+      "action": "Bir hizmet talebinde asıl ihtiyacı, verilebilir seçenekleri ve takip zamanını birlikte netleştir.",
+      "indicator": "Tekrarlanan başvuru, taahhüde uyum ve çözüm teyidi.",
+      "poolSize": 5,
+      "coreCount": 4,
+      "coverageRationale": "İhtiyaç, taahhüt, çözüm teyidi, hizmet sınırı ve hız-kalite dengesini kapsar.",
+      "category": "Ortak iş yetkinlikleri"
+    },
+    {
+      "id": "analitik",
+      "name": "Analitik düşünme ve veri okuryazarlığı",
+      "subtitle": "Veriyi doğru yorumlama",
+      "expectation": "Verinin tanımını, kalitesini ve karşılaştırılabilirliğini inceler; çıkarım sınırlarını açıklar.",
+      "risk": "Toplamları bağlamsız kıyaslama veya ilişkiyi neden sayma.",
+      "interview": "Bir raporun ilk bakışta verdiği mesajın yanlış olduğunu nasıl fark ettiniz?",
+      "anchor": "Ölçüt tanımı, veri kontrolü, karşılaştırma ve karar etkisini gösterir.",
+      "action": "Bir KPI için pay, payda, kapsam ve veri kaynağını yaz; iki dönemin karşılaştırılabilirliğini kontrol et.",
+      "indicator": "Doğrulanan hesap, veri hatası ve açıklanan varsayımlar.",
+      "poolSize": 7,
+      "coreCount": 5,
+      "coverageRationale": "Oran, dağılım, tanım, nedensellik, eksik veri, aykırı değer ve yüzde yorumunu kapsar.",
+      "category": "Ortak iş yetkinlikleri"
+    },
+    {
+      "id": "ogrenme",
+      "name": "Öğrenme çevikliği ve öz gelişim",
+      "subtitle": "Deneyimi yeni uygulamaya dönüştürme",
+      "expectation": "Bilmediğini fark eder, geri bildirim arar ve öğrendiğini yeni durumda sınar.",
+      "risk": "Ezberi farklı duruma aynen taşıma veya hatayı araştırmadan kapatma.",
+      "interview": "Yeni bir görevde eski yaklaşımınızın işlemediği bir örnek anlatır mısınız?",
+      "anchor": "Bilgi açığı, alınan geri bildirim, değişen yöntem ve deneme sonucu sunar.",
+      "action": "Yeni bir görevde bilgi açığını yaz; güvenilir kaynaktan öğren, küçük uygulama yap ve geri bildirimle düzelt.",
+      "indicator": "Yeni durumda bağımsız uygulama ve geri bildirim sonrası değişiklik.",
+      "poolSize": 4,
+      "coreCount": 3,
+      "coverageRationale": "Bilgi açığı, geri bildirim, aktarım ve kendi hatasından öğrenmeyi kapsar.",
+      "category": "Ortak iş yetkinlikleri"
+    }
+  ],
+  "items": [
+    {
+      "id": "S01",
+      "dim": "gelisim",
+      "title": "Aynı hata, üçüncü hafta",
+      "sub": "İhtiyaç teşhisi",
+      "scene": "Yeni çalışan aynı işlem adımında hata yapıyor. İş talimatına erişimi var; diğer adımları zamanında tamamlıyor. Teslimat yoğunluğu sürüyor. İlk adımın ne olur?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Hata sayısını ve beklenen hedefi paylaşır, vardiya sonunda tekrar kontrol ederim.",
+          "score": 1,
+          "why": "Beklentiyi gösterir; zorlanmanın kaynağını henüz incelemez."
+        },
+        {
+          "text": "Kritik adımı kendim tamamlar, çalışanı diğer işlere yönlendiririm.",
+          "score": 0,
+          "why": "Teslimatı korur; öğrenme ihtiyacını ele almaz."
+        },
+        {
+          "text": "Adımı uygularken gözlemler, zorlandığı noktaya kısa uygulama ve kontrol planlarım.",
+          "score": 3,
+          "why": "İhtiyacı gözlemle ilişkilendirir ve uygulama fırsatı verir."
+        },
+        {
+          "text": "Talimatın tümünü yeniden anlatıp sonraki işini kontrol ederim.",
+          "score": 2,
+          "why": "Destek ve kontrol vardır; desteğin ihtiyaca özgüllüğü sınırlıdır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S01"
+    },
+    {
+      "id": "S02",
+      "dim": "gelisim",
+      "title": "Eğitim tamamlandı mı?",
+      "sub": "Öğrenmenin takibi",
+      "scene": "İki kişi yeni sisteme ilişkin eğitime katıldı. Eğitim memnuniyeti yüksek. Bağımsız iş yapmaya hazır olup olmadıklarına karar vereceksin. Önce hangi bilgiyi toplarsın?",
+      "type": "info",
+      "options": [
+        {
+          "text": "Eğitim sonunda verdikleri memnuniyet puanlarını.",
+          "score": 0,
+          "why": "Memnuniyet, uygulama başarısına doğrudan kanıt sağlamaz."
+        },
+        {
+          "text": "Gerçekçi örnek görevde doğru uygulama ve ihtiyaç duydukları destek gözlemini.",
+          "score": 3,
+          "why": "İş üzerinde uygulama ve bağımsızlık için doğrudan kanıt sağlar."
+        },
+        {
+          "text": "Eğitmenin katılım ve soru sorma notlarını.",
+          "score": 1,
+          "why": "Katılımı gösterir; uygulamayı yeterince göstermez."
+        },
+        {
+          "text": "Çalışanların kendilerini hazır hissedip hissetmediğini.",
+          "score": 2,
+          "why": "Öz değerlendirme yararlıdır; gözlenen uygulamayla desteklenmelidir."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S02"
+    },
+    {
+      "id": "S03",
+      "dim": "gelisim",
+      "title": "Gelişim için iki adım",
+      "sub": "Uygulama fırsatı",
+      "scene": "Çalışan rutin işini iyi yapıyor ve ileride ekip lideri olmak istiyor. Bu ay iki gelişim uygulaması için zaman ayırabiliyorsun. Tam iki adım seç.",
+      "type": "plan",
+      "options": [
+        {
+          "text": "Sınırlı kapsamlı bir ekip toplantısını hazırlayıp yönetmesini ve sonrasında geribildirim almasını planlarım.",
+          "score": 3,
+          "why": "Gerçek uygulama ve geri bildirim sağlar."
+        },
+        {
+          "text": "Bir liderlik videosu listesi gönderirim.",
+          "score": 1,
+          "why": "Kaynak sağlar; uygulama ve takip tek başına oluşmaz."
+        },
+        {
+          "text": "Hedef rolün davranışlarından birini seçip gözlem ölçütü ve takip tarihi belirlerim.",
+          "score": 3,
+          "why": "Hedefi gözlenebilir davranışa ve takibe bağlar."
+        },
+        {
+          "text": "Bir ay boyunca bütün yeni sorumlulukları ona veririm.",
+          "score": 0,
+          "why": "Kapsam ve destek gözetilmeden yük artırır."
+        },
+        {
+          "text": "Terfi açılana kadar mevcut işinde yüksek performansı sürdürmesini isterim.",
+          "score": 0,
+          "why": "Gelişim fırsatını erteler."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S03"
+    },
+    {
+      "id": "S04",
+      "dim": "delegasyon",
+      "title": "Sorumluluk var, yetki yok",
+      "sub": "Yetki sınırı",
+      "scene": "Bir haftalık iyileştirme görevini devrettin. Çalışan her küçük değişiklik için onay istiyor; görev gecikiyor. İlk yaklaşımın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Bütün adımları günlük olarak ben onaylarım.",
+          "score": 0,
+          "why": "Onay bağımlılığını artırır."
+        },
+        {
+          "text": "Sonucu, kendi alabileceği kararları ve hangi durumda haber vereceğini birlikte netleştiririm.",
+          "score": 3,
+          "why": "Yetki ve eskalasyon sınırlarını görünür kılar."
+        },
+        {
+          "text": "Daha hızlı hareket etmesini ister, kritik kararları yine bana getirmesini söylerim.",
+          "score": 1,
+          "why": "Hız beklentisi vardır; kritik kararın sınırı belirsizdir."
+        },
+        {
+          "text": "Sık gelen karar türlerine örnek verip haftalık kontrol koyarım.",
+          "score": 2,
+          "why": "Somutlaştırır; sonuç ve yetki kapsamı bütünüyle netleşmez."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S04"
+    },
+    {
+      "id": "S05",
+      "dim": "delegasyon",
+      "title": "Kritik işin devri",
+      "sub": "Hazırlık sırası",
+      "scene": "Deneyimli bir çalışana, sınırları belli yeni bir müşteri raporu sorumluluğu vereceksin. Teslim tarihi beş gün sonra; gerekli verilere erişimi henüz yok. Adımları ilkten sona sırala.",
+      "type": "rank",
+      "options": [
+        {
+          "text": "Beklenen çıktı ve karar yetkisini birlikte netleştir.",
+          "score": 3,
+          "why": "İşin ne olduğu ve sorumluluk sınırları önce anlaşılmalıdır."
+        },
+        {
+          "text": "Veri erişimini ve gerekli kaynakları sağla.",
+          "score": 2,
+          "why": "Uygulamadan önce kaynak engeli kaldırılır."
+        },
+        {
+          "text": "İlk taslağı üretmesini iste ve kararlaştırılan noktada gözden geçir.",
+          "score": 1,
+          "why": "Kaynaklar hazırken orantılı kontrolle uygulama başlar."
+        },
+        {
+          "text": "Teslim sonrası sonucu ve bir sonraki iş için öğrenileni değerlendir.",
+          "score": 0,
+          "why": "Kapanış ve öğrenme son aşamadır."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S05"
+    },
+    {
+      "id": "S06",
+      "dim": "delegasyon",
+      "title": "Kontrolü ayarlamak",
+      "sub": "Orantılı takip",
+      "scene": "Çalışan aynı görevi üç kez hatasız bitirdi. Risk ve kapsam değişmedi. Her adımda kontrol ettiğin için diğer işlerin birikiyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Adım adım kontrolü aynı şekilde sürdürürüm.",
+          "score": 1,
+          "why": "Kontrol vardır; gösterilen yeterliliğe göre ayarlanmamıştır."
+        },
+        {
+          "text": "Kontrolleri tamamen kaldırıp yalnızca sorun olursa ulaşmasını isterim.",
+          "score": 1,
+          "why": "Özerklik sağlar; ortak takip düzeni kaybolur."
+        },
+        {
+          "text": "Bir sonraki görevi daha az deneyimli birine veririm.",
+          "score": 0,
+          "why": "Mevcut takip sorununu çözmez."
+        },
+        {
+          "text": "Ara kontrolleri azaltıp çıktı kontrolü ve istisna bildirim sınırında anlaşırım.",
+          "score": 3,
+          "why": "Gösterilen yeterlilikle orantılı özerklik ve takip sağlar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S06"
+    },
+    {
+      "id": "S07",
+      "dim": "performans",
+      "title": "Hedef tutmuyor",
+      "sub": "Beklenti ve bağlam",
+      "scene": "Çalışan iki haftadır hedefin altında. Aynı dönemde sistem kesintileri var ve iş dağılımı değişmiş. Görüşme öncesi hangi bilgiyi önceliklendirirsin?",
+      "type": "info",
+      "options": [
+        {
+          "text": "İş türü, kesinti süresi ve üzerinde anlaşılan hedef bazında performansını.",
+          "score": 3,
+          "why": "Bireysel katkı ile çalışma koşullarını ayırmaya yardımcı olur."
+        },
+        {
+          "text": "Diğer çalışanların onun çabası hakkındaki genel yorumlarını.",
+          "score": 0,
+          "why": "Somut iş verisi yerine genel izlenime dayanır."
+        },
+        {
+          "text": "Yalnızca iki haftanın toplam çıktı miktarını.",
+          "score": 1,
+          "why": "Sonucu gösterir; bağlamı ayıramaz."
+        },
+        {
+          "text": "Çalışanın hangi engelleri yaşadığını kendi anlatımıyla.",
+          "score": 2,
+          "why": "Çalışanın bakışını sağlar; diğer kanıtlarla birleştirilmelidir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S07"
+    },
+    {
+      "id": "S08",
+      "dim": "performans",
+      "title": "Zor geri bildirim",
+      "sub": "Davranışa dayalı görüşme",
+      "scene": "Başarılı bir çalışan toplantılarda arkadaşlarının sözünü kesiyor. İki olayda konu kapanmış, başkaları katkı sunamamış. Görüşmeye nasıl başlarsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Takım oyuncusu olmadığını, bunu değiştirmesi gerektiğini söylerim.",
+          "score": 0,
+          "why": "Kişiyi etiketler; gözlenebilir davranışı belirsiz bırakır."
+        },
+        {
+          "text": "Son iki toplantıdaki davranışı ve etkisini aktarır, onun bakışını sorarım.",
+          "score": 3,
+          "why": "Somut davranış ve etkiyi iki yönlü görüşmeyle ele alır."
+        },
+        {
+          "text": "Herkese toplantı kurallarını yeniden hatırlatırım.",
+          "score": 1,
+          "why": "Standart sunar; bireysel geri bildirimi dolaylı bırakır."
+        },
+        {
+          "text": "Toplantıda söz almadan önce beklemesini ister, bir sonraki toplantıyı gözlemleyeceğimi söylerim.",
+          "score": 2,
+          "why": "Davranış ve takip vardır; çalışanın bakışını araştırma sınırlıdır."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S08"
+    },
+    {
+      "id": "S09",
+      "dim": "performans",
+      "title": "Görüşmeden sonra",
+      "sub": "Takip ve destek",
+      "scene": "Performans görüşmesinde sorun netleşti: çalışan yeni işin kontrol adımını atlıyor. İki hafta içinde ilerleme izlemek için tam iki adım seç.",
+      "type": "plan",
+      "options": [
+        {
+          "text": "Beklenen kontrol davranışını ve örnek kontrol listesini birlikte netleştiririm.",
+          "score": 3,
+          "why": "Beklentiyi somutlaştırır ve destek sağlar."
+        },
+        {
+          "text": "Hedef kaçarsa sonucu olacağını söyleyip konuyu kapatırım.",
+          "score": 0,
+          "why": "Destek ve izleme planı oluşturmaz."
+        },
+        {
+          "text": "İki haftanın sonunda sadece toplam çıktı miktarına bakarım.",
+          "score": 1,
+          "why": "İlgili davranışı dolaylı ve eksik izler."
+        },
+        {
+          "text": "Örnek işlerde kontrol adımı uyumunu izleyip bir hafta sonra kısa görüşme yaparım.",
+          "score": 3,
+          "why": "Davranışa özgü veri ve zamanında takip sağlar."
+        },
+        {
+          "text": "Hatalı işleri kimseye söylemeden kendim düzeltirim.",
+          "score": 0,
+          "why": "Gelişim ve hesap verebilirliği görünmez kılar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S09"
+    },
+    {
+      "id": "S10",
+      "dim": "catisma",
+      "title": "İki taraf, iki anlatım",
+      "sub": "Tarafları dinleme",
+      "scene": "İki çalışan iş devrindeki gecikmeden birbirini sorumlu tutuyor. Ortak kayıt yok. Gecikme bugün müşteriyi etkileyecek. İlk hareketin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Daha kıdemli çalışanın anlattığı akışa göre görev veririm.",
+          "score": 0,
+          "why": "Kıdemi kanıt yerine kullanır."
+        },
+        {
+          "text": "İkisini de uyarıp kendi aralarında çözmelerini isterim.",
+          "score": 1,
+          "why": "Sorumluluk ister; acil iş ve teşhis için yeterli çerçeve sunmaz."
+        },
+        {
+          "text": "Bugünkü devri güvenceye alır, sonra iki tarafın zaman çizelgesini ve ihtiyaçlarını karşılaştırırım.",
+          "score": 3,
+          "why": "Acil etkiyi yönetirken tarafların kanıtlarını inceler."
+        },
+        {
+          "text": "Bugünkü işi başka kişiye verip ikisiyle ayrı ayrı görüşürüm.",
+          "score": 2,
+          "why": "İşi ve dinlemeyi ele alır; ortak akışın çözümü henüz tanımlı değildir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S10"
+    },
+    {
+      "id": "S11",
+      "dim": "catisma",
+      "title": "Ortak standart",
+      "sub": "Anlaşmayı kurma",
+      "scene": "İki ekip görev devrinde anlaşamıyor. Bugünkü iş güvenceye alındı. Kalıcı anlaşma için adımları sırala.",
+      "type": "rank",
+      "options": [
+        {
+          "text": "Tarafların örnek olaylarını ve ihtiyaçlarını karşılaştır.",
+          "score": 3,
+          "why": "Çözüm öncesi ortak sorun tanımı kurulur."
+        },
+        {
+          "text": "Teslim koşulu, sahip ve kabul süresini birlikte tanımla.",
+          "score": 2,
+          "why": "Gözlenen ihtiyaca göre ortak standart oluşturulur."
+        },
+        {
+          "text": "Anlaşmayı kısa bir denemede uygula ve kayıt tut.",
+          "score": 1,
+          "why": "Standart uygulamada sınanır."
+        },
+        {
+          "text": "Deneme verisiyle anlaşmayı gözden geçir.",
+          "score": 0,
+          "why": "Sonuçtan öğrenme denemenin ardından gelir."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S11"
+    },
+    {
+      "id": "S12",
+      "dim": "catisma",
+      "title": "Sessizlik çözüm mü?",
+      "sub": "Çözümü izleme",
+      "scene": "İki çalışan arasındaki tartışma, yaptığınız görüşmeden sonra kesildi. Ancak birbirleriyle doğrudan konuşmak yerine bütün işleri sana iletiyorlar. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Tartışma bittiği için bir süre böyle devam ederim.",
+          "score": 0,
+          "why": "Sessizliği çözüm kabul eder; iş ilişkisi sorunu sürer."
+        },
+        {
+          "text": "Somut devir örneklerini görüşür, doğrudan iletişim standardı ve takip noktası kurarım.",
+          "score": 3,
+          "why": "İş ilişkisinin uygulanabilir biçimde onarılmasını ve takibini sağlar."
+        },
+        {
+          "text": "İkisini sosyal bir etkinlikte bir araya getiririm.",
+          "score": 1,
+          "why": "İlişkiyi destekleyebilir; iş standardını doğrudan çözmez."
+        },
+        {
+          "text": "Birbirlerine doğrudan yazmalarını ister, bir hafta sonra kontrol ederim.",
+          "score": 2,
+          "why": "Beklenti ve takip vardır; süren engeli inceleme sınırlıdır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S12"
+    },
+    {
+      "id": "S13",
+      "dim": "karar",
+      "title": "Hata artışının nedeni",
+      "sub": "Ayırt edici bilgi",
+      "scene": "Hata oranı yeni yazılımın kurulduğu hafta arttı. Aynı hafta ürün karışımı ve çalışan dağılımı da değişti. Önce hangi veriyi incelersin?",
+      "type": "info",
+      "options": [
+        {
+          "text": "Yazılımı en çok eleştiren çalışanların görüşlerini.",
+          "score": 1,
+          "why": "Hipotez üretir; nedenleri ayırt etmeye yetmez."
+        },
+        {
+          "text": "Kurulumdan önce ve sonra yalnızca toplam hata sayısını.",
+          "score": 1,
+          "why": "Değişimi gösterir; hacim ve karışım etkisini ayırmaz."
+        },
+        {
+          "text": "Aynı iş türü ve deneyim gruplarında işlem hacmine göre hata oranını.",
+          "score": 3,
+          "why": "Alternatif açıklamaları ayırmaya yönelik karşılaştırma sağlar."
+        },
+        {
+          "text": "Günlük hata oranı ve işlem hacmini birlikte.",
+          "score": 2,
+          "why": "Hacmi hesaba katar; iş ve çalışan karışımını henüz ayırmaz."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S13"
+    },
+    {
+      "id": "S14",
+      "dim": "karar",
+      "title": "Yeni kanıt",
+      "sub": "Kararı güncelleme",
+      "scene": "Gecikmeyi çalışan sayısına bağladın. Son inceleme, beklemenin çoğunun bir onay kuyruğunda oluştuğunu gösteriyor; personel eklenen gün de kuyruk aynı. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Personel artışını sürdürür; daha fazla verinin gelmesini beklerim.",
+          "score": 0,
+          "why": "Yeni karşı kanıt karara yansıtılmamıştır."
+        },
+        {
+          "text": "Personel kararını yeniden değerlendirir, yetkim dahilindeki küçük bir onay akışı denemesini ölçerim.",
+          "score": 3,
+          "why": "Hipotezi günceller, sınırlı ve ölçülebilir deneme kurar."
+        },
+        {
+          "text": "Bütün onayları hemen kaldırırım.",
+          "score": 1,
+          "why": "Darboğaza yönelir; kontrol ve yetki riskini gözetmez."
+        },
+        {
+          "text": "Onay sorumlusuyla bekleme nedenini inceleyip alternatifleri çıkarırım.",
+          "score": 2,
+          "why": "Yeni kanıtı dikkate alır; deneme ve sonuç ölçümü henüz belirlenmemiştir."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S14"
+    },
+    {
+      "id": "S15",
+      "dim": "karar",
+      "title": "Belirtiden nedene",
+      "sub": "Problem çözme sırası",
+      "scene": "Etiket hataları tekrarlıyor. Acil hatalı ürünler ayrıldı, yeni çıkışlar kontrol altında. Sonraki adımları sırala.",
+      "type": "rank",
+      "options": [
+        {
+          "text": "Hatanın hangi ürün, zaman ve adımlarda oluştuğunu ayır.",
+          "score": 3,
+          "why": "Sorunu ve örüntüsünü somutlaştırır."
+        },
+        {
+          "text": "Olası nedenleri ayırt edecek gözlem veya veri topla.",
+          "score": 2,
+          "why": "Hipotezler kanıtla incelenir."
+        },
+        {
+          "text": "Desteklenen neden için sınırlı çözümü dene.",
+          "score": 1,
+          "why": "Çözüm neden incelemesine dayanır."
+        },
+        {
+          "text": "Hata tekrarını izle; işe yarayan standardı güncelle.",
+          "score": 0,
+          "why": "Çözüm etkisi doğrulanır ve sürdürülür."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S15"
+    },
+    {
+      "id": "S16",
+      "dim": "plan",
+      "title": "İlk yarım saat",
+      "sub": "Öncelik ve bağımlılık",
+      "scene": "Saat 09.00. Müşteri çıkışı 10.00’da ve eksik evrak yüzünden bekliyor. Haftalık sunum 16.00’da, iç rapor yarın. Evrakı yalnız senin yetkilendireceğin bir çalışan tamamlayabiliyor. İlk hareketin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Sunumu bitirip bölünmeden operasyon işine dönerim.",
+          "score": 0,
+          "why": "Yakın kritik süreyi ve bağımlılığı erteler."
+        },
+        {
+          "text": "Evrak işini yetkilendirip teslim kontrolü koyar, sunum zamanını yeniden planlarım.",
+          "score": 3,
+          "why": "Kritik bağımlılığı açar ve kalan işi planlar."
+        },
+        {
+          "text": "Bütün işleri aynı anda ekibe dağıtırım.",
+          "score": 1,
+          "why": "Dağıtım yapar; yetki, kapasite ve kritik kontrol belirsiz kalır."
+        },
+        {
+          "text": "Evrakı kendim tamamlayıp sunum için destek isterim.",
+          "score": 2,
+          "why": "Kritik işi çözer; kullanılabilir yetki devri fırsatı sınırlı kullanılır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S16"
+    },
+    {
+      "id": "S17",
+      "dim": "plan",
+      "title": "Kapasite açığı",
+      "sub": "Kaynak ve beklenti",
+      "scene": "Ekibin bugünkü kapasitesi 80 saat, kesinleşmiş işler 100 saat. Güvenlik adımları ve zorunlu kontroller kısaltılamıyor. Tam iki adım seç.",
+      "type": "plan",
+      "options": [
+        {
+          "text": "İşlerin teslim süresi, bağımlılığı ve etkisini çıkarıp öncelik sırası oluştururum.",
+          "score": 3,
+          "why": "Açığı işle ilgili ölçütlerle yönetmeye zemin sağlar."
+        },
+        {
+          "text": "Herkesten bütün işleri yetiştirmesini isterim.",
+          "score": 0,
+          "why": "Kapasite açığını çözümlemeden hedef yükler."
+        },
+        {
+          "text": "Yetkim dahilindeki kaynak alternatiflerini ve ertelenebilir işi paydaşla netleştiririm.",
+          "score": 3,
+          "why": "Kapasite ve beklentiyi birlikte yeniden planlar."
+        },
+        {
+          "text": "Yetişmeyen işleri gün sonunda bildiririm.",
+          "score": 0,
+          "why": "Paydaşın önlem alma fırsatını geciktirir."
+        },
+        {
+          "text": "Sadece işlerin eşit sayıda dağıtılmasını sağlarım.",
+          "score": 1,
+          "why": "Dağıtımı ele alır; süre ve beceri farklarını gözetmez."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S17"
+    },
+    {
+      "id": "S18",
+      "dim": "plan",
+      "title": "Plan değişiyor",
+      "sub": "Erken bildirim",
+      "scene": "Kritik işin bağımlı olduğu ekip iki saat gecikeceğini bildirdi. Senin teslim süren de etkilenecek. Henüz müşteriyle konuşulmadı. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Kesin gecikme olana kadar bildirim yapmam.",
+          "score": 0,
+          "why": "Alternatif geliştirme ve beklenti yönetimini geciktirir."
+        },
+        {
+          "text": "Müşteriye diğer ekibin hatasını açıklarım.",
+          "score": 1,
+          "why": "Bilgi aktarır; çözüm ve sorumluluk alma zayıftır."
+        },
+        {
+          "text": "Etkilenen teslimi ve alternatif akışı netleştirir, yetkili paydaşla erken güncelleme paylaşırım.",
+          "score": 3,
+          "why": "İş etkisi, seçenek ve zamanında koordinasyonu birleştirir."
+        },
+        {
+          "text": "Kendi ekibimin boş kalan zamanını başka işe yönlendiririm.",
+          "score": 2,
+          "why": "Kapasiteyi değerlendirir; teslim ve paydaş boyutu eksiktir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S18"
+    },
+    {
+      "id": "S19",
+      "dim": "degisim",
+      "title": "İtirazın içeriği",
+      "sub": "Direnci anlama",
+      "scene": "Yeni iş akışına deneyimli çalışanlar itiraz ediyor: iki kez veri girdiklerini söylüyorlar. Yönetim hızlı geçiş bekliyor. İlk yaklaşımın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Geçiş kararı verildiği için uygulamalarını isterim.",
+          "score": 0,
+          "why": "İtirazın işle ilgili içeriğini incelemez."
+        },
+        {
+          "text": "Birlikte örnek işlemi yürütüp tekrarın nerede oluştuğunu ve geçiş hedefini netleştiririm.",
+          "score": 3,
+          "why": "İtirazı gözlemle inceler ve amaçla ilişkilendirir."
+        },
+        {
+          "text": "Sistemin faydalarını yeniden anlatırım.",
+          "score": 1,
+          "why": "Gerekçe sağlar; somut iş yükü iddiasını araştırmaz."
+        },
+        {
+          "text": "Geri bildirimleri yazılı toplayıp proje ekibine iletirim.",
+          "score": 2,
+          "why": "Katılım sağlar; doğrudan gözlem ve geri dönüş henüz yoktur."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S19"
+    },
+    {
+      "id": "S20",
+      "dim": "degisim",
+      "title": "Yaygınlaştırma kararı",
+      "sub": "Denemeden öğrenme",
+      "scene": "Yeni kontrol listesi bir ekipte denendi. Memnuniyet yüksek; diğer ekiplere geçiş kararı vereceksin. Önce neyi incelersin?",
+      "type": "info",
+      "options": [
+        {
+          "text": "Denemede hata, işlem süresi, kullanım ve farklı iş türlerindeki sonuçları.",
+          "score": 3,
+          "why": "Birden çok iş etkisini ve aktarılabilirliği inceler."
+        },
+        {
+          "text": "Ekip liderinin genel kanaatini.",
+          "score": 1,
+          "why": "Yararlı görüş sunar; sonuçları tek başına göstermez."
+        },
+        {
+          "text": "Listeyi kaç kişinin indirdiğini.",
+          "score": 0,
+          "why": "Erişimi gösterir; uygulama ve iş etkisini göstermez."
+        },
+        {
+          "text": "Listenin kullanıldığı işlerdeki hata oranını.",
+          "score": 2,
+          "why": "İş sonucunu inceler; süre ve iş türü etkileri eksiktir."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S20"
+    },
+    {
+      "id": "S21",
+      "dim": "degisim",
+      "title": "Ortak değişim",
+      "sub": "Paydaşlarla uygulama",
+      "scene": "İki departmanı etkileyen görev devri değişikliği öneriyorsun. Her iki ekip de mevcut düzenin farklı bir bölümünden memnun. Adımları sırala.",
+      "type": "rank",
+      "options": [
+        {
+          "text": "İki ekiple ortak sorun ve başarı ölçütünü belirle.",
+          "score": 3,
+          "why": "Değişimin ortak amacı ve ölçütü oluşturulur."
+        },
+        {
+          "text": "Kapsamı ve sorumluları belli küçük deneme tasarla.",
+          "score": 2,
+          "why": "Uygulanabilir sınırlar oluşturulur."
+        },
+        {
+          "text": "Denemeyi yapıp iki ekipten veri ve geri bildirim al.",
+          "score": 1,
+          "why": "İş etkisi ve kullanıcı deneyimi toplanır."
+        },
+        {
+          "text": "Sonuca göre düzeltip yaygınlaştırma kararını birlikte netleştir.",
+          "score": 0,
+          "why": "Yaygınlaştırma kanıta dayanır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S21"
+    },
+    {
+      "id": "S22",
+      "dim": "adalet",
+      "title": "Yıldız çalışana istisna",
+      "sub": "Tutarlı standart",
+      "scene": "Yüksek çıktı üreten bir çalışan zorunlu kalite kontrolünü atlamış. Henüz hata bulunmadı. Diğer çalışanlarda aynı davranış ele alınıyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Çıktısı yüksek ve hata yoksa bu kez işlem yapmam.",
+          "score": 0,
+          "why": "Aynı davranış için kişiye göre istisna yaratır."
+        },
+        {
+          "text": "Çalışanı herkesin önünde örnek göstererek uyarırım.",
+          "score": 1,
+          "why": "Standardı vurgular; kişiye saygılı geri bildirim zayıftır."
+        },
+        {
+          "text": "İlgili işi güvenceye alır, davranışı özel görüşmede aynı ölçüt ve süreçle ele alırım.",
+          "score": 3,
+          "why": "İş riskini ve tutarlı, saygılı süreci birlikte gözetir."
+        },
+        {
+          "text": "Bütün ekibe kontrolü hatırlatır, çalışanla ayrıca konuşurum.",
+          "score": 2,
+          "why": "Standardı ve görüşmeyi ele alır; etkilenen işin kontrolü açık değildir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S22"
+    },
+    {
+      "id": "S23",
+      "dim": "adalet",
+      "title": "Özel bilgi",
+      "sub": "Gizlilik ve destek",
+      "scene": "Çalışan kişisel sağlık durumunu seninle paylaşıyor ve geçici iş düzenlemesi istiyor. Ekip arkadaşları neden farklı görev aldığını soruyor. İlk yanıtın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Durumu anlayışla karşılamaları için sağlık bilgisini ekiple paylaşırım.",
+          "score": 0,
+          "why": "Gereksiz kişisel bilgi açıklaması yapar."
+        },
+        {
+          "text": "Kişisel ayrıntıları paylaşmadan iş dağılımı ölçütünü açıklar, düzenlemeyi yetkili süreçte ele alırım.",
+          "score": 3,
+          "why": "İş gerekçesi, gizlilik ve uygun yetkiyi birlikte gözetir."
+        },
+        {
+          "text": "Açıklama yapmadan bu konunun tartışılmayacağını söylerim.",
+          "score": 1,
+          "why": "Bilgiyi korur; iş dağılımına ilişkin anlaşılabilir çerçeve sunmaz."
+        },
+        {
+          "text": "Çalışana ekibe kendisinin açıklama yapmasını öneririm.",
+          "score": 1,
+          "why": "Açıklama yükü ve baskısı çalışana geçebilir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S23"
+    },
+    {
+      "id": "S24",
+      "dim": "adalet",
+      "title": "Güvenlik ve hedef baskısı",
+      "sub": "Güvenli karar",
+      "scene": "Teslimat gecikiyor. Ekipten biri, zorunlu ekipman kontrolünü atlayarak zaman kazanmayı öneriyor. Arıza gözlenmedi. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Bu kez kontrolü atlayıp vardiya sonunda tamamlatırım.",
+          "score": 0,
+          "why": "Zorunlu güvenlik adımını hedef baskısıyla erteler."
+        },
+        {
+          "text": "Kontrolü korur, güvenli alternatif kapasiteyi değerlendirip teslim etkisini yetkili kişiye bildiririm.",
+          "score": 3,
+          "why": "Güvenliği, alternatif aramayı ve sorumlulukla bildirimi birleştirir."
+        },
+        {
+          "text": "Kontrol bitene kadar bekler, gecikmeyi gün sonunda açıklarım.",
+          "score": 2,
+          "why": "Güvenliği korur; alternatif ve erken koordinasyon sınırlıdır."
+        },
+        {
+          "text": "Atlama kararını deneyimli çalışana bırakırım.",
+          "score": 0,
+          "why": "Zorunlu standarda ilişkin sorumluluğu uygunsuz biçimde devreder."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S24"
+    },
+    {
+      "id": "S25",
+      "dim": "gelisim",
+      "title": "Yedek kişi yetişmiyor",
+      "sub": "Bilgiyi ekipte yayma",
+      "scene": "Kritik işi yalnız bir kişi yapabiliyor. Üç hafta sonra izinli olacak. Başka bir çalışan temeli biliyor; bugün eğitim için sınırlı zaman var. Nasıl ilerlersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Kritik adımları ayırıp yedek çalışana gözetimli uygulama, ardından bağımsız deneme planlarım.",
+          "score": 3,
+          "why": "Kritik kapsamı ve bağımsızlık kontrolünü birlikte ele alır."
+        },
+        {
+          "text": "Deneyimli çalışandan talimat hazırlamasını ve yedeğe örnek göstermesini isterim.",
+          "score": 2,
+          "why": "Bilgiyi aktarır; bağımsız uygulama teyidi eksiktir."
+        },
+        {
+          "text": "İzin öncesinde yapılacak işleri deneyimli çalışana toplarım.",
+          "score": 1,
+          "why": "Kısa vadeli süreklilik sağlar; bilgi bağımlılığı sürer."
+        },
+        {
+          "text": "İzin döneminde sorun çıkarsa deneyimli çalışana ulaşılacağını kararlaştırırım.",
+          "score": 0,
+          "why": "Kritik işi erişilebilirliği belirsiz bir kişiye bağımlı bırakır."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S25"
+    },
+    {
+      "id": "S26",
+      "dim": "gelisim",
+      "title": "Herkese aynı eğitim mi?",
+      "sub": "Desteği ihtiyaca uyarlama",
+      "scene": "İki çalışan yeni işi öğreniyor. Biri adımları biliyor ama yavaş; diğeri hızlı ancak kontrol adımını atlıyor. Hangi yaklaşımı seçersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Aynı uygulamayı birlikte yaptırır, her birine farklı geri bildirim veririm.",
+          "score": 2,
+          "why": "Bireysel geri bildirim vardır; uygulama ihtiyaca sınırlı uyarlanır."
+        },
+        {
+          "text": "İkisinin de işlem süresini aynı hedefe getirmesine odaklanırım.",
+          "score": 1,
+          "why": "Tek ölçüt, farklı beceri açıklarını görünmez kılar."
+        },
+        {
+          "text": "Hızlı çalışanı yavaş olana örnek olarak eşleştiririm.",
+          "score": 0,
+          "why": "Kontrol eksiği olan yaklaşımın aktarılması riskini incelemez."
+        },
+        {
+          "text": "Ayrı gözlemlerle birine akış pratiği, diğerine kontrol uygulaması ve ayrı takip ölçütü kurarım.",
+          "score": 3,
+          "why": "Desteği farklı öğrenme ihtiyaçlarına bağlar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S26"
+    },
+    {
+      "id": "S27",
+      "dim": "gelisim",
+      "title": "Hata yapmasına alan açmak",
+      "sub": "Güvenli öğrenme alanı",
+      "scene": "Çalışan yeni görevde karar vermekten çekiniyor. Görev, kontrollü deneme ortamında geri alınabilir; canlı işte ise hatanın maliyeti yüksek. İlk ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Canlı işte tüm kararları bana danışmasını isterim.",
+          "score": 1,
+          "why": "Riski kontrol eder; güvenli karar pratiğini kullanmaz."
+        },
+        {
+          "text": "Çekinmesini aşması için canlı görevi tek başına tamamlamasını isterim.",
+          "score": 0,
+          "why": "Destek ve risk sınırı belirlemeden yüksek maliyetli uygulamaya geçirir."
+        },
+        {
+          "text": "Deneme ortamında sınırları belli karar alanı açıp sonuçları birlikte incelerim.",
+          "score": 3,
+          "why": "Öğrenme fırsatını risk düzeyine uygun ortamda kurar."
+        },
+        {
+          "text": "Önce bir örneği ben yapar, sonra aynı örneği tekrar etmesini isterim.",
+          "score": 2,
+          "why": "Model ve tekrar sağlar; bağımsız karar aktarımı henüz sınanmaz."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S27"
+    },
+    {
+      "id": "S28",
+      "dim": "gelisim",
+      "title": "Mentorun yükü",
+      "sub": "Gelişim desteğinin kapasitesi",
+      "scene": "Ekipte iki yeni çalışan var. Mentor görevi verilen kişinin kendi işleri gecikiyor. Yeni çalışanların desteğe ihtiyacı sürüyor. Önce hangi bilgiyi toplarsın?",
+      "type": "info",
+      "options": [
+        {
+          "text": "Mentorun geçmiş aylardaki performans sırasını.",
+          "score": 0,
+          "why": "Bugünkü öğrenme ve kapasite sorununu açıklamaz."
+        },
+        {
+          "text": "Destek verilen adımları, mentorun harcadığı süreyi ve yeni çalışanların bağımsızlık düzeyini.",
+          "score": 3,
+          "why": "Destek ihtiyacıyla kapasiteyi birlikte görünür kılar."
+        },
+        {
+          "text": "Mentorun destek için ne kadar zaman ayırdığını.",
+          "score": 2,
+          "why": "Yükü gösterir; desteğin nerede gerekli olduğunu ayırmaz."
+        },
+        {
+          "text": "Yeni çalışanların mentordan memnuniyetini.",
+          "score": 1,
+          "why": "Deneyimi gösterir; destek yükünü ve yeterliği ölçmez."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S28"
+    },
+    {
+      "id": "S29",
+      "dim": "gelisim",
+      "title": "Öğrenme işe taşındı mı?",
+      "sub": "Transferi izleme",
+      "scene": "Çalışan eğitim örneklerini doğru çözdü. Gerçek işte ürün türü değişince tekrar zorlanıyor. Nasıl ilerlersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yeni ürünle eski örnek arasındaki farkı birlikte inceletip farklı örneklerde uygulama izlerim.",
+          "score": 3,
+          "why": "Öğrenilen ilkenin yeni duruma aktarılmasını ele alır."
+        },
+        {
+          "text": "Yeni ürünün bir örneğini gösterip sonraki işi kontrol ederim.",
+          "score": 2,
+          "why": "Yeni örnekte destek sağlar; genelleme kapsamı sınırlıdır."
+        },
+        {
+          "text": "İlk eğitimdeki örnekleri hızlanana kadar tekrar çözdürürüm.",
+          "score": 1,
+          "why": "Eski örneğe hâkimiyeti artırabilir; aktarım açığı sürer."
+        },
+        {
+          "text": "Yeni ürünleri diğer çalışana yönlendirip eğitimini tamamlanmış sayarım.",
+          "score": 0,
+          "why": "Uygulama açığını görünmez kılar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S29"
+    },
+    {
+      "id": "S30",
+      "dim": "delegasyon",
+      "title": "İşi kime vermeli?",
+      "sub": "Kişi ve görev eşleştirme",
+      "scene": "Acil olmayan ama hassas bir raporu devredeceksin. Biri deneyimli ve tam dolu; diğeri temeli biliyor ve zamanı var. Son kontrol yetkisi sende. Nasıl seçersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Deneyimli çalışanın mevcut işlerinden birini erteleyip raporu ona veririm.",
+          "score": 2,
+          "why": "Güvence ve kapasiteyi gözetir; uygun gelişim fırsatını sınırlı kullanır."
+        },
+        {
+          "text": "Raporu kısa bölümlere ayırıp en hızlı bitirene kalanını veririm.",
+          "score": 1,
+          "why": "Hızı esas alır; bütünlük ve destek ihtiyacı zayıf kalır."
+        },
+        {
+          "text": "Zamanı olan çalışana raporu teslim saatinde hazır etmesini söylerim.",
+          "score": 0,
+          "why": "Hassas işte gerekli hazırlık ve ara kontrolü tanımlamaz."
+        },
+        {
+          "text": "İkinci çalışanın ihtiyaç duyduğu desteği belirleyip sınırlı görev ve kontrol noktasıyla devrederim.",
+          "score": 3,
+          "why": "Yeterlik, kapasite ve risk birlikte değerlendirilir."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S30"
+    },
+    {
+      "id": "S31",
+      "dim": "delegasyon",
+      "title": "Geri gelen görev",
+      "sub": "Sorumluluğu destekle koruma",
+      "scene": "Görevi devrettiğin çalışan ilk engelde işi sana geri getirdi. Engel, onun karar yetkisi içinde ve çözüm için veri mevcut. İlk ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Bu kez ben çözer, sonraki sefer kendisinin yapmasını söylerim.",
+          "score": 1,
+          "why": "İşi ilerletir; bağımsız çözüm pratiği yine ertelenir."
+        },
+        {
+          "text": "Yetkisi içinde olduğu için görüşmeyi bitirip çözmesini isterim.",
+          "score": 0,
+          "why": "Sorumluluğu vurgular; engelin anlaşılmasını ve uygun desteği atlar."
+        },
+        {
+          "text": "Değerlendirdiği seçenekleri sorar, sınırı netleştirip çözüm seçimini kendisine bırakırım.",
+          "score": 3,
+          "why": "Sorumluluğu koruyarak düşünme ve destek sağlar."
+        },
+        {
+          "text": "Benzer bir örnek gösterip aynı yaklaşımı denemesini isterim.",
+          "score": 2,
+          "why": "Destek vardır; kişinin seçenek üretmesi sınırlı kalır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S31"
+    },
+    {
+      "id": "S32",
+      "dim": "delegasyon",
+      "title": "Sınır aşılmış",
+      "sub": "Yetki ihlalini ele alma",
+      "scene": "Çalışan devredilen görevde, açıkça onay gerektiren maliyet değişikliğini kendi başına yaptı. İş durdurulabilir, henüz harcama gerçekleşmedi. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Bundan sonraki tüm küçük kararları da ben onaylarım.",
+          "score": 0,
+          "why": "Tek ihlale orantısız kontrolle karşılık verir."
+        },
+        {
+          "text": "Harcama etkisini durdurur, kararı ve sınırın neden aşıldığını görüşüp yeniden anlaşırım.",
+          "score": 3,
+          "why": "İş etkisini ve yetki sınırını birlikte ele alır."
+        },
+        {
+          "text": "Değişikliği onaya alır, çalışana sınırı yazılı hatırlatırım.",
+          "score": 2,
+          "why": "Yetkiyi yeniden kurar; nedenin incelenmesi sınırlıdır."
+        },
+        {
+          "text": "Sonuç yararlı görünüyorsa bu değişikliği kabul ederim.",
+          "score": 1,
+          "why": "Sonucu yetki kuralından ayırmadan istisna üretir."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S32"
+    },
+    {
+      "id": "S33",
+      "dim": "delegasyon",
+      "title": "İki kişi aynı sorumlu",
+      "sub": "Sahiplik ve arayüz",
+      "scene": "Bir işi iki çalışana ortak verdin. İkisi de son kontrolü diğerinin yapacağını düşünmüş. Tekrarlanmaması için hangi düzenleme en uygunu?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Tek çıktı sahibini, katkı verenleri ve kabul noktasını birlikte netleştiririm.",
+          "score": 3,
+          "why": "Ortak çalışmada sahiplik ve iş arayüzünü açıklaştırır."
+        },
+        {
+          "text": "Her ikisinin de kontrol yapmasını ve kontrolü kaydetmesini isterim.",
+          "score": 2,
+          "why": "Kontrolü güçlendirir; nihai sahiplik yine belirsiz kalabilir."
+        },
+        {
+          "text": "Son kontrolü bundan sonra kendim yaparım.",
+          "score": 1,
+          "why": "Çıktıyı güvenceye alır; ekipte sahiplik açığını çözmez."
+        },
+        {
+          "text": "Daha dikkatli koordine olmalarını söyleyip aynı dağılımla devam ederim.",
+          "score": 0,
+          "why": "Belirsiz rol düzenini değiştirmeden beklenti yükler."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S33"
+    },
+    {
+      "id": "S34",
+      "dim": "performans",
+      "title": "Hedef kime ait?",
+      "sub": "Hedefi kontrol alanına bağlama",
+      "scene": "Çalışanın hedefinde toplam teslimat süresi var; gecikmenin çoğu başka ekibin onayından kaynaklanıyor. Çalışanın kendi işleminde de küçük kayıplar var. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Çalışanın kendi işlem süresini ayrıca izleyip toplam hedefi korurum.",
+          "score": 2,
+          "why": "Bireysel katkı görünür; ekipler arası sahiplik eksiktir."
+        },
+        {
+          "text": "Hedefi herkes için aynı olduğu gerekçesiyle değiştirmem.",
+          "score": 1,
+          "why": "Tutarlılığı savunur; kontrol dışı etkiyi ayıramaz."
+        },
+        {
+          "text": "Dış onay olduğu için kişinin hiçbir performans verisini kullanmam.",
+          "score": 0,
+          "why": "Kişinin etkileyebildiği kayıpları da değerlendirme dışı bırakır."
+        },
+        {
+          "text": "Ortak sonuç ile kişinin etkileyebildiği katkıyı ayırıp her biri için sahip ve takip kurarım.",
+          "score": 3,
+          "why": "Sonuç sorumluluğu ile bireysel kontrol alanını ayırır."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S34"
+    },
+    {
+      "id": "S35",
+      "dim": "performans",
+      "title": "Sonuç iyi, yöntem sorunlu",
+      "sub": "Sonuç ve davranış dengesi",
+      "scene": "Çalışan hedefi aşıyor; iş bilgisini paylaşmadığı için yokluğunda işler duruyor. Değerlendirmede nasıl ilerlersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Hedefi aştığı için bu dönemde yalnızca çıktı puanını esas alırım.",
+          "score": 1,
+          "why": "Ekip bağımlılığını performans görüşmesinden çıkarır."
+        },
+        {
+          "text": "Bilgi paylaşmadığı için yüksek çıktısını değerlendirmeye katmam.",
+          "score": 0,
+          "why": "Farklı performans bileşenlerini tek olumsuzluğa indirger."
+        },
+        {
+          "text": "Çıktı başarısını tanır, bilgi paylaşımını somut örnek ve takip hedefiyle ayrıca ele alırım.",
+          "score": 3,
+          "why": "Sonuç ile ekip sürekliliğine katkıyı ayrı değerlendirir."
+        },
+        {
+          "text": "Başarısını belirtip gelecek dönem bir devir dokümanı isterim.",
+          "score": 2,
+          "why": "Somut çıktı ister; davranış ve takip kapsamı sınırlıdır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S35"
+    },
+    {
+      "id": "S36",
+      "dim": "performans",
+      "title": "Savunmaya geçen çalışan",
+      "sub": "Zor görüşmede diyalog",
+      "scene": "Somut geri bildirim verdiğinde çalışan değerlendirmeyi adaletsiz bulduğunu söylüyor. Görüşmenin kalan on dakikasında nasıl ilerlersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Değerlendirme yetkisi bende olduğu için konuyu kapatırım.",
+          "score": 0,
+          "why": "İtirazın olası bilgi değerini ve diyaloğu dışlar."
+        },
+        {
+          "text": "İtiraz ettiği örneği ve kanıtını sorar, ortak ve farklı noktaları ayırıp takipte anlaşırım.",
+          "score": 3,
+          "why": "İtirazı araştırır; ölçüt ve takip düzenini korur."
+        },
+        {
+          "text": "Kendi verilerimi gösterir, yazılı itirazını sonra inceleyeceğimi söylerim.",
+          "score": 2,
+          "why": "İnceleme yolu açar; anlık iki yönlü araştırma sınırlıdır."
+        },
+        {
+          "text": "Görüşme gerilmesin diye bu dönemin puanını yükseltirim.",
+          "score": 1,
+          "why": "Kanıtı incelemeden değerlendirmeyi değiştirir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S36"
+    },
+    {
+      "id": "S37",
+      "dim": "performans",
+      "title": "İyileşme sürüyor mu?",
+      "sub": "Kalıcı ilerlemeyi değerlendirme",
+      "scene": "Çalışan görüşmeden sonraki hafta hedefi tuttu, ikinci hafta eski düzeye döndü. İş türü aynı. Önce hangi bilgiye bakarsın?",
+      "type": "info",
+      "options": [
+        {
+          "text": "Günlük uygulama, destek kullanımı ve ilk hafta değişen çalışma koşullarına.",
+          "score": 3,
+          "why": "İlerlemenin mekanizmasını ve sürdürme koşullarını araştırır."
+        },
+        {
+          "text": "İki haftanın günlük çıktı ve hata değerlerine.",
+          "score": 2,
+          "why": "Seyri gösterir; değişimin nedeni için ek inceleme gerekir."
+        },
+        {
+          "text": "İlk haftadaki yüksek sonucun ortalamaya katkısına.",
+          "score": 1,
+          "why": "Ortalamayı iyileştirebilir; geri dönüşü açıklamaz."
+        },
+        {
+          "text": "Çalışanın görüşmede verdiği sözün tam ifadesine.",
+          "score": 0,
+          "why": "Davranış ve koşul yerine sözü tek kanıt kabul eder."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S37"
+    },
+    {
+      "id": "S38",
+      "dim": "performans",
+      "title": "Takdirin dayanağı",
+      "sub": "Somut ve adil takdir",
+      "scene": "Bir çalışan görünmeyen kontrol hatasını fark ederek tekrar işini önledi. Çıktı adedi o gün diğerlerinden düşük. Nasıl geri bildirim verirsin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Dikkatini takdir eder, çıktı hedefini ayrı görüşmede ele alırım.",
+          "score": 2,
+          "why": "İki bileşeni ayırır; somut etki sınırlı açıklanır."
+        },
+        {
+          "text": "Adet düşük olduğu için takdiri hedefi tuttuğu güne bırakırım.",
+          "score": 1,
+          "why": "Önemli katkıyı tek çıktı ölçütüne bağlar."
+        },
+        {
+          "text": "Ekibe artık adet hedefinin önemli olmadığını duyururum.",
+          "score": 0,
+          "why": "Tek olaydan tüm performans çerçevesini geçersiz kılar."
+        },
+        {
+          "text": "Önlediği iş etkisini somutlaştırır, katkısını tanır ve çıktı verisini bağlamıyla ele alırım.",
+          "score": 3,
+          "why": "Görünmeyen katkı ile çıktı birlikte değerlendirilir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S38"
+    },
+    {
+      "id": "S39",
+      "dim": "catisma",
+      "title": "Fikir ayrılığı mı, ilişki sorunu mu?",
+      "sub": "Çatışmanın türünü ayırma",
+      "scene": "İki çalışan yeni yöntem konusunda karşıt görüşte. Birinin önerisi hızlı, diğerininki daha az hata iddia ediyor. Toplantı sertleşiyor. Nasıl ilerlersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Ortamı yumuşatmak için ikisinin önerisini yarı yarıya uygularım.",
+          "score": 1,
+          "why": "Uyumluluğunu incelemeden orta yol seçer."
+        },
+        {
+          "text": "Sertleşmeye neden olan kişinin önerisini gündemden çıkarırım.",
+          "score": 0,
+          "why": "Davranış sorunu ile önerinin değerini karıştırır."
+        },
+        {
+          "text": "Tartışma sınırını korur, iki iddiayı ortak ölçütle küçük denemede karşılaştırırım.",
+          "score": 3,
+          "why": "İş anlaşmazlığını kişilerden ayırıp kanıtla ele alır."
+        },
+        {
+          "text": "Her birine eşit söz verip gerekçelerini kaydederim.",
+          "score": 2,
+          "why": "Dengeli dinleme sağlar; karar ölçütü henüz net değildir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S39"
+    },
+    {
+      "id": "S40",
+      "dim": "catisma",
+      "title": "Kıdem farkı",
+      "sub": "Güç dengesini gözetme",
+      "scene": "Yeni çalışan, kıdemli arkadaşının görevleri sürekli üzerine bıraktığını özel olarak söylüyor. Kıdemli kişi bunun öğrenme fırsatı olduğunu savunuyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Şikâyeti kimin yaptığını açıklayıp ekipte açık tartışma başlatırım.",
+          "score": 0,
+          "why": "Güç farkı ve gereksiz ifşa etkisini gözetmez."
+        },
+        {
+          "text": "İş dağılımı kayıtları ve iki tarafın örneklerini inceleyip açık görev ölçütü kurarım.",
+          "score": 3,
+          "why": "Güç farkını varsayımla çözmek yerine kanıt ve standartla ele alır."
+        },
+        {
+          "text": "İkisiyle ayrı görüşüp bir sonraki haftanın dağılımını ben hazırlarım.",
+          "score": 2,
+          "why": "Baskıyı azaltır; kalıcı ölçütün açıklanması sınırlıdır."
+        },
+        {
+          "text": "Öğrenme döneminde iş yükünün yüksek olmasını normal karşılarım.",
+          "score": 1,
+          "why": "Gelişim gerekçesini dağılım kanıtı olmadan kabul eder."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S40"
+    },
+    {
+      "id": "S41",
+      "dim": "catisma",
+      "title": "Anlaşma tekrar bozuldu",
+      "sub": "Tekrarlayan ihlalde sınır koyma",
+      "scene": "Görev devri standardında iki taraf anlaşmıştı. Aynı çalışan üçüncü kez kayıtsız devir yaptı; kayıt aracı çalışıyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "İhlal örneklerini ve nedeni görüşür, açık sorumluluk ve uygun süreçte takip belirlerim.",
+          "score": 3,
+          "why": "Anlaşmayı hesap verebilirlikle sürdürür ve nedeni araştırır."
+        },
+        {
+          "text": "Standardı tekrar hatırlatıp bir hafta tüm devirlerini kontrol ederim.",
+          "score": 2,
+          "why": "Takibi artırır; neden ve sonraki süreç sınırlıdır."
+        },
+        {
+          "text": "İlişki bozulmasın diye kayıtları diğer çalışanın tamamlamasını isterim.",
+          "score": 1,
+          "why": "İhlalin yükünü karşı tarafa aktarır."
+        },
+        {
+          "text": "Kayıtları sessizce kendim tamamlayarak devri sürdürürüm.",
+          "score": 0,
+          "why": "Tekrarlayan sorunu görünmez kılar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S41"
+    },
+    {
+      "id": "S42",
+      "dim": "karar",
+      "title": "Ne zaman durdurmalı?",
+      "sub": "Riskin büyüklüğünü tartma",
+      "scene": "Bir ekipmanda aralıklı uyarı var. Kullanım talimatı bu uyarıda durdurmayı ve teknik kontrol istemeyi gerektiriyor. Gecikme maliyeti yüksek. Hangi yaklaşımı seçersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Kullanımı durdurup teknik ekibin gelmesini beklerim.",
+          "score": 2,
+          "why": "Güvenliği korur; alternatif iş planı sınırlıdır."
+        },
+        {
+          "text": "Deneyimli kullanıcının görüşüyle bir süre daha gözlemlerim.",
+          "score": 1,
+          "why": "Açık durdurma talimatını kişisel kanaate bırakır."
+        },
+        {
+          "text": "Teslimat bitene kadar uyarıyı takip listesine alırım.",
+          "score": 0,
+          "why": "Tanımlı durdurma gereğini erteleyerek riski sürdürür."
+        },
+        {
+          "text": "Talimat doğrultusunda kullanımı durdurur, yetkili kontrolü ve güvenli iş alternatifini başlatırım.",
+          "score": 3,
+          "why": "Tanımlı risk sınırına uygun kararı iş alternatifiyle birleştirir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S42"
+    },
+    {
+      "id": "S43",
+      "dim": "karar",
+      "title": "Yeterli bilgi ne zaman?",
+      "sub": "Bilgi toplama sınırı",
+      "scene": "Düşük maliyetli ve geri alınabilir bir süreç denemesi için temel veriler hazır. Daha ayrıntılı veri iki hafta sonra gelecek; beklemek de zaman kaybettiriyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Tüm ayrıntılar tamamlanana kadar uygulamayı bekletirim.",
+          "score": 1,
+          "why": "Ek bilginin değerini bekleme maliyetiyle karşılaştırmaz."
+        },
+        {
+          "text": "Temel veriler hazır olduğu için yöntemi bütün ekibe geçiririm.",
+          "score": 0,
+          "why": "Geri alınabilir deneme fırsatını sınırsız uygulamaya çevirir."
+        },
+        {
+          "text": "Başarı ve durdurma ölçütüyle küçük deneme yapar, ek veri gelince yeniden değerlendiririm.",
+          "score": 3,
+          "why": "Kararı geri alınabilirlik ve bilgi değeriyle orantılar."
+        },
+        {
+          "text": "Denemeyi en küçük ekipte başlatıp haftalık sonucu gözden geçiririm.",
+          "score": 2,
+          "why": "Riski sınırlar; açık başarı ve durdurma eşiği eksiktir."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S43"
+    },
+    {
+      "id": "S44",
+      "dim": "karar",
+      "title": "Acil çözümün ertesi günü",
+      "sub": "Geçici çözümü kapatma",
+      "scene": "Dünkü arızayı geçici işlemle aştınız. Teslimat tamamlandı. Geçici işlem günlük ek iş çıkarıyor; kalıcı çözüm için ekipler arası çalışma gerekiyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yoğunluk geçince gündeme almak üzere not ederim.",
+          "score": 0,
+          "why": "Sahip ve takip zamanı olmadan erteleme yapar."
+        },
+        {
+          "text": "Geçici işlemin risk ve bitiş koşulunu kaydedip kalıcı çözüm sahibi ve takip tarihi belirlerim.",
+          "score": 3,
+          "why": "Geçici çözümü süreli ve sahipli kalıcı çalışmaya bağlar."
+        },
+        {
+          "text": "Kalıcı çözüm için kayıt açıp ek işi günlük planda gösteririm.",
+          "score": 2,
+          "why": "Sorunu görünür kılar; kapanış ve sahiplik sınırlıdır."
+        },
+        {
+          "text": "Teslimatlar aksamıyorsa geçici işlemi yeni standart yaparım.",
+          "score": 1,
+          "why": "Ek iş ve risk incelenmeden geçici yaklaşımı kalıcılaştırır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S44"
+    },
+    {
+      "id": "S45",
+      "dim": "karar",
+      "title": "İki çözüm arasında",
+      "sub": "Alternatifleri ortak ölçütle kıyaslama",
+      "scene": "Bir çözüm ucuz ama bakım işi artırıyor; diğeri pahalı ama tekrar hatayı azaltıyor. Bütçe kararını sen vermiyorsun, öneri hazırlıyorsun. Önce ne hazırlarsın?",
+      "type": "info",
+      "options": [
+        {
+          "text": "Toplam maliyet, risk, iş yükü ve beklenen etkiyi aynı varsayımlarla karşılaştırırım.",
+          "score": 3,
+          "why": "Alternatifleri ortak ve açıklanabilir ölçütlerde karşılaştırır."
+        },
+        {
+          "text": "İlk yatırım ve beklenen hata azalmasını yan yana koyarım.",
+          "score": 2,
+          "why": "İki etkiyi ele alır; bakım ve belirsizlik eksiktir."
+        },
+        {
+          "text": "Bütçeyi korumak için ilk maliyeti en düşük olanı öneririm.",
+          "score": 1,
+          "why": "Toplam etkiyi tek maliyet kalemine indirger."
+        },
+        {
+          "text": "Benzer şirketin kullandığı çözümü ölçüt hazırlamadan öneririm.",
+          "score": 0,
+          "why": "Bağlam uygunluğunu araştırmadan başka örneğe dayanır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S45"
+    },
+    {
+      "id": "S46",
+      "dim": "karar",
+      "title": "Kimin kararı?",
+      "sub": "Uygun eskalasyon",
+      "scene": "Sorunun iki çözümü var. Biri senin yetkin içinde ve sınırlı faydalı; diğeri daha etkili ama bütçe onayı gerektiriyor. Karar yarına lazım. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yetkim içindeki çözümü başlatır, bütçeli seçeneği ayrıca bildiririm.",
+          "score": 2,
+          "why": "İşi ilerletir; karar zamanı ve geçiş koşulu sınırlıdır."
+        },
+        {
+          "text": "Bütçe onayı olmadan etkili çözümün harcamasını başlatırım.",
+          "score": 1,
+          "why": "İş etkisini yetki sınırını aşarak yönetir."
+        },
+        {
+          "text": "Yetki dışı seçenek olduğu için iki çözümü de bekletirim.",
+          "score": 0,
+          "why": "Kendi yetkisi içindeki ilerleme ve eskalasyon fırsatını kullanmaz."
+        },
+        {
+          "text": "İki seçeneğin etkisini ve önerimi yetkili kişiye zamanında sunar, geçici sınırı netleştiririm.",
+          "score": 3,
+          "why": "Yetki ve zaman baskısını somut seçeneklerle yönetir."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S46"
+    },
+    {
+      "id": "S47",
+      "dim": "karar",
+      "title": "Deneme başarısız çıktı",
+      "sub": "Olumsuz sonuçtan karar çıkarma",
+      "scene": "Küçük denemede işlem süresi azaldı fakat hata oranı arttı. Başarı koşulunda hata artmaması gerekiyordu. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Hız kazanımı yüksek olduğu için yöntemi yaygınlaştırırım.",
+          "score": 1,
+          "why": "Başarı koşulundaki kalite gereğini görmezden gelir."
+        },
+        {
+          "text": "Sonucu başarısız sayıp deneme kayıtlarını kullanmadan eski yönteme dönerim.",
+          "score": 0,
+          "why": "Riski sınırlar ama öğrenme ve neden incelemesini kaybeder."
+        },
+        {
+          "text": "Yaygınlaştırmayı durdurur, hız ve hata değişimini birlikte inceleyip yeni deneme tasarlarım.",
+          "score": 3,
+          "why": "Önceden tanımlı koşulu korur ve olumsuz sonuçtan öğrenir."
+        },
+        {
+          "text": "Denemeyi aynı küçük grupta uzatıp hata örneklerini kaydederim.",
+          "score": 2,
+          "why": "Kanıtı artırır; durdurma koşulunun uygulanması açık değildir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S47"
+    },
+    {
+      "id": "S48",
+      "dim": "plan",
+      "title": "Molaya kadar kim nerede?",
+      "sub": "Beceriye göre kapasite",
+      "scene": "İki işi aynı sürede bitirmeniz gerekiyor. Bir iş sertifika gerektiriyor; yalnız iki çalışanda var. Diğer çalışanlar genel işi yapabiliyor. İlk dağılımın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Yetişmesi için sertifikasız kişiye deneyimli gözetiminde kritik işi veririm.",
+          "score": 0,
+          "why": "Açık yeterlik şartını karşılamayan görevlendirme yapar."
+        },
+        {
+          "text": "Sertifikalı kapasiteyi zorunlu işe ayırır, genel işi diğerlerine süre ve yükle dağıtırım.",
+          "score": 3,
+          "why": "Beceri kısıtıyla iş yükünü birlikte planlar."
+        },
+        {
+          "text": "Sertifikalı kişilerden birini kritik işe verip ilerlemeye göre ikinciyi yönlendiririm.",
+          "score": 2,
+          "why": "Kısıtı gözetir; başlangıç kapasite hesabı sınırlıdır."
+        },
+        {
+          "text": "İş adedini eşitleyecek biçimde herkese karışık görev veririm.",
+          "score": 1,
+          "why": "Adet eşitliği beceri kısıtını karşılamaz."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S48"
+    },
+    {
+      "id": "S49",
+      "dim": "plan",
+      "title": "Ara kontrol noktası",
+      "sub": "Planı görünür izleme",
+      "scene": "Dört saatlik işin ilerlemesi son saatte anlaşılıyor; gecikince destek yetişmiyor. Sürekli kontrol de işi bölüyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Kritik ara çıktıya bir kontrol zamanı ve sapmada yardım koşulu belirlerim.",
+          "score": 3,
+          "why": "Kontrolü karar alınabilir ara çıktıya ve müdahaleye bağlar."
+        },
+        {
+          "text": "Saatlik kısa ilerleme kaydı isterim.",
+          "score": 2,
+          "why": "Görünürlüğü artırır; kritik çıktı ve müdahale koşulu eksiktir."
+        },
+        {
+          "text": "Her on dakikada durum sorarım.",
+          "score": 1,
+          "why": "Görünürlük sağlar ama kontrol yükünü gereksiz artırır."
+        },
+        {
+          "text": "Çalışanlar deneyimli olduğu için yalnız bitişte sonucu isterim.",
+          "score": 0,
+          "why": "Erken müdahale sorununun sürmesine neden olur."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S49"
+    },
+    {
+      "id": "S50",
+      "dim": "plan",
+      "title": "Her şey acil",
+      "sub": "Talep önceliğini netleştirme",
+      "scene": "Üç departman işini acil diye gönderiyor. Ekip hepsini bugün bitiremiyor. Hangi bilgiyi önceliklendirirsin?",
+      "type": "info",
+      "options": [
+        {
+          "text": "İşin tahmini süresi ve talebin geldiği zaman.",
+          "score": 2,
+          "why": "Kapasite ve sıra için bilgi sağlar; iş etkisi eksiktir."
+        },
+        {
+          "text": "Talebi gönderen yöneticinin kıdemini.",
+          "score": 1,
+          "why": "İş etkisi yerine hiyerarşiyi öncelik ölçütü yapar."
+        },
+        {
+          "text": "Hangi departmanın daha sık hatırlatma yaptığını.",
+          "score": 0,
+          "why": "Görünürlüğü iş öneminin yerine koyar."
+        },
+        {
+          "text": "Gerçek son tarih, gecikmenin iş etkisi ve diğer işlerle bağımlılığı.",
+          "score": 3,
+          "why": "Aciliyeti ortak iş ölçütleriyle ayırır."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S50"
+    },
+    {
+      "id": "S51",
+      "dim": "plan",
+      "title": "Yarım kalan devir",
+      "sub": "Vardiya sürekliliği",
+      "scene": "Vardiya bitiyor. Bir iş tamamlanmadı; kalan adımı ve önceki kontrolü yalnız işi yapan kişi biliyor. Diğer vardiya on dakika sonra geliyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Kalan işi tamamlanmamış olarak listeler, ayrıntıyı sabaha bırakırım.",
+          "score": 1,
+          "why": "Durumu gösterir; güvenli devam bilgisi eksik kalır."
+        },
+        {
+          "text": "Önceki vardiyanın işi olduğu için diğer ekibin başlamamasını isterim.",
+          "score": 0,
+          "why": "Geçerli alternatif aramadan sürekliliği durdurur."
+        },
+        {
+          "text": "Kalan iş, kontrol durumu, risk ve sonraki sahibi kısa devir kaydına bağlarım.",
+          "score": 3,
+          "why": "Süreklilik için gerekli bilgi ve sahipliği aktarır."
+        },
+        {
+          "text": "İşi yapan çalışandan sonraki sorumluya kısa telefonla anlatmasını isterim.",
+          "score": 2,
+          "why": "Bilgi aktarır; kayıt ve kabul teyidi sınırlıdır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S51"
+    },
+    {
+      "id": "S52",
+      "dim": "degisim",
+      "title": "İki başarı ölçütü",
+      "sub": "Paydaş beklentilerini uzlaştırma",
+      "scene": "Satış ekibi hızlı geçiş, operasyon ise hatasız geçiş istiyor. Aynı değişimi birlikte uygulayacaksınız. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Uzlaşma beklemeden geçişi başlatıp sonuçta anlaşmayı öneririm.",
+          "score": 0,
+          "why": "Kabul ölçütü belirlenmeden taraflara risk yükler."
+        },
+        {
+          "text": "Hız ve hata için ortak kabul koşulu ve geçiş kapıları belirlemeyi öneririm.",
+          "score": 3,
+          "why": "Farklı beklentileri birlikte sınanabilir ölçüte dönüştürür."
+        },
+        {
+          "text": "Her ekibin ölçütünü ayrı raporlayıp haftalık görüşme yaparım.",
+          "score": 2,
+          "why": "Görünürlük ve diyalog sağlar; ortak karar koşulu eksiktir."
+        },
+        {
+          "text": "Değişimi isteyen ekibin ölçütünü öncelikli kabul ederim.",
+          "score": 1,
+          "why": "Etkilenen tarafın kritik sonucunu dışlar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S52"
+    },
+    {
+      "id": "S53",
+      "dim": "degisim",
+      "title": "Kullanılmayan yenilik",
+      "sub": "Benimsemenin engelini bulma",
+      "scene": "Yeni ekran yayında ve eğitim verildi. Çalışanlar eski dosyayı kullanıyor. Kullanım talimatı erişilebilir. Önce hangi bilgiyi toplarsın?",
+      "type": "info",
+      "options": [
+        {
+          "text": "Gerçek bir görevde yeni ekranın nerede zorladığını ve eski dosyanın hangi ihtiyacı karşıladığını.",
+          "score": 3,
+          "why": "Kullanım engelini görev ve ihtiyaç düzeyinde araştırır."
+        },
+        {
+          "text": "Yeni ekrana giriş sayıları ve hangi saatlerde kullanıldığı.",
+          "score": 2,
+          "why": "Kullanım örüntüsünü gösterir; nedeni açıklamaz."
+        },
+        {
+          "text": "Eğitime katılanların imza listesini.",
+          "score": 1,
+          "why": "Eğitim erişimini gösterir; işte benimsemeyi açıklamaz."
+        },
+        {
+          "text": "Eski dosyayı en çok kullanan kişinin kim olduğunu.",
+          "score": 0,
+          "why": "Engeli incelemeden kişiye odaklanır."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S53"
+    },
+    {
+      "id": "S54",
+      "dim": "degisim",
+      "title": "Küçük ekipte işe yaradı",
+      "sub": "Ölçekleme koşulları",
+      "scene": "Yeni yöntem gündüz küçük ekipte başarılı. Gece vardiyasında destek personeli daha az. Yaygınlaştırmadan önce ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Gece ekibine ek eğitim verip ilk haftayı yakından izlerim.",
+          "score": 2,
+          "why": "Destek sağlar; kapasite farkının doğrudan etkisi sınırlı incelenir."
+        },
+        {
+          "text": "Gündüz sonucu olumlu olduğu için aynı akışı geceye geçiririm.",
+          "score": 1,
+          "why": "Bağlam farkını kanıt olmadan önemsiz sayar."
+        },
+        {
+          "text": "Gece ekibini kalıcı olarak değişimden muaf tutarım.",
+          "score": 0,
+          "why": "Uygulanabilir uyarlamayı araştırmadan kapsamı dışlar."
+        },
+        {
+          "text": "Destek farkının etkisini inceleyip geceye uygun sınırlandırılmış deneme ve geri dönüş planı kurarım.",
+          "score": 3,
+          "why": "Başarının bağlama bağlı koşullarını sınar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S54"
+    },
+    {
+      "id": "S55",
+      "dim": "adalet",
+      "title": "Vardiya tercihi",
+      "sub": "Şeffaf karar ölçütü",
+      "scene": "İki çalışan aynı gün izin istiyor; kapasite nedeniyle yalnız birine verebiliyorsun. İkisinin de geçerli gerekçesi var. Daha önce ilan edilmiş öncelik kuralı yok. Nasıl ilerlersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Daha yüksek performanslı çalışana öncelik veririm.",
+          "score": 1,
+          "why": "İzin hakkını önceden tanımlanmamış performans ödülüne çevirir."
+        },
+        {
+          "text": "Kararı çalışanların kendi aralarında çözmesini isterim.",
+          "score": 0,
+          "why": "Yönetim sorumluluğunu güç dengesi belirsiz kişilere bırakır."
+        },
+        {
+          "text": "Yetkili izin kurallarını ve alternatifleri kontrol eder, işle ilgili tutarlı ölçütü açıklayarak karar veririm.",
+          "score": 3,
+          "why": "Keyfi tercihi azaltır ve uygulanabilir ölçütü görünür kılar."
+        },
+        {
+          "text": "İlk talep zamanını esas alıp gelecek dönem için kural belirlerim.",
+          "score": 2,
+          "why": "Tutarlı bir ölçüt sunar; mevcut kural ve alternatif incelemesi sınırlıdır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S55"
+    },
+    {
+      "id": "S56",
+      "dim": "adalet",
+      "title": "Yakın ilişki",
+      "sub": "Çıkar çatışmasını görünür kılma",
+      "scene": "Gelişim görevi için iki kişi önerilecek. Adaylardan biri yakın arkadaşın; katkısını iyi biliyorsun. Diğerinin kayıtları da güçlü. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "İşini daha iyi bildiğim için arkadaşımı doğrudan seçerim.",
+          "score": 0,
+          "why": "Yakınlığı ortak değerlendirme ölçütünün yerine koyar."
+        },
+        {
+          "text": "Yakın ilişkiyi uygun karar sahibine bildirir, ortak ölçüt ve bağımsız incelemeyle ilerlerim.",
+          "score": 3,
+          "why": "Çıkar çatışmasını görünür kılar ve karar dayanağını korur."
+        },
+        {
+          "text": "Önceden belirlenmiş ölçütlerle kayıtları karşılaştırıp gerekçeyi yazarım.",
+          "score": 2,
+          "why": "Nesnel ölçüt sağlar; ilişki kaynaklı çatışmayı görünür kılma eksiktir."
+        },
+        {
+          "text": "Tarafsız görünmek için arkadaşımı değerlendirme dışı bırakırım.",
+          "score": 1,
+          "why": "Rol gereğini incelemeden kişiye otomatik dezavantaj üretir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S56"
+    },
+    {
+      "id": "S57",
+      "dim": "iletisim",
+      "title": "Anladığını nasıl anlarsın?",
+      "sub": "Ortak anlayış teyidi",
+      "scene": "Yeni iş talimatını anlattın. Çalışan anladığını söylüyor; görev birkaç kritik istisna içeriyor. Uygulama öncesi ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Bir örnek durumu kendi sözleriyle anlatmasını ve istisnada ne yapacağını göstermesini isterim.",
+          "score": 3,
+          "why": "Ortak anlayışı somut görev ve istisna üzerinden kontrol eder."
+        },
+        {
+          "text": "Kritik istisnaları tekrar edip sorusu olup olmadığını sorarım.",
+          "score": 2,
+          "why": "Mesajı vurgular; anlayışın doğrudan teyidi sınırlıdır."
+        },
+        {
+          "text": "Talimatı e-postayla da göndererek iletişimi tamamlarım.",
+          "score": 1,
+          "why": "Erişimi artırır; anlaşıldığını göstermez."
+        },
+        {
+          "text": "Anladığını söylediği için işi kontrolsüz başlatırım.",
+          "score": 0,
+          "why": "Kritik istisnalar için teyit fırsatını kullanmaz."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S57"
+    },
+    {
+      "id": "S58",
+      "dim": "iletisim",
+      "title": "Tek mesaj, iki kitle",
+      "sub": "Alıcıya uygun anlatım",
+      "scene": "Bir süreç değişimini hem sahadaki ekibe hem üst yönetime aktaracaksın. İki grup farklı ayrıntılara ihtiyaç duyuyor. Hangi yaklaşımı seçersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Aynı kısa özeti gönderip isteyenlere ek ayrıntı sunarım.",
+          "score": 2,
+          "why": "Ortak mesaj sağlar; ilk iletide ihtiyaç farklılığı sınırlı karşılanır."
+        },
+        {
+          "text": "Bütün teknik ayrıntıları iki gruba da aynı sunumla anlatırım.",
+          "score": 1,
+          "why": "Eksiksizlik hedefler; alıcının iş ihtiyacını ayırmaz."
+        },
+        {
+          "text": "Her gruba yalnız duymak istediği olumlu sonuçları aktarırım.",
+          "score": 0,
+          "why": "Tutarlılığı ve önemli risk bilgisini kaybeder."
+        },
+        {
+          "text": "Ortak ana mesajı korur, ekip için adımları; yönetim için etki, risk ve karar ihtiyacını öne çıkarırım.",
+          "score": 3,
+          "why": "Mesajın doğruluğunu koruyarak alıcının görevine uyarlar."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S58"
+    },
+    {
+      "id": "S59",
+      "dim": "iletisim",
+      "title": "Belirsiz talep",
+      "sub": "Talebi netleştirme",
+      "scene": "Yönetici raporu daha kullanışlı hale getirmeni istiyor. Hangi kararda kullanılacağı ve son tarih belli değil. İlk ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Raporu görsel olarak sadeleştirip hemen gönderirim.",
+          "score": 1,
+          "why": "Kullanışlılığı görünümle eşitleyerek ihtiyacı varsayar."
+        },
+        {
+          "text": "Bütün ayrıntıları ekleyip seçimi raporu okuyana bırakırım.",
+          "score": 0,
+          "why": "Bilgi yükünü artırır; talebi netleştirme sorumluluğunu aktarır."
+        },
+        {
+          "text": "Kullanılacak karar, kullanıcı, beklenen çıktı ve zamanı örnek üzerinden netleştiririm.",
+          "score": 3,
+          "why": "Belirsiz talebi uygulanabilir beklentiye dönüştürür."
+        },
+        {
+          "text": "İki örnek taslak gösterip hangisini tercih ettiğini sorarım.",
+          "score": 2,
+          "why": "Somutlaştırır; karar amacı ve zaman henüz sınırlı tanımlıdır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S59"
+    },
+    {
+      "id": "S60",
+      "dim": "iletisim",
+      "title": "Sözlü karar kayboldu",
+      "sub": "Kararı ve takibi kaydetme",
+      "scene": "Toplantıda üç ekip bir iş devrinde anlaştı. Bir hafta sonra teslim tarihi ve sahip farklı hatırlanıyor. Sonraki görüşmede ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Bir önceki toplantıdaki kendi notumu kesin karar kabul ederim.",
+          "score": 0,
+          "why": "Farklı hatırlamayı ortak teyit olmadan çözer."
+        },
+        {
+          "text": "Çıktı, sahip, tarih ve açık kalan konuları birlikte teyit edip kısa karar kaydı paylaşırım.",
+          "score": 3,
+          "why": "Ortak anlayışı izlenebilir sorumluluk kaydına bağlar."
+        },
+        {
+          "text": "Toplantı sonunda kararları sözlü özetleyip onay alırım.",
+          "score": 2,
+          "why": "Anlayışı teyit eder; sonradan erişilebilir kayıt eksiktir."
+        },
+        {
+          "text": "Görüşmenin bütün konuşmalarını düzenlemeden paylaşırım.",
+          "score": 1,
+          "why": "Kayıt sağlar; karar ve sahiplik bilgi içinde kaybolur."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S60"
+    },
+    {
+      "id": "S61",
+      "dim": "musteri",
+      "title": "İstenenle ihtiyaç farklı",
+      "sub": "Asıl ihtiyacı anlama",
+      "scene": "İç müşteri tüm raporları saat başı istiyor. Bunu hazırlamak ekibi zorluyor; hangi kararda kullandığı bilinmiyor. İlk yaklaşımın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Hangi karar için ne sıklıkta bilgi gerektiğini sorup uygun bilgi akışını birlikte belirlerim.",
+          "score": 3,
+          "why": "Talep ile asıl ihtiyacı ayırır."
+        },
+        {
+          "text": "En çok kullanılan raporları sorup önce onları saat başı sunarım.",
+          "score": 2,
+          "why": "Yükü azaltır; kullanım kararı tam netleşmez."
+        },
+        {
+          "text": "Talep müşteri tarafından geldiği için tümünü saat başı hazırlarım.",
+          "score": 1,
+          "why": "İhtiyaç ve sürdürülebilirlik incelenmeden talebi aynen uygular."
+        },
+        {
+          "text": "İş yükü nedeniyle talebi gerekçe konuşmadan reddederim.",
+          "score": 0,
+          "why": "Müşteri ihtiyacını ve alternatifleri araştırmaz."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S61"
+    },
+    {
+      "id": "S62",
+      "dim": "musteri",
+      "title": "Tutulamayacak söz",
+      "sub": "Gerçekçi taahhüt",
+      "scene": "Müşteri bugün teslimat istiyor. Mevcut kapasiteyle tamamı yarın; kritik bir kısmı bugün mümkün. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Tamamının yarın olacağını bildirip bugün kısmi teslim öneririm.",
+          "score": 2,
+          "why": "Sınır ve seçenek sunar; kritik ihtiyacı teyit sınırlıdır."
+        },
+        {
+          "text": "İlişki bozulmasın diye bugün teslim sözü verip yetiştirmeye çalışırım.",
+          "score": 1,
+          "why": "Bilinen kapasiteyle uyumsuz taahhüt verir."
+        },
+        {
+          "text": "Tamamı mümkün olmadığı için kısmi alternatifi paylaşmam.",
+          "score": 0,
+          "why": "Uygulanabilir hizmet seçeneğini saklar."
+        },
+        {
+          "text": "Kritik ihtiyacı doğrular, bugün ve yarın yapılabilecekleri açık taahhütle sunarım.",
+          "score": 3,
+          "why": "İhtiyaç ve kapasiteyi gerçekçi seçenekle bağlar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S62"
+    },
+    {
+      "id": "S63",
+      "dim": "musteri",
+      "title": "Tekrar açılan şikâyet",
+      "sub": "Çözüm teyidi",
+      "scene": "Şikâyet kaydı kapatıldı, aynı müşteri iki gün sonra aynı nedenle yeniden yazdı. İşlem kaydında düzeltme tamamlandı görünüyor. Önce ne incelersin?",
+      "type": "info",
+      "options": [
+        {
+          "text": "Kaydı kapatan çalışanın kaç şikâyet çözdüğünü.",
+          "score": 1,
+          "why": "Hacim bilgisini bu sorunun çözüm kanıtı yerine kullanır."
+        },
+        {
+          "text": "Müşterinin daha önce kaç kere şikâyet ettiğini.",
+          "score": 0,
+          "why": "Sorunun içeriğini incelemeden kişiye odaklanır."
+        },
+        {
+          "text": "Müşterinin yaşadığı son durum ile yapılan düzeltmenin gerçekten hangi ihtiyacı karşıladığını.",
+          "score": 3,
+          "why": "Kayıt kapanışıyla gerçek çözümü ayırır."
+        },
+        {
+          "text": "Düzeltmenin teknik olarak tamamlandığına ilişkin kaydı.",
+          "score": 2,
+          "why": "İşlem doğruluğunu inceler; müşteri sonucunu tek başına göstermez."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S63"
+    },
+    {
+      "id": "S64",
+      "dim": "musteri",
+      "title": "Talep kapsamı büyüyor",
+      "sub": "Hizmet sınırını yönetme",
+      "scene": "İç müşteri, üzerinde anlaşılan işin son gününde ek bir çıktı istiyor. Aynı tarihte tamamlamak diğer taahhütleri aksatacak. Nasıl ilerlersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Anlaşmada olmadığı için ek isteği görüşmeden geri çeviririm.",
+          "score": 0,
+          "why": "Yeni ihtiyacın değerini ve alternatifini araştırmaz."
+        },
+        {
+          "text": "Ek ihtiyacın etkisini ve alternatif teslimleri açıklayıp kapsam-zaman kararını birlikte netleştiririm.",
+          "score": 3,
+          "why": "Müşteri ihtiyacı ve diğer taahhütleri görünür karara bağlar."
+        },
+        {
+          "text": "Ek çıktıyı sonraki güne planlayıp müşteriye bilgi veririm.",
+          "score": 2,
+          "why": "Uygulanabilir sınır sunar; ihtiyacın önemi birlikte incelenmez."
+        },
+        {
+          "text": "Müşteriyi memnun etmek için diğer taahhütleri sessizce ertelerim.",
+          "score": 1,
+          "why": "Bir talebi diğer paydaşlara görünmez maliyetle karşılar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S64"
+    },
+    {
+      "id": "S65",
+      "dim": "musteri",
+      "title": "Hız mı doğru çözüm mü?",
+      "sub": "Hizmet kalitesini dengeleme",
+      "scene": "Ekibin ilk yanıt süresi iyileşti, fakat müşteriler cevapların sorunu çözmediğini söylüyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "İlk yanıtı, gerçek çözümü ve yeniden başvuruyu birlikte inceleyip iş akışını düzeltirim.",
+          "score": 3,
+          "why": "Hız ölçütünü çözüm kalitesiyle dengeler."
+        },
+        {
+          "text": "Tekrar açılan başvuruları örnekleyip eksik cevaplara geri bildirim veririm.",
+          "score": 2,
+          "why": "Soruna doğrudan temas eder; ölçüm sistemi bütünüyle ele alınmaz."
+        },
+        {
+          "text": "Yanıt süresi hedefi tuttuğu için mevcut yaklaşımı sürdürürüm.",
+          "score": 1,
+          "why": "Süreyi hizmet sonucunun yerine koyar."
+        },
+        {
+          "text": "Yanıt hızını izlemeyi tamamen bırakırım.",
+          "score": 0,
+          "why": "Bir ölçütün sınırından bütün hız bilgisini dışlama sonucu çıkarır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S65"
+    },
+    {
+      "id": "S66",
+      "dim": "analitik",
+      "title": "Adet mi oran mı?",
+      "sub": "Payda kullanma",
+      "scene": "A ekibinde 1.000 işlemde 20 hata, B ekibinde 200 işlemde 8 hata var. Hangi ilk yorum en uygundur?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "B ekibinin hata oranı daha yüksek; bu farkı ayrıca incelemek gerekir.",
+          "score": 2,
+          "why": "Oran yönünü doğru yorumlar; iş karışımı sınırını açıklaştırmaz."
+        },
+        {
+          "text": "A daha çok hata yaptığı için öncelikle A ekibinin performansı daha kötüdür.",
+          "score": 1,
+          "why": "Hacim farkını görmezden gelerek toplamları kıyaslar."
+        },
+        {
+          "text": "B daha az hata yaptığı için yöntemi bütün ekiplere uygularım.",
+          "score": 0,
+          "why": "Hacmi ve bağlamı ayırmadan çözüm aktarır."
+        },
+        {
+          "text": "A yüzde 2, B yüzde 4 hata oranında; iş türü farkını da incelemeden neden hükmü vermem.",
+          "score": 3,
+          "why": "Oranı doğru hesaplar ve karşılaştırma sınırını korur."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S66"
+    },
+    {
+      "id": "S67",
+      "dim": "analitik",
+      "title": "Ortalama gizliyor",
+      "sub": "Dağılımı inceleme",
+      "scene": "Ortalama işlem süresi aynı kaldı ama geciken müşteri sayısı arttı. Veri mevcut. Hangi bilgiye önce bakarsın?",
+      "type": "info",
+      "options": [
+        {
+          "text": "Yalnızca ayın toplam işlem süresine.",
+          "score": 1,
+          "why": "Hacim ve dağılımı ayırmadan toplama dayanır."
+        },
+        {
+          "text": "Ortalama aynı olduğu için gecikme şikâyetini veri dışı sayarım.",
+          "score": 0,
+          "why": "Farklı ölçütlerin birlikte doğru olabileceğini dışlar."
+        },
+        {
+          "text": "Süre dağılımına, uzun kuyruktaki işlemlere ve iş türlerine.",
+          "score": 3,
+          "why": "Ortalamanın gizlediği yayılım ve alt grupları araştırır."
+        },
+        {
+          "text": "Günlük ortalamaların değişimine.",
+          "score": 2,
+          "why": "Zamansal değişimi gösterir; uç süreleri sınırlı açıklar."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S67"
+    },
+    {
+      "id": "S68",
+      "dim": "analitik",
+      "title": "Tanım değişmiş",
+      "sub": "Ölçüt karşılaştırılabilirliği",
+      "scene": "Bu ay verimlilik yüzde 12 artmış görünüyor. Raporda eğitim saatleri bu ay paydadan çıkarılmış; geçen ay dahilmiş. Nasıl yorumlarsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Tanım değiştiği için hiçbir dönemi izlemeye devam etmem.",
+          "score": 0,
+          "why": "Düzeltilebilir karşılaştırmayı tamamen terk eder."
+        },
+        {
+          "text": "İki dönemi aynı saat tanımıyla yeniden hesaplayıp tanım değişiminin etkisini ayırırım.",
+          "score": 3,
+          "why": "Karşılaştırmayı ortak tanıma getirir."
+        },
+        {
+          "text": "Artışa tanım değişikliği notu ekler, eski tanımla hesabı da isterim.",
+          "score": 2,
+          "why": "Sınırı görünür kılar; karşılaştırma henüz tamamlanmamıştır."
+        },
+        {
+          "text": "Yeni tanım daha iyi göründüğü için yüzde 12 artış olarak sunarım.",
+          "score": 1,
+          "why": "Tanım etkisini performans değişimi gibi gösterir."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S68"
+    },
+    {
+      "id": "S69",
+      "dim": "analitik",
+      "title": "İlişki neden mi?",
+      "sub": "Nedensellik sınırı",
+      "scene": "Eğitim alan grubun çıktısı daha yüksek. Ancak gruba yalnız deneyimli çalışanlar seçilmiş. Ne söyleyebilirsin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Fark gözleniyor; eğitim etkisi için deneyim ve başlangıç düzeyi gibi farkları ayırmak gerekir.",
+          "score": 3,
+          "why": "İlişki ile neden çıkarımını ayırır."
+        },
+        {
+          "text": "Eğitim ve yüksek çıktı birlikte görülmüş; sonuç ön kanıt olarak incelenebilir.",
+          "score": 2,
+          "why": "Kesin neden demekten kaçınır; karıştırıcı etkeni açıklaştırmaz."
+        },
+        {
+          "text": "Eğitim yüksek çıktının nedeni olduğu için herkese aynı eğitimi veririm.",
+          "score": 1,
+          "why": "Seçim farkını ayırmadan nedensellik kurar."
+        },
+        {
+          "text": "Gruplar farklı olduğu için bu verinin hiçbir bilgi değeri yoktur.",
+          "score": 0,
+          "why": "Sınırlı betimleyici bilgiyi de yok sayar."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S69"
+    },
+    {
+      "id": "S70",
+      "dim": "analitik",
+      "title": "Eksik kayıt",
+      "sub": "Veri kalitesi",
+      "scene": "İşlem süresi raporunda kayıtların yüzde 15’inde bitiş saati yok. Eksikler çoğunlukla yoğun saatlerde. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Eksik oranını raporlayıp tam kayıtların sonucunu ayrı gösteririm.",
+          "score": 2,
+          "why": "Şeffaflık sağlar; sapma etkisini araştırma sınırlıdır."
+        },
+        {
+          "text": "Eksik bitişleri ortalama süreyle doldurup tek sonuç sunarım.",
+          "score": 1,
+          "why": "Örüntüyü incelemeden doldurma yaparak belirsizliği gizler."
+        },
+        {
+          "text": "Eksik kayıtları süresi sıfırmış gibi hesaba katarım.",
+          "score": 0,
+          "why": "Eksikliği gerçek gözlem gibi kullanarak hesabı bozar."
+        },
+        {
+          "text": "Eksiklerin örüntüsünü ve etkisini inceler, rapor sınırını belirtip kayıt nedenini düzeltirim.",
+          "score": 3,
+          "why": "Eksik verinin rastgele olmayabileceğini ve iş etkisini ele alır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S70"
+    },
+    {
+      "id": "S71",
+      "dim": "analitik",
+      "title": "Aykırı gün",
+      "sub": "Aykırıyı doğrulama",
+      "scene": "Bir günün çıktı değeri normalin beş katı. Kaynakta toplu kayıt aktarımı yapılmış olabilir; gerçekten yüksek üretim de mümkün. İlk hareketin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Ortalama bozulmasın diye o günü rapordan çıkarırım.",
+          "score": 1,
+          "why": "Gerçek olup olmadığını araştırmadan gözlemi siler."
+        },
+        {
+          "text": "En yüksek performans günü sayıp yeni hedefi ona bağlarım.",
+          "score": 0,
+          "why": "Doğrulanmamış değeri yönetim standardı yapar."
+        },
+        {
+          "text": "Kaynak kayıt, birim ve aktarım zamanını kontrol edip gerçek gözlemle kayıt etkisini ayırırım.",
+          "score": 3,
+          "why": "Aykırıyı silmeden veya kabullenmeden doğrular."
+        },
+        {
+          "text": "Aykırı gün dahil ve hariç sonuçları birlikte hesaplarım.",
+          "score": 2,
+          "why": "Etkiyi görünür kılar; kaynağı doğrulama eksiktir."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S71"
+    },
+    {
+      "id": "S72",
+      "dim": "analitik",
+      "title": "Yüzde değişimin tabanı",
+      "sub": "Yüzdeyi doğru yorumlama",
+      "scene": "Hata oranı yüzde 4’ten yüzde 3’e düştü. Raporun açıklamasını yazıyorsun. Hangi ifade doğru ve açıklayıcıdır?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Hata sayısı kesin olarak yüzde 25 azaldı.",
+          "score": 0,
+          "why": "İşlem hacmi bilinmeden oran değişimini adet değişimi sayar."
+        },
+        {
+          "text": "Bir yüzde puan azalma, başlangıca göre yüzde 25 göreli düşüş var; hacim ve dönem kapsamını da belirtirim.",
+          "score": 3,
+          "why": "Yüzde puan ve göreli değişimi ayırıp bağlamı açıklar."
+        },
+        {
+          "text": "Başlangıca göre hata oranı yüzde 25 azaldı.",
+          "score": 2,
+          "why": "Göreli değişim doğrudur; puan farkı ve kapsam açıklaması eksiktir."
+        },
+        {
+          "text": "Hata oranı yüzde 1 azaldı.",
+          "score": 1,
+          "why": "Bir yüzde puanla yüzde bir göreli azalmayı karıştırır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S72"
+    },
+    {
+      "id": "S73",
+      "dim": "ogrenme",
+      "title": "Yeni sistemde ilk görev",
+      "sub": "Bilgi açığını tanıma",
+      "scene": "İlk kez kullandığın sistemde bir ayar isteniyor. Yanlış ayar canlı işleri etkiliyor; deneme alanı ve resmi yardım var. Nasıl ilerlersin?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Bilmediğim ayarın etkisini resmi kaynaktan öğrenir, deneme alanında doğrulayıp yetkim içinde uygularım.",
+          "score": 3,
+          "why": "Bilgi açığını güvenilir kaynak ve güvenli uygulamayla kapatır."
+        },
+        {
+          "text": "Deneyimli arkadaşın bir örneğini izleyip deneme alanında tekrarlarım.",
+          "score": 2,
+          "why": "Gözlem ve güvenli pratik sağlar; etkiyi kaynakla doğrulama sınırlıdır."
+        },
+        {
+          "text": "Eski sistemdeki benzer ayarı doğrudan uygularım.",
+          "score": 1,
+          "why": "Benzerliği yeni bağlam için kanıt sayar."
+        },
+        {
+          "text": "Hız kazanmak için canlı sistemde ayarları değiştirerek öğrenirim.",
+          "score": 0,
+          "why": "Öğrenmeyi yüksek etkili ortamda kontrolsüz denemeye taşır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S73"
+    },
+    {
+      "id": "S74",
+      "dim": "ogrenme",
+      "title": "Geri bildirim beklenmedik",
+      "sub": "Geri bildirimi işleme",
+      "scene": "Sunumunun karar ihtiyacını netleştirmediği söylendi. Sen içerik olarak yeterli buluyorsun. İlk yaklaşımın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Sunuma kısa bir karar özeti ekleyip tekrar paylaşırım.",
+          "score": 2,
+          "why": "Geri bildirime yanıt verir; sorunun örnekle doğrulanması sınırlıdır."
+        },
+        {
+          "text": "İçeriğin eksiksiz olduğunu göstererek aynı sunumu savunurum.",
+          "score": 1,
+          "why": "Bilgi miktarını karar netliğinin yerine koyar."
+        },
+        {
+          "text": "İtiraz gelmemesi için tüm ayrıntıları kaldırırım.",
+          "score": 0,
+          "why": "Geri bildirimin kapsamını incelemeden aşırı düzeltme yapar."
+        },
+        {
+          "text": "Belirsiz kalan karar için somut örnek ister, bir bölümü yeniden düzenleyip anlaşılırlığını sınarım.",
+          "score": 3,
+          "why": "Geri bildirimi araştırıp gözlenebilir değişiklikle test eder."
+        }
+      ],
+      "core": false,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S74"
+    },
+    {
+      "id": "S75",
+      "dim": "ogrenme",
+      "title": "Önceki yöntem burada işlemedi",
+      "sub": "Yaklaşımı yeni bağlama uyarlama",
+      "scene": "Önceki ekipte işe yarayan kontrol listesini yeni ekibe getirdin. İş çeşitliliği arttığı için bazı adımlar karşılık bulmuyor. Ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Önceden başarılı olduğu için listeyi aynen uygulatırım.",
+          "score": 1,
+          "why": "Önceki başarıyı bağlamdan bağımsız kabul eder."
+        },
+        {
+          "text": "Uyumsuz adımlar yüzünden bütün kontrol yaklaşımını bırakırım.",
+          "score": 0,
+          "why": "Geçerli ilke ile yerel adımı ayırmaz."
+        },
+        {
+          "text": "Hangi ilkenin geçerli, hangi adımın bağlama bağlı olduğunu ayırıp ekiple uyarlanmış deneme yaparım.",
+          "score": 3,
+          "why": "Deneyimden ilkeyi çıkarır ve yeni bağlamda sınar."
+        },
+        {
+          "text": "Kullanılmayan adımları işaretleyip bir süre sonuçlarını izlerim.",
+          "score": 2,
+          "why": "Uyumsuzluğu görünür kılar; uyarlama kararı sınırlıdır."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S75"
+    },
+    {
+      "id": "S76",
+      "dim": "ogrenme",
+      "title": "Kendi hatasından öğrenme",
+      "sub": "Yansıtma ve yeniden deneme",
+      "scene": "Yanlış önceliklendirme yaptığın için bir iş gecikti. Acil etki giderildi. Sonraki benzer iş için ne yaparsın?",
+      "type": "choice",
+      "options": [
+        {
+          "text": "Gecikme çözüldüğü için kararı tekrar incelemem.",
+          "score": 0,
+          "why": "Öğrenme fırsatını sonuç düzeltildiğinde kapatır."
+        },
+        {
+          "text": "Kararı etkileyen varsayımı ve kaçırdığım bilgiyi kaydedip yeni işte kontrol noktası koyarım.",
+          "score": 3,
+          "why": "Hatanın karar mekanizmasını yeni uygulamaya bağlar."
+        },
+        {
+          "text": "Gecikme nedenini not edip benzer işi erken takip ederim.",
+          "score": 2,
+          "why": "Takip iyileştirir; yanlış varsayımı ayrıştırma sınırlıdır."
+        },
+        {
+          "text": "Bir daha dikkatli olmaya karar verip işi aynı yöntemle sürdürürüm.",
+          "score": 1,
+          "why": "Genel niyet somut yöntem değişimine dönüşmez."
+        }
+      ],
+      "core": true,
+      "status": "Uzman incelemesi bekliyor",
+      "independentCase": "S76"
+    }
+  ]
+}

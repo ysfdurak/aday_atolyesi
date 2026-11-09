@@ -1,16 +1,229 @@
-(function(root){
-'use strict';let current=null,epoch=0;const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),date=v=>new Date(v).toLocaleString('tr-TR',{timeZone:'Europe/Istanbul'}),url=id=>'/api/pilot?op=file&id='+encodeURIComponent(id);
-async function api(input,post=false){const ctrl=new AbortController(),t=setTimeout(()=>ctrl.abort(),15000);try{const r=await fetch('/api/pilot?op=file-workspace'+(post?'':'&id='+encodeURIComponent(input.id)),{credentials:'same-origin',cache:'no-store',method:post?'POST':'GET',headers:post?{'Content-Type':'application/json'}:{},body:post?JSON.stringify(input):undefined,signal:ctrl.signal});const b=await r.json();if(!r.ok)throw Object.assign(Error(b.error||'Notlar alınamadı.'),{status:r.status});return b;}finally{clearTimeout(t)}}
-const view=()=>'<span class="eyebrow">Dosya çalışmam / Kaynak → revizyon → görüşme</span><h1>Dosyanı dayanağıyla<br><em>incele ve anlat.</em></h1><p>Teslim zincirini ve yayımlanan görüşleri burada inceleyebilirsin. Kişisel karşılaştırma ve prova notlarını teslim sahibi görür.</p><a class="btn" href="#pilot">Teslimlerime dön →</a><div id="file-work-content" role="region" aria-label="Teslim çalışması"><p role="status">Teslim kayıtları yükleniyor…</p></div>';
-function buildEvidence(b){const last=b.chain?.at(-1),interview=b.notes?.interview;if(!b.own||!last||interview?.submissionId!==last.id||interview.outputs.length!==b.case.outputs.length)throw Error('Özet ilgili kendi dosya tesliminle eşleşmiyor.');return {id:last.id,ownerId:b.userId,caseId:b.case.id,caseVersion:b.case.version,title:b.case.title,submissionId:last.id,submittedAt:last.created,capturedAt:new Date().toISOString(),outputs:interview.outputs.map(x=>({...x})),remaining:interview.remaining};}
-function draftKey(id){return 'aa-file-draft:'+current.userId+':'+current.chain.at(-1).id+':'+id;}
-function values(form){const f=Object.fromEntries(new FormData(form));return f;}
-function remember(form){try{sessionStorage.setItem(draftKey(form.id),JSON.stringify({updated:current.updated,values:values(form)}));form.querySelector('[data-file-status]').textContent='Taslak bu sekmede korunuyor; kalıcı kayıt için kaydet.';}catch{form.querySelector('[data-file-status]').textContent='Taslak korunamadı. Sayfadan ayrılmadan metnini kopyala.';}}
-function restore(form){try{const d=JSON.parse(sessionStorage.getItem(draftKey(form.id)));if(!d)return;if(d.updated!==current.updated){form.querySelector('[data-file-status]').textContent='Bu sekmede farklı kayıt sürümüne ait taslak var. Kaynakları yeniledikten sonra metnini karşılaştır.';return;}for(const[k,v]of Object.entries(d.values))if(form.elements[k]&&typeof v==='string')form.elements[k].value=v;}catch{}}
-function draw(box,b){current=b;const first=b.chain[0],last=b.chain.at(-1),c=b.case,comparison=b.notes.comparison,interview=b.notes.interview;box.innerHTML=`<section class="card file-work-card"><h2>${e(c.title)}</h2><p>${e(c.version)} · ${b.current?'Son vaka teslimi':'Önceki teslim · salt okunur'}</p><div class="grid2"><section><h3>İlk teslim</h3><p>${e(first.name)} · ${e(date(first.created))}</p><a class="btn" href="${url(first.id)}">İlk dosyayı indir</a></section><section><h3>Bu teslim</h3><p>${e(last.name)} · ${e(date(last.created))}</p><a class="btn" href="${url(last.id)}">Bu dosyayı indir</a><p>${e(last.revisionNote||'Değişiklik notu yok.')}</p></section></div><details><summary>Teslim zinciri ve bu dosyalara bağlı görüşler</summary>${b.chain.map((r,i)=>`<h3>${i+1}. ${e(r.name)}</h3><a href="${url(r.id)}">Dosyayı aç</a>${r.feedback?`<p>${e(r.feedback.summary)}</p>${r.feedback.items.map(x=>`<h4>${e(x.output)}</h4><blockquote>${e(x.evidence)}</blockquote><p>${e(x.observation)}</p><p>${e(x.next)}</p>`).join('')}`:'<p>Bu teslime bağlı görüş yok.</p>'}`).join('')}</details><details><summary>Değerlendirirken hangi dayanaklar aranır?</summary><p>Bu ölçütler açık uçlu inceleme içindir; otomatik dosya puanlaması yapılmaz.</p>${b.criteria.map(r=>`<h4>${e(r.name)}</h4><p>${e(r.evidence)}</p>`).join('')}</details></section>${b.own?`${b.chain.length>1?`<section class="card file-work-card"><h2>İlk ve son dosya karşılaştırması</h2><p>Aşağıdaki referans ve yorumlar adayın öz karşılaştırmasıdır; sistem dosya içeriğiyle doğrulamaz.</p>${b.own&&b.current?`<form id="file-compare">${c.outputs.map((label,i)=>`<fieldset><legend>${i+1}. ${e(label)}</legend>${[['firstRef','İlk dosyadaki dayanak · yoksa bulunmadığını yaz',1200],['lastRef','Son dosyadaki dayanak · sayfa / hücre / bölüm',1200],['change','Ne değişti; neden değiştirdin?',2000]].map(([k,l,n])=>`<label class="field">${l}<textarea name="${k+i}" required maxlength="${n}" rows="2">${e(comparison?.items?.[i]?.[k]||'')}</textarea></label>`).join('')}</fieldset>`).join('')}<label class="field">Hangi kontrol veya varsayım hâlâ açık?<textarea name="remaining" required maxlength="3000">${e(comparison?.remaining||'')}</textarea></label><button>Karşılaştırmamı hesabıma kaydet</button><p data-file-status role="status"></p></form>`:comparison?comparison.items.map(x=>`<h3>${e(x.label)}</h3><p><b>İlk:</b> ${e(x.firstRef)}</p><p><b>Son:</b> ${e(x.lastRef)}</p><p>${e(x.change)}</p>`).join('')+`<p>${e(comparison.remaining)}</p>`:'<p>Teslim sahibi henüz karşılaştırma notu kaydetmedi.</p>'}</section>`:'<section class="card file-work-card"><h2>Revizyonda ilk dosyan korunacak.</h2><p>İkinci teslimden sonra çıktı bazında ilk–son karşılaştırması burada açılır.</p></section>'}<section class="card file-work-card"><h2>Dosyamdan görüşmede anlatacağım özet</h2><p>Bu kurgusal vaka çalışmasının özetini kendi sözlerinle yaz. Her çıktıyı dosyadaki konumuyla ilişkilendir. Dosyanın tamamı mülakat dosyasına kopyalanmaz.</p>${b.own&&b.current?`<form id="file-interview">${c.outputs.map((label,i)=>`<fieldset><legend>${i+1}. ${e(label)}</legend><label class="field">Seçtiğin kısa açıklama / alıntı<textarea name="answer${i}" required maxlength="3000">${e(interview?.outputs?.[i]?.answer||'')}</textarea></label><label class="field">Dosyadaki konumu · sayfa / hücre / bölüm<input name="reference${i}" required maxlength="1200" value="${e(interview?.outputs?.[i]?.reference||'')}"></label></fieldset>`).join('')}<label class="field">Görüşmede açıklamak istediğin sınır / açık kontrol<textarea name="remaining" required maxlength="3000">${e(interview?.remaining||'')}</textarea></label><button>Görüşme özetimi hesabıma kaydet</button><p data-file-status role="status"></p></form>${interview?'<button id="file-import">Kayıtlı özetimi bu cihazdaki mülakat seçimlerine ekle</button><p>Sonrasında dosyaya dahil etmek için kutusunu sen seçersin. Bu işlem kaynak dosyayı yeniden okumaz.</p>':''}`:interview?interview.outputs.map(o=>`<h3>${e(o.label)}</h3><p>${e(o.answer)}</p><p>Dosya referansı: ${e(o.reference)}</p>`).join('')+`<p>${e(interview.remaining)}</p>`:'<p>Bu dosya için kayıtlı görüşme özeti yok.</p>'}</section><div class="actions"><a class="btn" href="#pilot/${e(c.id)}">Revize dosya veya gelişim adımı →</a><a class="btn" href="#dossier">Mülakat dosyam →</a></div>`:'<p><a class="btn" href="#pilot">İnceleme listesine dön →</a></p>'}`;
- box.querySelectorAll('form').forEach(form=>{restore(form);form.addEventListener('input',()=>remember(form));form.onsubmit=async ev=>{ev.preventDefault();const f=values(form),isCompare=form.id==='file-compare',payload={id:last.id,expectedUpdated:current.updated,action:isCompare?'comparison':'interview',remaining:f.remaining,...(isCompare?{fromId:first.id,toId:last.id,items:c.outputs.map((_,i)=>({firstRef:f['firstRef'+i],lastRef:f['lastRef'+i],change:f['change'+i]}))}:{outputs:c.outputs.map((_,i)=>({answer:f['answer'+i],reference:f['reference'+i]}))})};form.querySelector('button').disabled=true;try{const saved=await api(payload,true);for(const other of ['file-compare','file-interview'])if(other!==form.id){try{const key=draftKey(other),d=JSON.parse(sessionStorage.getItem(key));if(d&&d.updated===current.updated)sessionStorage.setItem(key,JSON.stringify({...d,updated:saved.updated}));}catch{}}sessionStorage.removeItem(draftKey(form.id));await load();}catch(err){form.querySelector('[data-file-status]').textContent=err.status===409?err.message+' Taslağın bu sekmede korunuyor; açık notlarını kopyalayıp teslimi yeniden aç.':err.message;form.querySelector('button').disabled=false;}};});
- box.querySelector('#file-import')?.addEventListener('click',()=>{const item=buildEvidence(b),prior=state.fileEvidence||[];const before=state;state={...state,fileEvidence:prior.some(x=>x.id===item.id)?prior.map(x=>x.id===item.id?item:x):[...prior,item]};try{AA.validateBackup({schema:'aday-atolyesi-backup-v1',values:{[AA.KEY]:JSON.stringify(state)}});if(!save())throw Error('Cihaza kaydedilemedi.');location.hash='dossier';}catch(err){state=before;toast(err.message);}});
-}
-async function load(){const n=++epoch,id=location.hash.split('/')[1],box=document.getElementById('file-work-content');if(!box)return;try{const b=await api({id});if(n!==epoch||!box.isConnected)return;draw(box,b);}catch(err){if(n!==epoch||!box.isConnected)return;box.innerHTML=`<section class="card"><p role="alert">${e(err.message||'Bağlantı kurulamadı.')}</p>${err.status===401?'<a class="btn" href="#pilot">Giriş ve teslimler →</a>':'<button id="file-work-retry">Tekrar dene</button>'}</section>`;box.querySelector('#file-work-retry')?.addEventListener('click',load);}}
-root.FileWorkUI={view,buildEvidence,bind:()=>{if(document.getElementById('file-work-content'))load();}};
+(function (root) {
+  'use strict';
+  let current = null,
+    epoch = 0;
+  const e = v =>
+      String(v ?? '').replace(
+        /[&<>"']/g,
+        c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]
+      ),
+    date = v => new Date(v).toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' }),
+    url = id => '/api/pilot?op=file&id=' + encodeURIComponent(id);
+  async function api(input, post = false) {
+    const ctrl = new AbortController(),
+      t = setTimeout(() => ctrl.abort(), 15000);
+    try {
+      const r = await fetch(
+        '/api/pilot?op=file-workspace' + (post ? '' : '&id=' + encodeURIComponent(input.id)),
+        {
+          credentials: 'same-origin',
+          cache: 'no-store',
+          method: post ? 'POST' : 'GET',
+          headers: post ? { 'Content-Type': 'application/json' } : {},
+          body: post ? JSON.stringify(input) : undefined,
+          signal: ctrl.signal,
+        }
+      );
+      const b = await r.json();
+      if (!r.ok) throw Object.assign(Error(b.error || 'Notlar alınamadı.'), { status: r.status });
+      return b;
+    } finally {
+      clearTimeout(t);
+    }
+  }
+  const view = () =>
+    '<span class="eyebrow">Dosya çalışmam / Kaynak → revizyon → görüşme</span><h1>Dosyanı dayanağıyla<br><em>incele ve anlat.</em></h1><p>Teslim zincirini ve yayımlanan görüşleri burada inceleyebilirsin. Kişisel karşılaştırma ve prova notlarını teslim sahibi görür.</p><a class="btn" href="#pilot">Teslimlerime dön →</a><div id="file-work-content" role="region" aria-label="Teslim çalışması"><p role="status">Teslim kayıtları yükleniyor…</p></div>';
+  function buildEvidence(b) {
+    const last = b.chain?.at(-1),
+      interview = b.notes?.interview;
+    if (
+      !b.own ||
+      !last ||
+      interview?.submissionId !== last.id ||
+      interview.outputs.length !== b.case.outputs.length
+    )
+      throw Error('Özet ilgili kendi dosya tesliminle eşleşmiyor.');
+    return {
+      id: last.id,
+      ownerId: b.userId,
+      caseId: b.case.id,
+      caseVersion: b.case.version,
+      title: b.case.title,
+      submissionId: last.id,
+      submittedAt: last.created,
+      capturedAt: new Date().toISOString(),
+      outputs: interview.outputs.map(x => ({ ...x })),
+      remaining: interview.remaining,
+    };
+  }
+  function draftKey(id) {
+    return 'aa-file-draft:' + current.userId + ':' + current.chain.at(-1).id + ':' + id;
+  }
+  function values(form) {
+    const f = Object.fromEntries(new FormData(form));
+    return f;
+  }
+  function remember(form) {
+    try {
+      sessionStorage.setItem(
+        draftKey(form.id),
+        JSON.stringify({ updated: current.updated, values: values(form) })
+      );
+      form.querySelector('[data-file-status]').textContent =
+        'Taslak bu sekmede korunuyor; kalıcı kayıt için kaydet.';
+    } catch {
+      form.querySelector('[data-file-status]').textContent =
+        'Taslak korunamadı. Sayfadan ayrılmadan metnini kopyala.';
+    }
+  }
+  function restore(form) {
+    try {
+      const d = JSON.parse(sessionStorage.getItem(draftKey(form.id)));
+      if (!d) return;
+      if (d.updated !== current.updated) {
+        form.querySelector('[data-file-status]').textContent =
+          'Bu sekmede farklı kayıt sürümüne ait taslak var. Kaynakları yeniledikten sonra metnini karşılaştır.';
+        return;
+      }
+      for (const [k, v] of Object.entries(d.values))
+        if (form.elements[k] && typeof v === 'string') form.elements[k].value = v;
+    } catch {}
+  }
+  function draw(box, b) {
+    current = b;
+    const first = b.chain[0],
+      last = b.chain.at(-1),
+      c = b.case,
+      comparison = b.notes.comparison,
+      interview = b.notes.interview;
+    box.innerHTML = `<section class="card file-work-card"><h2>${e(c.title)}</h2><p>${e(c.version)} · ${b.current ? 'Son vaka teslimi' : 'Önceki teslim · salt okunur'}</p><div class="grid2"><section><h3>İlk teslim</h3><p>${e(first.name)} · ${e(date(first.created))}</p><a class="btn" href="${url(first.id)}">İlk dosyayı indir</a></section><section><h3>Bu teslim</h3><p>${e(last.name)} · ${e(date(last.created))}</p><a class="btn" href="${url(last.id)}">Bu dosyayı indir</a><p>${e(last.revisionNote || 'Değişiklik notu yok.')}</p></section></div><details><summary>Teslim zinciri ve bu dosyalara bağlı görüşler</summary>${b.chain.map((r, i) => `<h3>${i + 1}. ${e(r.name)}</h3><a href="${url(r.id)}">Dosyayı aç</a>${r.feedback ? `<p>${e(r.feedback.summary)}</p>${r.feedback.items.map(x => `<h4>${e(x.output)}</h4><blockquote>${e(x.evidence)}</blockquote><p>${e(x.observation)}</p><p>${e(x.next)}</p>`).join('')}` : '<p>Bu teslime bağlı görüş yok.</p>'}`).join('')}</details><details><summary>Değerlendirirken hangi dayanaklar aranır?</summary><p>Bu ölçütler açık uçlu inceleme içindir; otomatik dosya puanlaması yapılmaz.</p>${b.criteria.map(r => `<h4>${e(r.name)}</h4><p>${e(r.evidence)}</p>`).join('')}</details></section>${
+      b.own
+        ? `${
+            b.chain.length > 1
+              ? `<section class="card file-work-card"><h2>İlk ve son dosya karşılaştırması</h2><p>Aşağıdaki referans ve yorumlar adayın öz karşılaştırmasıdır; sistem dosya içeriğiyle doğrulamaz.</p>${
+                  b.own && b.current
+                    ? `<form id="file-compare">${c.outputs
+                        .map(
+                          (label, i) =>
+                            `<fieldset><legend>${i + 1}. ${e(label)}</legend>${[
+                              ['firstRef', 'İlk dosyadaki dayanak · yoksa bulunmadığını yaz', 1200],
+                              ['lastRef', 'Son dosyadaki dayanak · sayfa / hücre / bölüm', 1200],
+                              ['change', 'Ne değişti; neden değiştirdin?', 2000],
+                            ]
+                              .map(
+                                ([k, l, n]) =>
+                                  `<label class="field">${l}<textarea name="${k + i}" required maxlength="${n}" rows="2">${e(comparison?.items?.[i]?.[k] || '')}</textarea></label>`
+                              )
+                              .join('')}</fieldset>`
+                        )
+                        .join(
+                          ''
+                        )}<label class="field">Hangi kontrol veya varsayım hâlâ açık?<textarea name="remaining" required maxlength="3000">${e(comparison?.remaining || '')}</textarea></label><button>Karşılaştırmamı hesabıma kaydet</button><p data-file-status role="status"></p></form>`
+                    : comparison
+                      ? comparison.items
+                          .map(
+                            x =>
+                              `<h3>${e(x.label)}</h3><p><b>İlk:</b> ${e(x.firstRef)}</p><p><b>Son:</b> ${e(x.lastRef)}</p><p>${e(x.change)}</p>`
+                          )
+                          .join('') + `<p>${e(comparison.remaining)}</p>`
+                      : '<p>Teslim sahibi henüz karşılaştırma notu kaydetmedi.</p>'
+                }</section>`
+              : '<section class="card file-work-card"><h2>Revizyonda ilk dosyan korunacak.</h2><p>İkinci teslimden sonra çıktı bazında ilk–son karşılaştırması burada açılır.</p></section>'
+          }<section class="card file-work-card"><h2>Dosyamdan görüşmede anlatacağım özet</h2><p>Bu kurgusal vaka çalışmasının özetini kendi sözlerinle yaz. Her çıktıyı dosyadaki konumuyla ilişkilendir. Dosyanın tamamı mülakat dosyasına kopyalanmaz.</p>${b.own && b.current ? `<form id="file-interview">${c.outputs.map((label, i) => `<fieldset><legend>${i + 1}. ${e(label)}</legend><label class="field">Seçtiğin kısa açıklama / alıntı<textarea name="answer${i}" required maxlength="3000">${e(interview?.outputs?.[i]?.answer || '')}</textarea></label><label class="field">Dosyadaki konumu · sayfa / hücre / bölüm<input name="reference${i}" required maxlength="1200" value="${e(interview?.outputs?.[i]?.reference || '')}"></label></fieldset>`).join('')}<label class="field">Görüşmede açıklamak istediğin sınır / açık kontrol<textarea name="remaining" required maxlength="3000">${e(interview?.remaining || '')}</textarea></label><button>Görüşme özetimi hesabıma kaydet</button><p data-file-status role="status"></p></form>${interview ? '<button id="file-import">Kayıtlı özetimi bu cihazdaki mülakat seçimlerine ekle</button><p>Sonrasında dosyaya dahil etmek için kutusunu sen seçersin. Bu işlem kaynak dosyayı yeniden okumaz.</p>' : ''}` : interview ? interview.outputs.map(o => `<h3>${e(o.label)}</h3><p>${e(o.answer)}</p><p>Dosya referansı: ${e(o.reference)}</p>`).join('') + `<p>${e(interview.remaining)}</p>` : '<p>Bu dosya için kayıtlı görüşme özeti yok.</p>'}</section><div class="actions"><a class="btn" href="#pilot/${e(c.id)}">Revize dosya veya gelişim adımı →</a><a class="btn" href="#dossier">Mülakat dosyam →</a></div>`
+        : '<p><a class="btn" href="#pilot">İnceleme listesine dön →</a></p>'
+    }`;
+    box.querySelectorAll('form').forEach(form => {
+      restore(form);
+      form.addEventListener('input', () => remember(form));
+      form.onsubmit = async ev => {
+        ev.preventDefault();
+        const f = values(form),
+          isCompare = form.id === 'file-compare',
+          payload = {
+            id: last.id,
+            expectedUpdated: current.updated,
+            action: isCompare ? 'comparison' : 'interview',
+            remaining: f.remaining,
+            ...(isCompare
+              ? {
+                  fromId: first.id,
+                  toId: last.id,
+                  items: c.outputs.map((_, i) => ({
+                    firstRef: f['firstRef' + i],
+                    lastRef: f['lastRef' + i],
+                    change: f['change' + i],
+                  })),
+                }
+              : {
+                  outputs: c.outputs.map((_, i) => ({
+                    answer: f['answer' + i],
+                    reference: f['reference' + i],
+                  })),
+                }),
+          };
+        form.querySelector('button').disabled = true;
+        try {
+          const saved = await api(payload, true);
+          for (const other of ['file-compare', 'file-interview'])
+            if (other !== form.id) {
+              try {
+                const key = draftKey(other),
+                  d = JSON.parse(sessionStorage.getItem(key));
+                if (d && d.updated === current.updated)
+                  sessionStorage.setItem(key, JSON.stringify({ ...d, updated: saved.updated }));
+              } catch {}
+            }
+          sessionStorage.removeItem(draftKey(form.id));
+          await load();
+        } catch (err) {
+          form.querySelector('[data-file-status]').textContent =
+            err.status === 409
+              ? err.message + ' Taslağın bu sekmede korunuyor; açık notlarını kopyalayıp teslimi yeniden aç.'
+              : err.message;
+          form.querySelector('button').disabled = false;
+        }
+      };
+    });
+    box.querySelector('#file-import')?.addEventListener('click', () => {
+      const item = buildEvidence(b),
+        prior = state.fileEvidence || [];
+      const before = state;
+      state = {
+        ...state,
+        fileEvidence: prior.some(x => x.id === item.id)
+          ? prior.map(x => (x.id === item.id ? item : x))
+          : [...prior, item],
+      };
+      try {
+        AA.validateBackup({ schema: 'aday-atolyesi-backup-v1', values: { [AA.KEY]: JSON.stringify(state) } });
+        if (!save()) throw Error('Cihaza kaydedilemedi.');
+        location.hash = 'dossier';
+      } catch (err) {
+        state = before;
+        toast(err.message);
+      }
+    });
+  }
+  async function load() {
+    const n = ++epoch,
+      id = location.hash.split('/')[1],
+      box = document.getElementById('file-work-content');
+    if (!box) return;
+    try {
+      const b = await api({ id });
+      if (n !== epoch || !box.isConnected) return;
+      draw(box, b);
+    } catch (err) {
+      if (n !== epoch || !box.isConnected) return;
+      box.innerHTML = `<section class="card"><p role="alert">${e(err.message || 'Bağlantı kurulamadı.')}</p>${err.status === 401 ? '<a class="btn" href="#pilot">Giriş ve teslimler →</a>' : '<button id="file-work-retry">Tekrar dene</button>'}</section>`;
+      box.querySelector('#file-work-retry')?.addEventListener('click', load);
+    }
+  }
+  root.FileWorkUI = {
+    view,
+    buildEvidence,
+    bind: () => {
+      if (document.getElementById('file-work-content')) load();
+    },
+  };
 })(window);

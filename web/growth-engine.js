@@ -1,37 +1,509 @@
-(function(root){
-'use strict';const text=v=>typeof v==='string'?v.trim():'',clone=x=>JSON.parse(JSON.stringify(x));
-const tracks=[
-{id:'analyst',positionId:'process_analyst',name:'Süreç / veri analisti',first:'kpi-paradoksu',transfer:'kampanya-karari',goal:'Veriden çıkarıma, seçenekten sınanabilir öneriye ilerle.',expectations:['Tanımı ve karşılaştırma sınırını açıkla.','Kendi kararını alternatif ve varsayımla gerekçelendir.','Önerinin etkisini hangi gözlemle sınayacağını belirt.'],interview:['Göstergeyi hangi karar için seçtin?','Aynı sonucun başka açıklaması ne olabilir?','Önerin hangi varsayım değişince geçersizleşir?'],work:'Bir karar notu hazırla: karar sorusu, kullandığın kanıt, değerlendirdiğin seçenek ve doğrulama planı. Sayısal sonuçları kaynak kayıtla ilişkilendir.'},
-{id:'operations',positionId:'warehouse_ops',name:'Operasyon uzmanı',first:'vardiya-darbogazi',transfer:'ekip-yuku',goal:'Uygulanabilir iş planını kaynak, yetki ve kontrol koşullarıyla savun.',expectations:['İş yükünü uygun kapasite ve kısıtlarla ilişkilendir.','Karar yetkini ve ihtiyaç duyduğun onayı ayır.','Devir, kontrol ve istisna halinde ne yapılacağını belirt.'],interview:['Planın hangi iş koşulunda aksar?','Kaynak aktarmak için hangi beceri veya yetki gerekir?','Çıktıyı ve güvenli uygulamayı birlikte nasıl izlersin?'],work:'Bir uygulama notu hazırla: mevcut yük, uygulanabilir seçenek, karar/onay sahibi ve kontrol noktası. Sonraki ekibe hangi bilgiyi devredeceğini yaz.'},
-{id:'lead',positionId:'team_lead',name:'Ekip lideri',first:'geri-bildirim',transfer:'ekip-yuku',goal:'Gözleme dayalı görüşmeden açık sorumluluk ve takip düzenine ilerle.',expectations:['Gözlenen davranışı niyet ve kişilik yorumundan ayır.','Destek ihtiyacı ile hesap verebilirliği birlikte ele al.','Görev, yetki ve takip ölçütünü uygulanabilir biçimde açıkla.'],interview:['Çalışanın açıklamasını hangi veriyle araştırırsın?','Hangi desteği sen sağlayacaksın?','Takipte ne görürsen yaklaşımını değiştirirsin?'],work:'Bir görüşme ve takip notu hazırla: gözlem, araştırma sorusu, karşılıklı sorumluluk ve yeniden görüşme koşulu. Görüşmeyi adayın kendi sözleriyle prova et.'}
-];
-if(root.POSITION_PATHS)tracks.push(...root.POSITION_PATHS);
-function raw(q,a){const valid=i=>Number.isInteger(i)&&i>=0&&i<q.options.length;if(q.type==='plan'){if(!Array.isArray(a)||a.length!==2||new Set(a).size!==2||!a.every(valid))return null;return a.reduce((n,i)=>n+q.options[i].score,0)/2;}if(q.type==='rank'){if(!Array.isArray(a)||a.length!==q.options.length||new Set(a).size!==a.length||!a.every(valid))return null;let n=0,total=0;for(let i=0;i<a.length;i++)for(let j=i+1;j<a.length;j++){total++;if(q.options[a[i]].score>q.options[a[j]].score)n++;}return 3*n/total;}return valid(a)?q.options[a].score:null;}
-function active(q,r){const p=r.profile;return p&&q.roles.includes(p.roleType)&&(!q.positions||q.positions.includes(p.positionId)||!p.positionId&&p.roleType==='custom')&&p.priorities?.[q.dim]>0&&(p.depth==='full'||q.core);}
-function roleEvidence(r,bank){if(!bank||r?.version!==bank.version||r.demo)return [];return bank.items.filter(q=>active(q,r)).flatMap(q=>{const a=r.answers?.[q.id],score=raw(q,a);if(score===null)return [];const ids=Array.isArray(a)?a:[a],selected=ids.map(i=>q.options[i].text),why=q.type==='rank'?'Sıra, senaryonun açık işlem bağımlılıklarıyla karşılaştırılır.':ids.map(i=>q.options[i].why).join(' ');return [{id:'role:'+bank.version+':'+q.id+':'+JSON.stringify(a),kind:'role',q,score,selected,why,dim:bank.dimensions.find(d=>d.id===q.dim),importance:r.profile.priorities[q.dim]}]});}
-function filePriorities(rows,userId,catalog){if(!userId||!Array.isArray(rows))return [];const latest=new Map();for(const row of [...rows].sort((a,b)=>Date.parse(b.created)-Date.parse(a.created)||(b.sequence||0)-(a.sequence||0))){const key=row.case_id+'@'+row.version;if(!latest.has(key))latest.set(key,row);}const result=[];for(const row of latest.values()){const c=catalog.find(c=>c.id===row.case_id&&c.version===row.version);if(!c||!row.feedback?.items)continue;row.feedback.items.forEach((x,i)=>{if(!text(x.next)||!text(x.observation)||!text(x.evidence))return;result.push({id:'file:'+userId+':'+row.id+':'+i,kind:'file',title:x.output,origin:'Son dosya teslimine bağlı değerlendirici önerisi',context:c.title+' · '+row.name,evidenceLabel:'Değerlendiricinin dosyaya verdiği referans',evidence:x.evidence,explanation:x.observation,action:x.next,check:'İlgili çıktıyı bu öneriye göre yeniden incele; yaptığın değişikliği sayfa, bölüm veya hücre referansıyla açıkla.',href:'#pilot/'+c.id,scope:'Referans değerlendirici tarafından yazılmıştır; dosya içeriğiyle otomatik doğrulanmamıştır. Öneriler değerlendiricinin çıktı sırasındadır; önem puanı değildir.',rank:i});});}return result;}
-function priorities(state,snapshot,catalog,bank,fileRows=[],userId){const list=filePriorities(fileRows,userId,catalog);
- for(const c of catalog){const a=root.CaseEngine.getRecord(state.assessments,c);if(!a?.submitted)continue;const sid=root.CaseLearning.sid(a.submitted);for(const review of a.reviews||[]){if(review.submissionId!==sid)continue;review.items.filter(x=>x.rating<2).forEach(x=>{const rubric=c.rubric[x.index],drill=c.learning?.drills[rubric.practice];list.push({id:'human:'+root.CaseEngine.keyFor(c)+':'+sid+':'+x.index,kind:'human',title:rubric.name,origin:'Bu teslime bağlı insan geri bildirimi',evidence:x.quote||'Değerlendirici bu ölçütte dayanak alıntısı gösteremedi.',explanation:x.observation,action:x.next,check:rubric.evidence,href:'#cases/'+c.id,drill,rank:x.rating});});}
- }
- const re=roleEvidence(snapshot.r,bank),groups=new Map();for(const item of re.filter(x=>x.score<2)){const id=item.q.dim;if(!groups.has(id))groups.set(id,[]);groups.get(id).push(item);}
- for(const [dim,items]of groups){items.sort((a,b)=>a.score-b.score);const x=items[0],scope=re.filter(e=>e.q.dim===dim).length;list.push({id:x.id,kind:'role',title:x.dim.name,origin:'Rol senaryosundaki kendi seçimin',evidence:x.selected.join(' → '),context:x.q.scene,explanation:x.why,action:x.dim.action,check:x.dim.indicator,href:'/modules/rol/index.html?view=assessment&question='+encodeURIComponent(x.q.id),questionId:x.q.id,scope:items.length+'/'+scope+' yanıt taslak anahtara göre yeniden incelemeye açık. Bu, genel yetkinlik hükmü değildir.',rank:-x.importance-items.length/100});}
- const report=snapshot.report;if(report&&!report.sample&&!report.synthetic){for(const d of report.domains||[]){if(d.answered<3)continue;const item=(report.itemResults||[]).find(x=>x.cat===d.id&&x.answered&&!x.correct&&!x.hinted&&typeof x.selectedDisplay==='string');if(!item)continue;list.push({id:'exam:'+report.id+':'+item.id,kind:'exam',title:d.name,origin:'Son gerçek denemendeki yanıt',context:item.stem,evidence:item.selectedDisplay,explanation:item.diagnostic||'Seçtiğin cevabı çözüm adımıyla karşılaştır. Yanlış cevap tek başına düşünme nedenini göstermez.',action:(report.priorities||[]).find(x=>x.id===d.id)?.action||'Yeni bir soruda yöntemi önce yaz; ardından çözümle karşılaştır.',check:'Seçtiğin yöntemi hangi koşulda değiştirdiğini yeni örnekte açıkla.',href:'/modules/zihin/index.html#mistakes/'+encodeURIComponent(report.id)+'/'+encodeURIComponent(item.id),scope:d.correct+'/'+d.total+' doğru; yorum bu soru setiyle sınırlıdır.',rank:d.correct/d.total});}}
- for(const e of state.examples){const gap=root.Evidence.prompts(e)[0];if(gap)list.push({id:'example:'+e.id+':'+gap.id,kind:'example',exampleId:e.id,title:gap.label,origin:'Deneyim örneğinde henüz yazılmamış alan',context:e.title,evidence:gap.id==='source'?e.result:e.action,explanation:gap.question,action:'“'+e.title+'” örneğini bu soruya cevap verecek şekilde düzenle.',check:'Yazdığın açıklamanın kendi katkınla ve kaynağıyla tutarlı olduğunu gözden geçir.',href:'#examples',rank:0});}
- const order={human:0,file:0,role:1,exam:2,example:3};list.sort((a,b)=>order[a.kind]-order[b.kind]||a.rank-b.rank||a.id.localeCompare(b.id));return list.slice(0,2);
-}
-function strengths(snapshot,bank){return roleEvidence(snapshot.r,bank).filter(x=>x.score>=2.4).slice(0,3).map(x=>({title:x.dim.name,context:x.q.title,quote:x.selected.join(' → '),explanation:x.why,note:'Bu senaryodaki seçimin dayanağıdır; gerçek iş performansını doğrulamaz.'}));}
-function pair(c,a){const h=root.CaseLearning.history(a);return h.length>=2?{first:h[0],last:h.at(-1),fromId:root.CaseLearning.sid(h[0]),toId:root.CaseLearning.sid(h.at(-1))}:null;}
-function contains(s,q){return Object.values(s.answers||{}).some(a=>typeof a==='string'&&a.includes(q));}
-function comparisonKey(c,p){return root.CaseEngine.keyFor(c)+'|'+p.fromId+'|'+p.toId;}
-function validateComparison(c,a,n){const p=pair(c,a);if(!p||n.fromId!==p.fromId||n.toId!==p.toId||!Number.isInteger(n.criterion)||!c.rubric[n.criterion])throw Error('Karşılaştırma güncel ilk/son teslimle eşleşmiyor.');if(typeof n.firstMissing!=='boolean'||typeof n.firstQuote!=='string'||typeof n.lastQuote!=='string'||n.firstQuote.length>1500||n.lastQuote.length>1500||!text(n.lastQuote)||!contains(p.last,n.lastQuote)||(!n.firstMissing&&(!text(n.firstQuote)||!contains(p.first,n.firstQuote)))||n.firstMissing&&text(n.firstQuote))throw Error('Alıntıları ilgili teslimden aynen seç; ilkinde dayanak yoksa bunu işaretle.');for(const k of ['reason','remaining'])if(!text(n[k])||n[k].length>3000)throw Error('Değişiklik gerekçesini ve açık kalan kontrolünü yaz.');return true;}
-function transferPair(state,c,catalog){const a=root.CaseEngine.getRecord(state.assessments,c),link=a?.learning?.transfer;if(!a?.submitted||!link||link.sourceId!==root.CaseLearning.sid(a.submitted))return null;const target=catalog.find(t=>t.id===link.caseId),ta=target&&root.CaseEngine.getRecord(state.assessments,target),last=ta?.submitted;if(!last||Date.parse(last.at)<Date.parse(link.at))return null;return {source:c,target,first:a.submitted,last,fromId:link.sourceId,toId:root.CaseLearning.sid(last),linkedAt:link.at};}
-function validateTransfer(p,n){if(!p||n.fromId!==p.fromId||n.toId!==p.toId||!p.source.rubric[n.sourceCriterion]||!p.target.rubric[n.targetCriterion]||!Number.isInteger(n.sourceCriterion)||!Number.isInteger(n.targetCriterion))throw Error('Yeni bağlam bağlantısı veya ölçütleri eşleşmiyor.');for(const [field,s]of [['sourceQuote',p.first],['targetQuote',p.last]])if(!text(n[field])||n[field].length>1500||!contains(s,n[field]))throw Error('Her alıntı ilgili vaka tesliminde aynen bulunmalı.');for(const f of ['adaptation','limit'])if(!text(n[f])||n[f].length>3000)throw Error('Neyi uyarladığını ve kalan sınırı açıkla.');return true;}
-function compareOutputs(c,a){const p=pair(c,a);return p?c.tasks.map((label,i)=>({label,before:p.first.answers['task'+i]||'',after:p.last.answers['task'+i]||'',changed:p.first.answers['task'+i]!==p.last.answers['task'+i]})):[];}
-function trackFor(state){return tracks.find(t=>t.id===state.growth?.trackId)||tracks.find(t=>t.positionId===state.profile?.positionId)||null;}
-function validateState(state,catalog){const g=state.growth;if(g===undefined)return true;if(!g||typeof g!=='object'||Array.isArray(g)||g.trackId!==undefined&&!tracks.some(t=>t.id===g.trackId)||g.caseId!==undefined&&!catalog.some(c=>c.id===g.caseId))throw Error('Gelişim rotası geçersiz.');if(g.drafts!==undefined){if(!g.drafts||typeof g.drafts!=='object'||Array.isArray(g.drafts)||Object.keys(g.drafts).length>300)throw Error('Gelişim taslakları geçersiz.');for(const [key,d]of Object.entries(g.drafts))if(key.length>700||!d||!d.values||Array.isArray(d.values)||Object.values(d.values).some(v=>typeof v!=='boolean'&&(typeof v!=='string'||v.length>3000)))throw Error('Gelişim taslak alanı geçersiz.');}for(const field of ['actions','comparisons','transfers']){if(g[field]===undefined)continue;if(!g[field]||typeof g[field]!=='object'||Array.isArray(g[field])||Object.keys(g[field]).length>300)throw Error('Gelişim kaydı sınırı veya biçimi geçersiz.');for(const [key,n]of Object.entries(g[field])){if(key.length>700||!n||typeof n!=='object'||Array.isArray(n)||n.at!==undefined&&(typeof n.at!=='string'||!Number.isFinite(Date.parse(n.at))))throw Error('Gelişim kaydı geçersiz.');if(field==='actions'){for(const f of ['answer','check','nextTrial'])if(typeof n[f]!=='string'||n[f].length>5000)throw Error('Çalışma notu geçersiz.');continue;}
- // Historical pairs remain valid after a newer submission; quotes stay tied to the exact snapshots.
- const source=catalog.find(c=>root.CaseEngine.keyFor(c)===n.caseKey),a=source&&root.CaseEngine.getRecord(state.assessments,source),hist=a&&root.CaseLearning.history(a),first=hist?.find(s=>root.CaseLearning.sid(s)===n.fromId),last=hist?.find(s=>root.CaseLearning.sid(s)===n.toId);
- if(field==='comparisons'){if(!source||!first||!last||n.fromId===n.toId||n.fromId!==root.CaseLearning.sid(hist[0])||Date.parse(first.at)>Date.parse(last.at)||key!==source.id+'@'+source.version+'|'+n.fromId+'|'+n.toId)throw Error('Karşılaştırma teslimleri bulunamadı.');validateComparison(source,{history:[first,last]},n);}else{const target=catalog.find(c=>root.CaseEngine.keyFor(c)===n.targetKey),ta=target&&root.CaseEngine.getRecord(state.assessments,target),targetSnapshot=ta&&root.CaseLearning.history(ta).find(s=>root.CaseLearning.sid(s)===n.toId);const connection=[...(a?.learning?.transferHistory||[]),a?.learning?.transfer].filter(Boolean).find(l=>l.sourceId===n.fromId&&l.caseId===target?.id&&l.at===n.linkedAt);if(!source||!first||!targetSnapshot||!connection||Date.parse(first.at)>Date.parse(n.linkedAt)||source.learning?.transfer!==target.id||!Number.isFinite(Date.parse(n.linkedAt))||Date.parse(targetSnapshot.at)<Date.parse(n.linkedAt)||key!==n.caseKey+'|'+n.fromId+'|'+n.targetKey+'|'+n.toId)throw Error('Yeni bağlam teslimleri bulunamadı.');validateTransfer({source,target,first,last:targetSnapshot,fromId:n.fromId,toId:n.toId},n);}}
- }return true;}
-root.GrowthEngine={tracks,raw,roleEvidence,filePriorities,priorities,strengths,pair,comparisonKey,validateComparison,transferPair,validateTransfer,compareOutputs,trackFor,validateState};
-})(typeof window==='undefined'?globalThis:window);
+(function (root) {
+  'use strict';
+  const text = v => (typeof v === 'string' ? v.trim() : ''),
+    clone = x => JSON.parse(JSON.stringify(x));
+  const tracks = [
+    {
+      id: 'analyst',
+      positionId: 'process_analyst',
+      name: 'Süreç / veri analisti',
+      first: 'kpi-paradoksu',
+      transfer: 'kampanya-karari',
+      goal: 'Veriden çıkarıma, seçenekten sınanabilir öneriye ilerle.',
+      expectations: [
+        'Tanımı ve karşılaştırma sınırını açıkla.',
+        'Kendi kararını alternatif ve varsayımla gerekçelendir.',
+        'Önerinin etkisini hangi gözlemle sınayacağını belirt.',
+      ],
+      interview: [
+        'Göstergeyi hangi karar için seçtin?',
+        'Aynı sonucun başka açıklaması ne olabilir?',
+        'Önerin hangi varsayım değişince geçersizleşir?',
+      ],
+      work: 'Bir karar notu hazırla: karar sorusu, kullandığın kanıt, değerlendirdiğin seçenek ve doğrulama planı. Sayısal sonuçları kaynak kayıtla ilişkilendir.',
+    },
+    {
+      id: 'operations',
+      positionId: 'warehouse_ops',
+      name: 'Operasyon uzmanı',
+      first: 'vardiya-darbogazi',
+      transfer: 'ekip-yuku',
+      goal: 'Uygulanabilir iş planını kaynak, yetki ve kontrol koşullarıyla savun.',
+      expectations: [
+        'İş yükünü uygun kapasite ve kısıtlarla ilişkilendir.',
+        'Karar yetkini ve ihtiyaç duyduğun onayı ayır.',
+        'Devir, kontrol ve istisna halinde ne yapılacağını belirt.',
+      ],
+      interview: [
+        'Planın hangi iş koşulunda aksar?',
+        'Kaynak aktarmak için hangi beceri veya yetki gerekir?',
+        'Çıktıyı ve güvenli uygulamayı birlikte nasıl izlersin?',
+      ],
+      work: 'Bir uygulama notu hazırla: mevcut yük, uygulanabilir seçenek, karar/onay sahibi ve kontrol noktası. Sonraki ekibe hangi bilgiyi devredeceğini yaz.',
+    },
+    {
+      id: 'lead',
+      positionId: 'team_lead',
+      name: 'Ekip lideri',
+      first: 'geri-bildirim',
+      transfer: 'ekip-yuku',
+      goal: 'Gözleme dayalı görüşmeden açık sorumluluk ve takip düzenine ilerle.',
+      expectations: [
+        'Gözlenen davranışı niyet ve kişilik yorumundan ayır.',
+        'Destek ihtiyacı ile hesap verebilirliği birlikte ele al.',
+        'Görev, yetki ve takip ölçütünü uygulanabilir biçimde açıkla.',
+      ],
+      interview: [
+        'Çalışanın açıklamasını hangi veriyle araştırırsın?',
+        'Hangi desteği sen sağlayacaksın?',
+        'Takipte ne görürsen yaklaşımını değiştirirsin?',
+      ],
+      work: 'Bir görüşme ve takip notu hazırla: gözlem, araştırma sorusu, karşılıklı sorumluluk ve yeniden görüşme koşulu. Görüşmeyi adayın kendi sözleriyle prova et.',
+    },
+  ];
+  if (root.POSITION_PATHS) tracks.push(...root.POSITION_PATHS);
+  function raw(q, a) {
+    const valid = i => Number.isInteger(i) && i >= 0 && i < q.options.length;
+    if (q.type === 'plan') {
+      if (!Array.isArray(a) || a.length !== 2 || new Set(a).size !== 2 || !a.every(valid)) return null;
+      return a.reduce((n, i) => n + q.options[i].score, 0) / 2;
+    }
+    if (q.type === 'rank') {
+      if (
+        !Array.isArray(a) ||
+        a.length !== q.options.length ||
+        new Set(a).size !== a.length ||
+        !a.every(valid)
+      )
+        return null;
+      let n = 0,
+        total = 0;
+      for (let i = 0; i < a.length; i++)
+        for (let j = i + 1; j < a.length; j++) {
+          total++;
+          if (q.options[a[i]].score > q.options[a[j]].score) n++;
+        }
+      return (3 * n) / total;
+    }
+    return valid(a) ? q.options[a].score : null;
+  }
+  function active(q, r) {
+    const p = r.profile;
+    return (
+      p &&
+      q.roles.includes(p.roleType) &&
+      (!q.positions || q.positions.includes(p.positionId) || (!p.positionId && p.roleType === 'custom')) &&
+      p.priorities?.[q.dim] > 0 &&
+      (p.depth === 'full' || q.core)
+    );
+  }
+  function roleEvidence(r, bank) {
+    if (!bank || r?.version !== bank.version || r.demo) return [];
+    return bank.items
+      .filter(q => active(q, r))
+      .flatMap(q => {
+        const a = r.answers?.[q.id],
+          score = raw(q, a);
+        if (score === null) return [];
+        const ids = Array.isArray(a) ? a : [a],
+          selected = ids.map(i => q.options[i].text),
+          why =
+            q.type === 'rank'
+              ? 'Sıra, senaryonun açık işlem bağımlılıklarıyla karşılaştırılır.'
+              : ids.map(i => q.options[i].why).join(' ');
+        return [
+          {
+            id: 'role:' + bank.version + ':' + q.id + ':' + JSON.stringify(a),
+            kind: 'role',
+            q,
+            score,
+            selected,
+            why,
+            dim: bank.dimensions.find(d => d.id === q.dim),
+            importance: r.profile.priorities[q.dim],
+          },
+        ];
+      });
+  }
+  function filePriorities(rows, userId, catalog) {
+    if (!userId || !Array.isArray(rows)) return [];
+    const latest = new Map();
+    for (const row of [...rows].sort(
+      (a, b) => Date.parse(b.created) - Date.parse(a.created) || (b.sequence || 0) - (a.sequence || 0)
+    )) {
+      const key = row.case_id + '@' + row.version;
+      if (!latest.has(key)) latest.set(key, row);
+    }
+    const result = [];
+    for (const row of latest.values()) {
+      const c = catalog.find(c => c.id === row.case_id && c.version === row.version);
+      if (!c || !row.feedback?.items) continue;
+      row.feedback.items.forEach((x, i) => {
+        if (!text(x.next) || !text(x.observation) || !text(x.evidence)) return;
+        result.push({
+          id: 'file:' + userId + ':' + row.id + ':' + i,
+          kind: 'file',
+          title: x.output,
+          origin: 'Son dosya teslimine bağlı değerlendirici önerisi',
+          context: c.title + ' · ' + row.name,
+          evidenceLabel: 'Değerlendiricinin dosyaya verdiği referans',
+          evidence: x.evidence,
+          explanation: x.observation,
+          action: x.next,
+          check:
+            'İlgili çıktıyı bu öneriye göre yeniden incele; yaptığın değişikliği sayfa, bölüm veya hücre referansıyla açıkla.',
+          href: '#pilot/' + c.id,
+          scope:
+            'Referans değerlendirici tarafından yazılmıştır; dosya içeriğiyle otomatik doğrulanmamıştır. Öneriler değerlendiricinin çıktı sırasındadır; önem puanı değildir.',
+          rank: i,
+        });
+      });
+    }
+    return result;
+  }
+  function priorities(state, snapshot, catalog, bank, fileRows = [], userId) {
+    const list = filePriorities(fileRows, userId, catalog);
+    for (const c of catalog) {
+      const a = root.CaseEngine.getRecord(state.assessments, c);
+      if (!a?.submitted) continue;
+      const sid = root.CaseLearning.sid(a.submitted);
+      for (const review of a.reviews || []) {
+        if (review.submissionId !== sid) continue;
+        review.items
+          .filter(x => x.rating < 2)
+          .forEach(x => {
+            const rubric = c.rubric[x.index],
+              drill = c.learning?.drills[rubric.practice];
+            list.push({
+              id: 'human:' + root.CaseEngine.keyFor(c) + ':' + sid + ':' + x.index,
+              kind: 'human',
+              title: rubric.name,
+              origin: 'Bu teslime bağlı insan geri bildirimi',
+              evidence: x.quote || 'Değerlendirici bu ölçütte dayanak alıntısı gösteremedi.',
+              explanation: x.observation,
+              action: x.next,
+              check: rubric.evidence,
+              href: '#cases/' + c.id,
+              drill,
+              rank: x.rating,
+            });
+          });
+      }
+    }
+    const re = roleEvidence(snapshot.r, bank),
+      groups = new Map();
+    for (const item of re.filter(x => x.score < 2)) {
+      const id = item.q.dim;
+      if (!groups.has(id)) groups.set(id, []);
+      groups.get(id).push(item);
+    }
+    for (const [dim, items] of groups) {
+      items.sort((a, b) => a.score - b.score);
+      const x = items[0],
+        scope = re.filter(e => e.q.dim === dim).length;
+      list.push({
+        id: x.id,
+        kind: 'role',
+        title: x.dim.name,
+        origin: 'Rol senaryosundaki kendi seçimin',
+        evidence: x.selected.join(' → '),
+        context: x.q.scene,
+        explanation: x.why,
+        action: x.dim.action,
+        check: x.dim.indicator,
+        href: '/modules/rol/index.html?view=assessment&question=' + encodeURIComponent(x.q.id),
+        questionId: x.q.id,
+        scope:
+          items.length +
+          '/' +
+          scope +
+          ' yanıt taslak anahtara göre yeniden incelemeye açık. Bu, genel yetkinlik hükmü değildir.',
+        rank: -x.importance - items.length / 100,
+      });
+    }
+    const report = snapshot.report;
+    if (report && !report.sample && !report.synthetic) {
+      for (const d of report.domains || []) {
+        if (d.answered < 3) continue;
+        const item = (report.itemResults || []).find(
+          x =>
+            x.cat === d.id && x.answered && !x.correct && !x.hinted && typeof x.selectedDisplay === 'string'
+        );
+        if (!item) continue;
+        list.push({
+          id: 'exam:' + report.id + ':' + item.id,
+          kind: 'exam',
+          title: d.name,
+          origin: 'Son gerçek denemendeki yanıt',
+          context: item.stem,
+          evidence: item.selectedDisplay,
+          explanation:
+            item.diagnostic ||
+            'Seçtiğin cevabı çözüm adımıyla karşılaştır. Yanlış cevap tek başına düşünme nedenini göstermez.',
+          action:
+            (report.priorities || []).find(x => x.id === d.id)?.action ||
+            'Yeni bir soruda yöntemi önce yaz; ardından çözümle karşılaştır.',
+          check: 'Seçtiğin yöntemi hangi koşulda değiştirdiğini yeni örnekte açıkla.',
+          href:
+            '/modules/zihin/index.html#mistakes/' +
+            encodeURIComponent(report.id) +
+            '/' +
+            encodeURIComponent(item.id),
+          scope: d.correct + '/' + d.total + ' doğru; yorum bu soru setiyle sınırlıdır.',
+          rank: d.correct / d.total,
+        });
+      }
+    }
+    for (const e of state.examples) {
+      const gap = root.Evidence.prompts(e)[0];
+      if (gap)
+        list.push({
+          id: 'example:' + e.id + ':' + gap.id,
+          kind: 'example',
+          exampleId: e.id,
+          title: gap.label,
+          origin: 'Deneyim örneğinde henüz yazılmamış alan',
+          context: e.title,
+          evidence: gap.id === 'source' ? e.result : e.action,
+          explanation: gap.question,
+          action: '“' + e.title + '” örneğini bu soruya cevap verecek şekilde düzenle.',
+          check: 'Yazdığın açıklamanın kendi katkınla ve kaynağıyla tutarlı olduğunu gözden geçir.',
+          href: '#examples',
+          rank: 0,
+        });
+    }
+    const order = { human: 0, file: 0, role: 1, exam: 2, example: 3 };
+    list.sort((a, b) => order[a.kind] - order[b.kind] || a.rank - b.rank || a.id.localeCompare(b.id));
+    return list.slice(0, 2);
+  }
+  function strengths(snapshot, bank) {
+    return roleEvidence(snapshot.r, bank)
+      .filter(x => x.score >= 2.4)
+      .slice(0, 3)
+      .map(x => ({
+        title: x.dim.name,
+        context: x.q.title,
+        quote: x.selected.join(' → '),
+        explanation: x.why,
+        note: 'Bu senaryodaki seçimin dayanağıdır; gerçek iş performansını doğrulamaz.',
+      }));
+  }
+  function pair(c, a) {
+    const h = root.CaseLearning.history(a);
+    return h.length >= 2
+      ? {
+          first: h[0],
+          last: h.at(-1),
+          fromId: root.CaseLearning.sid(h[0]),
+          toId: root.CaseLearning.sid(h.at(-1)),
+        }
+      : null;
+  }
+  function contains(s, q) {
+    return Object.values(s.answers || {}).some(a => typeof a === 'string' && a.includes(q));
+  }
+  function comparisonKey(c, p) {
+    return root.CaseEngine.keyFor(c) + '|' + p.fromId + '|' + p.toId;
+  }
+  function validateComparison(c, a, n) {
+    const p = pair(c, a);
+    if (
+      !p ||
+      n.fromId !== p.fromId ||
+      n.toId !== p.toId ||
+      !Number.isInteger(n.criterion) ||
+      !c.rubric[n.criterion]
+    )
+      throw Error('Karşılaştırma güncel ilk/son teslimle eşleşmiyor.');
+    if (
+      typeof n.firstMissing !== 'boolean' ||
+      typeof n.firstQuote !== 'string' ||
+      typeof n.lastQuote !== 'string' ||
+      n.firstQuote.length > 1500 ||
+      n.lastQuote.length > 1500 ||
+      !text(n.lastQuote) ||
+      !contains(p.last, n.lastQuote) ||
+      (!n.firstMissing && (!text(n.firstQuote) || !contains(p.first, n.firstQuote))) ||
+      (n.firstMissing && text(n.firstQuote))
+    )
+      throw Error('Alıntıları ilgili teslimden aynen seç; ilkinde dayanak yoksa bunu işaretle.');
+    for (const k of ['reason', 'remaining'])
+      if (!text(n[k]) || n[k].length > 3000)
+        throw Error('Değişiklik gerekçesini ve açık kalan kontrolünü yaz.');
+    return true;
+  }
+  function transferPair(state, c, catalog) {
+    const a = root.CaseEngine.getRecord(state.assessments, c),
+      link = a?.learning?.transfer;
+    if (!a?.submitted || !link || link.sourceId !== root.CaseLearning.sid(a.submitted)) return null;
+    const target = catalog.find(t => t.id === link.caseId),
+      ta = target && root.CaseEngine.getRecord(state.assessments, target),
+      last = ta?.submitted;
+    if (!last || Date.parse(last.at) < Date.parse(link.at)) return null;
+    return {
+      source: c,
+      target,
+      first: a.submitted,
+      last,
+      fromId: link.sourceId,
+      toId: root.CaseLearning.sid(last),
+      linkedAt: link.at,
+    };
+  }
+  function validateTransfer(p, n) {
+    if (
+      !p ||
+      n.fromId !== p.fromId ||
+      n.toId !== p.toId ||
+      !p.source.rubric[n.sourceCriterion] ||
+      !p.target.rubric[n.targetCriterion] ||
+      !Number.isInteger(n.sourceCriterion) ||
+      !Number.isInteger(n.targetCriterion)
+    )
+      throw Error('Yeni bağlam bağlantısı veya ölçütleri eşleşmiyor.');
+    for (const [field, s] of [
+      ['sourceQuote', p.first],
+      ['targetQuote', p.last],
+    ])
+      if (!text(n[field]) || n[field].length > 1500 || !contains(s, n[field]))
+        throw Error('Her alıntı ilgili vaka tesliminde aynen bulunmalı.');
+    for (const f of ['adaptation', 'limit'])
+      if (!text(n[f]) || n[f].length > 3000) throw Error('Neyi uyarladığını ve kalan sınırı açıkla.');
+    return true;
+  }
+  function compareOutputs(c, a) {
+    const p = pair(c, a);
+    return p
+      ? c.tasks.map((label, i) => ({
+          label,
+          before: p.first.answers['task' + i] || '',
+          after: p.last.answers['task' + i] || '',
+          changed: p.first.answers['task' + i] !== p.last.answers['task' + i],
+        }))
+      : [];
+  }
+  function trackFor(state) {
+    return (
+      tracks.find(t => t.id === state.growth?.trackId) ||
+      tracks.find(t => t.positionId === state.profile?.positionId) ||
+      null
+    );
+  }
+  function validateState(state, catalog) {
+    const g = state.growth;
+    if (g === undefined) return true;
+    if (
+      !g ||
+      typeof g !== 'object' ||
+      Array.isArray(g) ||
+      (g.trackId !== undefined && !tracks.some(t => t.id === g.trackId)) ||
+      (g.caseId !== undefined && !catalog.some(c => c.id === g.caseId))
+    )
+      throw Error('Gelişim rotası geçersiz.');
+    if (g.drafts !== undefined) {
+      if (
+        !g.drafts ||
+        typeof g.drafts !== 'object' ||
+        Array.isArray(g.drafts) ||
+        Object.keys(g.drafts).length > 300
+      )
+        throw Error('Gelişim taslakları geçersiz.');
+      for (const [key, d] of Object.entries(g.drafts))
+        if (
+          key.length > 700 ||
+          !d ||
+          !d.values ||
+          Array.isArray(d.values) ||
+          Object.values(d.values).some(
+            v => typeof v !== 'boolean' && (typeof v !== 'string' || v.length > 3000)
+          )
+        )
+          throw Error('Gelişim taslak alanı geçersiz.');
+    }
+    for (const field of ['actions', 'comparisons', 'transfers']) {
+      if (g[field] === undefined) continue;
+      if (
+        !g[field] ||
+        typeof g[field] !== 'object' ||
+        Array.isArray(g[field]) ||
+        Object.keys(g[field]).length > 300
+      )
+        throw Error('Gelişim kaydı sınırı veya biçimi geçersiz.');
+      for (const [key, n] of Object.entries(g[field])) {
+        if (
+          key.length > 700 ||
+          !n ||
+          typeof n !== 'object' ||
+          Array.isArray(n) ||
+          (n.at !== undefined && (typeof n.at !== 'string' || !Number.isFinite(Date.parse(n.at))))
+        )
+          throw Error('Gelişim kaydı geçersiz.');
+        if (field === 'actions') {
+          for (const f of ['answer', 'check', 'nextTrial'])
+            if (typeof n[f] !== 'string' || n[f].length > 5000) throw Error('Çalışma notu geçersiz.');
+          continue;
+        }
+        // Historical pairs remain valid after a newer submission; quotes stay tied to the exact snapshots.
+        const source = catalog.find(c => root.CaseEngine.keyFor(c) === n.caseKey),
+          a = source && root.CaseEngine.getRecord(state.assessments, source),
+          hist = a && root.CaseLearning.history(a),
+          first = hist?.find(s => root.CaseLearning.sid(s) === n.fromId),
+          last = hist?.find(s => root.CaseLearning.sid(s) === n.toId);
+        if (field === 'comparisons') {
+          if (
+            !source ||
+            !first ||
+            !last ||
+            n.fromId === n.toId ||
+            n.fromId !== root.CaseLearning.sid(hist[0]) ||
+            Date.parse(first.at) > Date.parse(last.at) ||
+            key !== source.id + '@' + source.version + '|' + n.fromId + '|' + n.toId
+          )
+            throw Error('Karşılaştırma teslimleri bulunamadı.');
+          validateComparison(source, { history: [first, last] }, n);
+        } else {
+          const target = catalog.find(c => root.CaseEngine.keyFor(c) === n.targetKey),
+            ta = target && root.CaseEngine.getRecord(state.assessments, target),
+            targetSnapshot =
+              ta && root.CaseLearning.history(ta).find(s => root.CaseLearning.sid(s) === n.toId);
+          const connection = [...(a?.learning?.transferHistory || []), a?.learning?.transfer]
+            .filter(Boolean)
+            .find(l => l.sourceId === n.fromId && l.caseId === target?.id && l.at === n.linkedAt);
+          if (
+            !source ||
+            !first ||
+            !targetSnapshot ||
+            !connection ||
+            Date.parse(first.at) > Date.parse(n.linkedAt) ||
+            source.learning?.transfer !== target.id ||
+            !Number.isFinite(Date.parse(n.linkedAt)) ||
+            Date.parse(targetSnapshot.at) < Date.parse(n.linkedAt) ||
+            key !== n.caseKey + '|' + n.fromId + '|' + n.targetKey + '|' + n.toId
+          )
+            throw Error('Yeni bağlam teslimleri bulunamadı.');
+          validateTransfer(
+            { source, target, first, last: targetSnapshot, fromId: n.fromId, toId: n.toId },
+            n
+          );
+        }
+      }
+    }
+    return true;
+  }
+  root.GrowthEngine = {
+    tracks,
+    raw,
+    roleEvidence,
+    filePriorities,
+    priorities,
+    strengths,
+    pair,
+    comparisonKey,
+    validateComparison,
+    transferPair,
+    validateTransfer,
+    compareOutputs,
+    trackFor,
+    validateState,
+  };
+})(typeof window === 'undefined' ? globalThis : window);

@@ -1,12 +1,90 @@
-const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-(async()=>{
- const appended=[],c={window:null,document:{createElement:()=>({remove(){}}),body:{appendChild:el=>appended.push(el)}}};c.window=c;vm.createContext(c);vm.runInContext(fs.readFileSync('web/content-loader.js','utf8'),c);
- const first=c.CaseContent.load(),shared=c.CaseContent.load();assert.equal(first,shared);assert.equal(appended.length,1);assert.equal(appended[0].src,'/case-archive-v1.js');appended[0].onload();await Promise.resolve();assert.equal(appended.length,2);assert.equal(appended[1].src,'/case-data.js');assert(!c.CaseContent.ready());appended[1].onerror();await assert.rejects(first,/yüklenemedi/);assert(!c.CaseContent.ready());
- const retry=c.CaseContent.load();appended[2].onload();await Promise.resolve();appended[3].onload();await retry;assert(c.CaseContent.ready());await c.CaseContent.load();assert.equal(appended.length,4);
- // Execute the actual root renderer: late case loading cannot replace a newer route.
- const nodes={'#app':{innerHTML:''},'#status':{textContent:''}},listeners={},initial={schema:1,profile:null,examples:[],checks:{},cv:{},assessments:{}},x={window:null,document:{querySelector:s=>nodes[s]||null,querySelectorAll:()=>[],body:{dataset:{}},getElementById:()=>null},localStorage:{getItem:()=>null,setItem(){},removeItem(){}},location:{hash:'#home'},AA:{KEY:'aa-state-v1',roles:{},blank:()=>initial,read:()=>initial,snapshot:()=>({})},Positions:{load:()=>null,get:()=>null},WorkspaceUX:{home:()=>'<h1>HOME</h1>',bind(){},examples(){},dossier(){}},PilotProgress:{label:()=>'',refresh(){}},PilotUI:{view:()=>'',bind(){}},CaseUI:{view:()=>'<h1>CASES</h1>',bind(){}},CaseContent:{ready:()=>false},setTimeout:()=>1,clearTimeout(){},scrollTo(){},addEventListener:(name,fn)=>listeners[name]=fn};x.window=x;vm.createContext(x);vm.runInContext(fs.readFileSync('web/app.js','utf8'),x);assert(nodes['#app'].innerHTML.includes('HOME'));
- let resolveLoad;x.CaseContent.load=()=>new Promise(resolve=>resolveLoad=resolve);x.location.hash='#cases';const delayed=vm.runInContext('render()',x);assert(nodes['#app'].innerHTML.includes('Çalışma dosyası açılıyor'));x.location.hash='#home';await vm.runInContext('render()',x);resolveLoad();await delayed;assert(nodes['#app'].innerHTML.includes('HOME'));assert(!nodes['#app'].innerHTML.includes('CASES'));
- x.CaseContent.load=()=>Promise.reject(Error('Bağlantı kesildi'));nodes['#content-retry']={onclick:null};x.location.hash='#cases';await vm.runInContext('render()',x);assert(nodes['#app'].innerHTML.includes('Belgeler açılamadı'));assert.equal(typeof nodes['#content-retry'].onclick,'function');
- nodes['#app'].innerHTML='UNSAVED FORM';listeners['pilot-progress']();assert.equal(nodes['#app'].innerHTML,'UNSAVED FORM');
- console.log('PASS: single shared lazy request, ordered dependencies, failure/retry, no eager reload, late-route race guard and progress refresh does not replace forms.');
-})().catch(err=>{console.error(err);process.exitCode=1});
+const fs = require('node:fs'),
+  vm = require('node:vm'),
+  assert = require('node:assert/strict');
+(async () => {
+  const appended = [],
+    c = {
+      window: null,
+      document: { createElement: () => ({ remove() {} }), body: { appendChild: el => appended.push(el) } },
+    };
+  c.window = c;
+  vm.createContext(c);
+  vm.runInContext(fs.readFileSync('web/content-loader.js', 'utf8'), c);
+  const first = c.CaseContent.load(),
+    shared = c.CaseContent.load();
+  assert.equal(first, shared);
+  assert.equal(appended.length, 1);
+  assert.equal(appended[0].src, '/case-archive-v1.js');
+  appended[0].onload();
+  await Promise.resolve();
+  assert.equal(appended.length, 2);
+  assert.equal(appended[1].src, '/case-data.js');
+  assert(!c.CaseContent.ready());
+  appended[1].onerror();
+  await assert.rejects(first, /yüklenemedi/);
+  assert(!c.CaseContent.ready());
+  const retry = c.CaseContent.load();
+  appended[2].onload();
+  await Promise.resolve();
+  appended[3].onload();
+  await retry;
+  assert(c.CaseContent.ready());
+  await c.CaseContent.load();
+  assert.equal(appended.length, 4);
+  // Execute the actual root renderer: late case loading cannot replace a newer route.
+  const nodes = { '#app': { innerHTML: '' }, '#status': { textContent: '' } },
+    listeners = {},
+    initial = { schema: 1, profile: null, examples: [], checks: {}, cv: {}, assessments: {} },
+    x = {
+      window: null,
+      document: {
+        querySelector: s => nodes[s] || null,
+        querySelectorAll: () => [],
+        body: { dataset: {} },
+        getElementById: () => null,
+      },
+      localStorage: { getItem: () => null, setItem() {}, removeItem() {} },
+      location: { hash: '#home' },
+      AA: { KEY: 'aa-state-v1', roles: {}, blank: () => initial, read: () => initial, snapshot: () => ({}) },
+      Positions: { load: () => null, get: () => null },
+      WorkspaceUX: { home: () => '<h1>HOME</h1>', bind() {}, examples() {}, dossier() {} },
+      PilotProgress: { label: () => '', refresh() {} },
+      PilotUI: { view: () => '', bind() {} },
+      CaseUI: { view: () => '<h1>CASES</h1>', bind() {} },
+      CaseContent: { ready: () => false },
+      setTimeout: () => 1,
+      clearTimeout() {},
+      scrollTo() {},
+      addEventListener: (name, fn) => (listeners[name] = fn),
+    };
+  x.window = x;
+  vm.createContext(x);
+  vm.runInContext(fs.readFileSync('web/app.js', 'utf8'), x);
+  assert(nodes['#app'].innerHTML.includes('HOME'));
+  let resolveLoad;
+  x.CaseContent.load = () => new Promise(resolve => (resolveLoad = resolve));
+  x.location.hash = '#cases';
+  const delayed = vm.runInContext('render()', x);
+  assert(nodes['#app'].innerHTML.includes('Çalışma dosyası açılıyor'));
+  x.location.hash = '#home';
+  await vm.runInContext('render()', x);
+  resolveLoad();
+  await delayed;
+  assert(nodes['#app'].innerHTML.includes('HOME'));
+  assert(!nodes['#app'].innerHTML.includes('CASES'));
+  x.CaseContent.load = () => Promise.reject(Error('Bağlantı kesildi'));
+  nodes['#content-retry'] = { onclick: null };
+  x.location.hash = '#cases';
+  await vm.runInContext('render()', x);
+  assert(nodes['#app'].innerHTML.includes('Belgeler açılamadı'));
+  assert.equal(typeof nodes['#content-retry'].onclick, 'function');
+  nodes['#app'].innerHTML = 'UNSAVED FORM';
+  listeners['pilot-progress']();
+  assert.equal(nodes['#app'].innerHTML, 'UNSAVED FORM');
+  console.log(
+    'PASS: single shared lazy request, ordered dependencies, failure/retry, no eager reload, late-route race guard and progress refresh does not replace forms.'
+  );
+})().catch(err => {
+  console.error(err);
+  process.exitCode = 1;
+});

@@ -3,7 +3,9 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const cwd = fileURLToPath(new URL('../', import.meta.url));
-const checks = readdirSync(cwd).filter(name => /^check-.+\.(cjs|mjs)$/.test(name)).sort();
+const checks = readdirSync(cwd)
+  .filter(name => /^check-.+\.(cjs|mjs)$/.test(name))
+  .sort();
 for (const file of ['checks.cjs', ...checks]) {
   console.log('\n' + file);
   const result = spawnSync(process.execPath, [file], { cwd, stdio: 'inherit' });

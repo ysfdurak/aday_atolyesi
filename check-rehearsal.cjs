@@ -1,13 +1,141 @@
-const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
-const x={window:null,crypto:require('node:crypto').webcrypto,localStorage:{getItem:()=>null}};x.window=x;vm.createContext(x);for(const f of ['position-context','case-archive-v1','case-data','case-engine','learning-engine','module-contracts','core','preparation-plan','evidence-engine','rehearsal-engine'])vm.runInContext(fs.readFileSync('web/'+f+'.js','utf8'),x);const R=x.Rehearsal,A=x.AA,E=x.CaseEngine,C=x.CASE_CATALOG,snapshot=A.snapshot(x.localStorage);let st=A.blank();
-assert.equal(R.sources(st,snapshot,C).length,0);st.examples=[{id:'one',title:'Sipariş sapması',topic:'Analiz',kind:'work',date:'2026-11-04',situation:'Sapma vardı',action:'Kendi hesabım',result:'Gözlem sonucu',source:'',alternative:'',learning:''},{id:'secret',title:'Seçilmeyen örnek',topic:'Özel',kind:'work',date:'2026-11-04',situation:'Özel durum',action:'Özel eylem',result:'Özel sonuç'}];st.cv={text:'Özel CV'};st.profile={role:'analyst',positionId:'process_analyst',title:'Analist',seniority:'experienced',minutes:30,start:'2026-11-02',deadline:'2026-11-06',people:false,employed:false,job:'Özel ilan'};st.dossier={exampleIds:['one'],caseKeys:[],includeModules:false};let ss=R.sources(st,snapshot,C);assert.equal(ss.length,1);assert(!JSON.stringify(ss).includes('Özel'));assert(ss[0].gaps.some(q=>q.includes('hangi kayıt')));const source=ss[0],values={answer:'Durum ve benim eylemim',followupAnswer:'Kaynak henüz doğrulanmadı',reflection:'Kontrol kaynağını bulacağım'};st=R.update(st,source,{...values,answer:'Yarım taslak'});assert.equal(st.rehearsal.records[0].rounds.length,0);st=R.complete(st,source,values,'2026-11-04T17:30:00Z');const first=JSON.stringify(st.rehearsal.records[0].rounds[0]);assert.throws(()=>R.complete(st,source,values));st=R.complete(st,source,{...values,answer:'İkinci açıklamam'},'2026-11-04T17:35:00Z');assert.equal(JSON.stringify(st.rehearsal.records[0].rounds[0]),first);assert.equal(R.readiness(st,snapshot,C).practiced,1);
+const fs = require('node:fs'),
+  vm = require('node:vm'),
+  assert = require('node:assert/strict');
+const x = { window: null, crypto: require('node:crypto').webcrypto, localStorage: { getItem: () => null } };
+x.window = x;
+vm.createContext(x);
+for (const f of [
+  'position-context',
+  'case-archive-v1',
+  'case-data',
+  'case-engine',
+  'learning-engine',
+  'module-contracts',
+  'core',
+  'preparation-plan',
+  'evidence-engine',
+  'rehearsal-engine',
+])
+  vm.runInContext(fs.readFileSync('web/' + f + '.js', 'utf8'), x);
+const R = x.Rehearsal,
+  A = x.AA,
+  E = x.CaseEngine,
+  C = x.CASE_CATALOG,
+  snapshot = A.snapshot(x.localStorage);
+let st = A.blank();
+assert.equal(R.sources(st, snapshot, C).length, 0);
+st.examples = [
+  {
+    id: 'one',
+    title: 'Sipariş sapması',
+    topic: 'Analiz',
+    kind: 'work',
+    date: '2026-11-04',
+    situation: 'Sapma vardı',
+    action: 'Kendi hesabım',
+    result: 'Gözlem sonucu',
+    source: '',
+    alternative: '',
+    learning: '',
+  },
+  {
+    id: 'secret',
+    title: 'Seçilmeyen örnek',
+    topic: 'Özel',
+    kind: 'work',
+    date: '2026-11-04',
+    situation: 'Özel durum',
+    action: 'Özel eylem',
+    result: 'Özel sonuç',
+  },
+];
+st.cv = { text: 'Özel CV' };
+st.profile = {
+  role: 'analyst',
+  positionId: 'process_analyst',
+  title: 'Analist',
+  seniority: 'experienced',
+  minutes: 30,
+  start: '2026-11-02',
+  deadline: '2026-11-06',
+  people: false,
+  employed: false,
+  job: 'Özel ilan',
+};
+st.dossier = { exampleIds: ['one'], caseKeys: [], includeModules: false };
+let ss = R.sources(st, snapshot, C);
+assert.equal(ss.length, 1);
+assert(!JSON.stringify(ss).includes('Özel'));
+assert(ss[0].gaps.some(q => q.includes('hangi kayıt')));
+const source = ss[0],
+  values = {
+    answer: 'Durum ve benim eylemim',
+    followupAnswer: 'Kaynak henüz doğrulanmadı',
+    reflection: 'Kontrol kaynağını bulacağım',
+  };
+st = R.update(st, source, { ...values, answer: 'Yarım taslak' });
+assert.equal(st.rehearsal.records[0].rounds.length, 0);
+st = R.complete(st, source, values, '2026-11-04T17:30:00Z');
+const first = JSON.stringify(st.rehearsal.records[0].rounds[0]);
+assert.throws(() => R.complete(st, source, values));
+st = R.complete(st, source, { ...values, answer: 'İkinci açıklamam' }, '2026-11-04T17:35:00Z');
+assert.equal(JSON.stringify(st.rehearsal.records[0].rounds[0]), first);
+assert.equal(R.readiness(st, snapshot, C).practiced, 1);
 // Editing the underlying example invalidates the current association, retaining the old snapshot.
-st.examples[0].action='Düzenlenmiş katkım';ss=R.sources(st,snapshot,C);assert.equal(R.find(st,ss[0]),undefined);assert.equal(R.readiness(st,snapshot,C).practiced,0);assert(st.rehearsal.records[0].source.includes('Kendi hesabım'));st=R.update(st,ss[0],values);assert.equal(st.rehearsal.records.length,2);assert(R.validate(st));assert(A.validateBackup({schema:'aday-atolyesi-backup-v1',values:{[A.KEY]:JSON.stringify(st)}}));
+st.examples[0].action = 'Düzenlenmiş katkım';
+ss = R.sources(st, snapshot, C);
+assert.equal(R.find(st, ss[0]), undefined);
+assert.equal(R.readiness(st, snapshot, C).practiced, 0);
+assert(st.rehearsal.records[0].source.includes('Kendi hesabım'));
+st = R.update(st, ss[0], values);
+assert.equal(st.rehearsal.records.length, 2);
+assert(R.validate(st));
+assert(A.validateBackup({ schema: 'aday-atolyesi-backup-v1', values: { [A.KEY]: JSON.stringify(st) } }));
 // Case rehearsal only uses submitted snapshots and current feedback; drafts cannot leak.
-const c=C[0];let a=E.blank(c);a.answers=Object.fromEntries(c.tasks.map((_,i)=>['task'+i,'Teslim cevabı '+i]));a=E.submit(c,a,'2026-11-04T17:40:00Z');a.answers.task0='Teslim edilmemiş özel taslak';st.assessments[E.keyFor(c)]=a;st.dossier.caseKeys=[E.keyFor(c)];ss=R.sources(st,snapshot,C);assert.equal(ss.length,2);assert(!JSON.stringify(ss).includes('özel taslak'));assert(ss[1].type.includes('Kurgusal'));assert(ss[1].body.includes('Teslim cevabı'));assert(!x.Evidence.build(st,snapshot,C).rehearsal);assert(!JSON.stringify(x.Evidence.build(st,snapshot,C)).includes('İkinci açıklamam'));
+const c = C[0];
+let a = E.blank(c);
+a.answers = Object.fromEntries(c.tasks.map((_, i) => ['task' + i, 'Teslim cevabı ' + i]));
+a = E.submit(c, a, '2026-11-04T17:40:00Z');
+a.answers.task0 = 'Teslim edilmemiş özel taslak';
+st.assessments[E.keyFor(c)] = a;
+st.dossier.caseKeys = [E.keyFor(c)];
+ss = R.sources(st, snapshot, C);
+assert.equal(ss.length, 2);
+assert(!JSON.stringify(ss).includes('özel taslak'));
+assert(ss[1].type.includes('Kurgusal'));
+assert(ss[1].body.includes('Teslim cevabı'));
+assert(!x.Evidence.build(st, snapshot, C).rehearsal);
+assert(!JSON.stringify(x.Evidence.build(st, snapshot, C)).includes('İkinci açıklamam'));
 // A short rehearsal is scheduled within the same daily budget; it does not create a competency score.
-let tasks=A.tasks(st,snapshot,'2026-11-04');assert(tasks.some(t=>t.href==='#rehearsal'));assert(tasks.reduce((n,t)=>n+t.minutes,0)<=30);st.profile.minutes=45;snapshot.z.sessions=[];tasks=A.tasks(st,snapshot,'2026-11-04');assert.equal(tasks[0].id,'baseline');assert.equal(tasks[0].minutes,40);assert(tasks.reduce((n,t)=>n+t.minutes,0)<=45);
-for(const p of [null,[],{records:'bad'},{records:[{id:'x'}]}, {...st.rehearsal,records:[{...st.rehearsal.records[0],answer:'a'.repeat(6001)}]}])assert.throws(()=>R.validate({...st,rehearsal:p}));assert.throws(()=>R.complete(st,ss[0],{answer:'',followupAnswer:'',reflection:''}));
+let tasks = A.tasks(st, snapshot, '2026-11-04');
+assert(tasks.some(t => t.href === '#rehearsal'));
+assert(tasks.reduce((n, t) => n + t.minutes, 0) <= 30);
+st.profile.minutes = 45;
+snapshot.z.sessions = [];
+tasks = A.tasks(st, snapshot, '2026-11-04');
+assert.equal(tasks[0].id, 'baseline');
+assert.equal(tasks[0].minutes, 40);
+assert(tasks.reduce((n, t) => n + t.minutes, 0) <= 45);
+for (const p of [
+  null,
+  [],
+  { records: 'bad' },
+  { records: [{ id: 'x' }] },
+  { ...st.rehearsal, records: [{ ...st.rehearsal.records[0], answer: 'a'.repeat(6001) }] },
+])
+  assert.throws(() => R.validate({ ...st, rehearsal: p }));
+assert.throws(() => R.complete(st, ss[0], { answer: '', followupAnswer: '', reflection: '' }));
 // Unselecting a source hides its private rehearsal; no automatic dossier inclusion.
-st.dossier.exampleIds=[];st.dossier.caseKeys=[];x.state=st;vm.runInContext(fs.readFileSync('web/rehearsal-ui.js','utf8'),x);const html=x.RehearsalUI.view();assert(!html.includes('İkinci açıklamam'));assert(!html.includes('Kendi hesabım'));assert(html.includes('Önce bir deneyim'));st.dossier.exampleIds=['one'];assert(x.RehearsalUI.view().includes('Önceki kaynaklara bağlı'));
-console.log('PASS: selected-only source generation, no CV/job/draft leak, gap prompts, immutable rehearsal rounds, changed-source isolation, backup validation, budgeted planner, baseline preservation, and rehearsal privacy.');
+st.dossier.exampleIds = [];
+st.dossier.caseKeys = [];
+x.state = st;
+vm.runInContext(fs.readFileSync('web/rehearsal-ui.js', 'utf8'), x);
+const html = x.RehearsalUI.view();
+assert(!html.includes('İkinci açıklamam'));
+assert(!html.includes('Kendi hesabım'));
+assert(html.includes('Önce bir deneyim'));
+st.dossier.exampleIds = ['one'];
+assert(x.RehearsalUI.view().includes('Önceki kaynaklara bağlı'));
+console.log(
+  'PASS: selected-only source generation, no CV/job/draft leak, gap prompts, immutable rehearsal rounds, changed-source isolation, backup validation, budgeted planner, baseline preservation, and rehearsal privacy.'
+);

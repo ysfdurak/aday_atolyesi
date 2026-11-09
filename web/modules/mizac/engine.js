@@ -1,38 +1,408 @@
-const DIMS=[
-{id:'plan',name:'Planlama',left:'Akış içinde şekillendirme',right:'Önceden yapılandırma',high:'İşi önceden yapılandırmayı ve adımları görünür kılmayı tercih ediyor.',low:'İşi ilerlerken şekillendirmeyi ve hareket alanını açık tutmayı tercih ediyor.',tradeH:'Planın sık değiştiği işlerde yeniden planlama süresine ihtiyaç duyabilir.',tradeL:'Bağımlılıkları yoğun işlerde ara kontrol noktaları yararlı olabilir.',q:'Son anda değişen bir işte planınızı nasıl güncellediniz?',items:['Bir işe başlamadan önce ara teslim noktalarını belirlerim.','Günlük işlerimin sırasını önceden netleştirmeyi tercih ederim.','Birden fazla işim olduğunda sürelerini kabaca planlarım.','İşe nasıl başlayacağımı çoğunlukla çalışırken belirlerim.','İş sıramı önceden belirlemek yerine gün içinde şekillendiririm.','Bir projede ara adımları baştan belirlemek bana gereksiz kısıtlayıcı gelir.']},
-{id:'detail',name:'Kontrol ve ayrıntı',left:'Genel resme odaklanma',right:'Ayrıntılı kontrol',high:'Teslim öncesi ayrıntıları ve kontrol adımlarını görünür tutmayı tercih ediyor.',low:'Önce genel sonucu görmeyi, ayrıntıları ihtiyaca göre ele almayı tercih ediyor.',tradeH:'Düşük riskli işlerde de ayrıntılı kontrol yapmanın zaman maliyetini izlemesi yararlı olabilir.',tradeL:'Hata maliyeti yüksek işlerde kontrol listeleri yararlı olabilir.',q:'Bir hatayı teslimden önce veya sonra fark ettiğiniz bir örneği anlatır mısınız?',items:['Bir çıktıyı teslim etmeden önce ayrıntılarını tekrar incelerim.','Benzer kayıtlar arasındaki küçük farkları kontrol ederim.','Tekrarlanan işlerde kontrol listesi kullanmayı tercih ederim.','Genel sonuç beklentiyi karşılıyorsa küçük ayrıntıları ayrıca incelemem.','Son kontrol turunu çoğu işte gereksiz bulurum.','Bir işin ayrıntılarından önce büyük resmine zaman ayırırım.']},
-{id:'voice',name:'Görüşünü ifade etme',left:'Önce dinleme ve düşünme',right:'Görüşü erken paylaşma',high:'Görüşlerini erken paylaşmayı ve konuşmada görünür olmayı tercih ediyor.',low:'Önce dinlemeyi ve düşüncelerini olgunlaştırdıktan sonra paylaşmayı tercih ediyor.',tradeH:'Diğer görüşleri dinlemek için bilinçli alan açması yararlı olabilir.',tradeL:'Hızlı karar toplantılarında yazılı ön hazırlık görüşünün duyulmasına yardım edebilir.',q:'Çoğunluktan farklı düşündüğünüz bir toplantıda ne yaptınız?',items:['Bir toplantıda farklı düşünüyorsam görüşümü söylerim.','Katılmadığım bir öneriye gerekçemle itiraz ederim.','Tartışmada kendi önerimi erken paylaşmayı tercih ederim.','Toplantıda görüşümü paylaşmadan önce başkalarının düşüncelerini duymayı beklerim.','Bir öneriyi sesli paylaşmadan önce uzun süre olgunlaştırırım.','Bir grupta konuşmayı başlatmaktansa dinlemeyi tercih ederim.']},
-{id:'collab',name:'Birlikte çalışma',left:'Bağımsız ilerleme',right:'Sık fikir alışverişi',high:'Çalışırken sık fikir alışverişi yapmayı ve ortak üretimi tercih ediyor.',low:'Kendi başına odaklanmayı ve belirli noktalarda paylaşım yapmayı tercih ediyor.',tradeH:'Kesintisiz bireysel çalışma gerektiren işlerde iletişim zamanlarını belirlemek yararlı olabilir.',tradeL:'Bağımlı ekip işlerinde paylaşım sıklığını açıkça belirlemek yararlı olabilir.',q:'Başka bir ekibe bağımlı bir işte bilgi akışını nasıl kurdunuz?',items:['Bir sorunu çözerken erken aşamada ekip arkadaşlarımın fikrini alırım.','Ortak bir çıktı üzerinde birlikte çalışmak bana uygundur.','Çalışma sırasında kısa fikir alışverişleri yapmayı tercih ederim.','Bir problemi önce kendi başıma çözmeyi tercih ederim.','Ekipten görüş almadan önce kendi taslağımı tamamlamak isterim.','İşimi sık ortak görüşme yerine bağımsız çalışma bloklarıyla yürütürüm.']},
-{id:'initiative',name:'İnisiyatif',left:'Çerçeveyi netleştirme',right:'Sınırlar içinde başlatma',high:'Yetki sınırları içinde ilk adımı kendisi atmayı tercih ediyor.',low:'Harekete geçmeden önce beklenti ve sorumluluk alanını netleştirmeyi tercih ediyor.',tradeH:'Yetki sınırlarının belirsiz olduğu işlerde onay noktalarını açıkça belirlemek yararlı olabilir.',tradeL:'Hız gerektiren işlerde önceden tanımlanmış karar alanları yararlı olabilir.',q:'Size doğrudan atanmamış bir sorunda ne yaptığınızı örnekler misiniz?',items:['Yetki alanımdaki bir sorunda ilk adımı kendim atarım.','İş yapış biçiminde bir iyileştirme gördüğümde küçük bir deneme öneririm.','Bir işin başlaması için her ayrıntının tarif edilmesini beklemem.','Yeni bir görevde ilk adımı atmadan önce ayrıntılı yönlendirme isterim.','Sorumlusu belirsiz bir işte önce görev dağılımının yapılmasını beklerim.','Bir değişiklik başlatmadan önce nasıl ilerlemem gerektiğini netleştirmeyi tercih ederim.']},
-{id:'evidence',name:'Karar için kanıt',left:'Deneyim ve ilk izlenim',right:'Karşılaştırma ve veri',high:'Karardan önce kaynakları ve alternatifleri karşılaştırmayı tercih ediyor.',low:'Kararlarında deneyimine ve ilk değerlendirmesine daha çok başvurmayı tercih ediyor.',tradeH:'Süre kısıtlı kararlarda yeterli kanıt eşiğini belirlemek yararlı olabilir.',tradeL:'Yeni veya yüksek etkili kararlarda varsayımları ayrıca kontrol etmek yararlı olabilir.',q:'İlk kanaatinizin veriyle değiştiği bir kararınızı anlatır mısınız?',items:['Bir karar öncesinde alternatiflerin dayanaklarını karşılaştırırım.','Bir sayı beklenmedik görünüyorsa kaynağını kontrol ederim.','Bir öneriyi benimsemeden önce hangi bilgiye dayandığını sorarım.','Karar verirken ilk izlenimimi ayrıntılı karşılaştırmaya tercih ederim.','Deneyimim yön gösteriyorsa ek veri toplamaya çoğunlukla gerek duymam.','Benzer konularda seçenekleri yeniden karşılaştırmadan karar veririm.']},
-{id:'change',name:'Yöntem değişikliği',left:'Bilinen yöntemi sürdürme',right:'Yeni yöntemi deneme',high:'Yeni yöntemleri denemeyi ve iş yapışını değiştirmeyi tercih ediyor.',low:'İşe yaradığı bilinen yöntemleri sürdürmeyi tercih ediyor.',tradeH:'Değişikliklerin standarda dönüşmesi için sonuçları takip etmek yararlı olabilir.',tradeL:'Yeni yöntemleri sınırlı ve geri alınabilir denemelerle tanımak yararlı olabilir.',q:'Alıştığınız bir yöntemi değiştirdiğiniz son örnek neydi?',items:['Yeni bir iş yöntemini küçük ölçekte denemekten hoşlanırım.','Alıştığım araç yerine başka bir aracı öğrenmeye zaman ayırırım.','İşin koşulları değişince yöntemimi değiştirmeyi tercih ederim.','İşe yarayan yöntemleri uzun süre aynı biçimde kullanmayı tercih ederim.','Yeni bir yöntem yerine bildiğim yöntemde kalmak bana daha uygundur.','Bir araç yeterince iş görüyorsa alternatiflerini araştırmam.']},
-{id:'pace',name:'İlerleme temposu',left:'Düşünerek ilerleme',right:'Erken harekete geçme',high:'İlk adımı erken atmayı ve kısa döngülerle ilerlemeyi tercih ediyor.',low:'İlk adım öncesinde düşünme payı bırakmayı tercih ediyor.',tradeH:'Geri dönüşü zor kararlarda başlangıç kontrolü koymak yararlı olabilir.',tradeL:'Kısa süreli işlerde küçük ilk adımlar ve süre sınırları yararlı olabilir.',q:'Kısa süre içinde sonuç üretmeniz gereken bir durumda nasıl ilerlediniz?',items:['Bir işte ilk taslağı erken çıkarmayı tercih ederim.','Küçük bir adım atıp geri bildirimle ilerlemek bana uygundur.','Uzun hazırlık yerine erken bir çalışma çıktısı oluştururum.','İlk taslağı çıkarmadan önce seçenekleri uzun süre düşünürüm.','Harekete geçmeden önce hazırlığa geniş zaman ayırmayı tercih ederim.','İlk adımı erken atmaktansa düşünme süresini uzatırım.']}
+const DIMS = [
+  {
+    id: 'plan',
+    name: 'Planlama',
+    left: 'Akış içinde şekillendirme',
+    right: 'Önceden yapılandırma',
+    high: 'İşi önceden yapılandırmayı ve adımları görünür kılmayı tercih ediyor.',
+    low: 'İşi ilerlerken şekillendirmeyi ve hareket alanını açık tutmayı tercih ediyor.',
+    tradeH: 'Planın sık değiştiği işlerde yeniden planlama süresine ihtiyaç duyabilir.',
+    tradeL: 'Bağımlılıkları yoğun işlerde ara kontrol noktaları yararlı olabilir.',
+    q: 'Son anda değişen bir işte planınızı nasıl güncellediniz?',
+    items: [
+      'Bir işe başlamadan önce ara teslim noktalarını belirlerim.',
+      'Günlük işlerimin sırasını önceden netleştirmeyi tercih ederim.',
+      'Birden fazla işim olduğunda sürelerini kabaca planlarım.',
+      'İşe nasıl başlayacağımı çoğunlukla çalışırken belirlerim.',
+      'İş sıramı önceden belirlemek yerine gün içinde şekillendiririm.',
+      'Bir projede ara adımları baştan belirlemek bana gereksiz kısıtlayıcı gelir.',
+    ],
+  },
+  {
+    id: 'detail',
+    name: 'Kontrol ve ayrıntı',
+    left: 'Genel resme odaklanma',
+    right: 'Ayrıntılı kontrol',
+    high: 'Teslim öncesi ayrıntıları ve kontrol adımlarını görünür tutmayı tercih ediyor.',
+    low: 'Önce genel sonucu görmeyi, ayrıntıları ihtiyaca göre ele almayı tercih ediyor.',
+    tradeH: 'Düşük riskli işlerde de ayrıntılı kontrol yapmanın zaman maliyetini izlemesi yararlı olabilir.',
+    tradeL: 'Hata maliyeti yüksek işlerde kontrol listeleri yararlı olabilir.',
+    q: 'Bir hatayı teslimden önce veya sonra fark ettiğiniz bir örneği anlatır mısınız?',
+    items: [
+      'Bir çıktıyı teslim etmeden önce ayrıntılarını tekrar incelerim.',
+      'Benzer kayıtlar arasındaki küçük farkları kontrol ederim.',
+      'Tekrarlanan işlerde kontrol listesi kullanmayı tercih ederim.',
+      'Genel sonuç beklentiyi karşılıyorsa küçük ayrıntıları ayrıca incelemem.',
+      'Son kontrol turunu çoğu işte gereksiz bulurum.',
+      'Bir işin ayrıntılarından önce büyük resmine zaman ayırırım.',
+    ],
+  },
+  {
+    id: 'voice',
+    name: 'Görüşünü ifade etme',
+    left: 'Önce dinleme ve düşünme',
+    right: 'Görüşü erken paylaşma',
+    high: 'Görüşlerini erken paylaşmayı ve konuşmada görünür olmayı tercih ediyor.',
+    low: 'Önce dinlemeyi ve düşüncelerini olgunlaştırdıktan sonra paylaşmayı tercih ediyor.',
+    tradeH: 'Diğer görüşleri dinlemek için bilinçli alan açması yararlı olabilir.',
+    tradeL: 'Hızlı karar toplantılarında yazılı ön hazırlık görüşünün duyulmasına yardım edebilir.',
+    q: 'Çoğunluktan farklı düşündüğünüz bir toplantıda ne yaptınız?',
+    items: [
+      'Bir toplantıda farklı düşünüyorsam görüşümü söylerim.',
+      'Katılmadığım bir öneriye gerekçemle itiraz ederim.',
+      'Tartışmada kendi önerimi erken paylaşmayı tercih ederim.',
+      'Toplantıda görüşümü paylaşmadan önce başkalarının düşüncelerini duymayı beklerim.',
+      'Bir öneriyi sesli paylaşmadan önce uzun süre olgunlaştırırım.',
+      'Bir grupta konuşmayı başlatmaktansa dinlemeyi tercih ederim.',
+    ],
+  },
+  {
+    id: 'collab',
+    name: 'Birlikte çalışma',
+    left: 'Bağımsız ilerleme',
+    right: 'Sık fikir alışverişi',
+    high: 'Çalışırken sık fikir alışverişi yapmayı ve ortak üretimi tercih ediyor.',
+    low: 'Kendi başına odaklanmayı ve belirli noktalarda paylaşım yapmayı tercih ediyor.',
+    tradeH:
+      'Kesintisiz bireysel çalışma gerektiren işlerde iletişim zamanlarını belirlemek yararlı olabilir.',
+    tradeL: 'Bağımlı ekip işlerinde paylaşım sıklığını açıkça belirlemek yararlı olabilir.',
+    q: 'Başka bir ekibe bağımlı bir işte bilgi akışını nasıl kurdunuz?',
+    items: [
+      'Bir sorunu çözerken erken aşamada ekip arkadaşlarımın fikrini alırım.',
+      'Ortak bir çıktı üzerinde birlikte çalışmak bana uygundur.',
+      'Çalışma sırasında kısa fikir alışverişleri yapmayı tercih ederim.',
+      'Bir problemi önce kendi başıma çözmeyi tercih ederim.',
+      'Ekipten görüş almadan önce kendi taslağımı tamamlamak isterim.',
+      'İşimi sık ortak görüşme yerine bağımsız çalışma bloklarıyla yürütürüm.',
+    ],
+  },
+  {
+    id: 'initiative',
+    name: 'İnisiyatif',
+    left: 'Çerçeveyi netleştirme',
+    right: 'Sınırlar içinde başlatma',
+    high: 'Yetki sınırları içinde ilk adımı kendisi atmayı tercih ediyor.',
+    low: 'Harekete geçmeden önce beklenti ve sorumluluk alanını netleştirmeyi tercih ediyor.',
+    tradeH: 'Yetki sınırlarının belirsiz olduğu işlerde onay noktalarını açıkça belirlemek yararlı olabilir.',
+    tradeL: 'Hız gerektiren işlerde önceden tanımlanmış karar alanları yararlı olabilir.',
+    q: 'Size doğrudan atanmamış bir sorunda ne yaptığınızı örnekler misiniz?',
+    items: [
+      'Yetki alanımdaki bir sorunda ilk adımı kendim atarım.',
+      'İş yapış biçiminde bir iyileştirme gördüğümde küçük bir deneme öneririm.',
+      'Bir işin başlaması için her ayrıntının tarif edilmesini beklemem.',
+      'Yeni bir görevde ilk adımı atmadan önce ayrıntılı yönlendirme isterim.',
+      'Sorumlusu belirsiz bir işte önce görev dağılımının yapılmasını beklerim.',
+      'Bir değişiklik başlatmadan önce nasıl ilerlemem gerektiğini netleştirmeyi tercih ederim.',
+    ],
+  },
+  {
+    id: 'evidence',
+    name: 'Karar için kanıt',
+    left: 'Deneyim ve ilk izlenim',
+    right: 'Karşılaştırma ve veri',
+    high: 'Karardan önce kaynakları ve alternatifleri karşılaştırmayı tercih ediyor.',
+    low: 'Kararlarında deneyimine ve ilk değerlendirmesine daha çok başvurmayı tercih ediyor.',
+    tradeH: 'Süre kısıtlı kararlarda yeterli kanıt eşiğini belirlemek yararlı olabilir.',
+    tradeL: 'Yeni veya yüksek etkili kararlarda varsayımları ayrıca kontrol etmek yararlı olabilir.',
+    q: 'İlk kanaatinizin veriyle değiştiği bir kararınızı anlatır mısınız?',
+    items: [
+      'Bir karar öncesinde alternatiflerin dayanaklarını karşılaştırırım.',
+      'Bir sayı beklenmedik görünüyorsa kaynağını kontrol ederim.',
+      'Bir öneriyi benimsemeden önce hangi bilgiye dayandığını sorarım.',
+      'Karar verirken ilk izlenimimi ayrıntılı karşılaştırmaya tercih ederim.',
+      'Deneyimim yön gösteriyorsa ek veri toplamaya çoğunlukla gerek duymam.',
+      'Benzer konularda seçenekleri yeniden karşılaştırmadan karar veririm.',
+    ],
+  },
+  {
+    id: 'change',
+    name: 'Yöntem değişikliği',
+    left: 'Bilinen yöntemi sürdürme',
+    right: 'Yeni yöntemi deneme',
+    high: 'Yeni yöntemleri denemeyi ve iş yapışını değiştirmeyi tercih ediyor.',
+    low: 'İşe yaradığı bilinen yöntemleri sürdürmeyi tercih ediyor.',
+    tradeH: 'Değişikliklerin standarda dönüşmesi için sonuçları takip etmek yararlı olabilir.',
+    tradeL: 'Yeni yöntemleri sınırlı ve geri alınabilir denemelerle tanımak yararlı olabilir.',
+    q: 'Alıştığınız bir yöntemi değiştirdiğiniz son örnek neydi?',
+    items: [
+      'Yeni bir iş yöntemini küçük ölçekte denemekten hoşlanırım.',
+      'Alıştığım araç yerine başka bir aracı öğrenmeye zaman ayırırım.',
+      'İşin koşulları değişince yöntemimi değiştirmeyi tercih ederim.',
+      'İşe yarayan yöntemleri uzun süre aynı biçimde kullanmayı tercih ederim.',
+      'Yeni bir yöntem yerine bildiğim yöntemde kalmak bana daha uygundur.',
+      'Bir araç yeterince iş görüyorsa alternatiflerini araştırmam.',
+    ],
+  },
+  {
+    id: 'pace',
+    name: 'İlerleme temposu',
+    left: 'Düşünerek ilerleme',
+    right: 'Erken harekete geçme',
+    high: 'İlk adımı erken atmayı ve kısa döngülerle ilerlemeyi tercih ediyor.',
+    low: 'İlk adım öncesinde düşünme payı bırakmayı tercih ediyor.',
+    tradeH: 'Geri dönüşü zor kararlarda başlangıç kontrolü koymak yararlı olabilir.',
+    tradeL: 'Kısa süreli işlerde küçük ilk adımlar ve süre sınırları yararlı olabilir.',
+    q: 'Kısa süre içinde sonuç üretmeniz gereken bir durumda nasıl ilerlediniz?',
+    items: [
+      'Bir işte ilk taslağı erken çıkarmayı tercih ederim.',
+      'Küçük bir adım atıp geri bildirimle ilerlemek bana uygundur.',
+      'Uzun hazırlık yerine erken bir çalışma çıktısı oluştururum.',
+      'İlk taslağı çıkarmadan önce seçenekleri uzun süre düşünürüm.',
+      'Harekete geçmeden önce hazırlığa geniş zaman ayırmayı tercih ederim.',
+      'İlk adımı erken atmaktansa düşünme süresini uzatırım.',
+    ],
+  },
 ];
 // v0.2: authored work-preference pool; conceptual facets, not validated subscales.
-const EXTRA={
-plan:['Bir işin sonraki adımının ne olacağını önceden belirlemeyi severim.','Teslim tarihine kadar hangi aşamada olmam gerektiğini izlerim.','Günün sonunda ertesi günün önceliklerini belirlemeyi tercih ederim.','Bir görevde sonraki adımı ancak sırası gelince düşünürüm.','Ara teslim tarihlerini izlemek yerine son teslim tarihine odaklanırım.','Bir sonraki günün işlerini o gün geldiğinde belirlemeyi tercih ederim.'],
-detail:['Bir işte sık hata çıkan noktalar için ayrı kontrol yaparım.','İşin tamamlandığını söylemeden önce tanımlı ölçütleri tek tek gözden geçiririm.','Küçük bir tutarsızlık gördüğümde nedenini araştırırım.','Bir çıktıda ana amaç sağlanmışsa son ayrıntıları olduğu gibi bırakırım.','Teslim ölçütlerini tek tek kontrol etmek yerine genel izlenimime bakarım.','Küçük tutarsızlıkları incelemeyi sonraki aşamaya bırakırım.'],
-voice:['Bir toplantıda önerimin gerekçesini açıklamak için söz alırım.','Bir karara ilişkin çekincemi ilgili kişiye doğrudan söylerim.','İşin yönüne dair önerilerimi görüşme sırasında paylaşırım.','Görüşüm sorulmadıkça toplantıda paylaşmayı çoğunlukla ertelerim.','Bir karara çekince duyduğumda önce kendi içimde değerlendirmeyi tercih ederim.','Bir öneriyi tartışma sırasında sunmak yerine daha sonra iletmeyi tercih ederim.'],
-collab:['İşin gidişatı hakkında ekip arkadaşlarımla düzenli kısa paylaşımlar yaparım.','Ürettiğim taslağı tamamlamadan önce ilgili kişilerle birlikte gözden geçiririm.','Bir görevde seçenekleri başkalarıyla konuşarak geliştirmeyi tercih ederim.','İşin gidişatını ancak önemli bir aşama bittiğinde paylaşmayı tercih ederim.','Taslağı birlikte geliştirmektense önce tek başıma bitirmeyi tercih ederim.','Bir görevde seçenekleri başkalarıyla tartışmadan kendi başıma geliştirmeyi tercih ederim.'],
-initiative:['Görev alanımda çözülmemiş küçük bir iş gördüğümde başlatırım.','İzin verilen sınırlar içinde yeni bir yaklaşımı kendim öneririm.','Bir görevde ilerlemek için yetkim içindeki adımı başkasını beklemeden atarım.','Görev alanımda olsa bile yeni bir iş için doğrudan talep gelmesini beklerim.','Nasıl yapılacağı belirtilmeyen bir işte başlatmadan önce tarif beklerim.','İlerleyebileceğim bir adım olsa da sorumluluk dağılımının tamamlanmasını beklerim.'],
-evidence:['İki açıklama arasında kalınca onları ayırt edecek bilgi ararım.','Bir öneriyi değerlendirirken karşı örneklere de bakarım.','Kararımı etkileyen varsayımları açıkça belirlemeyi tercih ederim.','İlk açıklama makul görünüyorsa başka açıklamaları araştırmam.','Bir öneri deneyimime uyuyorsa karşı örnek aramam.','Karar verirken varsayımları tek tek açmaktansa genel kanaatimi esas alırım.'],
-change:['Yeni bir yöntemin sonucunu görmek için küçük bir deneme yapmayı tercih ederim.','İşin koşulu değiştiğinde alıştığım yönteme alternatif üretirim.','Kullanmadığım bir özelliği öğrenip işimde denemeye zaman ayırırım.','Yeni bir yöntem önerildiğinde önce bilinen yöntemle devam etmeyi tercih ederim.','Koşullar değişse de mevcut yöntemin sınırları içinde kalmayı tercih ederim.','İşimde kullanabildiğim özellikler yeterliyse yeni özellikleri denemeye zaman ayırmam.'],
-pace:['Belirsiz bir işte geri alınabilir küçük bir adımla ilerlemeyi tercih ederim.','Bir fikir için uzun hazırlıktan önce küçük bir taslak oluştururum.','İşi kısa çalışma ve geri bildirim döngülerine bölmeyi tercih ederim.','Belirsiz bir işte ilk denemeden önce kapsamlı hazırlık yapmayı tercih ederim.','Bir fikri taslağa dökmeden önce ayrıntılı düşünmek isterim.','Sık küçük çıktılar yerine daha olgun bir ilk çıktı sunmayı tercih ederim.']};
-const FACETS={plan:['Adımları yapılandırma','Öncelik ve ilerleme takibi'],detail:['Teslim öncesi kontrol','Ölçüt ve tutarsızlık takibi'],voice:['Görüşe katılma / itiraz','Görüşü doğrudan paylaşma'],collab:['Erken fikir alışverişi','Çalışma boyunca paylaşım'],initiative:['Başlatma tercihi','Belirsiz görevde hareket alanı'],evidence:['Kaynak ve seçenek karşılaştırma','Varsayım ve karşı kanıt inceleme'],change:['Yeniliğe yaklaşım','Yöntemi deneme ve uyarlama'],pace:['İlk çıktı zamanı','Küçük adım ve döngü tercihi']};
-DIMS.forEach(d=>{d.items.push(...EXTRA[d.id]);d.definition=d.right+' ile '+d.left.toLocaleLowerCase('tr')+' arasındaki öz bildirim tercihidir; beceri veya başarı ölçümü değildir.';});
+const EXTRA = {
+  plan: [
+    'Bir işin sonraki adımının ne olacağını önceden belirlemeyi severim.',
+    'Teslim tarihine kadar hangi aşamada olmam gerektiğini izlerim.',
+    'Günün sonunda ertesi günün önceliklerini belirlemeyi tercih ederim.',
+    'Bir görevde sonraki adımı ancak sırası gelince düşünürüm.',
+    'Ara teslim tarihlerini izlemek yerine son teslim tarihine odaklanırım.',
+    'Bir sonraki günün işlerini o gün geldiğinde belirlemeyi tercih ederim.',
+  ],
+  detail: [
+    'Bir işte sık hata çıkan noktalar için ayrı kontrol yaparım.',
+    'İşin tamamlandığını söylemeden önce tanımlı ölçütleri tek tek gözden geçiririm.',
+    'Küçük bir tutarsızlık gördüğümde nedenini araştırırım.',
+    'Bir çıktıda ana amaç sağlanmışsa son ayrıntıları olduğu gibi bırakırım.',
+    'Teslim ölçütlerini tek tek kontrol etmek yerine genel izlenimime bakarım.',
+    'Küçük tutarsızlıkları incelemeyi sonraki aşamaya bırakırım.',
+  ],
+  voice: [
+    'Bir toplantıda önerimin gerekçesini açıklamak için söz alırım.',
+    'Bir karara ilişkin çekincemi ilgili kişiye doğrudan söylerim.',
+    'İşin yönüne dair önerilerimi görüşme sırasında paylaşırım.',
+    'Görüşüm sorulmadıkça toplantıda paylaşmayı çoğunlukla ertelerim.',
+    'Bir karara çekince duyduğumda önce kendi içimde değerlendirmeyi tercih ederim.',
+    'Bir öneriyi tartışma sırasında sunmak yerine daha sonra iletmeyi tercih ederim.',
+  ],
+  collab: [
+    'İşin gidişatı hakkında ekip arkadaşlarımla düzenli kısa paylaşımlar yaparım.',
+    'Ürettiğim taslağı tamamlamadan önce ilgili kişilerle birlikte gözden geçiririm.',
+    'Bir görevde seçenekleri başkalarıyla konuşarak geliştirmeyi tercih ederim.',
+    'İşin gidişatını ancak önemli bir aşama bittiğinde paylaşmayı tercih ederim.',
+    'Taslağı birlikte geliştirmektense önce tek başıma bitirmeyi tercih ederim.',
+    'Bir görevde seçenekleri başkalarıyla tartışmadan kendi başıma geliştirmeyi tercih ederim.',
+  ],
+  initiative: [
+    'Görev alanımda çözülmemiş küçük bir iş gördüğümde başlatırım.',
+    'İzin verilen sınırlar içinde yeni bir yaklaşımı kendim öneririm.',
+    'Bir görevde ilerlemek için yetkim içindeki adımı başkasını beklemeden atarım.',
+    'Görev alanımda olsa bile yeni bir iş için doğrudan talep gelmesini beklerim.',
+    'Nasıl yapılacağı belirtilmeyen bir işte başlatmadan önce tarif beklerim.',
+    'İlerleyebileceğim bir adım olsa da sorumluluk dağılımının tamamlanmasını beklerim.',
+  ],
+  evidence: [
+    'İki açıklama arasında kalınca onları ayırt edecek bilgi ararım.',
+    'Bir öneriyi değerlendirirken karşı örneklere de bakarım.',
+    'Kararımı etkileyen varsayımları açıkça belirlemeyi tercih ederim.',
+    'İlk açıklama makul görünüyorsa başka açıklamaları araştırmam.',
+    'Bir öneri deneyimime uyuyorsa karşı örnek aramam.',
+    'Karar verirken varsayımları tek tek açmaktansa genel kanaatimi esas alırım.',
+  ],
+  change: [
+    'Yeni bir yöntemin sonucunu görmek için küçük bir deneme yapmayı tercih ederim.',
+    'İşin koşulu değiştiğinde alıştığım yönteme alternatif üretirim.',
+    'Kullanmadığım bir özelliği öğrenip işimde denemeye zaman ayırırım.',
+    'Yeni bir yöntem önerildiğinde önce bilinen yöntemle devam etmeyi tercih ederim.',
+    'Koşullar değişse de mevcut yöntemin sınırları içinde kalmayı tercih ederim.',
+    'İşimde kullanabildiğim özellikler yeterliyse yeni özellikleri denemeye zaman ayırmam.',
+  ],
+  pace: [
+    'Belirsiz bir işte geri alınabilir küçük bir adımla ilerlemeyi tercih ederim.',
+    'Bir fikir için uzun hazırlıktan önce küçük bir taslak oluştururum.',
+    'İşi kısa çalışma ve geri bildirim döngülerine bölmeyi tercih ederim.',
+    'Belirsiz bir işte ilk denemeden önce kapsamlı hazırlık yapmayı tercih ederim.',
+    'Bir fikri taslağa dökmeden önce ayrıntılı düşünmek isterim.',
+    'Sık küçük çıktılar yerine daha olgun bir ilk çıktı sunmayı tercih ederim.',
+  ],
+};
+const FACETS = {
+  plan: ['Adımları yapılandırma', 'Öncelik ve ilerleme takibi'],
+  detail: ['Teslim öncesi kontrol', 'Ölçüt ve tutarsızlık takibi'],
+  voice: ['Görüşe katılma / itiraz', 'Görüşü doğrudan paylaşma'],
+  collab: ['Erken fikir alışverişi', 'Çalışma boyunca paylaşım'],
+  initiative: ['Başlatma tercihi', 'Belirsiz görevde hareket alanı'],
+  evidence: ['Kaynak ve seçenek karşılaştırma', 'Varsayım ve karşı kanıt inceleme'],
+  change: ['Yeniliğe yaklaşım', 'Yöntemi deneme ve uyarlama'],
+  pace: ['İlk çıktı zamanı', 'Küçük adım ve döngü tercihi'],
+};
+DIMS.forEach(d => {
+  d.items.push(...EXTRA[d.id]);
+  d.definition =
+    d.right +
+    ' ile ' +
+    d.left.toLocaleLowerCase('tr') +
+    ' arasındaki öz bildirim tercihidir; beceri veya başarı ölçümü değildir.';
+});
 // Fixed counterbalanced presentation: four direct and four reverse items per page.
-const ITEMS=Array.from({length:12},(_,block)=>DIMS.map((d,i)=>{const j=(block+(i%2)*3)%12;return {id:d.id+'-'+j,dim:d.id,facet:j<6?0:1,reverse:j%6>=3,text:d.items[j],source:'Mizaç özgün Türkçe madde',version:'0.2'};})).flat();
-function facetScores(answers){return DIMS.flatMap(d=>[0,1].map(f=>{const rows=ITEMS.filter(q=>q.dim===d.id&&q.facet===f);const vals=rows.filter(q=>(Number.isInteger(answers[q.id])&&answers[q.id]>=1&&answers[q.id]<=5)).map(q=>q.reverse?6-answers[q.id]:answers[q.id]);return {dim:d.id,facet:f,name:FACETS[d.id][f],n:vals.length,score:vals.length===6?Math.round((vals.reduce((a,b)=>a+b,0)/6-1)*25):null};}));}
-const SCENARIOS=[
-{title:'Teslim saati yaklaşıyor',text:'Rapor iki saat sonra teslim edilecek. Birkaç kayıt beklenmedik görünüyor. Genellikle ilk adımınız hangisine yakın olur?',options:[['Şüpheli kayıtları ve kaynağı kontrol ederek başlayırım.','detail','Kontrol odağı'],['Önce kullanılabilir bir taslak çıkarır, açık noktaları işaretlerim.','pace','Erken çıktı'],['Önce teslim kapsamını ve öncelikleri netleştiririm.','plan','Çerçeveleme'],['Konuya yakın bir çalışma arkadaşımla kısa değerlendirme yaparım.','collab','Ortak değerlendirme']]},
-{title:'İlk ekip toplantısı',text:'Yeni katıldığınız ekipte iş bölümü konuşuluyor. İlk yaklaşımınız hangisine yakın?',options:[['Önce ekip üyelerini dinleyerek çalışma biçimini anlamaya çalışırım.','voice','Önce dinleme',-1],['Yapabileceğimi düşündüğüm bir iş için sorumluluk teklif ederim.','initiative','İlk adımı üstlenme'],['Birlikte kısa bir görev planı oluşturmayı öneririm.','plan','Yapılandırma'],['Fikirlerimi paylaşarak tartışmayı başlatırım.','voice','Erken paylaşım']]},
-{title:'Yeni bir araç',text:'Ekip, mevcut araç yerine yeni bir aracı denemeyi konuşuyor. Siz nasıl yaklaşırsınız?',options:[['Küçük bir işte deneyerek farkını görmek isterim.','change','Sınırlı deneme'],['Karşılaştırmalı örnek sonuçlara bakmak isterim.','evidence','Kanıt toplama'],['Mevcut araç yeterliyse sürdürmeyi tercih ederim.','change','Bilinen yöntemi sürdürme',-1],['Ekibin kullanım deneyimini birlikte değerlendirmek isterim.','collab','Ortak değerlendirme']]},
-{title:'Sorumlusu belirsiz iş',text:'Ekipler arasında kalan bir talep geldi. Kendi yetkiniz içinde küçük bir adım atabiliyorsunuz. İlk tercihiniz?',options:[['Yetkim içindeki ilk adımı atar, ilgili kişilere haber veririm.','initiative','Başlatma'],['Önce sorumluluk ve teslim beklentisini netleştiririm.','initiative','Çerçeveyi netleştirme',-1],['İlgili ekiplerle kısa bir görüşme yaparım.','collab','Koordinasyon'],['Talebin kaynağını ve dayanaklarını incelerim.','evidence','Kanıt inceleme']]},
-{title:'Farklı görüş',text:'Toplantıda sizin farklı düşündüğünüz bir öneri destek görüyor. Genellikle ne yaparsınız?',options:[['Görüşümü ve gerekçemi toplantıda paylaşırım.','voice','Açık görüş'],['Önce düşüncelerimi toparlayıp sonrasında yazılı paylaşırım.','voice','Düşünerek paylaşım',-1],['Önerilerin dayanaklarını yan yana getirmeyi isterim.','evidence','Karşılaştırma'],['Ortak bir küçük denemeyle görmeyi öneririm.','change','Deneyerek öğrenme']]},
-{title:'Yeni görev',text:'Daha önce yapmadığınız bir görev aldınız. İlk yarım saatinizi nasıl kullanmayı tercih edersiniz?',options:[['İşin adımlarını ve ara teslimleri çıkarırım.','plan','Ön planlama'],['Küçük bir ilk çıktı oluşturmaya başlarım.','pace','Erken çıktı'],['Benzer işi yapan biriyle yaklaşım konuşurum.','collab','Fikir alışverişi'],['Örnekleri ve kaynak bilgileri incelerim.','evidence','Dayanak inceleme']]}
+const ITEMS = Array.from({ length: 12 }, (_, block) =>
+  DIMS.map((d, i) => {
+    const j = (block + (i % 2) * 3) % 12;
+    return {
+      id: d.id + '-' + j,
+      dim: d.id,
+      facet: j < 6 ? 0 : 1,
+      reverse: j % 6 >= 3,
+      text: d.items[j],
+      source: 'Mizaç özgün Türkçe madde',
+      version: '0.2',
+    };
+  })
+).flat();
+function facetScores(answers) {
+  return DIMS.flatMap(d =>
+    [0, 1].map(f => {
+      const rows = ITEMS.filter(q => q.dim === d.id && q.facet === f);
+      const vals = rows
+        .filter(q => Number.isInteger(answers[q.id]) && answers[q.id] >= 1 && answers[q.id] <= 5)
+        .map(q => (q.reverse ? 6 - answers[q.id] : answers[q.id]));
+      return {
+        dim: d.id,
+        facet: f,
+        name: FACETS[d.id][f],
+        n: vals.length,
+        score: vals.length === 6 ? Math.round((vals.reduce((a, b) => a + b, 0) / 6 - 1) * 25) : null,
+      };
+    })
+  );
+}
+const SCENARIOS = [
+  {
+    title: 'Teslim saati yaklaşıyor',
+    text: 'Rapor iki saat sonra teslim edilecek. Birkaç kayıt beklenmedik görünüyor. Genellikle ilk adımınız hangisine yakın olur?',
+    options: [
+      ['Şüpheli kayıtları ve kaynağı kontrol ederek başlayırım.', 'detail', 'Kontrol odağı'],
+      ['Önce kullanılabilir bir taslak çıkarır, açık noktaları işaretlerim.', 'pace', 'Erken çıktı'],
+      ['Önce teslim kapsamını ve öncelikleri netleştiririm.', 'plan', 'Çerçeveleme'],
+      ['Konuya yakın bir çalışma arkadaşımla kısa değerlendirme yaparım.', 'collab', 'Ortak değerlendirme'],
+    ],
+  },
+  {
+    title: 'İlk ekip toplantısı',
+    text: 'Yeni katıldığınız ekipte iş bölümü konuşuluyor. İlk yaklaşımınız hangisine yakın?',
+    options: [
+      ['Önce ekip üyelerini dinleyerek çalışma biçimini anlamaya çalışırım.', 'voice', 'Önce dinleme', -1],
+      ['Yapabileceğimi düşündüğüm bir iş için sorumluluk teklif ederim.', 'initiative', 'İlk adımı üstlenme'],
+      ['Birlikte kısa bir görev planı oluşturmayı öneririm.', 'plan', 'Yapılandırma'],
+      ['Fikirlerimi paylaşarak tartışmayı başlatırım.', 'voice', 'Erken paylaşım'],
+    ],
+  },
+  {
+    title: 'Yeni bir araç',
+    text: 'Ekip, mevcut araç yerine yeni bir aracı denemeyi konuşuyor. Siz nasıl yaklaşırsınız?',
+    options: [
+      ['Küçük bir işte deneyerek farkını görmek isterim.', 'change', 'Sınırlı deneme'],
+      ['Karşılaştırmalı örnek sonuçlara bakmak isterim.', 'evidence', 'Kanıt toplama'],
+      ['Mevcut araç yeterliyse sürdürmeyi tercih ederim.', 'change', 'Bilinen yöntemi sürdürme', -1],
+      ['Ekibin kullanım deneyimini birlikte değerlendirmek isterim.', 'collab', 'Ortak değerlendirme'],
+    ],
+  },
+  {
+    title: 'Sorumlusu belirsiz iş',
+    text: 'Ekipler arasında kalan bir talep geldi. Kendi yetkiniz içinde küçük bir adım atabiliyorsunuz. İlk tercihiniz?',
+    options: [
+      ['Yetkim içindeki ilk adımı atar, ilgili kişilere haber veririm.', 'initiative', 'Başlatma'],
+      ['Önce sorumluluk ve teslim beklentisini netleştiririm.', 'initiative', 'Çerçeveyi netleştirme', -1],
+      ['İlgili ekiplerle kısa bir görüşme yaparım.', 'collab', 'Koordinasyon'],
+      ['Talebin kaynağını ve dayanaklarını incelerim.', 'evidence', 'Kanıt inceleme'],
+    ],
+  },
+  {
+    title: 'Farklı görüş',
+    text: 'Toplantıda sizin farklı düşündüğünüz bir öneri destek görüyor. Genellikle ne yaparsınız?',
+    options: [
+      ['Görüşümü ve gerekçemi toplantıda paylaşırım.', 'voice', 'Açık görüş'],
+      ['Önce düşüncelerimi toparlayıp sonrasında yazılı paylaşırım.', 'voice', 'Düşünerek paylaşım', -1],
+      ['Önerilerin dayanaklarını yan yana getirmeyi isterim.', 'evidence', 'Karşılaştırma'],
+      ['Ortak bir küçük denemeyle görmeyi öneririm.', 'change', 'Deneyerek öğrenme'],
+    ],
+  },
+  {
+    title: 'Yeni görev',
+    text: 'Daha önce yapmadığınız bir görev aldınız. İlk yarım saatinizi nasıl kullanmayı tercih edersiniz?',
+    options: [
+      ['İşin adımlarını ve ara teslimleri çıkarırım.', 'plan', 'Ön planlama'],
+      ['Küçük bir ilk çıktı oluşturmaya başlarım.', 'pace', 'Erken çıktı'],
+      ['Benzer işi yapan biriyle yaklaşım konuşurum.', 'collab', 'Fikir alışverişi'],
+      ['Örnekleri ve kaynak bilgileri incelerim.', 'evidence', 'Dayanak inceleme'],
+    ],
+  },
 ];
-const ROLES={general:{name:'Genel çalışma bağlamı',text:'Rol beklentileri henüz tanımlı değil. Rapor yalnızca çalışma tercihleri ve görüşme başlıklarını gösterir.',focus:['plan','collab','initiative']},analyst:{name:'İş / süreç analisti',text:'Taslak bağlam: belirsiz talepleri netleştirme, veri doğrulama, paydaşlarla çalışma. İş analiziyle doğrulanmalıdır.',focus:['evidence','detail','voice']},operations:{name:'Operasyon uzmanı',text:'Taslak bağlam: zamanında yürütme, devir teslim ve istisna yönetimi. Şirketin gerçek görevleriyle doğrulanmalıdır.',focus:['plan','detail','initiative']},lead:{name:'Ekip yöneticisi',text:'Taslak bağlam: koordinasyon, kararların açıklanması ve değişikliklerin uygulanması. Rolün kıdemi ve yetkileri ayrıca tanımlanmalıdır.',focus:['voice','collab','change']}};
-function score(answers){return DIMS.map(d=>{const rows=ITEMS.filter(q=>q.dim===d.id&&(Number.isInteger(answers[q.id])&&answers[q.id]>=1&&answers[q.id]<=5));const sum=rows.reduce((a,q)=>a+(q.reverse?6-answers[q.id]:answers[q.id]),0);const s=rows.length?Math.round((sum/rows.length-1)*25):null;return {...d,score:s,n:rows.length,band:s===null?'missing':s<35?'low':s>65?'high':'mid'};});}
-function quality(answers){const vals=ITEMS.map(q=>answers[q.id]).filter(v=>Number.isInteger(v)&&v>=1&&v<=5);const flags=[];if(vals.length<ITEMS.length)flags.push('Eksik yanıtlar var; tam rapor oluşturulmaz.');if(vals.length===ITEMS.length&&Math.max(...[1,2,3,4,5].map(n=>vals.filter(v=>v===n).length))>=Math.ceil(ITEMS.length*.83))flags.push('Yanıtlar tek seçenekte yoğunlaşıyor. Bu örüntü tek başına dikkatsizlik veya yanıltma kanıtı değildir.');const pairs=DIMS.flatMap(d=>[0,1,6,7].map(j=>({dim:d.name,a:answers[d.id+'-'+j],b:answers[d.id+'-'+(j+3)]}))).filter(p=>p.a&&p.b&&Math.abs(p.a-(6-p.b))>=3);if(pairs.length>=4)flags.push('Benzer içerikli maddelerde farklı yanıtlar var. Bağlam veya ifade farklarını görüşmede açıklığa kavuşturun.');return {flags,pairs};}
-function isComplete(s){return !!s&&Object.keys(s.answers||{}).length===ITEMS.length&&Object.keys(s.scenarios||{}).length===SCENARIOS.length&&ITEMS.every(q=>Number.isInteger(s.answers?.[q.id])&&s.answers[q.id]>=1&&s.answers[q.id]<=5)&&SCENARIOS.every((q,i)=>Number.isInteger(s.scenarios?.[i])&&s.scenarios[i]>=0&&s.scenarios[i]<q.options.length)&&Array.isArray(s.motives)&&s.motives.length===2&&new Set(s.motives).size===2&&s.motives.every(v=>Number.isInteger(v)&&v>=0&&v<6)}
-if(typeof module!=='undefined')module.exports={isComplete,DIMS,ITEMS,SCENARIOS,FACETS,facetScores,score,quality};
+const ROLES = {
+  general: {
+    name: 'Genel çalışma bağlamı',
+    text: 'Rol beklentileri henüz tanımlı değil. Rapor yalnızca çalışma tercihleri ve görüşme başlıklarını gösterir.',
+    focus: ['plan', 'collab', 'initiative'],
+  },
+  analyst: {
+    name: 'İş / süreç analisti',
+    text: 'Taslak bağlam: belirsiz talepleri netleştirme, veri doğrulama, paydaşlarla çalışma. İş analiziyle doğrulanmalıdır.',
+    focus: ['evidence', 'detail', 'voice'],
+  },
+  operations: {
+    name: 'Operasyon uzmanı',
+    text: 'Taslak bağlam: zamanında yürütme, devir teslim ve istisna yönetimi. Şirketin gerçek görevleriyle doğrulanmalıdır.',
+    focus: ['plan', 'detail', 'initiative'],
+  },
+  lead: {
+    name: 'Ekip yöneticisi',
+    text: 'Taslak bağlam: koordinasyon, kararların açıklanması ve değişikliklerin uygulanması. Rolün kıdemi ve yetkileri ayrıca tanımlanmalıdır.',
+    focus: ['voice', 'collab', 'change'],
+  },
+};
+function score(answers) {
+  return DIMS.map(d => {
+    const rows = ITEMS.filter(
+      q => q.dim === d.id && Number.isInteger(answers[q.id]) && answers[q.id] >= 1 && answers[q.id] <= 5
+    );
+    const sum = rows.reduce((a, q) => a + (q.reverse ? 6 - answers[q.id] : answers[q.id]), 0);
+    const s = rows.length ? Math.round((sum / rows.length - 1) * 25) : null;
+    return {
+      ...d,
+      score: s,
+      n: rows.length,
+      band: s === null ? 'missing' : s < 35 ? 'low' : s > 65 ? 'high' : 'mid',
+    };
+  });
+}
+function quality(answers) {
+  const vals = ITEMS.map(q => answers[q.id]).filter(v => Number.isInteger(v) && v >= 1 && v <= 5);
+  const flags = [];
+  if (vals.length < ITEMS.length) flags.push('Eksik yanıtlar var; tam rapor oluşturulmaz.');
+  if (
+    vals.length === ITEMS.length &&
+    Math.max(...[1, 2, 3, 4, 5].map(n => vals.filter(v => v === n).length)) >= Math.ceil(ITEMS.length * 0.83)
+  )
+    flags.push(
+      'Yanıtlar tek seçenekte yoğunlaşıyor. Bu örüntü tek başına dikkatsizlik veya yanıltma kanıtı değildir.'
+    );
+  const pairs = DIMS.flatMap(d =>
+    [0, 1, 6, 7].map(j => ({ dim: d.name, a: answers[d.id + '-' + j], b: answers[d.id + '-' + (j + 3)] }))
+  ).filter(p => p.a && p.b && Math.abs(p.a - (6 - p.b)) >= 3);
+  if (pairs.length >= 4)
+    flags.push(
+      'Benzer içerikli maddelerde farklı yanıtlar var. Bağlam veya ifade farklarını görüşmede açıklığa kavuşturun.'
+    );
+  return { flags, pairs };
+}
+function isComplete(s) {
+  return (
+    !!s &&
+    Object.keys(s.answers || {}).length === ITEMS.length &&
+    Object.keys(s.scenarios || {}).length === SCENARIOS.length &&
+    ITEMS.every(q => Number.isInteger(s.answers?.[q.id]) && s.answers[q.id] >= 1 && s.answers[q.id] <= 5) &&
+    SCENARIOS.every(
+      (q, i) => Number.isInteger(s.scenarios?.[i]) && s.scenarios[i] >= 0 && s.scenarios[i] < q.options.length
+    ) &&
+    Array.isArray(s.motives) &&
+    s.motives.length === 2 &&
+    new Set(s.motives).size === 2 &&
+    s.motives.every(v => Number.isInteger(v) && v >= 0 && v < 6)
+  );
+}
+if (typeof module !== 'undefined')
+  module.exports = { isComplete, DIMS, ITEMS, SCENARIOS, FACETS, facetScores, score, quality };

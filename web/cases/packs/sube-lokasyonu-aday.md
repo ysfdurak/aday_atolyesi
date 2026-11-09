@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Pera Yaşam
 
-Pera Yaşam,2014’te Bursa’da kurulmuş bir ev ve yaşam ürünleri perakendecisidir. Şirketin Osmangazi’de tek fiziksel mağazası ve Türkiye geneline hizmet veren çevrim içi satış kanalı vardır.46 çalışanın 18’i mağazada,12’si depo ve sevkiyatta,8’i dijital kanalda,8’i merkez görevlerindedir. Ürünler hazır mobilya, aydınlatma ve küçük ev eşyası gruplarından oluşur. Mağaza ve çevrim içi kanal aynı ürün kataloğunu kullanır; kampanya takvimleri her zaman aynı değildir.
+Pera Yaşam, 2014’te Bursa’da kurulmuş bir ev ve yaşam ürünleri perakendecisidir. Şirketin Osmangazi’de tek fiziksel mağazası ve Türkiye geneline hizmet veren çevrim içi satış kanalı vardır. 46 çalışanın 18’i mağazada, 12’si depo ve sevkiyatta, 8’i dijital kanalda, 8’i merkez görevlerindedir. Ürünler hazır mobilya, aydınlatma ve küçük ev eşyası gruplarından oluşur. Mağaza ve çevrim içi kanal aynı ürün kataloğunu kullanır; kampanya takvimleri her zaman aynı değildir.
 
 Son iki yılda müşteri hizmetleri ve teslim süresi için altyapı harcaması yapıldı. Bu yılki yönetim gündeminde ikinci mağaza yer alıyor. Ortaklar mağaza sayısını artırma fikrine olumlu, ancak belirli bir lokasyon için karar vermiş değiller. Emlak danışmanı üç yerle ön görüşme yaptı. Satış ekibi kendi tahminini, finans sabit gider planını, operasyon ise açılış iş listesini hazırladı. İş geliştirme yöneticisi olarak senin toplantıda 60 dakika süren var; ilk 20 dakika sunum, kalan bölüm soru ve karardır.
 
@@ -128,7 +128,7 @@ Tutarlar ana yatırım tablosunun alt kırılımıdır. İlk ürün stoğu ve i�
 
 ## Beklenen çıktılar
 
-1. Yönetim kurulu karar dosyası: mevcut durum değerlendirmeniz, önerdiğiniz hedef durum ve başarı göstergeleri, kararınız ve gerekçesi.
+1. Yönetim kurulu karar dosyası: mevcut durum değerlendirmen, önerdiğin hedef durum ve başarı göstergeleri, kararın ve gerekçesi.
 2. Lokasyon karşılaştırma dosyası ve hesap eki.
 3. Beş slaytlık yönetim kurulu sunumu içeriği.
 4. Önerilen kararın uygulanmasına ilişkin 90 günlük plan.

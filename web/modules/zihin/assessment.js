@@ -1,15 +1,298 @@
-(function(root){
-'use strict';
-const names={num:'Sayısal örüntü keşfi',shape:'Soyut ve görsel muhakeme',verbal:'Sözel muhakeme',attention:'Dikkat ve veri kontrolü',quant:'Sayısal veri analizi',logic:'Analitik ve tümdengelimsel muhakeme'};
-const descriptors={num:'Yeni sayısal ilişkileri fark etme ve kuralı diğer örneklerde sınama.',shape:'Görsel ilişkileri, dönüşümleri ve hücre kısıtlarını kullanma.',verbal:'Metnin kapsamını, çıkarımını ve istisnalarını ayırma.',attention:'Kayıtları karşılaştırma ve tanımlı kontrol ölçütlerini uygulama.',quant:'Oran, tablo, kapasite ve çok adımlı sayısal bilgiyi yorumlama.',logic:'Birden fazla koşulu birlikte değerlendirip tutarlı sonuca ulaşma.'};
-const actions={num:'Fark, alt dizi, basamak ve matris yapılarından karışık sorular çöz; her hipotezi en az iki örnekte denetle.',shape:'Dönüşüm, hücre birleşimi ve satır–sütun kısıtlarını ayrı ayrı denetleyerek karışık matris çalış.',verbal:'Metinde verilen bilgi ile varsayımı ayır; her çıkarım için metindeki dayanağı işaretle.',attention:'Kontrol koşullarını kısa bir listeye dönüştür; önce doğruluğu, ardından aynı formatta süreyi çalış.',quant:'Hesaptan önce birim, payda ve işlem sırasını yaz; ardından yeni verili karma sorular çöz.',logic:'Koşulları tabloya aktar; kesin konumları yerleştir ve çelişen seçenekleri sistematik ele.'};
-const probes={num:['Yeni bir problemde ilk denediğin yaklaşım çalışmazsa nasıl başka bir kural ararsın?','Hipotez kurma, karşı örnek arama ve yöntemi değiştirme adımlarını somutlaştırması.'],shape:['Bu görsel ilişkide hangi özelliklerin değiştiğini ve hangilerinin sabit kaldığını sesli anlat.','Yön, sayı, doluluk ve konum özelliklerini sistematik ayırması.'],verbal:['Eksik bilgi içeren bir talimatı nasıl yorumlar, neyi varsaymak yerine sorarsın?','Verilen bilgi, çıkarım ve varsayımı ayırması; belirsizliği açıklaması.'],attention:['İki raporun sonuçları çelişiyorsa hangi kontrollerle nedenini araştırırsın?','Tanım, dönem, kapsam ve kaynak kontrolünü örnekle açıklaması.'],quant:['Bir KPI iyileşirken toplam sonuç neden kötüleşmiş olabilir? Küçük bir veri örneğiyle açıkla.','Ağırlık, payda, hacim ve kapsam farkını incelemesi.'],logic:['Birbiriyle çelişen teslim tarihi ve kapasite koşullarında nasıl bir plan kurarsın?','Kısıtları belirlemesi, varsayımlarını açıklaması ve uygulanabilir seçenekleri karşılaştırması.']};
-const median=a=>{a=a.slice().sort((x,y)=>x-y);return !a.length?null:a.length%2?a[(a.length-1)/2]:(a[a.length/2-1]+a[a.length/2])/2;};
-const pct=(n,d)=>d?Math.round(n/d*100):null;
-function metric(rows){let answered=rows.filter(r=>r.answer!==undefined),correct=answered.filter(r=>r.correct);return {total:rows.length,answered:answered.length,correct:correct.length,wrong:answered.length-correct.length,blank:rows.length-answered.length,score:pct(correct.length,rows.length),accuracy:pct(correct.length,answered.length),completion:pct(answered.length,rows.length),correctMedian:median(correct.map(r=>r.sec)),active:rows.reduce((n,r)=>n+r.sec,0),hinted:answered.filter(r=>r.hinted).length};}
-const groupedNames={'shape-combine':'Hücre birleşimi ve ön dönüşüm','shape-features':'Görsel özellik dizileri ve dönüşümler','shape-latin':'Satır–sütun kısıtları','shape-6':'Katlama ve delik açma','shape-7':'Üç boyutlu küp yönelimi','shape-8':'Göreli yönlerle konum izleme','logic-order':'Sıralama ve yerleştirme kısıtları','attention-record':'Kayıt karşılaştırma ve normalleştirme','attention-filter':'Koşullu inceleme ve istisnalar','attention-scan':'Örtüşen örüntü tarama','quant-weighted':'Ağırlıklı toplam ve oranlar'};
-function family(q){if(q.strategyId)return q.strategyId;if(q.cat==='shape'&&q.type>=6)return 'shape-'+q.type;if(q.cat==='shape')return [0,3,4].includes(q.type)?'shape-combine':[1,5].includes(q.type)?'shape-features':'shape-latin';if(q.cat==='attention')return [1,3,5].includes(q.type)?'attention-filter':[0,4].includes(q.type)?'attention-record':'attention-scan';if(q.cat==='quant'&&[0,4].includes(q.type))return 'quant-weighted';if(q.cat==='logic'&&[0,1].includes(q.type))return 'logic-order';return q.cat+'-'+q.type;}
-function analyze(rows,meta={}){let overall=metric(rows),domains=Object.keys(names).map(id=>{let items=rows.filter(r=>r.q.cat===id);return {id,name:names[id],description:descriptors[id],...metric(items),breadth:new Set(items.map(r=>family(r.q))).size,answeredBreadth:new Set(items.filter(r=>r.answer!==undefined).map(r=>family(r.q))).size,levels:[1,2,3].map(level=>({level,...metric(items.filter(r=>r.q.level===level))})),evidence:items.filter(r=>r.answer!==undefined).map(r=>({family:family(r.q),correct:r.correct,hinted:!!r.hinted}))};}),stages=[1,2,3].map(level=>({level,...metric(rows.filter(r=>r.q.level===level))}));let evidence=domains.filter(d=>d.answered>=3),ordered=evidence.slice().sort((a,b)=>a.score-b.score),priorities=ordered.slice(0,2).map(d=>({id:d.id,name:d.name,evidence:`${d.total} soruda ${d.correct} doğru, ${d.wrong} yanlış, ${d.blank} boş.`,action:actions[d.id]}));let grouped={};for(let r of rows){let id=family(r.q);(grouped[id]||(grouped[id]=[])).push(r);}let families=Object.entries(grouped).map(([id,items])=>({id,cat:items[0].q.cat,name:groupedNames[id]||root.Discovery?.byId(id)?.name||root.Engine?.typeNames[items[0].q.cat]?.[items[0].q.type]||id,...metric(items)}));let itemResults=rows.map((r,index)=>{let id=family(r.q),name=groupedNames[id]||root.Discovery?.byId(id)?.name||root.Engine?.typeNames[r.q.cat]?.[r.q.type]||id,answered=r.answer!==undefined;return {index:index+1,id:r.q.id||'demo-'+index,cat:r.q.cat,family:id,name,level:r.q.level,template:r.q.templateId||r.q.ruleId||'engine-v2-'+r.q.cat+'-'+r.q.type,stem:r.q.q||null,context:answered&&!r.correct?r.q.visual||null:null,solution:answered&&!r.correct?r.q.exp||null:null,selectedDisplay:answered&&!r.correct?r.answer:null,correctDisplay:answered&&!r.correct?r.q.answer||null:null,answered,correct:answered&&r.correct,hinted:!!r.hinted,sec:Math.round(r.sec*10)/10,choice:answered&&r.q.options?String.fromCharCode(65+r.q.options.indexOf(r.answer)):null,correctChoice:r.q.options?String.fromCharCode(65+r.q.options.indexOf(r.q.answer)):null,diagnostic:answered&&!r.correct?(r.q.distractorReasons?.[r.answer]||r.q.hint||'Çözümdeki ilişkiyi yeniden denetle.'):null,errorTag:answered&&!r.correct?r.q.errorTags?.[r.answer]||'unclassified':null};});let first=meta.firstResponses||{},revision={available:Object.keys(first).length>0,wrongToRight:0,rightToWrong:0,wrongToWrong:0};rows.forEach((r,i)=>{if(first[i]!==undefined&&meta.changes?.[i]){let was=first[i]===r.q.answer;if(!was&&r.correct)revision.wrongToRight++;else if(was&&!r.correct)revision.rightToWrong++;else if(!was&&!r.correct)revision.wrongToWrong++;}});let visited=meta.visited||{},unseen=rows.filter((r,i)=>r.answer===undefined&&!visited[i]&&r.sec===0).length,changes=meta.changes||{};return {version:2,bankRevision:meta.bankRevision||4,itemResults,revision,interruptions:meta.interruptions||{count:0,ms:0},id:meta.id||'R-'+(meta.at||Date.now()),at:meta.at||Date.now(),name:meta.name||'Genel yetenek denemesi',sample:!!meta.sample,graded:!!meta.graded,elapsed:Math.max(0,meta.elapsed||0),budget:meta.budget||null,reason:meta.reason||'manual',overall,domains,stages,families,unseen,skipped:overall.blank-unseen,revisited:Object.values(visited).filter(n=>n>1).length,changed:Object.values(changes).filter(n=>n>0).length,changeCount:Object.values(changes).reduce((n,x)=>n+x,0),flagged:(meta.flags||[]).length,priorities,probes:ordered.slice(0,2).map(d=>({name:d.name,question:probes[d.id][0],observe:probes[d.id][1]})),hasEnough:evidence.length>0,comparable:false};}
-function sample(){let correctLimits={num:5,shape:3,verbal:4,attention:5,quant:3,logic:4},blankLast=new Set(['shape','quant','logic']),ids=Object.keys(names),rows=[],visited={},changes={},seen=new Set();for(let i=0;i<36;i++){let cat=ids[i%6],j=Math.floor(i/6),level=Math.floor(i/12)+1,blank=j===5&&blankLast.has(cat),sec=[35,48,43,28,65,55][i%6]+(level-1)*11+(j%2)*3,correct=j<correctLimits[cat],type=cat==='shape'?[0,1,2,6,7,8][j]:j,strategy=['cycle','interleave','differences','recurrence','digits','special'][j],q=root.Engine?(cat==='num'&&root.Discovery?root.Discovery.create(strategy,level,seen):root.Engine.question(cat,type,level)):{id:'DEMO-'+i,answer:'A',options:['A','B','C','D','E'],cat,type,level,strategyId:cat==='num'?strategy:undefined};rows.push({q,answer:blank?undefined:correct?q.answer:q.options.find(o=>o!==q.answer),correct:!blank&&correct,hinted:false,sec:i===35?0:sec});if(i!==35)visited[i]=i%7===0?2:1;if(i%9===0)changes[i]=1;}delete changes[18];changes[30]=1;let firstResponses={};for(let i of [0,9,27])firstResponses[i]=rows[i].q.options.find(o=>o!==rows[i].q.answer);firstResponses[30]=rows[30].q.answer;let active=rows.reduce((n,r)=>n+r.sec,0);return analyze(rows,{sample:true,graded:true,id:'DEMO-001',name:'Aşamalı genel yetenek · Örnek katılımcı',elapsed:active+90,budget:2400,visited,changes,firstResponses,interruptions:{count:1,ms:90000},flags:[22,31]});}
-root.Assessment={names,descriptors,actions,probes,metric,analyze,sample,median,pct,family};
-})(typeof window==='undefined'?globalThis:window);
+(function (root) {
+  'use strict';
+  const names = {
+    num: 'Sayısal örüntü keşfi',
+    shape: 'Soyut ve görsel muhakeme',
+    verbal: 'Sözel muhakeme',
+    attention: 'Dikkat ve veri kontrolü',
+    quant: 'Sayısal veri analizi',
+    logic: 'Analitik ve tümdengelimsel muhakeme',
+  };
+  const descriptors = {
+    num: 'Yeni sayısal ilişkileri fark etme ve kuralı diğer örneklerde sınama.',
+    shape: 'Görsel ilişkileri, dönüşümleri ve hücre kısıtlarını kullanma.',
+    verbal: 'Metnin kapsamını, çıkarımını ve istisnalarını ayırma.',
+    attention: 'Kayıtları karşılaştırma ve tanımlı kontrol ölçütlerini uygulama.',
+    quant: 'Oran, tablo, kapasite ve çok adımlı sayısal bilgiyi yorumlama.',
+    logic: 'Birden fazla koşulu birlikte değerlendirip tutarlı sonuca ulaşma.',
+  };
+  const actions = {
+    num: 'Fark, alt dizi, basamak ve matris yapılarından karışık sorular çöz; her hipotezi en az iki örnekte denetle.',
+    shape: 'Dönüşüm, hücre birleşimi ve satır–sütun kısıtlarını ayrı ayrı denetleyerek karışık matris çalış.',
+    verbal: 'Metinde verilen bilgi ile varsayımı ayır; her çıkarım için metindeki dayanağı işaretle.',
+    attention:
+      'Kontrol koşullarını kısa bir listeye dönüştür; önce doğruluğu, ardından aynı formatta süreyi çalış.',
+    quant: 'Hesaptan önce birim, payda ve işlem sırasını yaz; ardından yeni verili karma sorular çöz.',
+    logic: 'Koşulları tabloya aktar; kesin konumları yerleştir ve çelişen seçenekleri sistematik ele.',
+  };
+  const probes = {
+    num: [
+      'Yeni bir problemde ilk denediğin yaklaşım çalışmazsa nasıl başka bir kural ararsın?',
+      'Hipotez kurma, karşı örnek arama ve yöntemi değiştirme adımlarını somutlaştırması.',
+    ],
+    shape: [
+      'Bu görsel ilişkide hangi özelliklerin değiştiğini ve hangilerinin sabit kaldığını sesli anlat.',
+      'Yön, sayı, doluluk ve konum özelliklerini sistematik ayırması.',
+    ],
+    verbal: [
+      'Eksik bilgi içeren bir talimatı nasıl yorumlar, neyi varsaymak yerine sorarsın?',
+      'Verilen bilgi, çıkarım ve varsayımı ayırması; belirsizliği açıklaması.',
+    ],
+    attention: [
+      'İki raporun sonuçları çelişiyorsa hangi kontrollerle nedenini araştırırsın?',
+      'Tanım, dönem, kapsam ve kaynak kontrolünü örnekle açıklaması.',
+    ],
+    quant: [
+      'Bir KPI iyileşirken toplam sonuç neden kötüleşmiş olabilir? Küçük bir veri örneğiyle açıkla.',
+      'Ağırlık, payda, hacim ve kapsam farkını incelemesi.',
+    ],
+    logic: [
+      'Birbiriyle çelişen teslim tarihi ve kapasite koşullarında nasıl bir plan kurarsın?',
+      'Kısıtları belirlemesi, varsayımlarını açıklaması ve uygulanabilir seçenekleri karşılaştırması.',
+    ],
+  };
+  const median = a => {
+    a = a.slice().sort((x, y) => x - y);
+    return !a.length
+      ? null
+      : a.length % 2
+        ? a[(a.length - 1) / 2]
+        : (a[a.length / 2 - 1] + a[a.length / 2]) / 2;
+  };
+  const pct = (n, d) => (d ? Math.round((n / d) * 100) : null);
+  function metric(rows) {
+    let answered = rows.filter(r => r.answer !== undefined),
+      correct = answered.filter(r => r.correct);
+    return {
+      total: rows.length,
+      answered: answered.length,
+      correct: correct.length,
+      wrong: answered.length - correct.length,
+      blank: rows.length - answered.length,
+      score: pct(correct.length, rows.length),
+      accuracy: pct(correct.length, answered.length),
+      completion: pct(answered.length, rows.length),
+      correctMedian: median(correct.map(r => r.sec)),
+      active: rows.reduce((n, r) => n + r.sec, 0),
+      hinted: answered.filter(r => r.hinted).length,
+    };
+  }
+  const groupedNames = {
+    'shape-combine': 'Hücre birleşimi ve ön dönüşüm',
+    'shape-features': 'Görsel özellik dizileri ve dönüşümler',
+    'shape-latin': 'Satır–sütun kısıtları',
+    'shape-6': 'Katlama ve delik açma',
+    'shape-7': 'Üç boyutlu küp yönelimi',
+    'shape-8': 'Göreli yönlerle konum izleme',
+    'logic-order': 'Sıralama ve yerleştirme kısıtları',
+    'attention-record': 'Kayıt karşılaştırma ve normalleştirme',
+    'attention-filter': 'Koşullu inceleme ve istisnalar',
+    'attention-scan': 'Örtüşen örüntü tarama',
+    'quant-weighted': 'Ağırlıklı toplam ve oranlar',
+  };
+  function family(q) {
+    if (q.strategyId) return q.strategyId;
+    if (q.cat === 'shape' && q.type >= 6) return 'shape-' + q.type;
+    if (q.cat === 'shape')
+      return [0, 3, 4].includes(q.type)
+        ? 'shape-combine'
+        : [1, 5].includes(q.type)
+          ? 'shape-features'
+          : 'shape-latin';
+    if (q.cat === 'attention')
+      return [1, 3, 5].includes(q.type)
+        ? 'attention-filter'
+        : [0, 4].includes(q.type)
+          ? 'attention-record'
+          : 'attention-scan';
+    if (q.cat === 'quant' && [0, 4].includes(q.type)) return 'quant-weighted';
+    if (q.cat === 'logic' && [0, 1].includes(q.type)) return 'logic-order';
+    return q.cat + '-' + q.type;
+  }
+  function analyze(rows, meta = {}) {
+    let overall = metric(rows),
+      domains = Object.keys(names).map(id => {
+        let items = rows.filter(r => r.q.cat === id);
+        return {
+          id,
+          name: names[id],
+          description: descriptors[id],
+          ...metric(items),
+          breadth: new Set(items.map(r => family(r.q))).size,
+          answeredBreadth: new Set(items.filter(r => r.answer !== undefined).map(r => family(r.q))).size,
+          levels: [1, 2, 3].map(level => ({ level, ...metric(items.filter(r => r.q.level === level)) })),
+          evidence: items
+            .filter(r => r.answer !== undefined)
+            .map(r => ({ family: family(r.q), correct: r.correct, hinted: !!r.hinted })),
+        };
+      }),
+      stages = [1, 2, 3].map(level => ({ level, ...metric(rows.filter(r => r.q.level === level)) }));
+    let evidence = domains.filter(d => d.answered >= 3),
+      ordered = evidence.slice().sort((a, b) => a.score - b.score),
+      priorities = ordered.slice(0, 2).map(d => ({
+        id: d.id,
+        name: d.name,
+        evidence: `${d.total} soruda ${d.correct} doğru, ${d.wrong} yanlış, ${d.blank} boş.`,
+        action: actions[d.id],
+      }));
+    let grouped = {};
+    for (let r of rows) {
+      let id = family(r.q);
+      (grouped[id] || (grouped[id] = [])).push(r);
+    }
+    let families = Object.entries(grouped).map(([id, items]) => ({
+      id,
+      cat: items[0].q.cat,
+      name:
+        groupedNames[id] ||
+        root.Discovery?.byId(id)?.name ||
+        root.Engine?.typeNames[items[0].q.cat]?.[items[0].q.type] ||
+        id,
+      ...metric(items),
+    }));
+    let itemResults = rows.map((r, index) => {
+      let id = family(r.q),
+        name =
+          groupedNames[id] ||
+          root.Discovery?.byId(id)?.name ||
+          root.Engine?.typeNames[r.q.cat]?.[r.q.type] ||
+          id,
+        answered = r.answer !== undefined;
+      return {
+        index: index + 1,
+        id: r.q.id || 'demo-' + index,
+        cat: r.q.cat,
+        family: id,
+        name,
+        level: r.q.level,
+        template: r.q.templateId || r.q.ruleId || 'engine-v2-' + r.q.cat + '-' + r.q.type,
+        stem: r.q.q || null,
+        context: answered && !r.correct ? r.q.visual || null : null,
+        solution: answered && !r.correct ? r.q.exp || null : null,
+        selectedDisplay: answered && !r.correct ? r.answer : null,
+        correctDisplay: answered && !r.correct ? r.q.answer || null : null,
+        answered,
+        correct: answered && r.correct,
+        hinted: !!r.hinted,
+        sec: Math.round(r.sec * 10) / 10,
+        choice: answered && r.q.options ? String.fromCharCode(65 + r.q.options.indexOf(r.answer)) : null,
+        correctChoice: r.q.options ? String.fromCharCode(65 + r.q.options.indexOf(r.q.answer)) : null,
+        diagnostic:
+          answered && !r.correct
+            ? r.q.distractorReasons?.[r.answer] || r.q.hint || 'Çözümdeki ilişkiyi yeniden denetle.'
+            : null,
+        errorTag: answered && !r.correct ? r.q.errorTags?.[r.answer] || 'unclassified' : null,
+      };
+    });
+    let first = meta.firstResponses || {},
+      revision = {
+        available: Object.keys(first).length > 0,
+        wrongToRight: 0,
+        rightToWrong: 0,
+        wrongToWrong: 0,
+      };
+    rows.forEach((r, i) => {
+      if (first[i] !== undefined && meta.changes?.[i]) {
+        let was = first[i] === r.q.answer;
+        if (!was && r.correct) revision.wrongToRight++;
+        else if (was && !r.correct) revision.rightToWrong++;
+        else if (!was && !r.correct) revision.wrongToWrong++;
+      }
+    });
+    let visited = meta.visited || {},
+      unseen = rows.filter((r, i) => r.answer === undefined && !visited[i] && r.sec === 0).length,
+      changes = meta.changes || {};
+    return {
+      version: 2,
+      bankRevision: meta.bankRevision || 4,
+      itemResults,
+      revision,
+      interruptions: meta.interruptions || { count: 0, ms: 0 },
+      id: meta.id || 'R-' + (meta.at || Date.now()),
+      at: meta.at || Date.now(),
+      name: meta.name || 'Genel yetenek denemesi',
+      sample: !!meta.sample,
+      graded: !!meta.graded,
+      elapsed: Math.max(0, meta.elapsed || 0),
+      budget: meta.budget || null,
+      reason: meta.reason || 'manual',
+      overall,
+      domains,
+      stages,
+      families,
+      unseen,
+      skipped: overall.blank - unseen,
+      revisited: Object.values(visited).filter(n => n > 1).length,
+      changed: Object.values(changes).filter(n => n > 0).length,
+      changeCount: Object.values(changes).reduce((n, x) => n + x, 0),
+      flagged: (meta.flags || []).length,
+      priorities,
+      probes: ordered
+        .slice(0, 2)
+        .map(d => ({ name: d.name, question: probes[d.id][0], observe: probes[d.id][1] })),
+      hasEnough: evidence.length > 0,
+      comparable: false,
+    };
+  }
+  function sample() {
+    let correctLimits = { num: 5, shape: 3, verbal: 4, attention: 5, quant: 3, logic: 4 },
+      blankLast = new Set(['shape', 'quant', 'logic']),
+      ids = Object.keys(names),
+      rows = [],
+      visited = {},
+      changes = {},
+      seen = new Set();
+    for (let i = 0; i < 36; i++) {
+      let cat = ids[i % 6],
+        j = Math.floor(i / 6),
+        level = Math.floor(i / 12) + 1,
+        blank = j === 5 && blankLast.has(cat),
+        sec = [35, 48, 43, 28, 65, 55][i % 6] + (level - 1) * 11 + (j % 2) * 3,
+        correct = j < correctLimits[cat],
+        type = cat === 'shape' ? [0, 1, 2, 6, 7, 8][j] : j,
+        strategy = ['cycle', 'interleave', 'differences', 'recurrence', 'digits', 'special'][j],
+        q = root.Engine
+          ? cat === 'num' && root.Discovery
+            ? root.Discovery.create(strategy, level, seen)
+            : root.Engine.question(cat, type, level)
+          : {
+              id: 'DEMO-' + i,
+              answer: 'A',
+              options: ['A', 'B', 'C', 'D', 'E'],
+              cat,
+              type,
+              level,
+              strategyId: cat === 'num' ? strategy : undefined,
+            };
+      rows.push({
+        q,
+        answer: blank ? undefined : correct ? q.answer : q.options.find(o => o !== q.answer),
+        correct: !blank && correct,
+        hinted: false,
+        sec: i === 35 ? 0 : sec,
+      });
+      if (i !== 35) visited[i] = i % 7 === 0 ? 2 : 1;
+      if (i % 9 === 0) changes[i] = 1;
+    }
+    delete changes[18];
+    changes[30] = 1;
+    let firstResponses = {};
+    for (let i of [0, 9, 27]) firstResponses[i] = rows[i].q.options.find(o => o !== rows[i].q.answer);
+    firstResponses[30] = rows[30].q.answer;
+    let active = rows.reduce((n, r) => n + r.sec, 0);
+    return analyze(rows, {
+      sample: true,
+      graded: true,
+      id: 'DEMO-001',
+      name: 'Aşamalı genel yetenek · Örnek katılımcı',
+      elapsed: active + 90,
+      budget: 2400,
+      visited,
+      changes,
+      firstResponses,
+      interruptions: { count: 1, ms: 90000 },
+      flags: [22, 31],
+    });
+  }
+  root.Assessment = { names, descriptors, actions, probes, metric, analyze, sample, median, pct, family };
+})(typeof window === 'undefined' ? globalThis : window);

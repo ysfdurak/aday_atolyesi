@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Kuzey Tasarım
 
-Kuzey Tasarım,2012’de kurulmuş,78 çalışanlı bir tasarım ve perakende şirketidir. Üretim dış tedarikçilerde yapılır; ürün geliştirme ve müşteri deneyimi şirket içindedir. Bugün iki şehirde kendi mağazaları ve ulusal çevrim içi kanalı bulunur. Yeni şehirde şirketin fiziksel noktası yoktur. Son çeyrekte bu şehirden çevrim içi sipariş ve bayilik talepleri gelmiştir.
+Kuzey Tasarım, 2012’de kurulmuş, 78 çalışanlı bir tasarım ve perakende şirketidir. Üretim dış tedarikçilerde yapılır; ürün geliştirme ve müşteri deneyimi şirket içindedir. Bugün iki şehirde kendi mağazaları ve ulusal çevrim içi kanalı bulunur. Yeni şehirde şirketin fiziksel noktası yoktur. Son çeyrekte bu şehirden çevrim içi sipariş ve bayilik talepleri gelmiştir.
 
 Yönetim yeni şehre girişin bu yıl başlamasını istiyor. Ancak pazara giriş biçimi ve büyüklüğü onaylanmadı. Mağaza ekibi kurumsal standartları kendi ekipleriyle uygulamaya alışkın. Bayilik önerisi yerel bir işletmeciden geldi; işletmecinin şirketin ürün grubunda deneyimi sınırlı. Dijital ekip üç aylık bir yerel çalışma önerdi. Her teklif farklı bölümden ve farklı zaman çizelgesinden oluştu. Marka yöneticisi ilk müşteri deneyimini, finans ise ayrılmış sermayenin kullanımını konuşmak istiyor. Sen iş geliştirme rolünde toplantı dosyasını hazırlıyorsun.
 
@@ -100,7 +100,7 @@ Yerel ortakla ilk görüşme, karar veya sözleşme değildir.
 
 ## Beklenen çıktılar
 
-1. Yeni şehir için büyüme modeli karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Yeni şehir için büyüme modeli karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Yönetim kurulu çalışma tabloları ve hesap eki.
 3. İlk 90 günlük uygulama planı.
 4. Beş slaytlık sunum içeriği.

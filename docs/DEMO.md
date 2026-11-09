@@ -5,7 +5,7 @@
 | Sıra | Rol | Eylem | Beklenen sonuç |
 | --- | --- | --- | --- |
 | 1 | Aday | Hedef pozisyon, kıdem, tarih ve çalışma süresini seç. | Günlük çalışma planı oluşur. |
-| 2 | Aday | Assessment Atölyesi'nde bir vakayı aç. Word veya Excel çalışma dosyasına beklenen çıktıları yaz ve teslim et. | Teslim kodu ve bekleyen görüş görünür. |
+| 2 | Aday | Vaka Atölyesi'nde bir vakayı aç. Word veya Excel çalışma dosyasına beklenen çıktıları yaz ve teslim et. | Teslim kodu ve bekleyen görüş görünür. |
 | 3 | Pilot yöneticisi | Teslimi bul ve örnek İK değerlendiricisini ata. | Atama teslim kaydında görünür. |
 | 4 | İK değerlendiricisi | Atanmış teslimde dosyayı ve ölçütleri incele. Her çıktı için gözlem, dayanak ve sonraki adımı yaz. | Taslak kaydedilebilir ve yayımlanan görüş teslim sürümüne bağlanır. |
 | 5 | Aday | Geri bildirimi aç, kısa alıştırmayı yap ve yeni dosyayı önceki teslimin revizyonu olarak gönder. | İlk ve son dosyayı birlikte inceleyebilirsin. |
@@ -13,6 +13,6 @@
 
 Adayın yazdığı kişisel karşılaştırma ve görüşme özeti kendi hesabına aittir. İK ekranı teslim, revizyon zinciri, ölçüt ve yayımlanmış görüşleri gösterir. Atama ve erişim kuralları aynı pilot servisi üzerinden çalışır.
 
-Teslim, atama ve görüş paylaşımını tekrarlamak için proje kökünde `node check-demo.mjs` çalıştır. [Doğrulama kaydında](VERIFICATION.md) bu otomatik kontrol ile görsel ve canlı kabulün durumunu ayrı ayrı görebilirsin.
+Teslim, atama ve görüş paylaşımını tekrarlamak için proje kökünde `node tests/check-demo.mjs` çalıştır. [Doğrulama kaydında](VERIFICATION.md) bu otomatik kontrol ile görsel ve canlı kabulün durumunu ayrı ayrı görebilirsin.
 
 Demo sunucusunu durdurmak için `Ctrl+C` kullan. Sunucuyu yeniden başlattığında örnek hesaplar ve boş teslim listesiyle açılır. Tam çalışma adımları için [pilot protokolüne](../PILOT-PROTOCOL.md) bak.

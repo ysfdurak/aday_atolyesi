@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Vera Uzmanlık Hizmetleri
 
-Vera Uzmanlık Hizmetleri,kurumsal müşterilere analiz ve raporlama sunan 24 çalışanlı bir danışmanlık işletmesidir. Vaka ekibi dört kişiden oluşur. Müşterilerin teslim günleri farklı olduğu için aynı haftanın işleri bazı günlere yığılabilir. Ekip son üç ayda yeni müşteri onboarding çalışmasına da destek verdi.
+Vera Uzmanlık Hizmetleri, kurumsal müşterilere analiz ve raporlama sunan 24 çalışanlı bir danışmanlık işletmesidir. Vaka ekibi dört kişiden oluşur. Müşterilerin teslim günleri farklı olduğu için aynı haftanın işleri bazı günlere yığılabilir. Ekip son üç ayda yeni müşteri onboarding çalışmasına da destek verdi.
 
 Haftalık çizelgede önce müşteri işi, sonra şirket içi görevler yer alır. Mentorluk ve başka ekiplere yardım, zaman kayıtlarında sonradan işaretlenebilmektedir. Bireylerin net kapasiteleri yayımlanmış çalışma düzenlerine göre belirlenir. Ekip lideri görev dağılımını düzenleyebilir; sözleşme ve çalışma düzeni değişikliği ayrı yönetim kararıdır. Bazı raporlar iki kişi tarafından hazırlanabilirken müşteri toplantıları belirli uzmanların katılımını gerektirir. Pazartesi toplantısında yeni çizelge paylaşılacaktır. Senin görevin bu haftanın planını ve görüşmeleri hazırlamaktır.
 
@@ -88,7 +88,7 @@ Bölüm yöneticisi: “Müşteri teslimleri için değişiklik gerekiyorsa topl
 
 ## Beklenen çıktılar
 
-1. Gelecek haftanın görev ve kaynak planı. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Gelecek haftanın görev ve kaynak planı. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Ece ile bire bir görüşme akışı.
 3. Ekip toplantısında paylaşılacak bilgilendirme.
 4. Bölüm yöneticisine sunulacak bir sayfalık değerlendirme notu.

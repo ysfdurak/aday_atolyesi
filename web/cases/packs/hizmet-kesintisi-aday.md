@@ -2,7 +2,7 @@
 
 Özgün sentetik hazırlık vakası · 3.0.0 · Düzey 3 · Yaklaşık 80 dakika
 
-Maya Platform’da 09.00’da bir ödeme durumu olayı açıldı. Teknik, satış, finans ve destek ekipleri ayrı kanallarda çalışıyor. İlk iki saat için olay koordinasyonunu üstlendin;10.00’da yönetim güncellemesi yapılacak.
+Maya Platform’da 09.00’da bir ödeme durumu olayı açıldı. Teknik, satış, finans ve destek ekipleri ayrı kanallarda çalışıyor. İlk iki saat için olay koordinasyonunu üstlendin; 10.00’da yönetim güncellemesi yapılacak.
 
 ## Aday görevi
 
@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Maya Platform
 
-Maya Platform,çevrim içi sipariş altyapısı sağlayan 140 çalışanlı bir teknoloji işletmesidir. Ödeme sağlayıcısı dış hizmettir; sipariş durumu şirketin kendi sisteminde tutulur. Müşteri destek ekibinde 70 çalışan vardır, ancak farklı vardiya ve eğitim gruplarında çalışırlar. Olay başladığında 40 eğitimli temsilci aktif durumdadır.
+Maya Platform, çevrim içi sipariş altyapısı sağlayan 140 çalışanlı bir teknoloji işletmesidir. Ödeme sağlayıcısı dış hizmettir; sipariş durumu şirketin kendi sisteminde tutulur. Müşteri destek ekibinde 70 çalışan vardır, ancak farklı vardiya ve eğitim gruplarında çalışırlar. Olay başladığında 40 eğitimli temsilci aktif durumdadır.
 
 Finans mutabakatı sipariş ve sağlayıcı hareketini eşleştirir. Satış müşteri yöneticileri üzerinden, destek ise talep sistemi üzerinden iletişim kurar. Büyük müşteriler için ayrı hesap yöneticisi bulunur; olay sırasında aynı kullanıcı birden fazla kanala yazabilir. Teknik olayın durumu ve müşteri talebinin kapanışı iki ayrı kayıttır. Sen koordinasyon rolündesin; teknik üretim erişimi ve toplu iade onayın yok. Yönetim ilk iki saatlik dosyayı ve 10.00 güncellemesini bekliyor.
 
@@ -94,7 +94,7 @@ Ana kuyruk sayısı talepleri gösterir, tekil müşteri sayısını değil. Tal
 
 ## Beklenen çıktılar
 
-1. İlk iki saat için olay yönetimi çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. İlk iki saat için olay yönetimi çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Yönetim ve müşteri için ayrı iletişim taslakları.
 3. Operasyon çalışma tabloları ve hesap eki.
 4. Olayın devri ve kapanışında kullanılacak kayıt taslağı.

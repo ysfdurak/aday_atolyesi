@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Denge Teknik Hizmetler
 
-Denge Teknik Hizmetler,2010’da kurulmuş,92 çalışanlı bir bakım ve yedek parça şirketidir. Üç bölgede servis verir. Müşterileri üretim tesisleri ve ticari işletmelerdir. Servis sözleşmeleri dönemsel, parça satışları sipariş bazlıdır. Şirketin toplam alacağı 2 milyon TL, parça stok kaydı 3 milyon TL’dir. Bu tutarlar farklı tahsilat ve kullanım tarihlerine dağılır.
+Denge Teknik Hizmetler, 2010’da kurulmuş, 92 çalışanlı bir bakım ve yedek parça şirketidir. Üç bölgede servis verir. Müşterileri üretim tesisleri ve ticari işletmelerdir. Servis sözleşmeleri dönemsel, parça satışları sipariş bazlıdır. Şirketin toplam alacağı 2 milyon TL, parça stok kaydı 3 milyon TL’dir. Bu tutarlar farklı tahsilat ve kullanım tarihlerine dağılır.
 
 Son çeyrekte iki büyük projenin kabulü gecikti. Satış ekibi yeni müşteri görüşmelerini sürdürüyor. Finans günlük ödeme hazırlığını yapıyor, satın alma ise kritik parça tedarikçilerinin sevkiyat takvimini izliyor. Şirketin geçici kaynak limiti için görüşme var; ödeme yapılmış veya limit kullandırılmış değil. Yönetim öncelikle önündeki ay için yazılı karar dosyası istedi. Sen operasyon direktörüsün ve bölüm yöneticileriyle programı yürütmen bekleniyor. Finansal veya ticari sözleşmeleri tek başına değiştirme yetkin bulunmuyor.
 
@@ -88,7 +88,7 @@ Genel müdür: “Bölümler kendi listelerini gönderiyor. Pazartesi tek dosya 
 
 ## D09 / İşleyiş ve toplantı kayıtları
 
-R 1–R 5 dört haftalık 1.400.000 TL tahsilat planını, R 6 sonraki dönem 600.000 TL’yi gösterir. Haftalık ödeme listesi 1.750.000 TL’dir. Planın faiz ve finansman gideri ayrı görüşme konusudur.100.000 TL tampon hafta sonu yönetim hedefidir; gün içi asgari bakiye bilgisi henüz tamamlanmamıştır.
+R 1–R 5 dört haftalık 1.400.000 TL tahsilat planını, R 6 sonraki dönem 600.000 TL’yi gösterir. Haftalık ödeme listesi 1.750.000 TL’dir. Planın faiz ve finansman gideri ayrı görüşme konusudur. 100.000 TL tampon hafta sonu yönetim hedefidir; gün içi asgari bakiye bilgisi henüz tamamlanmamıştır.
 
 ## D10 / Stok çalışma dosyası
 

@@ -1,0 +1,1162 @@
+[
+  {
+    "id": "kpi-paradoksu",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Payda ve hesap doğruluğu",
+        "evidence": "Oranları toplam adetlere göre hesaplar; kanal yüzdelerinin basit ortalamasını almaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Oranları toplam adetlere göre hesaplar; kanal yüzdelerinin basit ortalamasını almaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Karma etkisini açıklama",
+        "evidence": "Her iki kanal iyileşirken düşük oranlı kanalın payı arttığı için toplamın düşebildiğini sayılarla açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Her iki kanal iyileşirken düşük oranlı kanalın payı arttığı için toplamın düşebildiğini sayılarla açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Çıkarım sınırı",
+        "evidence": "Karma değişiminin nedenini veya ekip verimliliğini bu tablodan bildiğini iddia etmez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Karma değişiminin nedenini veya ekip verimliliğini bu tablodan bildiğini iddia etmez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "İletişim ve takip",
+        "evidence": "Kısa yönetici notunda sonuç, veri ve ihtiyaç duyulan bilgiyi ayırır; sabit tanımlı takip önerir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Kısa yönetici notunda sonuç, veri ve ihtiyaç duyulan bilgiyi ayırır; sabit tanımlı takip önerir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vardiya-darbogazi",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Ayrı süreç kapasitesi",
+        "evidence": "Toplama boşluğunun paketleme açığını kendiliğinden kapatmadığını gösterir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Toplama boşluğunun paketleme açığını kendiliğinden kapatmadığını gösterir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Yetkinlik ve kişi tutarlılığı",
+        "evidence": "Transfer sonrası kaynak ekibin kapasitesini kontrol eder, kişiyi çift saymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Transfer sonrası kaynak ekibin kapasitesini kontrol eder, kişiyi çift saymaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Kırılganlık ve kontrol",
+        "evidence": "Tam kapasite planında tampon olmadığını söyler; fiili hız ve hazır iş takibi koyar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Tam kapasite planında tampon olmadığını söyler; fiili hız ve hazır iş takibi koyar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Uygulanabilir iletişim",
+        "evidence": "Kimin hangi anda ne yapacağını, kontrol zamanını ve eskalasyon koşulunu açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Kimin hangi anda ne yapacağını, kontrol zamanını ve eskalasyon koşulunu açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gelen-kutusu",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Risk ve son tarih ayrımı",
+        "evidence": "Güvenlik riskini ele alır; yönetici unvanını tek öncelik ölçütü yapmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Güvenlik riskini ele alır; yönetici unvanını tek öncelik ölçütü yapmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Bağımlılık ve takvim",
+        "evidence": "09.45, 10.30 ve 11.00 yükümlülüklerini 09.50 veri bağımlılığıyla birlikte planlar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "09.45, 10.30 ve 11.00 yükümlülüklerini 09.50 veri bağımlılığıyla birlikte planlar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Delegasyon",
+        "evidence": "Sahip, çıktı ve dönüş saatini yazar; bordro onayını yetkisiz kişiye vermez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Sahip, çıktı ve dönüş saatini yazar; bordro onayını yetkisiz kişiye vermez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Bilgi güvenliği",
+        "evidence": "Ham personel dosyasını kişisel e-postaya göndermek yerine iş ihtiyacını ve onaylı kanalı netleştirir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ham personel dosyasını kişisel e-postaya göndermek yerine iş ihtiyacını ve onaylı kanalı netleştirir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Paydaş iletişimi",
+        "evidence": "Biten, bekleyen ve devredilen işi açıkça bildirir; doğrulanmamış söz vermez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Biten, bekleyen ve devredilen işi açıkça bildirir; doğrulanmamış söz vermez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "geri-bildirim",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Somut ve dengeli açılış",
+        "evidence": "120 tamamlanan dosyayı ve 10 yeniden işlem dosyasını birlikte söyler; kişiyi özensiz diye etiketlemez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Nedeni araştırma",
+        "evidence": "İş zorluğu, yeni alan, acil yük ve destek iddiasını sorar; hiçbirini peşinen gerçek veya bahane ilan etmez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Destek ve hesap verebilirlik",
+        "evidence": "Kontrol standardını korurken ortak inceleme, yardım kanalı ve kişinin kendi adımını netleştirir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Takip",
+        "evidence": "Örneklem ve dönem tanımıyla hata oranını izler; kısa dönem düşüşünü tek başına kalıcı gelişim saymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "butce-sapmasi",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Ayrıştırma",
+        "evidence": "Hacmi bütçe fiyatıyla, fiyat farkını gerçek hacimle hesaplar; bileşenler toplam farka bağlanır.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Hacmi bütçe fiyatıyla, fiyat farkını gerçek hacimle hesaplar; bileşenler toplam farka bağlanır. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Karşılaştırma tabanı",
+        "evidence": "Esnek bütçe ile statik bütçenin farklı sorulara yanıt verdiğini açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Esnek bütçe ile statik bütçenin farklı sorulara yanıt verdiğini açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Kontrol ve sorumluluk",
+        "evidence": "Fiyat/sabit farkını otomatik kişisel kusur saymaz; karar yetkisi ve neden verisini ister.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Fiyat/sabit farkını otomatik kişisel kusur saymaz; karar yetkisi ve neden verisini ister. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Seçenek analizi",
+        "evidence": "200 TL farkın yanında geçiş maliyeti ve hizmet eşdeğerliğini araştırır.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "200 TL farkın yanında geçiş maliyeti ve hizmet eşdeğerliğini araştırır. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Yönetici notu",
+        "evidence": "Hesabı, varsayımı, eksik bilgiyi ve önerilen kararı ayrı verir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Hesabı, varsayımı, eksik bilgiyi ve önerilen kararı ayrı verir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kampanya-karari",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Katkı hesabı",
+        "evidence": "Brüt marjı ciroya uygular, reklam giderini yalnız bir kez düşer; negatif katkıyı gösterir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Brüt marjı ciroya uygular, reklam giderini yalnız bir kez düşer; negatif katkıyı gösterir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Ölçüm sınırları",
+        "evidence": "ROAS/ciro ile katkıyı, atıf ile artımlı etkiyi ayırır.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "ROAS/ciro ile katkıyı, atıf ile artımlı etkiyi ayırır. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Kaynak ve kapasite",
+        "evidence": "Ek bütçenin otomatik aynı dönüşü getireceğini varsaymaz; içerik kapasite sınırını işler.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ek bütçenin otomatik aynı dönüşü getireceğini varsaymaz; içerik kapasite sınırını işler. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Deneme tasarımı",
+        "evidence": "Bütçe, dönem, ölçüt, durdurma ve karşılaştırma koşullarını netleştirir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Bütçe, dönem, ölçüt, durdurma ve karşılaştırma koşullarını netleştirir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Ticari iletişim",
+        "evidence": "Ekibin katkısını küçümsemeden olumsuz birim ekonomiyi açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ekibin katkısını küçümsemeden olumsuz birim ekonomiyi açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "aday-hunisi",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Aşama paydası",
+        "evidence": "Teklif kabulünü başvuruya değil teklife böler; toplamda ağırlıklı hesap yapar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Teklif kabulünü başvuruya değil teklife böler; toplamda ağırlıklı hesap yapar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Süreç teşhisi",
+        "evidence": "Ön görüşme/teknik/teklif/kabul geçişlerini ayrı inceler; tek bir aşamayı peşinen suçlamaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ön görüşme/teknik/teklif/kabul geçişlerini ayrı inceler; tek bir aşamayı peşinen suçlamaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Karşılaştırılabilirlik",
+        "evidence": "Rol, kıdem, ücret ve bekleme farklarını ister; kaynak etiketini aday kalitesi saymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Rol, kıdem, ücret ve bekleme farklarını ister; kaynak etiketini aday kalitesi saymaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Maliyet kapsamı",
+        "evidence": "Kaynak giderini toplam işe alım maliyeti veya işe başlayan başı maliyet olarak sunmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Kaynak giderini toplam işe alım maliyeti veya işe başlayan başı maliyet olarak sunmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Ölçek ve takip",
+        "evidence": "Öneri kanalını üç kat büyütmenin aynı oranı koruyacağını varsaymaz; sınırlı deneme ve izlem önerir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Öneri kanalını üç kat büyütmenin aynı oranı koruyacağını varsaymaz; sınırlı deneme ve izlem önerir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "proje-kisitlari",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Ağ ve kaynak ayrımı",
+        "evidence": "Dokuz günlük ağ süresini tek geliştiriciyle uygulanabilir planla karıştırmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Dokuz günlük ağ süresini tek geliştiriciyle uygulanabilir planla karıştırmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Tutarlı takvim",
+        "evidence": "Öncülleri, tam günleri ve tek kaynak kullanımını doğru uygular.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Öncülleri, tam günleri ve tek kaynak kullanımını doğru uygular. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Alternatiflerin açıklığı",
+        "evidence": "Tarih, bedel, kapsam ve onay gereğini karşılaştırır; gizli fazla mesaiyi varsaymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Tarih, bedel, kapsam ve onay gereğini karşılaştırır; gizli fazla mesaiyi varsaymaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Kalite ve kabul",
+        "evidence": "Testi kaldırmaz; kısmi teslim varsa değişen kabul tanımını görünür tutar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Testi kaldırmaz; kısmi teslim varsa değişen kabul tanımını görünür tutar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Karar iletişimi",
+        "evidence": "Sorun, seçenek, öneri, karar sahibi ve karar zamanını yazar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Sorun, seçenek, öneri, karar sahibi ve karar zamanını yazar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "parti-kalitesi",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Önlem ve yetki",
+        "evidence": "Şüpheli stoğu ayırır, kalite kararını yetkiliye taşır; satış baskısıyla onaysız sevk etmez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Şüpheli stoğu ayırır, kalite kararını yetkiliye taşır; satış baskısıyla onaysız sevk etmez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "İzlenebilirlik",
+        "evidence": "Parti, sipariş, müşteri ve miktar listesini ayrı tutar; tahsisleri çift saymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Parti, sipariş, müşteri ve miktar listesini ayrı tutar; tahsisleri çift saymaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Örneklem yorumu",
+        "evidence": "0/40 sonucunu sıfır gerçek risk veya kesin güvenlik kanıtı olarak sunmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "0/40 sonucunu sıfır gerçek risk veya kesin güvenlik kanıtı olarak sunmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Alternatif ve koşul",
+        "evidence": "B ikamesini stok, eşdeğerlik ve kalite onayı koşullarıyla önerir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "B ikamesini stok, eşdeğerlik ve kalite onayı koşullarıyla önerir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Müşteri iletişimi",
+        "evidence": "Doğrulanmış bilgi, belirsizlik, sonraki güncelleme zamanı ve sorumlu kişiyi ayırır.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Doğrulanmış bilgi, belirsizlik, sonraki güncelleme zamanı ve sorumlu kişiyi ayırır. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Karar kaydı",
+        "evidence": "Kim, hangi veriyle, ne zaman karar verecek; kapsam değişirse hangi kayıtlar güncellenecek açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Kim, hangi veriyle, ne zaman karar verecek; kapsam değişirse hangi kayıtlar güncellenecek açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "yatirim-kapasitesi",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Fayda niteliği",
+        "evidence": "Serbest kapasite, ekonomik değer ve önlenebilir nakit gideri ayırır.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Serbest kapasite, ekonomik değer ve önlenebilir nakit gideri ayırır. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Hesap tutarlılığı",
+        "evidence": "Bakımı aylık faydadan düşer; yatırımın süre ile birimlerini tutarlı kullanır.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Bakımı aylık faydadan düşer; yatırımın süre ile birimlerini tutarlı kullanır. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Alternatifler",
+        "evidence": "B’nin daha kısa geri ödemesini A’nın daha yüksek 12 aylık farkıyla birlikte inceler.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "B’nin daha kısa geri ödemesini A’nın daha yüksek 12 aylık farkıyla birlikte inceler. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Duyarlılık",
+        "evidence": "Gerçekleşme, hacim, kurulum ve bakım varsayımlarını değiştirir; faydaları çift saymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Gerçekleşme, hacim, kurulum ve bakım varsayımlarını değiştirir; faydaları çift saymaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Uygulama ve doğrulama",
+        "evidence": "Pilot ölçümü, baz dönem, iş karması, duruş ve fayda sahibini tanımlar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Pilot ölçümü, baz dönem, iş karması, duruş ve fayda sahibini tanımlar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Karar önerisi",
+        "evidence": "Belirsiz faydayı kesin kâr diye sunmadan koşullu karar ve sonraki bilgi ihtiyacını belirtir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Belirsiz faydayı kesin kâr diye sunmadan koşullu karar ve sonraki bilgi ihtiyacını belirtir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ekip-yuku",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Görünmeyen işi dahil etme",
+        "evidence": "Mentorluk ve desteği ana işten ayrı ekler; Can’ın net kapasitesini değiştirmez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Mentorluk ve desteği ana işten ayrı ekler; Can’ın net kapasitesini değiştirmez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Yetkinlikle uyumlu dağılım",
+        "evidence": "Raporu uygun becerili Deniz/Can’a verir; yükü kaynak kişiden düşer, alan kişiye ekler.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Raporu uygun becerili Deniz/Can’a verir; yükü kaynak kişiden düşer, alan kişiye ekler. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Adalet ve iletişim",
+        "evidence": "Eşit saat dağıtımı ile adil yükü ayırır; kişileri suçlamadan ölçütleri açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Eşit saat dağıtımı ile adil yükü ayırır; kişileri suçlamadan ölçütleri açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Delegasyon ve takip",
+        "evidence": "Teslim, karar sınırı, destek ve kontrol zamanını belirtir; Ece’ye görünmez kontrol yükü bırakmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Teslim, karar sınırı, destek ve kontrol zamanını belirtir; Ece’ye görünmez kontrol yükü bırakmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Sürdürülebilirlik",
+        "evidence": "Neredeyse tam dolu ekipte yeni işler için öncelik/kapasite kararı gerektiğini söyler.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Neredeyse tam dolu ekipte yeni işler için öncelik/kapasite kararı gerektiğini söyler. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hizmet-kesintisi",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Durum bütünlüğü",
+        "evidence": "1.500+350+150=2.000 sipariş olarak özetler; 60 alt kümeyi toplamın üstüne eklemez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "1.500+350+150=2.000 sipariş olarak özetler; 60 alt kümeyi toplamın üstüne eklemez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Risk ve yetki",
+        "evidence": "Yeniden deneme ve iade kararını ilgili teknik/finans sahiplerine taşır; onaysız toplu işlem önermez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Yeniden deneme ve iade kararını ilgili teknik/finans sahiplerine taşır; onaysız toplu işlem önermez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Kuyruk hesabı",
+        "evidence": "Geliş hızını kapasiteden ayırır; 70 kişinin tamamını eğitimli saymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Geliş hızını kapasiteden ayırır; 70 kişinin tamamını eğitimli saymaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Koordinasyon",
+        "evidence": "Tek bilgi kaynağı, sorumlular, karar kaydı ve zamanlı güncellemeler kurar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Tek bilgi kaynağı, sorumlular, karar kaydı ve zamanlı güncellemeler kurar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "İletişim",
+        "evidence": "Doğrulanmamış 30 dakika sözü vermez; belirsizliği ve bir sonraki güncellemeyi açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Doğrulanmamış 30 dakika sözü vermez; belirsizliği ve bir sonraki güncellemeyi açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Kapanış ve öğrenme",
+        "evidence": "Teknik düzeldi bilgisini tek başına kapanış saymaz; mutabakat, müşteri takibi ve sonradan inceleme tanımlar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Teknik düzeldi bilgisini tek başına kapanış saymaz; mutabakat, müşteri takibi ve sonradan inceleme tanımlar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sube-lokasyonu",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Şube ve şirket ayrımı",
+        "evidence": "Yeni şube kârını eski şubenin katkı kaybıyla birlikte inceler; aktarılan satışın tamamını kâr kaybı saymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Sermaye ve rezerv",
+        "evidence": "Tek seferlik yatırımı aylık sonuca karıştırmaz; işletme sermayesinin eksik olduğunu açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Stratejik ölçütler",
+        "evidence": "Müşteri, erişim, kira esnekliği ve açılış riskini gerekçeli ölçütlerle karşılaştırır.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Koşullu öneri",
+        "evidence": "Bir seçenek önerir; alternatiflerin üstün yanlarını ve fikrini değiştirecek koşulu da açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Doğrulama",
+        "evidence": "Ziyaretçi/dönüşüm/aktarım tahminlerini ve izin durumunu sahada sınayacak plan kurar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "buyume-formati",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Faaliyet ve yatırım",
+        "evidence": "Tek seferlik yatırımı üç aylık faaliyet sonucundan ayırır; nakit hesabında dahil eder.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Tek seferlik yatırımı üç aylık faaliyet sonucundan ayırır; nakit hesabında dahil eder. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Zorunlu kısıt",
+        "evidence": "Şubenin rezerv ihlalini olumlu üçüncü ay sonucu ile gizlemez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Şubenin rezerv ihlalini olumlu üçüncü ay sonucu ile gizlemez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Model karşılaştırması",
+        "evidence": "Kontrol, yerel ortak, müşteri öğrenmesi ve çıkış esnekliğini açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Kontrol, yerel ortak, müşteri öğrenmesi ve çıkış esnekliğini açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Aşamalı öneri",
+        "evidence": "Sermaye/insan kaynağıyla tutarlı bir ilk adım ve sonraki kapı önerir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Sermaye/insan kaynağıyla tutarlı bir ilk adım ve sonraki kapı önerir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Başarı kanıtı",
+        "evidence": "İlk üç ayı uzun vadeli başarı garantisi saymaz; devam/durdurma koşullarını tanımlar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "İlk üç ayı uzun vadeli başarı garantisi saymaz; devam/durdurma koşullarını tanımlar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nakit-toparlanma",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Nakit bütünlüğü",
+        "evidence": "Haftalık bakiyeyi önceki haftadan devreder; alacağı/stoku nakit diye eklemez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Zamanlama ve tutar",
+        "evidence": "Erken tahsilatı ve ertelenen ödemeyi iki haftada karşılıklı işler; kalıcı kazanç saymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Uygulanabilir birleşim",
+        "evidence": "200.000 finansman sınırını ve 100.000 tamponu birlikte denetler.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Öncelik ve yetki",
+        "evidence": "48 saatlik teyit/onay akışını ve kritik operasyon etkisini tanımlar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Kalıcı toparlanma",
+        "evidence": "Dört haftayı kurtarmanın zarar modelini çözmediğini açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Belirsizlik planı",
+        "evidence": "Tahsilat ve tedarikçi onayı gerçekleşmezse tetiklenecek alternatifleri belirtir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ölçüt, aday yanıtından gösterilen dayanakla karşılanıyor; sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "zarar-portfoyu",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Maliyet ayrımı",
+        "evidence": "Katkı, kaçınılabilir sabit ve dağıtılmış merkez giderini ayrı hesaplar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Katkı, kaçınılabilir sabit ve dağıtılmış merkez giderini ayrı hesaplar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Toplam şirket etkisi",
+        "evidence": "Bir hattın zararlı görünmesini şirket toplamını iyileştiren kapanışla karıştırmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Bir hattın zararlı görünmesini şirket toplamını iyileştiren kapanışla karıştırmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Bağlantılı satış",
+        "evidence": "C’nin A satışına etkisini katkı oranıyla işler; kaybolan cironun tümünü kâr kaybı saymaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "C’nin A satışına etkisini katkı oranıyla işler; kaybolan cironun tümünü kâr kaybı saymaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Geçiş ve sürekli durum",
+        "evidence": "30 günlük gider kalkışını, 50.000 tek seferlik gideri ve sürekli sonucu ayrı gösterir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "30 günlük gider kalkışını, 50.000 tek seferlik gideri ve sürekli sonucu ayrı gösterir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Alternatif ve kanıt",
+        "evidence": "Fiyat/hacim varsayımını sınamayı önerir; iyileşmenin zararı tamamen çözmediğini saklamaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Fiyat/hacim varsayımını sınamayı önerir; iyileşmenin zararı tamamen çözmediğini saklamaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Uygulama",
+        "evidence": "Ürün, müşteri ve ekip geçişini sahip/tarih/karar kapısıyla planlar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ürün, müşteri ve ekip geçişini sahip/tarih/karar kapısıyla planlar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "doksan-gun-toparlanma",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Sorunu ayrıştırma",
+        "evidence": "Ciro, katkı, faaliyet zararı ve likiditeyi ayrı gösterir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Ciro, katkı, faaliyet zararı ve likiditeyi ayrı gösterir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Kaynak gerçekçiliği",
+        "evidence": "İlk 30 günün 6 kişi-hafta ve nakit sınırını aşmayan seçim yapar; hepsini eşzamanlı yazmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "İlk 30 günün 6 kişi-hafta ve nakit sınırını aşmayan seçim yapar; hepsini eşzamanlı yazmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Fayda niteliği ve zaman",
+        "evidence": "Stok nakdini aylık kâr saymaz; tam uygulama faydasını ilk ay gerçekleşmesi gibi sunmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Stok nakdini aylık kâr saymaz; tam uygulama faydasını ilk ay gerçekleşmesi gibi sunmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Öncelik ve vazgeçiş",
+        "evidence": "Seçilmeyen aksiyonların neden beklediğini ve hangi kanıtla öne alınacağını açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Seçilmeyen aksiyonların neden beklediğini ve hangi kanıtla öne alınacağını açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Aksiyon planı",
+        "evidence": "Sorumlu, önkoşul, ölçüt, tarih ve kontrol kapılarını bağlar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Sorumlu, önkoşul, ölçüt, tarih ve kontrol kapılarını bağlar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Duyarlılık",
+        "evidence": "Fiyat/hacim, kalite ve fayda çakışması risklerini sınar; sonucu garanti etmez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Fiyat/hacim, kalite ve fayda çakışması risklerini sınar; sonucu garanti etmez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kapasite-ortakligi",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Katkı tanımı",
+        "evidence": "250 TL’yi satışla karıştırmaz; yeni birim ve sabit maliyetleri ayrıca düşer.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "250 TL’yi satışla karıştırmaz; yeni birim ve sabit maliyetleri ayrıca düşer. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Süre ve kapasite",
+        "evidence": "Karma modelin sekiz haftalık sınırını ve kendi yatırımının başlangıç süresini ele alır.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Karma modelin sekiz haftalık sınırını ve kendi yatırımının başlangıç süresini ele alır. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Talep duyarlılığı",
+        "evidence": "Sabit maliyeti yüksek modelin düşük talepteki kaybını hesaplar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Sabit maliyeti yüksek modelin düşük talepteki kaybını hesaplar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Operasyon ve müşteri riski",
+        "evidence": "İş ortağı kalite, veri ve teslim koşullarını doğrulamadan ölçeklemez.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "İş ortağı kalite, veri ve teslim koşullarını doğrulamadan ölçeklemez. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Aşamalı öneri",
+        "evidence": "Pilot, öğrenme, geçiş sonu ve kalıcı karar kapılarını bağlar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Pilot, öğrenme, geçiş sonu ve kalıcı karar kapılarını bağlar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "musteri-toparlanma",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Kohort ve büyüme",
+        "evidence": "%20 eski müşteri kaybını%10 net büyümeyle karıştırmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "%20 eski müşteri kaybını%10 net büyümeyle karıştırmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Kapsamlı indirim maliyeti",
+        "evidence": "İndirim alan 1.200 müşteriyi dahil eder; yalnız ek 100’e maliyet yazmaz.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "İndirim alan 1.200 müşteriyi dahil eder; yalnız ek 100’e maliyet yazmaz. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Ufuk ve kalıcılık",
+        "evidence": "Hedefli çalışmanın tek seferlik giderini ve çok aylık kalıcılık varsayımını ayırır.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Hedefli çalışmanın tek seferlik giderini ve çok aylık kalıcılık varsayımını ayırır. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Nedensel kanıt",
+        "evidence": "Elde tutulan müşteri tahminini kanıtlanmış etki saymaz; kontrollü ölçüm önerir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Elde tutulan müşteri tahminini kanıtlanmış etki saymaz; kontrollü ölçüm önerir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Toparlanma önerisi",
+        "evidence": "Müşteri sayısı, katkı, kayıp ve nakit/kaliteyi birlikte izler; kâr açığının kaldığını gösterir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Müşteri sayısı, katkı, kayıp ve nakit/kaliteyi birlikte izler; kâr açığının kaldığını gösterir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "buyuk-musteri",
+    "version": "3.0.0",
+    "rubric": [
+      {
+        "name": "Kâr ve nakit",
+        "evidence": "320.000 aylık kârın ilk üç ay nakit girişi olmadığını gösterir.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "320.000 aylık kârın ilk üç ay nakit girişi olmadığını gösterir. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Fonlama bütünü",
+        "evidence": "Başlangıç, değişken/sabit ödeme ve 500.000 rezervi birlikte hesaplar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Başlangıç, değişken/sabit ödeme ve 500.000 rezervi birlikte hesaplar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Müşteri yoğunlaşması",
+        "evidence": "Tek müşteriye bağımlılığı gelir büyüklüğüyle örtmez; fesih/taahhüt koşullarını ister.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Tek müşteriye bağımlılığı gelir büyüklüğüyle örtmez; fesih/taahhüt koşullarını ister. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Koşullu karar",
+        "evidence": "Peşinat, vade, aşamalı başlama ve finansman gibi müzakere seçeneklerini yetkili onayına bağlar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Peşinat, vade, aşamalı başlama ve finansman gibi müzakere seçeneklerini yetkili onayına bağlar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Küçük portföy gerçekçiliği",
+        "evidence": "40 müşterinin edinim/hizmet yükünü ve tahsilat varsayımını doğrular.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "40 müşterinin edinim/hizmet yükünü ve tahsilat varsayımını doğrular. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      },
+      {
+        "name": "Karar sunumu",
+        "evidence": "Alternatifleri aynı ufukta kıyaslar; fiyat veya vade değişirse önerinin nasıl değişeceğini açıklar.",
+        "anchors": [
+          "İlgili dayanak veya beklenen çıktı henüz gösterilmemiş.",
+          "İlgili konuya değinilmiş; veri bağlantısı ya da gerekçe önemli ölçüde eksik.",
+          "Alternatifleri aynı ufukta kıyaslar; fiyat veya vade değişirse önerinin nasıl değişeceğini açıklar. Sınır veya uygulamada açıklık var.",
+          "Ölçüt dayanaklı biçimde karşılanıyor; ilgili varsayım, sınır veya alternatif de açıklanmış."
+        ]
+      }
+    ]
+  }
+]

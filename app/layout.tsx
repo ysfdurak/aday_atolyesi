@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Aday Atölyesi",
-  description: "Hedefine hazırlan, vaka üzerinde çalış ve geri bildirimle geliştir.",
+  title: 'Aday Atölyesi',
+  description: 'Hedefine hazırlan, vaka üzerinde çalış ve geri bildirimle geliştir.',
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
   },
 };
 

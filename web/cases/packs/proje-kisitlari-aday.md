@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Atlas Sistemler
 
-Atlas Sistemler,120 çalışanlı bir iş yazılımı şirketidir. İç raporlama aracı finans ve satış ekiplerinin ortak kullanımına hazırlanıyor. Projede bir analist, bir geliştirici, bir test uzmanı ve ürün sahibi görev alıyor; başka ekiplerden destek kalıcı olarak ayrılmamış.
+Atlas Sistemler, 120 çalışanlı bir iş yazılımı şirketidir. İç raporlama aracı finans ve satış ekiplerinin ortak kullanımına hazırlanıyor. Projede bir analist, bir geliştirici, bir test uzmanı ve ürün sahibi görev alıyor; başka ekiplerden destek kalıcı olarak ayrılmamış.
 
 İş birimleri pilot ekranı daha önce gördü, ancak gerçek veri bağlantısı ve kabul testi tamamlanmadı. Canlıya geçiş tarihi aylık yönetim toplantısında sözlü olarak duyuruldu. Ürün sahibi haftanın belirli günlerinde erişilebilir; vaka takviminde gereken günlerde toplantıya katılabileceğini bildirdi. Erişim yetkisi ve dış ekip sözleşmesi bilgi güvenliği sürecinden geçer. İç geliştirici başka projeye bu süre içinde atanmayacaktır. Sen proje koordinatörüsün; teknik kapsamı veya iş birimi kabulünü tek başına değiştiremiyorsun.
 
@@ -87,7 +87,7 @@ Ana görev süreleri bu vaka için planlama taahhüdüdür; geçmiş proje liste
 
 ## Beklenen çıktılar
 
-1. Proje takvimi ve kaynak çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Proje takvimi ve kaynak çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Sponsorun karar vereceği seçenekler dosyası.
 3. Önerilen teslim kapsamına ait kabul ve devir belgesi.
 4. İş birimine gönderilecek proje durumu mesajı.

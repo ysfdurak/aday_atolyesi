@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Güneş Dosya Hizmetleri
 
-Güneş Dosya Hizmetleri,kurumsal müşterilerin başvuru ve belge kontrollerini yapar. Şirket 38 çalışanlıdır. Senin ekibindeki altı uzman aynı kabul standardıyla çalışır; iş türlerine göre dosya süreleri değişebilir. Arda şirkette iki yıldır, yeni katılan arkadaş ise üçüncü haftasındadır.
+Güneş Dosya Hizmetleri, kurumsal müşterilerin başvuru ve belge kontrollerini yapar. Şirket 38 çalışanlıdır. Senin ekibindeki altı uzman aynı kabul standardıyla çalışır; iş türlerine göre dosya süreleri değişebilir. Arda şirkette iki yıldır, yeni katılan arkadaş ise üçüncü haftasındadır.
 
 Ekip son ay bir müşterinin yeni zorunlu alanını sisteme ekledi. Eğitim kısa bir çevrim içi toplantıda verildi; katılım kaydı vardır, uygulama sınavı yapılmadı. Haftalık üretim hedefi kişi bazında tanımlanır. Yeniden işlem kayıtları müşteri dönüşü veya iç kontrol yoluyla açılabilir. Dosya üzerine açıklama yazılması mümkündür; aynı olayın müşteri değişikliği mi işlem hatası mı sayılacağı kabul tanımına bağlıdır. Görüşmeler ayda bir planlanır, yoğun haftalarda ertelenebilmektedir. Geçen ay iki görüşme ertelendi. Arda’nın yeni görev veya ücret kararı bu toplantının gündeminde değildir.
 

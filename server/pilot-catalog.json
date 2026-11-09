@@ -1,0 +1,266 @@
+[
+  {
+    "id": "kpi-paradoksu",
+    "title": "Ardıç Hizmet — Aylık yönetim toplantısı",
+    "version": "3.0.0",
+    "outputs": [
+      "Aylık yönetim değerlendirme notu (en fazla 600 kelime). Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Sunumda kullanılacak analiz tabloları ve hesap eki.",
+      "Bir sayfalık izleyen dönem çalışma planı.",
+      "Genel müdüre sunulacak dört slaytlık sunum içeriği."
+    ],
+    "wordFile": "/cases/office/kpi-paradoksu-calisma.docx",
+    "excelFile": "/cases/office/kpi-paradoksu-calisma.xlsx"
+  },
+  {
+    "id": "vardiya-darbogazi",
+    "title": "Koru Dağıtım — Günlük operasyon planı",
+    "version": "3.0.0",
+    "outputs": [
+      "Günlük vardiya ve görev dağılım çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Planı destekleyen çalışma tabloları ve hesap eki.",
+      "Ekibe iletilecek vardiya başlangıcı bilgilendirmesi.",
+      "Vardiya toplantısında kullanılacak bir sayfalık yönetici notu."
+    ],
+    "wordFile": "/cases/office/vardiya-darbogazi-calisma.docx",
+    "excelFile": "/cases/office/vardiya-darbogazi-calisma.xlsx"
+  },
+  {
+    "id": "gelen-kutusu",
+    "title": "Lale İş Hizmetleri — Sabah çalışma dosyası",
+    "version": "3.0.0",
+    "outputs": [
+      "12.00’ye kadar kullanılacak kişisel çalışma ve görev devir çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "İlgili mesajlara gönderilecek yanıt taslakları.",
+      "Öğlen yöneticiye bırakılacak durum notu.",
+      "Gün sonunda açık kalacak işler için devir listesi."
+    ],
+    "wordFile": "/cases/office/gelen-kutusu-calisma.docx",
+    "excelFile": "/cases/office/gelen-kutusu-calisma.xlsx"
+  },
+  {
+    "id": "geri-bildirim",
+    "title": "Güneş Dosya Hizmetleri — Bire bir görüşme",
+    "version": "3.0.0",
+    "outputs": [
+      "15 dakikalık görüşme akışı: mevcut durum değerlendirmesi, görüşmede paylaşılacak beklenti ve görüşmenin amacı.",
+      "Görüşmede kullanılacak bilgi ve soru dosyası.",
+      "Görüşme sonrasında paylaşılacak yazılı mutabakat taslağı.",
+      "Sonraki iki haftanın çalışma ve görüşme takvimi."
+    ],
+    "wordFile": "/cases/office/geri-bildirim-calisma.docx",
+    "excelFile": "/cases/office/geri-bildirim-calisma.xlsx"
+  },
+  {
+    "id": "butce-sapmasi",
+    "title": "İlke Hizmet Merkezi — Yeni dönem bütçesi",
+    "version": "3.0.0",
+    "outputs": [
+      "Bütçe toplantısı için yönetim değerlendirme notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Finansal çalışma tabloları ve hesap eki.",
+      "Sonraki ay için karar önerisi.",
+      "Finans ve operasyon yöneticilerine toplantı sonrası gönderilecek özet mesaj."
+    ],
+    "wordFile": "/cases/office/butce-sapmasi-calisma.docx",
+    "excelFile": "/cases/office/butce-sapmasi-calisma.xlsx"
+  },
+  {
+    "id": "kampanya-karari",
+    "title": "Meral E-Ticaret — Pazarlama bütçesi",
+    "version": "3.0.0",
+    "outputs": [
+      "Yeni dönem pazarlama bütçesi için karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Karar dosyasında kullanılacak analiz ve hesap tabloları.",
+      "Uygulama takvimi ve bütçe eki.",
+      "Bütçe komitesine sunulacak dört slaytlık sunum içeriği."
+    ],
+    "wordFile": "/cases/office/kampanya-karari-calisma.docx",
+    "excelFile": "/cases/office/kampanya-karari-calisma.xlsx"
+  },
+  {
+    "id": "aday-hunisi",
+    "title": "Ladin Teknoloji — İşe alım programı",
+    "version": "3.0.0",
+    "outputs": [
+      "İşe alım programına ilişkin yönetim değerlendirme notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Analiz tabloları ve hesap eki.",
+      "Yeni dönem kaynak programı önerisi.",
+      "İK ve işe alım yöneticileriyle yapılacak toplantının gündemi."
+    ],
+    "wordFile": "/cases/office/aday-hunisi-calisma.docx",
+    "excelFile": "/cases/office/aday-hunisi-calisma.xlsx"
+  },
+  {
+    "id": "proje-kisitlari",
+    "title": "Atlas Sistemler — Proje teslimi",
+    "version": "3.0.0",
+    "outputs": [
+      "Proje takvimi ve kaynak çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Sponsorun karar vereceği seçenekler dosyası.",
+      "Önerilen teslim kapsamına ait kabul ve devir belgesi.",
+      "İş birimine gönderilecek proje durumu mesajı."
+    ],
+    "wordFile": "/cases/office/proje-kisitlari-calisma.docx",
+    "excelFile": "/cases/office/proje-kisitlari-calisma.xlsx"
+  },
+  {
+    "id": "parti-kalitesi",
+    "title": "Safir — Parti ve teslimat dosyası",
+    "version": "3.0.0",
+    "outputs": [
+      "İlk gün için olay ve operasyon planı. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Yönetimin karar vereceği dosya ve hesap eki.",
+      "Müşterilere gönderilecek ara bilgilendirme taslağı.",
+      "Bölümler arası toplantı için görev ve karar kaydı."
+    ],
+    "wordFile": "/cases/office/parti-kalitesi-calisma.docx",
+    "excelFile": "/cases/office/parti-kalitesi-calisma.xlsx"
+  },
+  {
+    "id": "yatirim-kapasitesi",
+    "title": "Mavi İşlem Merkezi — Yatırım toplantısı",
+    "version": "3.0.0",
+    "outputs": [
+      "Yatırım komitesine karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Karşılaştırmalı finansal çalışma dosyası.",
+      "Uygulama ve izleme takvimi.",
+      "Komite için beş slaytlık sunum içeriği."
+    ],
+    "wordFile": "/cases/office/yatirim-kapasitesi-calisma.docx",
+    "excelFile": "/cases/office/yatirim-kapasitesi-calisma.xlsx"
+  },
+  {
+    "id": "ekip-yuku",
+    "title": "Vera — Haftalık ekip planı",
+    "version": "3.0.0",
+    "outputs": [
+      "Gelecek haftanın görev ve kaynak planı. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Ece ile bire bir görüşme akışı.",
+      "Ekip toplantısında paylaşılacak bilgilendirme.",
+      "Bölüm yöneticisine sunulacak bir sayfalık değerlendirme notu."
+    ],
+    "wordFile": "/cases/office/ekip-yuku-calisma.docx",
+    "excelFile": "/cases/office/ekip-yuku-calisma.xlsx"
+  },
+  {
+    "id": "hizmet-kesintisi",
+    "title": "Maya Platform — Olay yönetimi",
+    "version": "3.0.0",
+    "outputs": [
+      "İlk iki saat için olay yönetimi çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Yönetim ve müşteri için ayrı iletişim taslakları.",
+      "Operasyon çalışma tabloları ve hesap eki.",
+      "Olayın devri ve kapanışında kullanılacak kayıt taslağı."
+    ],
+    "wordFile": "/cases/office/hizmet-kesintisi-calisma.docx",
+    "excelFile": "/cases/office/hizmet-kesintisi-calisma.xlsx"
+  },
+  {
+    "id": "sube-lokasyonu",
+    "title": "Pera Yaşam — İkinci şube kararı",
+    "version": "3.0.0",
+    "outputs": [
+      "Yönetim kurulu karar dosyası: mevcut durum değerlendirmen, önerdiğin hedef durum ve başarı göstergeleri, kararın ve gerekçesi.",
+      "Lokasyon karşılaştırma dosyası ve hesap eki.",
+      "Beş slaytlık yönetim kurulu sunumu içeriği.",
+      "Önerilen kararın uygulanmasına ilişkin 90 günlük plan.",
+      "İlgili taraflara gönderilecek karar sonrası bilgilendirme taslağı."
+    ],
+    "wordFile": "/cases/office/sube-lokasyonu-calisma.docx",
+    "excelFile": "/cases/office/sube-lokasyonu-calisma.xlsx"
+  },
+  {
+    "id": "buyume-formati",
+    "title": "Kuzey Tasarım — Yeni şehir programı",
+    "version": "3.0.0",
+    "outputs": [
+      "Yeni şehir için büyüme modeli karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Yönetim kurulu çalışma tabloları ve hesap eki.",
+      "İlk 90 günlük uygulama planı.",
+      "Beş slaytlık sunum içeriği."
+    ],
+    "wordFile": "/cases/office/buyume-formati-calisma.docx",
+    "excelFile": "/cases/office/buyume-formati-calisma.xlsx"
+  },
+  {
+    "id": "nakit-toparlanma",
+    "title": "Denge Teknik — Dört haftalık yönetim planı",
+    "version": "3.0.0",
+    "outputs": [
+      "İlk dört hafta için yönetim karar dosyası: mevcut durum, önerilen hedef durum ve başarı göstergeleri, karar ve gerekçesi.",
+      "Haftalık finansal çalışma tablosu ve hesap eki.",
+      "İlk 48 saatlik görev ve toplantı çizelgesi.",
+      "Sonraki 90 gün için program taslağı.",
+      "Bölüm yöneticilerine gönderilecek çalışma başlangıcı mesajı."
+    ],
+    "wordFile": "/cases/office/nakit-toparlanma-calisma.docx",
+    "excelFile": "/cases/office/nakit-toparlanma-calisma.xlsx"
+  },
+  {
+    "id": "zarar-portfoyu",
+    "title": "Bora — Ürün portföyü toplantısı",
+    "version": "3.0.0",
+    "outputs": [
+      "Ürün portföyü için karar önerisi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Karşılaştırmalı çalışma tabloları ve hesap eki.",
+      "Önerilen kararın ilk 60 günlük uygulama planı.",
+      "Beş slaytlık yönetim sunumu içeriği."
+    ],
+    "wordFile": "/cases/office/zarar-portfoyu-calisma.docx",
+    "excelFile": "/cases/office/zarar-portfoyu-calisma.xlsx"
+  },
+  {
+    "id": "doksan-gun-toparlanma",
+    "title": "Dora Hizmet — 90 günlük şirket programı",
+    "version": "3.0.0",
+    "outputs": [
+      "90 günlük program karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Program bütçesi ve kaynak çizelgesi.",
+      "30/60/90 günlük uygulama takvimi.",
+      "Yönetim kurulu için beş slaytlık sunum içeriği.",
+      "Bölüm yöneticileri için program başlangıcı bilgilendirmesi."
+    ],
+    "wordFile": "/cases/office/doksan-gun-toparlanma-calisma.docx",
+    "excelFile": "/cases/office/doksan-gun-toparlanma-calisma.xlsx"
+  },
+  {
+    "id": "kapasite-ortakligi",
+    "title": "Ekin — Kapasite planı",
+    "version": "3.0.0",
+    "outputs": [
+      "Kapasite modeli karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Ticari ve operasyonel çalışma tabloları.",
+      "İlk sekiz haftanın uygulama takvimi.",
+      "Yönetim toplantısında kullanılacak dört slaytlık sunum içeriği."
+    ],
+    "wordFile": "/cases/office/kapasite-ortakligi-calisma.docx",
+    "excelFile": "/cases/office/kapasite-ortakligi-calisma.xlsx"
+  },
+  {
+    "id": "musteri-toparlanma",
+    "title": "Duru Abonelik — Müşteri programı",
+    "version": "3.0.0",
+    "outputs": [
+      "Yeni dönem müşteri programı karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Çalışma tabloları ve hesap eki.",
+      "Program uygulama takvimi ve bütçe eki.",
+      "Genel müdüre sunulacak dört slaytlık içerik."
+    ],
+    "wordFile": "/cases/office/musteri-toparlanma-calisma.docx",
+    "excelFile": "/cases/office/musteri-toparlanma-calisma.xlsx"
+  },
+  {
+    "id": "buyuk-musteri",
+    "title": "Sera — Yeni iş alanı kararı",
+    "version": "3.0.0",
+    "outputs": [
+      "Yeni iş alanı için karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.",
+      "Karşılaştırmalı finansal dosya ve hesap eki.",
+      "Ticari görüşmede kullanılacak teklif/şart taslağı.",
+      "İlk 90 günlük uygulama planı.",
+      "Yatırım komitesine beş slaytlık sunum içeriği."
+    ],
+    "wordFile": "/cases/office/buyuk-musteri-calisma.docx",
+    "excelFile": "/cases/office/buyuk-musteri-calisma.xlsx"
+  }
+]

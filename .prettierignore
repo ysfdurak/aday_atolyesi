@@ -1,0 +1,19 @@
+node_modules
+dist
+public
+.next
+.vinext
+.wrangler
+package-lock.json
+# Üretilen veri dosyaları (build betikleri yeniden üretir)
+web/case-data.js
+web/case-archive-v1.js
+web/case-index.js
+web/response-data.js
+web/module-contracts.js
+web/position-context.js
+web/modules/rol/content.js
+*.json
+*.md
+drizzle
+web/vendor

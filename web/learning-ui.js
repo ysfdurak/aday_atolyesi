@@ -1,30 +1,247 @@
-(function(root){
-'use strict';
-const U=root.CaseUI,L=root.CaseLearning,E=root.CaseEngine,baseView=U.view,baseBind=U.bind;
-let reviewRequest=null;
-const catalog=()=>root.CASE_CATALOG;
-const current=()=>catalog().find(c=>c.id===location.hash.split('/')[1]&&location.hash.split('/')[2]!=='v');
-const draft=c=>E.getRecord(state.assessments,c)||E.blank(c);
-const date=s=>new Date(s).toLocaleString('tr-TR',{timeZone:'Europe/Istanbul'});
-const labels=['Dayanak henüz yok','Önemli eksik var','Dayanaklı; açıklık var','Dayanak ve sınırlar açık'];
-function saveAttempt(c,a){const prior=state.assessments?.[E.keyFor(c)];state.assessments=state.assessments||{};state.assessments[E.keyFor(c)]=a;if(!save()){if(prior===undefined)delete state.assessments[E.keyFor(c)];else state.assessments[E.keyFor(c)]=prior;return false;}return true;}
-function refs(c){return c.learning.sections.map(s=>`<details class="cycle-reference"><summary>${esc(s.title)} <small>· ${esc(s.sources)}</small></summary><p>${esc(s.text)}</p></details>`).join('');}
-function human(c,a){const reviews=a.reviews||[];return `<section class="card cycle-section"><span class="eyebrow">İnsan değerlendirmesi</span><h2>Çözümüne bağlı geri bildirim</h2><p>Değerlendirme isteği yalnız bu vakanın seçili son teslimini içerir; profilini, CV’ni ve diğer çalışmalarını içermez. Dosyayı kendin seçtiğin değerlendiriciye iletebilirsin. Buradan otomatik gönderim yapılmaz.</p><div class="actions"><button id="cycleRequest">Son teslim için değerlendirme isteğini indir</button><label class="btn">Geri bildirim dosyasını yükle<input id="cycleReviewImport" type="file" accept=".json,application/json" hidden></label><a class="btn ghost" href="#cases/reviewer">Değerlendirici çalışma alanı</a></div><p id="cycleImportStatus" role="status" aria-live="polite"></p><p class="muted">Dosyalar teslim kimliğiyle eşleştirilir; değerlendirici kimliği veya uzmanlığı uygulama tarafından doğrulanmaz.</p>${reviews.length?reviews.map(r=>`<details><summary>${r.submissionId===L.sid(a.submitted)?'Son teslime ait':'Önceki teslime ait'} · ${esc(r.reviewer)} · ${date(r.at)}</summary><p>${esc(r.summary)}</p>${r.items.map(x=>`<article class="cycle-review"><h3>${esc(c.rubric[x.index].name)} · ${x.rating} / 3</h3><p class="muted">${labels[x.rating]}</p>${x.quote?`<blockquote>${esc(x.quote)}</blockquote>`:'<p>Bu ölçütte gösterilen dayanak yok.</p>'}<p><b>Gözlem:</b> ${esc(x.observation)}</p><p><b>Sonraki adım:</b> ${esc(x.next)}</p><button data-cycle-practice="${c.rubric[x.index].practice}">İlgili kısa çalışmayı aç</button></article>`).join('')}</details>`).join(''):'<div class="note">Henüz insan değerlendirmesi eklenmedi. Öz inceleme ve referanslar, kişisel değerlendirici geri bildirimi değildir.</div>'}</section>`;}
-function cycle(c,a){const h=L.history(a),p=a.learning||{},target=catalog().find(x=>x.id===c.learning.transfer),linked=p.transfer?.sourceId===L.sid(a.submitted)?p.transfer:null,ta=target&&E.getRecord(state.assessments,target),completed=!!(linked&&L.history(ta||{}).some(s=>s.at>=linked.at));return `<section class="card cycle-section" id="cycle"><span class="eyebrow">Çalışma → inceleme → revizyon → yeni bağlam</span><h2>Gelişim döngün</h2><div class="cycle-stages"><span>İlk teslim ✓</span><span>İnsan incelemesi ${(a.reviews||[]).some(r=>r.submissionId===L.sid(a.submitted))?'✓':'bekliyor'}</span><span>Revizyon ${h.length>1?'✓':'bekliyor'}</span><span>Yeni bağlam ${completed?'teslim edildi':'bekliyor'}</span></div><p>Tamamlanma işaretleri çalışma kaydıdır; yetkinlik artışı veya işe hazır olma puanı değildir.</p><details><summary>Derin referans inceleme · ${c.learning.sections.length} bölüm</summary><p>Örnek kararlar tek cevap anahtarı değildir. Kendi çözümünün dayanak ve sınırlarıyla karşılaştır.</p>${refs(c)}</details></section>${selfReview(c,a)}${human(c,a)}<section class="card cycle-section" id="cyclePractice"><span class="eyebrow">Odaklı alıştırma</span><h2>Revizyondan önce kısa çalışma</h2><p>İnsan geri bildirimindeki öneriye veya öz incelemene göre çalışmanı seç. Yanıtlar otomatik puanlanmaz.</p>${c.learning.drills.map((d,i)=>`<details id="cycleDrill${i}"><summary>${esc(d.title)}</summary><p>${esc(d.prompt)}</p><label class="field">Kendi çalışmam<textarea data-cycle-answer="${i}" maxlength="8000" rows="4">${esc(p.practice?.[i]||'')}</textarea></label><button data-cycle-save="${i}">Çalışmayı kaydet ve referansı aç</button>${p.practice?.[i]?.trim()?`<div class="note"><b>İnceleme:</b> ${esc(d.reference)}</div>`:''}</details>`).join('')}<p id="cyclePracticeStatus" role="status"></p></section><section class="card cycle-section"><span class="eyebrow">Teslim geçmişi · ${h.length} teslim</span><h2>İlk çözüm ve revizyonlar</h2><p>Her teslim ayrı saklanır. Yeni taslak eski teslimini değiştirmez. Revizyon yapmak için üstteki çıktı alanlarını düzenle ve değişiklik gerekçeni yaz.</p><div class="actions"><button id="cycleRevise">Çıktılarımı düzenle</button></div>${h.map((s,i)=>`<details><summary>${i===0?'İlk teslim':'Revizyon '+i} · ${date(s.at)}</summary>${s.note?`<p><b>Değişiklik gerekçesi:</b> ${esc(s.note)}</p>`:''}${c.tasks.map((t,j)=>`<h3>${esc(t)}</h3><div class="quote">${esc(s.answers['task'+j]||'')}</div>`).join('')}</details>`).join('')}${h.length>1?`<details><summary>İlk ve son çözümümü yan yana karşılaştır</summary>${c.tasks.map((t,i)=>`<h3>${esc(t)}</h3><div class="grid2"><div><b>İlk teslim</b><div class="quote">${esc(h[0].answers['task'+i])}</div></div><div><b>Son teslim</b><div class="quote">${esc(h.at(-1).answers['task'+i])}</div></div></div>`).join('')}<p class="muted">Bu görünüm metinleri karşılaştırır; gelişimin kalitesini otomatik değerlendirmez.</p></details>`:''}</section><section class="card cycle-section"><span class="eyebrow">Kararını savun</span><h2>Yeni bilgiyle yeniden düşün</h2><p>${esc(c.update.text)}</p><label class="field">İlk kararım, yeni kararım ve değişimin gerekçesi<textarea id="cycleDefense" rows="5" maxlength="8000">${esc(p.defense||'')}</textarea></label><button id="cycleDefenseSave">Savunma notumu kaydet</button>${p.defense?.trim()?`<details><summary>Yeni bilginin referans yorumunu aç</summary><p>${esc(c.update.reference)}</p></details>`:''}</section><section class="card cycle-section"><span class="eyebrow">Yeni bağlama aktarım</span><h2>${esc(target.title)}</h2><p>Yeni şirket ve verilerle bir çalışma. Aynı sorunun tekrarı değildir; kalibre edilmiş eşdeğer test de değildir. İki vaka puanı üzerinden otomatik gelişim oranı hesaplanmaz.</p><p>${completed?'Bağlantı kurulduktan sonra yeni vaka teslimi kaydedildi. İki çözümün kalitesini dayanaklarıyla ayrıca incele.':linked?'Yeni vaka başlangıç bağlantın kayıtlı. Çalışmayı kendi yaklaşımınla tamamla.':h.length>1?'Revizyonun kayıtlı. Şimdi yeni şirket dosyasıyla çalışmaya başlayabilirsin.':'Önce bu vakada bir revizyon teslim et; sonra yeni vakayla devam et.'}</p>${h.length>1?`<button id="cycleTransfer">${linked?'Yeni vakaya devam et':'Yeni vakayı başlat'}</button>`:''}</section>`;}
-function selfReview(c,a){return `<section class="card cycle-section"><span class="eyebrow">Öz inceleme · Kendi değerlendirmen</span><h2>Çözümünde hangi dayanak var?</h2><p>Bu bölüm insan değerlendirmesinden ayrıdır. Düzeyler pilot ölçütleridir; toplam aday puanı hesaplanmaz.</p>${c.rubric.map((r,i)=>`<div class="rubricrow"><div><h3>${esc(r.name)}</h3><p>${esc(r.evidence)}</p></div><label class="field">Kendi incelemem<select data-case-rating="${i}" aria-label="${esc(r.name)} öz inceleme"><option value="">Henüz incelemedim</option>${labels.map((l,n)=>`<option value="${n}" ${a.ratings?.[i]===n?'selected':''}>${n} · ${l}</option>`).join('')}</select></label><button data-cycle-practice="${r.practice}">İlgili alıştırma</button></div>`).join('')}<label class="field">Bir sonraki çözümümde neyi farklı yapacağım?<textarea id="caseReflection" maxlength="8000" rows="4">${esc(a.reflection||'')}</textarea></label><p id="case-review-saved" role="status"></p><div class="actions"><button id="caseExport">Çözüm ve incelememi indir · JSON</button><button id="casePrint">Yazdır / PDF olarak kaydet</button></div></section>`;}
-root.CaseCycle={feedback:cycle};
-function reviewer(){let c;if(reviewRequest)c=L.validateRequest(reviewRequest);return `<a href="#cases">← Vaka havuzu</a><span class="eyebrow">İnsan değerlendirmesi</span><h1>Değerlendirici çalışma alanı</h1><p>Adayın paylaştığı değerlendirme isteğini aç. Yalnız gösterilen teslimi incele; örnek karardan farklı seçeneği gerekçesiyle değerlendir. Form bu tarayıcıda otomatik saklanmaz; sayfadan ayrılmadan dosyanı indir.</p><label class="btn">Değerlendirme isteğini aç<input id="reviewRequestImport" type="file" accept=".json,application/json" hidden></label><p id="reviewerStatus" role="status"></p>${c?`<section class="card cycle-section"><h2>${esc(c.title)} · ${c.version}</h2><p>Teslim: ${date(reviewRequest.submission.at)}</p>${c.tasks.map((t,i)=>`<h3>${esc(t)}</h3><div class="quote">${esc(reviewRequest.submission.answers['task'+i])}</div>`).join('')}<details><summary>Vaka kaynak belgelerini aç</summary>${c.docs.map(d=>`<h3>${d.code} · ${esc(d.title)}</h3><p>${esc(d.text)}</p>${d.headers.length?`<div class="tablewrap"><table><thead><tr>${d.headers.map(x=>`<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${d.rows.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:''}`).join('')}</details><details><summary>Referans inceleme</summary>${refs(c)}</details></section><form id="humanReviewForm" class="card cycle-section"><h2>Kanıta dayalı değerlendirme</h2><p>Alıntıyı aday yanıtından aynen kopyala. Dayanak bulunamadıysa alıntıyı boş bırakıp 0 seç; gözleminde eksik çıktıyı belirt. Düzeyler pilot ölçütleridir, standartlaştırılmış test puanı değildir. Yetkinlik toplamı veya sıralama üretilmez.</p><label class="field">Değerlendirici adı / kodu<input name="reviewer" maxlength="120" required></label>${c.rubric.map((r,i)=>`<fieldset class="cycle-review"><legend>${i+1}. ${esc(r.name)}</legend><p>${esc(r.evidence)}</p><label class="field">Gözlenen düzey<select name="rating${i}" required><option value="">Seç</option>${r.anchors.map((s,n)=>`<option value="${n}">${n} · ${esc(s)}</option>`).join('')}</select></label><label class="field">Teslimden bire bir dayanak alıntısı<textarea name="quote${i}" maxlength="2000" rows="3"></textarea></label><label class="field">Gözlem ve ölçütle bağlantısı<textarea name="observation${i}" maxlength="3000" required rows="3"></textarea></label><label class="field">Adayın sonraki adımı<textarea name="next${i}" maxlength="3000" required rows="3"></textarea></label></fieldset>`).join('')}<label class="field">Genel geri bildirim ve öncelikli bir veya iki gelişim alanı<textarea name="summary" maxlength="3000" required rows="4"></textarea></label><button class="primary">Geri bildirim dosyasını indir</button><p id="reviewFormError" role="alert"></p></form>`:''}`;}
-U.view=function(){if(location.hash==='#cases/reviewer')return reviewer();let html=baseView();if(location.hash==='#cases')html=html.replace('<div class="note"><b>Yeni / Strateji', '<section class="card cycle-section"><span class="eyebrow">Gelişim yolu · 20 vaka</span><h2>İlk çözümünden yeni bir vakaya ilerle</h2><p>Tüm vakalarda teslim geçmişi, insan değerlendirme dosyası, odaklı alıştırma, revizyon ve yeni bağlam bağlantısı bulunur. Hedefine uygun sırayı hazırlık planında görebilirsin.</p><div class="actions">'+catalog().filter(c=>['sube-lokasyonu','nakit-toparlanma','geri-bildirim'].includes(c.id)).map(c=>link('#cases/'+c.id,c.title)).join('')+'</div><a href="#cases/reviewer">Değerlendirici çalışma alanı →</a></section><div class="note"><b>Yeni / Strateji');const c=current();if(c){const sources=catalog().filter(p=>p.learning?.transfer===c.id&&draft(p).learning?.transfer);if(sources.length)html='<div class="note">Bu vaka önceki çalışmanın yeni bağlam adımıdır. '+sources.map(p=>link('#cases/'+p.id,'İlk çalışmaya ve gelişim kaydına dön: '+p.company)).join(' ')+'</div>'+html;}if(!c?.learning)return html;const a=draft(c);if(!a.submitted)return html;return html.replace('<div id="case-error"',`<label class="field cycle-section">Revizyon gerekçem · Yeni teslim için gerekli<textarea id="cycleRevisionNote" maxlength="3000" rows="3" placeholder="Neyi, hangi dayanak veya geri bildirim nedeniyle değiştirdin?">${esc(a.learning?.revisionNote||'')}</textarea></label><div id="case-error"`);};
-async function readFile(file){if(!file)throw Error('Dosya seçilmedi.');if(file.size>1500000)throw Error('Dosya 1,5 MB sınırını aşıyor.');return JSON.parse(await file.text());}
-U.bind=function(){if(location.hash==='#cases/reviewer'){const input=document.getElementById('reviewRequestImport');input.onchange=async()=>{try{const p=await readFile(input.files[0]);L.validateRequest(p);reviewRequest=p;render()}catch(e){document.getElementById('reviewerStatus').textContent=e.message}};document.getElementById('humanReviewForm')?.addEventListener('submit',e=>{e.preventDefault();try{const c=L.validateRequest(reviewRequest),f=new FormData(e.target),r={schema:'aa-human-review-v1',caseId:c.id,caseVersion:c.version,submissionId:reviewRequest.submissionId,at:new Date().toISOString(),reviewer:String(f.get('reviewer')).trim(),summary:String(f.get('summary')).trim(),items:c.rubric.map((_,i)=>({index:i,rating:f.get('rating'+i)===''?-1:Number(f.get('rating'+i)),quote:String(f.get('quote'+i)).trim(),observation:String(f.get('observation'+i)).trim(),next:String(f.get('next'+i)).trim()}))};L.validateReview(c,r,reviewRequest.submission);download(c.id+'-geri-bildirim.json',JSON.stringify(r,null,2));document.getElementById('reviewFormError').textContent='Dosya indirildi. Aday dosyayı kendi vaka ekranından yükleyebilir.';}catch(err){document.getElementById('reviewFormError').textContent=err.message;}});return;}
- baseBind();const c=current();if(!c?.learning||!draft(c).submitted)return;
- document.getElementById('cycleRequest').onclick=()=>download(c.id+'-degerlendirme-istegi.json',JSON.stringify(L.request(c,draft(c)),null,2));
- document.getElementById('cycleReviewImport').onchange=async e=>{try{const r=await readFile(e.target.files[0]),a=L.attach(c,draft(c),r);if(saveAttempt(c,a)){render();document.getElementById('cycle').scrollIntoView();toast('Geri bildirim ilgili teslime bağlandı.');}}catch(err){document.getElementById('cycleImportStatus').textContent=err.message;}};
- document.querySelectorAll('[data-cycle-practice]').forEach(el=>el.onclick=()=>{const d=document.getElementById('cycleDrill'+el.dataset.cyclePractice);d.open=true;d.scrollIntoView({behavior:'smooth'});});
- document.querySelectorAll('[data-cycle-answer]').forEach(el=>el.oninput=()=>{const a=draft(c);saveAttempt(c,{...a,learning:{...a.learning,practice:{...a.learning?.practice,[el.dataset.cycleAnswer]:el.value}}});});
- document.querySelectorAll('[data-cycle-save]').forEach(el=>el.onclick=()=>{const i=el.dataset.cycleSave;if(!draft(c).learning?.practice?.[i]?.trim()){document.getElementById('cyclePracticeStatus').textContent='Önce kendi yanıtını yaz.';return;}render();const d=document.getElementById('cycleDrill'+i);d.open=true;d.scrollIntoView();});
- document.getElementById('cycleRevise').onclick=()=>document.getElementById('case-work').scrollIntoView({behavior:'smooth'});
- const defense=document.getElementById('cycleDefense');defense.oninput=()=>{const a=draft(c);saveAttempt(c,{...a,learning:{...a.learning,defense:defense.value,defenseSubmissionId:L.sid(a.submitted)}});};document.getElementById('cycleDefenseSave').onclick=()=>{if(!draft(c).learning?.defense?.trim()){toast('Önce savunma notunu yaz.');return;}const a=draft(c);if(!saveAttempt(c,{...a,learning:{...a.learning,defenseSubmissionId:L.sid(a.submitted)}}))return;render();document.getElementById('cycleDefense').scrollIntoView();};
- const transfer=document.getElementById('cycleTransfer');if(transfer)transfer.onclick=()=>{const a=draft(c);if(!a.learning?.defense?.trim()||a.learning.defenseSubmissionId!==L.sid(a.submitted)){toast('Önce son teslimine göre savunma notunu yaz ve kaydet.');return;}if(a.learning?.transfer?.sourceId!==L.sid(a.submitted)&&!saveAttempt(c,{...a,learning:{...a.learning,transferHistory:[...(a.learning?.transferHistory||[]),...(a.learning?.transfer?[a.learning.transfer]:[])],transfer:{caseId:c.learning.transfer,sourceId:L.sid(a.submitted),at:new Date().toISOString()}}}))return;location.hash='cases/'+c.learning.transfer;};
-};
+(function (root) {
+  'use strict';
+  const U = root.CaseUI,
+    L = root.CaseLearning,
+    E = root.CaseEngine,
+    baseView = U.view,
+    baseBind = U.bind;
+  let reviewRequest = null;
+  const catalog = () => root.CASE_CATALOG;
+  const current = () =>
+    catalog().find(c => c.id === location.hash.split('/')[1] && location.hash.split('/')[2] !== 'v');
+  const draft = c => E.getRecord(state.assessments, c) || E.blank(c);
+  const date = s => new Date(s).toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul' });
+  const labels = [
+    'Dayanak henüz yok',
+    'Önemli eksik var',
+    'Dayanaklı; açıklık var',
+    'Dayanak ve sınırlar açık',
+  ];
+  function saveAttempt(c, a) {
+    const prior = state.assessments?.[E.keyFor(c)];
+    state.assessments = state.assessments || {};
+    state.assessments[E.keyFor(c)] = a;
+    if (!save()) {
+      if (prior === undefined) delete state.assessments[E.keyFor(c)];
+      else state.assessments[E.keyFor(c)] = prior;
+      return false;
+    }
+    return true;
+  }
+  function refs(c) {
+    return c.learning.sections
+      .map(
+        s =>
+          `<details class="cycle-reference"><summary>${esc(s.title)} <small>· ${esc(s.sources)}</small></summary><p>${esc(s.text)}</p></details>`
+      )
+      .join('');
+  }
+  function human(c, a) {
+    const reviews = a.reviews || [];
+    return `<section class="card cycle-section"><span class="eyebrow">İnsan değerlendirmesi</span><h2>Çözümüne bağlı geri bildirim</h2><p>Değerlendirme isteği yalnız bu vakanın seçili son teslimini içerir; profilini, CV’ni ve diğer çalışmalarını içermez. Dosyayı kendin seçtiğin değerlendiriciye iletebilirsin. Buradan otomatik gönderim yapılmaz.</p><div class="actions"><button id="cycleRequest">Son teslim için değerlendirme isteğini indir</button><label class="btn">Geri bildirim dosyasını yükle<input id="cycleReviewImport" type="file" accept=".json,application/json" hidden></label><a class="btn ghost" href="#cases/reviewer">Değerlendirici çalışma alanı</a></div><p id="cycleImportStatus" role="status" aria-live="polite"></p><p class="muted">Dosyalar teslim kimliğiyle eşleştirilir; değerlendirici kimliği veya uzmanlığı uygulama tarafından doğrulanmaz.</p>${reviews.length ? reviews.map(r => `<details><summary>${r.submissionId === L.sid(a.submitted) ? 'Son teslime ait' : 'Önceki teslime ait'} · ${esc(r.reviewer)} · ${date(r.at)}</summary><p>${esc(r.summary)}</p>${r.items.map(x => `<article class="cycle-review"><h3>${esc(c.rubric[x.index].name)} · ${x.rating} / 3</h3><p class="muted">${labels[x.rating]}</p>${x.quote ? `<blockquote>${esc(x.quote)}</blockquote>` : '<p>Bu ölçütte gösterilen dayanak yok.</p>'}<p><b>Gözlem:</b> ${esc(x.observation)}</p><p><b>Sonraki adım:</b> ${esc(x.next)}</p><button data-cycle-practice="${c.rubric[x.index].practice}">İlgili kısa çalışmayı aç</button></article>`).join('')}</details>`).join('') : '<div class="note">Henüz insan değerlendirmesi eklenmedi. Öz inceleme ve referanslar, kişisel değerlendirici geri bildirimi değildir.</div>'}</section>`;
+  }
+  function cycle(c, a) {
+    const h = L.history(a),
+      p = a.learning || {},
+      target = catalog().find(x => x.id === c.learning.transfer),
+      linked = p.transfer?.sourceId === L.sid(a.submitted) ? p.transfer : null,
+      ta = target && E.getRecord(state.assessments, target),
+      completed = !!(linked && L.history(ta || {}).some(s => s.at >= linked.at));
+    return `<section class="card cycle-section" id="cycle"><span class="eyebrow">Çalışma → inceleme → revizyon → yeni bağlam</span><h2>Gelişim döngün</h2><div class="cycle-stages"><span>İlk teslim ✓</span><span>İnsan incelemesi ${(a.reviews || []).some(r => r.submissionId === L.sid(a.submitted)) ? '✓' : 'bekliyor'}</span><span>Revizyon ${h.length > 1 ? '✓' : 'bekliyor'}</span><span>Yeni bağlam ${completed ? 'teslim edildi' : 'bekliyor'}</span></div><p>Tamamlanma işaretleri çalışma kaydıdır; yetkinlik artışı veya işe hazır olma puanı değildir.</p><details><summary>Derin referans inceleme · ${c.learning.sections.length} bölüm</summary><p>Örnek kararlar tek cevap anahtarı değildir. Kendi çözümünün dayanak ve sınırlarıyla karşılaştır.</p>${refs(c)}</details></section>${selfReview(c, a)}${human(c, a)}<section class="card cycle-section" id="cyclePractice"><span class="eyebrow">Odaklı alıştırma</span><h2>Revizyondan önce kısa çalışma</h2><p>İnsan geri bildirimindeki öneriye veya öz incelemene göre çalışmanı seç. Yanıtlar otomatik puanlanmaz.</p>${c.learning.drills.map((d, i) => `<details id="cycleDrill${i}"><summary>${esc(d.title)}</summary><p>${esc(d.prompt)}</p><label class="field">Kendi çalışmam<textarea data-cycle-answer="${i}" maxlength="8000" rows="4">${esc(p.practice?.[i] || '')}</textarea></label><button data-cycle-save="${i}">Çalışmayı kaydet ve referansı aç</button>${p.practice?.[i]?.trim() ? `<div class="note"><b>İnceleme:</b> ${esc(d.reference)}</div>` : ''}</details>`).join('')}<p id="cyclePracticeStatus" role="status"></p></section><section class="card cycle-section"><span class="eyebrow">Teslim geçmişi · ${h.length} teslim</span><h2>İlk çözüm ve revizyonlar</h2><p>Her teslim ayrı saklanır. Yeni taslak eski teslimini değiştirmez. Revizyon yapmak için üstteki çıktı alanlarını düzenle ve değişiklik gerekçeni yaz.</p><div class="actions"><button id="cycleRevise">Çıktılarımı düzenle</button></div>${h.map((s, i) => `<details><summary>${i === 0 ? 'İlk teslim' : 'Revizyon ' + i} · ${date(s.at)}</summary>${s.note ? `<p><b>Değişiklik gerekçesi:</b> ${esc(s.note)}</p>` : ''}${c.tasks.map((t, j) => `<h3>${esc(t)}</h3><div class="quote">${esc(s.answers['task' + j] || '')}</div>`).join('')}</details>`).join('')}${h.length > 1 ? `<details><summary>İlk ve son çözümümü yan yana karşılaştır</summary>${c.tasks.map((t, i) => `<h3>${esc(t)}</h3><div class="grid2"><div><b>İlk teslim</b><div class="quote">${esc(h[0].answers['task' + i])}</div></div><div><b>Son teslim</b><div class="quote">${esc(h.at(-1).answers['task' + i])}</div></div></div>`).join('')}<p class="muted">Bu görünüm metinleri karşılaştırır; gelişimin kalitesini otomatik değerlendirmez.</p></details>` : ''}</section><section class="card cycle-section"><span class="eyebrow">Kararını savun</span><h2>Yeni bilgiyle yeniden düşün</h2><p>${esc(c.update.text)}</p><label class="field">İlk kararım, yeni kararım ve değişimin gerekçesi<textarea id="cycleDefense" rows="5" maxlength="8000">${esc(p.defense || '')}</textarea></label><button id="cycleDefenseSave">Savunma notumu kaydet</button>${p.defense?.trim() ? `<details><summary>Yeni bilginin referans yorumunu aç</summary><p>${esc(c.update.reference)}</p></details>` : ''}</section><section class="card cycle-section"><span class="eyebrow">Yeni bağlama aktarım</span><h2>${esc(target.title)}</h2><p>Yeni şirket ve verilerle bir çalışma. Aynı sorunun tekrarı değildir; kalibre edilmiş eşdeğer test de değildir. İki vaka puanı üzerinden otomatik gelişim oranı hesaplanmaz.</p><p>${completed ? 'Bağlantı kurulduktan sonra yeni vaka teslimi kaydedildi. İki çözümün kalitesini dayanaklarıyla ayrıca incele.' : linked ? 'Yeni vaka başlangıç bağlantın kayıtlı. Çalışmayı kendi yaklaşımınla tamamla.' : h.length > 1 ? 'Revizyonun kayıtlı. Şimdi yeni şirket dosyasıyla çalışmaya başlayabilirsin.' : 'Önce bu vakada bir revizyon teslim et; sonra yeni vakayla devam et.'}</p>${h.length > 1 ? `<button id="cycleTransfer">${linked ? 'Yeni vakaya devam et' : 'Yeni vakayı başlat'}</button>` : ''}</section>`;
+  }
+  function selfReview(c, a) {
+    return `<section class="card cycle-section"><span class="eyebrow">Öz inceleme · Kendi değerlendirmen</span><h2>Çözümünde hangi dayanak var?</h2><p>Bu bölüm insan değerlendirmesinden ayrıdır. Düzeyler pilot ölçütleridir; toplam aday puanı hesaplanmaz.</p>${c.rubric.map((r, i) => `<div class="rubricrow"><div><h3>${esc(r.name)}</h3><p>${esc(r.evidence)}</p></div><label class="field">Kendi incelemem<select data-case-rating="${i}" aria-label="${esc(r.name)} öz inceleme"><option value="">Henüz incelemedim</option>${labels.map((l, n) => `<option value="${n}" ${a.ratings?.[i] === n ? 'selected' : ''}>${n} · ${l}</option>`).join('')}</select></label><button data-cycle-practice="${r.practice}">İlgili alıştırma</button></div>`).join('')}<label class="field">Bir sonraki çözümümde neyi farklı yapacağım?<textarea id="caseReflection" maxlength="8000" rows="4">${esc(a.reflection || '')}</textarea></label><p id="case-review-saved" role="status"></p><div class="actions"><button id="caseExport">Çözüm ve incelememi indir · JSON</button><button id="casePrint">Yazdır / PDF olarak kaydet</button></div></section>`;
+  }
+  root.CaseCycle = { feedback: cycle };
+  function reviewer() {
+    let c;
+    if (reviewRequest) c = L.validateRequest(reviewRequest);
+    return `<a href="#cases">← Vaka havuzu</a><span class="eyebrow">İnsan değerlendirmesi</span><h1>Değerlendirici çalışma alanı</h1><p>Adayın paylaştığı değerlendirme isteğini aç. Yalnız gösterilen teslimi incele; örnek karardan farklı seçeneği gerekçesiyle değerlendir. Form bu tarayıcıda otomatik saklanmaz; sayfadan ayrılmadan dosyanı indir.</p><label class="btn">Değerlendirme isteğini aç<input id="reviewRequestImport" type="file" accept=".json,application/json" hidden></label><p id="reviewerStatus" role="status"></p>${c ? `<section class="card cycle-section"><h2>${esc(c.title)} · ${c.version}</h2><p>Teslim: ${date(reviewRequest.submission.at)}</p>${c.tasks.map((t, i) => `<h3>${esc(t)}</h3><div class="quote">${esc(reviewRequest.submission.answers['task' + i])}</div>`).join('')}<details><summary>Vaka kaynak belgelerini aç</summary>${c.docs.map(d => `<h3>${d.code} · ${esc(d.title)}</h3><p>${esc(d.text)}</p>${d.headers.length ? `<div class="tablewrap"><table><thead><tr>${d.headers.map(x => `<th>${esc(x)}</th>`).join('')}</tr></thead><tbody>${d.rows.map(r => `<tr>${r.map(x => `<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>` : ''}`).join('')}</details><details><summary>Referans inceleme</summary>${refs(c)}</details></section><form id="humanReviewForm" class="card cycle-section"><h2>Kanıta dayalı değerlendirme</h2><p>Alıntıyı aday yanıtından aynen kopyala. Dayanak bulunamadıysa alıntıyı boş bırakıp 0 seç; gözleminde eksik çıktıyı belirt. Düzeyler pilot ölçütleridir, standartlaştırılmış test puanı değildir. Yetkinlik toplamı veya sıralama üretilmez.</p><label class="field">Değerlendirici adı / kodu<input name="reviewer" maxlength="120" required></label>${c.rubric.map((r, i) => `<fieldset class="cycle-review"><legend>${i + 1}. ${esc(r.name)}</legend><p>${esc(r.evidence)}</p><label class="field">Gözlenen düzey<select name="rating${i}" required><option value="">Seç</option>${r.anchors.map((s, n) => `<option value="${n}">${n} · ${esc(s)}</option>`).join('')}</select></label><label class="field">Teslimden bire bir dayanak alıntısı<textarea name="quote${i}" maxlength="2000" rows="3"></textarea></label><label class="field">Gözlem ve ölçütle bağlantısı<textarea name="observation${i}" maxlength="3000" required rows="3"></textarea></label><label class="field">Adayın sonraki adımı<textarea name="next${i}" maxlength="3000" required rows="3"></textarea></label></fieldset>`).join('')}<label class="field">Genel geri bildirim ve öncelikli bir veya iki gelişim alanı<textarea name="summary" maxlength="3000" required rows="4"></textarea></label><button class="primary">Geri bildirim dosyasını indir</button><p id="reviewFormError" role="alert"></p></form>` : ''}`;
+  }
+  U.view = function () {
+    if (location.hash === '#cases/reviewer') return reviewer();
+    let html = baseView();
+    if (location.hash === '#cases')
+      html = html.replace(
+        '<div class="note"><b>Yeni / Strateji',
+        '<section class="card cycle-section"><span class="eyebrow">Gelişim yolu · 20 vaka</span><h2>İlk çözümünden yeni bir vakaya ilerle</h2><p>Tüm vakalarda teslim geçmişi, insan değerlendirme dosyası, odaklı alıştırma, revizyon ve yeni bağlam bağlantısı bulunur. Hedefine uygun sırayı hazırlık planında görebilirsin.</p><div class="actions">' +
+          catalog()
+            .filter(c => ['sube-lokasyonu', 'nakit-toparlanma', 'geri-bildirim'].includes(c.id))
+            .map(c => link('#cases/' + c.id, c.title))
+            .join('') +
+          '</div><a href="#cases/reviewer">Değerlendirici çalışma alanı →</a></section><div class="note"><b>Yeni / Strateji'
+      );
+    const c = current();
+    if (c) {
+      const sources = catalog().filter(p => p.learning?.transfer === c.id && draft(p).learning?.transfer);
+      if (sources.length)
+        html =
+          '<div class="note">Bu vaka önceki çalışmanın yeni bağlam adımıdır. ' +
+          sources
+            .map(p => link('#cases/' + p.id, 'İlk çalışmaya ve gelişim kaydına dön: ' + p.company))
+            .join(' ') +
+          '</div>' +
+          html;
+    }
+    if (!c?.learning) return html;
+    const a = draft(c);
+    if (!a.submitted) return html;
+    return html.replace(
+      '<div id="case-error"',
+      `<label class="field cycle-section">Revizyon gerekçem · Yeni teslim için gerekli<textarea id="cycleRevisionNote" maxlength="3000" rows="3" placeholder="Neyi, hangi dayanak veya geri bildirim nedeniyle değiştirdin?">${esc(a.learning?.revisionNote || '')}</textarea></label><div id="case-error"`
+    );
+  };
+  async function readFile(file) {
+    if (!file) throw Error('Dosya seçilmedi.');
+    if (file.size > 1500000) throw Error('Dosya 1,5 MB sınırını aşıyor.');
+    return JSON.parse(await file.text());
+  }
+  U.bind = function () {
+    if (location.hash === '#cases/reviewer') {
+      const input = document.getElementById('reviewRequestImport');
+      input.onchange = async () => {
+        try {
+          const p = await readFile(input.files[0]);
+          L.validateRequest(p);
+          reviewRequest = p;
+          render();
+        } catch (e) {
+          document.getElementById('reviewerStatus').textContent = e.message;
+        }
+      };
+      document.getElementById('humanReviewForm')?.addEventListener('submit', e => {
+        e.preventDefault();
+        try {
+          const c = L.validateRequest(reviewRequest),
+            f = new FormData(e.target),
+            r = {
+              schema: 'aa-human-review-v1',
+              caseId: c.id,
+              caseVersion: c.version,
+              submissionId: reviewRequest.submissionId,
+              at: new Date().toISOString(),
+              reviewer: String(f.get('reviewer')).trim(),
+              summary: String(f.get('summary')).trim(),
+              items: c.rubric.map((_, i) => ({
+                index: i,
+                rating: f.get('rating' + i) === '' ? -1 : Number(f.get('rating' + i)),
+                quote: String(f.get('quote' + i)).trim(),
+                observation: String(f.get('observation' + i)).trim(),
+                next: String(f.get('next' + i)).trim(),
+              })),
+            };
+          L.validateReview(c, r, reviewRequest.submission);
+          download(c.id + '-geri-bildirim.json', JSON.stringify(r, null, 2));
+          document.getElementById('reviewFormError').textContent =
+            'Dosya indirildi. Aday dosyayı kendi vaka ekranından yükleyebilir.';
+        } catch (err) {
+          document.getElementById('reviewFormError').textContent = err.message;
+        }
+      });
+      return;
+    }
+    baseBind();
+    const c = current();
+    if (!c?.learning || !draft(c).submitted) return;
+    document.getElementById('cycleRequest').onclick = () =>
+      download(c.id + '-degerlendirme-istegi.json', JSON.stringify(L.request(c, draft(c)), null, 2));
+    document.getElementById('cycleReviewImport').onchange = async e => {
+      try {
+        const r = await readFile(e.target.files[0]),
+          a = L.attach(c, draft(c), r);
+        if (saveAttempt(c, a)) {
+          render();
+          document.getElementById('cycle').scrollIntoView();
+          toast('Geri bildirim ilgili teslime bağlandı.');
+        }
+      } catch (err) {
+        document.getElementById('cycleImportStatus').textContent = err.message;
+      }
+    };
+    document.querySelectorAll('[data-cycle-practice]').forEach(
+      el =>
+        (el.onclick = () => {
+          const d = document.getElementById('cycleDrill' + el.dataset.cyclePractice);
+          d.open = true;
+          d.scrollIntoView({ behavior: 'smooth' });
+        })
+    );
+    document.querySelectorAll('[data-cycle-answer]').forEach(
+      el =>
+        (el.oninput = () => {
+          const a = draft(c);
+          saveAttempt(c, {
+            ...a,
+            learning: {
+              ...a.learning,
+              practice: { ...a.learning?.practice, [el.dataset.cycleAnswer]: el.value },
+            },
+          });
+        })
+    );
+    document.querySelectorAll('[data-cycle-save]').forEach(
+      el =>
+        (el.onclick = () => {
+          const i = el.dataset.cycleSave;
+          if (!draft(c).learning?.practice?.[i]?.trim()) {
+            document.getElementById('cyclePracticeStatus').textContent = 'Önce kendi yanıtını yaz.';
+            return;
+          }
+          render();
+          const d = document.getElementById('cycleDrill' + i);
+          d.open = true;
+          d.scrollIntoView();
+        })
+    );
+    document.getElementById('cycleRevise').onclick = () =>
+      document.getElementById('case-work').scrollIntoView({ behavior: 'smooth' });
+    const defense = document.getElementById('cycleDefense');
+    defense.oninput = () => {
+      const a = draft(c);
+      saveAttempt(c, {
+        ...a,
+        learning: { ...a.learning, defense: defense.value, defenseSubmissionId: L.sid(a.submitted) },
+      });
+    };
+    document.getElementById('cycleDefenseSave').onclick = () => {
+      if (!draft(c).learning?.defense?.trim()) {
+        toast('Önce savunma notunu yaz.');
+        return;
+      }
+      const a = draft(c);
+      if (!saveAttempt(c, { ...a, learning: { ...a.learning, defenseSubmissionId: L.sid(a.submitted) } }))
+        return;
+      render();
+      document.getElementById('cycleDefense').scrollIntoView();
+    };
+    const transfer = document.getElementById('cycleTransfer');
+    if (transfer)
+      transfer.onclick = () => {
+        const a = draft(c);
+        if (!a.learning?.defense?.trim() || a.learning.defenseSubmissionId !== L.sid(a.submitted)) {
+          toast('Önce son teslimine göre savunma notunu yaz ve kaydet.');
+          return;
+        }
+        if (
+          a.learning?.transfer?.sourceId !== L.sid(a.submitted) &&
+          !saveAttempt(c, {
+            ...a,
+            learning: {
+              ...a.learning,
+              transferHistory: [
+                ...(a.learning?.transferHistory || []),
+                ...(a.learning?.transfer ? [a.learning.transfer] : []),
+              ],
+              transfer: {
+                caseId: c.learning.transfer,
+                sourceId: L.sid(a.submitted),
+                at: new Date().toISOString(),
+              },
+            },
+          })
+        )
+          return;
+        location.hash = 'cases/' + c.learning.transfer;
+      };
+  };
 })(window);

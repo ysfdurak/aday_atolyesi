@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Ardıç Hizmet
 
-Ardıç Hizmet,2015’te kurulmuş, işletmelere abonelik sonrası kurulum ve bakım talepleri sunan bir şirkettir. Bursa merkez ofisinde müşteri ilişkileri ve planlama, iki saha ofisinde uygulama ekipleri bulunur. Şirket 74 çalışanla faaliyet gösterir. Müşteriler Web portalından doğrudan veya anlaşmalı mağazalardan talep açabilir. İki kanalın satış hedefleri ayrı, müşteri sözleşmeleri ise aynı şirket adınadır.
+Ardıç Hizmet, 2015’te kurulmuş, işletmelere abonelik sonrası kurulum ve bakım talepleri sunan bir şirkettir. Bursa merkez ofisinde müşteri ilişkileri ve planlama, iki saha ofisinde uygulama ekipleri bulunur. Şirket 74 çalışanla faaliyet gösterir. Müşteriler Web portalından doğrudan veya anlaşmalı mağazalardan talep açabilir. İki kanalın satış hedefleri ayrı, müşteri sözleşmeleri ise aynı şirket adınadır.
 
 Son altı ayda mağaza iş ortaklığı programı genişletildi. Talep kabul ekranı ve aylık sonuç raporu farklı ekiplerce yönetiliyor. Talep kaydı müşteriye söz verilen tarihi içerir; süre müşterinin ürününe ve sözleşmesine göre değişebilir. Şirketin bu yılki bütçesinde yeni saha ofisi bulunmuyor. Yönetim kurulu hizmet seviyesini yeni müşteri sözleşmelerinde kullanmayı planlıyor. Sen merkezi iş analizi ekibine geçen ay katıldın; kanal ekipleri raporunu sabah toplantısından önce görecek.
 
@@ -82,7 +82,7 @@ Aylık rapor son iş günü 23.59’da kapanır. Dönem sonrası düzeltme, kay�
 
 ## Beklenen çıktılar
 
-1. Aylık yönetim değerlendirme notu (en fazla 600 kelime). Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Aylık yönetim değerlendirme notu (en fazla 600 kelime). Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Sunumda kullanılacak analiz tabloları ve hesap eki.
 3. Bir sayfalık izleyen dönem çalışma planı.
 4. Genel müdüre sunulacak dört slaytlık sunum içeriği.

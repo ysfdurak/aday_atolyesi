@@ -1,0 +1,213 @@
+const assert = require('node:assert/strict'),
+  fs = require('node:fs'),
+  vm = require('node:vm');
+require('../web/modules/zihin/numeric.js');
+require('../web/modules/zihin/engine.js');
+require('../web/modules/zihin/verbal.js');
+require('../web/modules/zihin/spatial.js');
+require('../web/modules/zihin/coach.js');
+require('../web/modules/zihin/discovery.js');
+require('../web/modules/zihin/assessment.js');
+require('../web/modules/zihin/pilot.js');
+const state = Discovery.blank(),
+  now = Date.UTC(2026, 9, 30),
+  DAY = 86400000;
+assert.equal(Discovery.catalog.filter(r => r.domain === 'num').length, 13);
+assert(!Discovery.byId('code'));
+assert(!Discovery.byId('composition')); // These displays share a scheduling family.
+let counts = {},
+  kinds = new Set();
+for (let scope of ['num', 'mixed'])
+  for (let n = 0; n < 60; n++) {
+    let ids = Discovery.plan(state, 2, scope, now);
+    assert.equal(ids.length, 12);
+    assert.equal(new Set(ids).size, 12);
+    for (let id of ids) {
+      assert(scope === 'mixed' || Discovery.byId(id).domain === 'num');
+      let q = Discovery.create(id, 2),
+        p = q.proof;
+      assert(q.options.includes(q.answer));
+      assert.equal(new Set(q.options).size, q.options.length);
+      assert.equal(q.strategyId, id);
+      kinds.add(p.kind);
+      let expected;
+      if (p.kind === 'discovery-matrix')
+        expected =
+          p.mode === 0
+            ? p.rows[3][0] * p.rows[3][1] - p.rows[3][0]
+            : p.mode === 1
+              ? p.rows[3][0] ** 2 - p.rows[3][1]
+              : p.rows[3][0] * p.rows[3][1] + p.rows[3][0] + p.rows[3][1];
+      if (p.kind === 'discovery-composition') expected = p.reverse ? p.target : (p.target + p.b) * p.a;
+      if (p.kind === 'discovery-invariant') {
+        expected = p.total - p.weights[0] * p.rows[3][0] - p.weights[1] * p.rows[3][1];
+        let r = p.rows;
+        assert.notEqual((r[1][0] - r[0][0]) * (r[2][1] - r[0][1]), (r[2][0] - r[0][0]) * (r[1][1] - r[0][1]));
+      }
+      if (p.kind === 'discovery-operators') {
+        let [a, b] = p.inputs[3];
+        expected = p.mode === 0 ? a * a + b : p.mode === 1 ? a * b + a : a * a - b * b;
+      }
+      if (p.kind === 'discovery-path') {
+        expected = p.start + p.hole * p.step;
+        assert.equal(new Set(p.positions).size, 9);
+      }
+      if (p.kind === 'discovery-code') {
+        let a = Math.floor(p.xs[3] / 10),
+          b = p.xs[3] % 10;
+        expected =
+          p.mode === 0 ? 10 * (a + b) + Math.abs(a - b) : p.mode === 1 ? a * a + b * b : a * b + a + b;
+      }
+      if (p.kind === 'discovery-conditional')
+        expected = p.target % 2 ? 2 * p.target - p.k : p.target / 2 + p.k;
+      if (p.kind === 'discovery-symbol-values') expected = p.a * p.x + p.b * p.z - p.y;
+      if (expected !== undefined) {
+        assert(Number.isSafeInteger(expected));
+        assert.equal(q.answer, expected.toLocaleString('tr-TR'));
+        assert(q.options.every(v => !v.includes(',')));
+      }
+      counts[id] = (counts[id] || 0) + 1;
+      Discovery.record(state, {
+        strategyId: id,
+        level: 2,
+        format: q.discoveryFormat,
+        correct: true,
+        hinted: false,
+        sec: 35,
+        at: now + n * DAY,
+      });
+    }
+    state.last = ids;
+  }
+assert(Discovery.catalog.every(r => counts[r.id] > 0));
+for (let kind of [
+  'discovery-matrix',
+  'discovery-composition',
+  'discovery-invariant',
+  'discovery-operators',
+  'discovery-path',
+  'discovery-code',
+  'discovery-conditional',
+  'discovery-symbol-values',
+])
+  assert(kinds.has(kind));
+let fresh = Discovery.blank(),
+  first = Discovery.plan(fresh, 2, 'num', now);
+first.forEach(id =>
+  Discovery.record(fresh, {
+    strategyId: id,
+    level: 2,
+    format: 'end',
+    correct: false,
+    hinted: false,
+    sec: 100,
+    at: now,
+  })
+);
+let omitted = Discovery.catalog.find(r => r.domain === 'num' && !first.includes(r.id));
+assert(Discovery.plan(fresh, 2, 'num', now + 100).includes(omitted.id));
+assert.equal(Discovery.stat(fresh, first[0], 2).nextDue, now + DAY);
+const nodes = new Map(),
+  events = {},
+  storage = new Map(),
+  el = () => ({
+    innerHTML: '',
+    textContent: '',
+    style: {},
+    value: '',
+    classList: { toggle() {} },
+    addEventListener(n, f) {
+      events[n] = f;
+    },
+  }),
+  document = {
+    hidden: false,
+    activeElement: { tagName: 'BODY' },
+    querySelector(s) {
+      if (!nodes.has(s)) nodes.set(s, el());
+      return nodes.get(s);
+    },
+    querySelectorAll() {
+      return [];
+    },
+    addEventListener(n, f) {
+      events[n] = f;
+    },
+  };
+let hash = '#coach';
+let context = {
+  Discovery,
+  Engine,
+  Numeric,
+  Coach,
+  Assessment,
+  Pilot,
+  document,
+  location: {
+    get hash() {
+      return hash;
+    },
+    set hash(v) {
+      hash = v.startsWith('#') ? v : '#' + v;
+    },
+  },
+  localStorage: { getItem: k => storage.get(k) || null, setItem: (k, v) => storage.set(k, v) },
+  setInterval: () => 1,
+  clearInterval() {},
+  setTimeout() {},
+  confirm: () => true,
+  console,
+  Blob,
+  URL,
+  window: { addEventListener() {}, scrollTo() {} },
+};
+vm.createContext(context);
+let source = fs.readFileSync('web/modules/zihin/app.js', 'utf8');
+vm.runInContext(source, context);
+assert(nodes.get('#app').innerHTML.includes('Karışık keşif turuna başla'));
+vm.runInContext('startDiscovery()', context);
+let session = JSON.parse(storage.get('zp-session-v1'));
+assert.equal(session.questions.length, 12);
+assert.equal(new Set(session.questions.map(q => q.strategyId)).size, 12);
+assert.equal(session.coach, undefined);
+assert(!nodes.get('#app').innerHTML.includes('ÖNCE YAPIYI SEÇ'));
+assert(!nodes.get('#app').innerHTML.includes('class="answers" hidden'));
+// Resume must preserve generated questions, answer, hints and active time.
+vm.runInContext(
+  'session.responses[0]=session.questions[0].answer;session.seconds[0]=12;session.hintSteps[0]=1;save()',
+  context
+);
+let restored = vm.createContext({ ...context });
+vm.runInContext(source, restored);
+assert.equal(JSON.parse(storage.get('zp-session-v1')).questions[0].id, session.questions[0].id);
+for (let i = 0; i < 12; i++)
+  vm.runInContext(
+    'session.index=' +
+      i +
+      ';session.responses[session.index]=session.questions[session.index].answer;session.seconds[session.index]=30;',
+    context
+  );
+vm.runInContext('finish(true)', context);
+let saved = JSON.parse(storage.get('zp-data-v1'));
+assert.equal(saved.discoveryState.runs.length, 1);
+assert.equal(saved.discoveryState.runs[0].items.length, 12);
+assert.equal(saved.xp, 120);
+assert.equal(
+  Object.values(saved.discoveryState.stats).reduce((n, s) => n + s.trials.length, 0),
+  12
+);
+assert(nodes.get('#app').innerHTML.includes('KEŞİF TURU · ÇÖZÜM YAKLAŞIMLARI'));
+console.log(
+  'Discovery passed: 1,440 varied questions, independent new-rule calculations, conservative strategy grouping, scope, coverage, full 12-question UI flow, reload persistence and per-strategy results.'
+);
+vm.runInContext("start('exam','all',null,2,{name:'QA',count:26,minutes:20,pattern:['num']})", context);
+let exam = JSON.parse(storage.get('zp-session-v1'));
+assert.equal(exam.questions.length, 26);
+let familyCounts = {};
+exam.questions.forEach(q => {
+  assert(q.strategyId);
+  familyCounts[q.strategyId] = (familyCounts[q.strategyId] || 0) + 1;
+});
+assert.equal(Object.keys(familyCounts).length, 13);
+assert(Object.values(familyCounts).every(n => n === 2));
+console.log('Exam generation uses the structural-family deck rather than coefficient-only variations.');

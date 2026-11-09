@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Koru Dağıtım
 
-Koru Dağıtım,2018’den beri ev ve ofis ürünleri dağıtımı yapan dört markanın siparişlerini aynı merkezde hazırlar. Merkez 96 çalışanlıdır; vaka kapsamındaki vardiyada 11 kişi toplama ve paketleme için ayrılmıştır. Diğer ekipler mal kabul, stok ve yüklemeyi yürütür. Şirketin performans toplantısı günlük çıkış ve müşteri geri dönüşleri üzerinden yapılır.
+Koru Dağıtım, 2018’den beri ev ve ofis ürünleri dağıtımı yapan dört markanın siparişlerini aynı merkezde hazırlar. Merkez 96 çalışanlıdır; vaka kapsamındaki vardiyada 11 kişi toplama ve paketleme için ayrılmıştır. Diğer ekipler mal kabul, stok ve yüklemeyi yürütür. Şirketin performans toplantısı günlük çıkış ve müşteri geri dönüşleri üzerinden yapılır.
 
 Küçük ve büyük ürün alanları fiziksel olarak ayrıdır. Paketleme alanı ikisinin ortak çıkışıdır. Personel eğitim kayıtları vardiya sorumlusunda tutulur. Son iki haftada sipariş hacmi kampanya nedeniyle değişmiştir. Ekipler standart sürelerle günlük plan alır, gün sonu fiili kayıtlar ayrı sisteme işlenir. Vardiya içinde görev değişiklikleri pano ve şirket mesajlaşmasında duyurulur. Bugün çıkacak sipariş listesi 08.00’de kesinleşti. Araç saatinin değişmesi taşıyıcı ve müşteri onayına bağlıdır.
 
@@ -88,7 +88,7 @@ Vardiya 08.30’da başlar. Net 300 dakika kişilerin molaları ve planlı faali
 
 ## Beklenen çıktılar
 
-1. Günlük vardiya ve görev dağılım çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Günlük vardiya ve görev dağılım çizelgesi. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Planı destekleyen çalışma tabloları ve hesap eki.
 3. Ekibe iletilecek vardiya başlangıcı bilgilendirmesi.
 4. Vardiya toplantısında kullanılacak bir sayfalık yönetici notu.

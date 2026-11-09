@@ -1,2 +1,0 @@
-const fs=require('node:fs'),vm=require('node:vm'),ctx={window:{}};vm.runInNewContext(fs.readFileSync('web/modules/rol/content.js','utf8'),ctx);const c=ctx.window.CONTENT;
-const data={version:c.version,dimensions:c.dimensions.map(({id,name,action,indicator,interview})=>({id,name,action,indicator,interview})),items:c.items.map(({id,dim,title,scene,type,options,roles,positions,core})=>({id,dim,title,scene,type,options,roles,positions,core}))};fs.writeFileSync('web/response-data.js','window.RESPONSE_DATA='+JSON.stringify(data)+';\n');

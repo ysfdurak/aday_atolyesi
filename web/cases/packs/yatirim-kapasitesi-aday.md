@@ -10,7 +10,7 @@ Aşağıdaki şirket dosyası temelinde istenen çıktıları hazırlayıp tesli
 
 ## D01 / Şirket dosyası / Mavi İşlem Merkezi
 
-Mavi İşlem Merkezi,beş kurumsal müşterinin belge işlerini yürüten 68 çalışanlı bir işletmedir. İşler farklı müşteri formatlarında gelir. Operasyon ekibi saat kazanımı, finans ekibi bütçe etkisi üzerinden yatırım dosyası hazırlıyor. İlk yıldaki müşteri hacimlerinin tamamı henüz sözleşmeyle garanti edilmedi.
+Mavi İşlem Merkezi, beş kurumsal müşterinin belge işlerini yürüten 68 çalışanlı bir işletmedir. İşler farklı müşteri formatlarında gelir. Operasyon ekibi saat kazanımı, finans ekibi bütçe etkisi üzerinden yatırım dosyası hazırlıyor. İlk yıldaki müşteri hacimlerinin tamamı henüz sözleşmeyle garanti edilmedi.
 
 Yüklenmiş saat maliyeti ücret, dolaylı işçilik ve genel destek kalemlerinden oluşur. İşçilik bütçesinin hangi kısmının gerçekten değişebileceği ayrı bir finans çalışmasıdır. İki tedarikçi mevcut işin farklı adımlarını otomatikleştirmeyi teklif etti. Tekliflerde hız, bakım ve ilk kurulum bedeli vardır; kalite örnekleri kısa tanıtımda gösterilmiştir. Ürün kabulü şirketin kendi müşteri standardına tabidir. Sen komite raportörüsün; hem operasyon hem finans görüşünü içeren dosya sunacaksın.
 
@@ -84,7 +84,7 @@ Kurulum ön görüşmesinde iki iç personelin üç iş günü boyunca üretimde
 
 ## Beklenen çıktılar
 
-1. Yatırım komitesine karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminizin gerekçesi bu çıktıda yer almalıdır.
+1. Yatırım komitesine karar notu. Mevcut durum, önerilen hedef/beklenti ve seçiminin gerekçesi bu çıktıda yer almalıdır.
 2. Karşılaştırmalı finansal çalışma dosyası.
 3. Uygulama ve izleme takvimi.
 4. Komite için beş slaytlık sunum içeriği.

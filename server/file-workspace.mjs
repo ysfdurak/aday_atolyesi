@@ -78,7 +78,7 @@ export function validateFileNote(input, chain, outputs) {
   }
   fail('Çalışma adımı bulunamadı.');
 }
-export async function fileWorkspace(request, db, member, input, now, catalog, criteria) {
+export async function fileWorkspace(request, db, member, input, now, catalog, criteria, options = {}) {
   const id = text(input.id, 100),
     row = await db.prepare('SELECT * FROM pilot_submissions WHERE id=?').bind(id).first();
   if (!(await fileAccess(db, member, row))) fail('Bu teslim için yetkin yok.', 403);
@@ -108,7 +108,8 @@ export async function fileWorkspace(request, db, member, input, now, catalog, cr
       criteria: criteria.find(c => c.id === row.case_id && c.version === row.version)?.rubric || [],
       chain: chain.map(r => ({
         id: r.id,
-        name: r.name,
+        // Kör değerlendirmede teslim sahibi olmayan kişi dosya adını görmez (ad soyad içerebilir).
+        name: !own && options.maskName ? options.maskName(r.name) : r.name,
         created: r.created,
         revisionNote: r.revision_note,
         feedback: r.feedback ? JSON.parse(r.feedback) : null,

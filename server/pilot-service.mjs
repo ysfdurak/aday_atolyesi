@@ -1,4 +1,5 @@
 import { readIdentity } from './identity.mjs';
+import { rubricFor, validateCriteria } from './review-model.mjs';
 import { fileWorkspace, fileAccess } from './file-workspace.mjs';
 import reviewCatalog from './pilot-review-catalog.json' with { type: 'json' };
 import { inflateRawSync } from 'node:zlib';
@@ -203,6 +204,23 @@ async function progress(db, uid) {
     })
     .filter(Boolean);
 }
+// Kör değerlendirme: açıkken değerlendiriciler (yönetici hariç) başkasının teslimlerinde
+// e-posta, kullanıcı kimliği ve dosya adı yerine sabit bir takma ad görür.
+async function blindReview(db) {
+  const row = await db.prepare("SELECT value FROM pilot_settings WHERE key='blind_review'").first();
+  return row?.value === '1';
+}
+async function pseudonym(id) {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('aday-atolyesi:' + id));
+  return (
+    'A-' +
+    [...new Uint8Array(digest).slice(0, 3)]
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('')
+      .toUpperCase()
+  );
+}
+const maskedName = name => 'teslim.' + String(name).toLowerCase().split('.').at(-1);
 export async function handlePilot(request, env) {
   try {
     const url = new URL(request.url),
@@ -241,12 +259,28 @@ export async function handlePilot(request, env) {
         method === 'POST' ? await json(request) : Object.fromEntries(url.searchParams),
         now,
         catalog,
-        reviewCatalog
+        reviewCatalog,
+        { maskName: !admin && (await blindReview(db)) ? maskedName : null }
       );
+    if (op === 'settings' && method === 'POST') {
+      if (!admin) fail('Yetkin yok.', 403);
+      const b = await json(request);
+      if (typeof b.blindReview !== 'boolean') fail('Ayar geçersiz.');
+      await db
+        .prepare(
+          "INSERT INTO pilot_settings(key,value,updated) VALUES ('blind_review',?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value,updated=excluded.updated"
+        )
+        .bind(b.blindReview ? '1' : '0', now)
+        .run();
+      return reply({ blindReview: b.blindReview });
+    }
     if (op === 'me' && method === 'GET')
       return reply({
         user: member,
         cases: catalog,
+        // Ölçütler yalnız değerlendirme yetkisi olanlara gönderilir.
+        ...(canReview ? { rubrics: reviewCatalog } : {}),
+        blindReview: await blindReview(db),
         maxBytes: MAX,
         maxFiles: 100,
         maxStorageBytes: 262144000,
@@ -495,6 +529,14 @@ export async function handlePilot(request, env) {
         if (typeof v !== 'string' || v.length > 4000) fail('Taslak alanı çok uzun.');
         return v;
       };
+      let criteria;
+      try {
+        criteria = validateCriteria(b.criteria, rubricFor(reviewCatalog, row.case_id, row.version), {
+          publish: false,
+        });
+      } catch (err) {
+        fail(err.message);
+      }
       const payload = {
         summary: safe(b.summary),
         items: b.items.map(i => ({
@@ -502,6 +544,7 @@ export async function handlePilot(request, env) {
           evidence: safe(i.evidence),
           next: safe(i.next),
         })),
+        ...(criteria ? { criteria } : {}),
       };
       await db
         .prepare(
@@ -548,12 +591,20 @@ export async function handlePilot(request, env) {
         )
         .bind(...(admin ? [] : [uid, uid, canReview ? 1 : 0]))
         .all();
+      const blind = !admin && (await blindReview(db));
       return reply(
-        rows.results.map(r => ({
-          ...r,
-          outputs: JSON.parse(r.outputs),
-          feedback: r.feedback ? JSON.parse(r.feedback) : null,
-        }))
+        await Promise.all(
+          rows.results.map(async r => {
+            const out = {
+              ...r,
+              outputs: JSON.parse(r.outputs),
+              feedback: r.feedback ? JSON.parse(r.feedback) : null,
+            };
+            if (!blind || r.user_id === uid) return out;
+            const alias = await pseudonym(r.user_id);
+            return { ...out, user_id: alias, email: 'Aday ' + alias, name: maskedName(r.name), blind: true };
+          })
+        )
       );
     }
     if (op === 'submit' && method === 'POST') {
@@ -661,10 +712,14 @@ export async function handlePilot(request, env) {
       if (!(await fileAccess(db, member, row))) fail('Dosya bulunamadı.', 404);
       const file = await env.BUCKET.get(row.file_key);
       if (!file) fail('Dosya bulunamadı.', 404);
+      const downloadName =
+        !admin && row.user_id !== uid && (await blindReview(db))
+          ? maskedName(row.name).replace('teslim.', 'teslim-' + (await pseudonym(row.user_id)) + '.')
+          : row.name;
       return new Response(file.body, {
         headers: {
           'Content-Type': row.mime,
-          'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(row.name).replaceAll("'", '%27')}`,
+          'Content-Disposition': `attachment; filename*=UTF-8''${encodeURIComponent(downloadName).replaceAll("'", '%27')}`,
           'Cache-Control': 'private, no-store',
           'X-Content-Type-Options': 'nosniff',
         },
@@ -694,6 +749,18 @@ export async function handlePilot(request, env) {
       const outputs = JSON.parse(row.outputs);
       if (!Array.isArray(b.items) || b.items.length !== outputs.length)
         fail('Her çıktı için geri bildirim yaz.');
+      // Ölçüt seviyeleri: yeni arayüz her zaman gönderir; eski istemcilerle uyum için alan yoksa kabul edilir.
+      let criteria;
+      try {
+        criteria =
+          b.criteria === undefined
+            ? undefined
+            : validateCriteria(b.criteria, rubricFor(reviewCatalog, row.case_id, row.version), {
+                publish: true,
+              });
+      } catch (err) {
+        fail(err.message);
+      }
       const feedback = {
         summary: text(b.summary),
         items: b.items.map((i, n) => ({
@@ -702,6 +769,7 @@ export async function handlePilot(request, env) {
           evidence: text(i.evidence),
           next: text(i.next),
         })),
+        ...(criteria ? { criteria } : {}),
       };
       try {
         await db

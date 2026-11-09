@@ -39,28 +39,66 @@
     return b;
   };
   const view = () =>
-    `<span class="eyebrow">Davetli pilot / Hesap ve teslim</span><h1>Çalışmanı koru.<br><em>Geri bildirimle ilerle.</em></h1><p class="muted">Buradaki hesap işlemleri ve dosyalar sunucuda saklanır. Atölyelerdeki çalışma kayıtları cihazında devam eder; aşağıdan hesabına kaydedebilir veya başka cihazdaki kaydını yükleyebilirsin. Yapay zekâya gönderim yapılmaz. Dosya teslimlerin, geri bildirimlerin ve gelişim adımların hazırlık planına yansır.</p><div id="pilot-message" role="status" aria-live="polite"></div><div id="pilot-content"><p>Hesap kontrol ediliyor…</p></div>`;
+    `<div id="pilot-hero"><span class="eyebrow">Davetli pilot / Hesap ve teslim</span><h1>Çalışmanı koru.<br><em>Geri bildirimle ilerle.</em></h1><p class="muted">Buradaki hesap işlemleri ve dosyalar sunucuda saklanır. Atölyelerdeki çalışma kayıtları cihazında devam eder; aşağıdan hesabına kaydedebilir veya başka cihazdaki kaydını yükleyebilirsin. Yapay zekâya gönderim yapılmaz. Dosya teslimlerin, geri bildirimlerin ve gelişim adımların hazırlık planına yansır.</p></div><div id="pilot-message" role="status" aria-live="polite"></div><div id="pilot-content"><p>Hesap kontrol ediliyor…</p></div>`;
   function message(s) {
     const n = document.getElementById('pilot-message');
     if (n) n.textContent = s;
   }
   function feedback(r) {
     if (!r.feedback) return '<span class="tag">Geri bildirim bekleniyor</span>';
-    return `<details><summary>Geri bildirimi incele · ${e(r.reviewed.slice(0, 10))}</summary><p>${e(r.feedback.summary)}</p>${r.feedback.items.map((x, i) => `<h4>${i + 1}. ${e(x.output)}</h4><p><b>Gözlem:</b> ${e(x.observation)}</p><p><b>Dosyadaki dayanak:</b> ${e(x.evidence)}</p><p><b>Sonraki adım:</b> ${e(x.next)}</p>`).join('')}</details>`;
+    return `<details><summary>Geri bildirimi incele · ${e(r.reviewed.slice(0, 10))}</summary>${root.ReviewUI.feedback(r.feedback)}</details>`;
+  }
+  // Değerlendirici ve yönetici aday metinleri yerine kendi işlerine uygun bir başlık görür.
+  function heroFor(role) {
+    const hero = document.getElementById('pilot-hero');
+    if (!hero || role === 'candidate') return;
+    hero.innerHTML =
+      role === 'admin'
+        ? '<span class="eyebrow">Pilot yönetimi</span><h1>Teslimleri ata.<br><em>Süreyi izle.</em></h1><p class="muted">Bekleyen teslimleri değerlendiricilere dağıt, hedef süreyi aşanları gör ve kör değerlendirmeyi yönet. Kendi hazırlık kayıtların aşağıda ayrı bölümde.</p>'
+        : '<span class="eyebrow">Değerlendirici çalışma alanı</span><h1>Teslimi incele.<br><em>Ölçütle geri bildir.</em></h1><p class="muted">Sana atanan teslimler en eskiden başlayarak sıralanır. Dosyayı ekranda aç, her ölçüt için seviye seç ve çıktı bazında dayanaklı not yaz.</p>';
+    const top = document.querySelector('.main .top span');
+    if (top) top.textContent = role === 'admin' ? 'Pilot yöneticisi' : 'Değerlendirici';
   }
   function draw() {
     const n = document.getElementById('pilot-content');
     if (!n || !me) return;
     const canReview = ['reviewer', 'admin'].includes(me.user.role),
       admin = me.user.role === 'admin';
+    heroFor(me.user.role);
+    const list = canReview ? root.ReviewUI.sortQueue(rows) : rows,
+      pending = rows.filter(r => !r.feedback),
+      unassigned = pending.filter(r => !r.reviewer_id),
+      mine = pending.filter(r => r.reviewer_id === me.user.id),
+      late = (admin ? pending : mine).filter(r => root.ReviewUI.ageDays(r) >= root.ReviewUI.TARGET_DAYS);
     n.innerHTML = `${canReview ? `<section class="card"><div class="sectionhead"><h2>${e(me.user.email)}</h2><a class="btn" href="/signout-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">Çıkış yap</a></div><p>Atanmış teslimleri aşağıdan incele. Kendi hazırlık araçlarını istersen açabilirsin.</p></section><details class="pilot-personal"><summary>Kendi hazırlık kayıtlarım ve dosya teslimim</summary>` : ''}<section class="card"><div class="sectionhead"><h2>${e(me.user.email)}</h2><a class="btn" href="/signout-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">Çıkış yap</a></div><p>Hesap türü: ${e({ admin: 'Yönetici', reviewer: 'Değerlendirici', candidate: 'Aday' }[me.user.role])}</p><p class="muted">Pilot kotası: ${me.maxFiles} dosya · toplam ${Math.round(me.maxStorageBytes / 1048576)} MB. Dosya başına 10 MB.</p><h3>Hazırlık kaydım</h3><p>Hedef, deneyim örnekleri, vaka ve atölye kayıtları dahil edilir. CV metni dahil edilmez. Hesaptan yükleme bu cihazdaki çalışma kayıtlarını değiştirir; önce mevcut yedeğini indir.</p><div class="actions"><button id="pilot-save">Bu cihazdaki çalışmayı hesabıma kaydet</button><button id="pilot-load">Hesabımdaki çalışmayı bu cihaza yükle</button><button id="pilot-account-export">Hesap kayıtlarımı indir</button><a class="btn" href="#settings">Cihaz yedeği indir</a></div><label class="check autosync"><input type="checkbox" id="pilot-autosync" ${root.AccountSync?.settings().on ? 'checked' : ''}> Bu cihazdaki çalışmayı hesabıma otomatik kaydet</label><p class="muted" id="pilot-autosync-status" aria-live="polite">${e(root.AccountSync?.label() || '')}</p><p class="muted">Açıkken değişiklikler birkaç dakikada bir gönderilir. Başka bir cihazda daha yeni kayıt varsa üzerine yazılmaz; otomatik kayıt durur ve sana sorulur.</p></section>
 <section class="card" style="margin-top:20px"><h2>Vaka dosyamı teslim et</h2><p>Önce vaka belgelerini ve senden beklenen çıktıları incele. Yanıtlarını tek dosyada, çıktılarla aynı numaraları kullanarak hazırla.</p><form id="pilot-submit"><label class="field">Vaka<select name="case" id="pilot-case">${me.cases.map(c => `<option value="${e(c.id)}">${e(c.title)}</option>`).join('')}</select></label><div id="pilot-outputs"></div><label class="field">Teslim biçimi<select name="parent" id="pilot-parent"><option value="">Yeni çalışma</option></select></label><label class="field">Revizyonda neleri değiştirdin?<textarea name="note" maxlength="2000" rows="3"></textarea></label><label class="field">Tek yanıt dosyası · PDF / DOCX / XLSX · En fazla 10 MB<input name="file" type="file" accept=".pdf,.docx,.xlsx" required></label><label class="check"><input name="confirmed" type="checkbox" required> Beklenen tüm çıktıları dosyamda aynı numaralarla yanıtladım.</label><p class="muted">Dosya biçimi ve boyutu kontrol edilir. Numaralı yanıtların içeriği insan tarafından incelenir. Şifresiz, makrosuz dosya kullan. Dosyanı sen, yönetici ve atanmış değerlendirici görebilir.</p><button class="primary">Dosyamı teslim et</button></form></section>
-${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><div class="sectionhead"><h2>${canReview ? 'Teslimler ve incelemeler' : 'Teslimlerim'}</h2><button id="pilot-refresh">Teslimleri yenile</button></div><label class="field">Teslimlerde ara<input id="pilot-search" type="search" placeholder="Vaka, dosya veya kişi"></label><label class="field">Görüş durumu<select id="pilot-status-filter"><option value="all">Tümü</option><option value="pending">Geri bildirim bekleyen</option><option value="reviewed">Geri bildirim verilen</option></select></label><p id="pilot-list-count" role="status"></p>${
+${canReview ? '</details>' : ''}${
+      canReview
+        ? `<section class="card queue-summary" style="margin-top:20px"><div class="stats"><div><strong>${admin ? pending.length : mine.length}</strong><span>${admin ? 'geri bildirim bekleyen teslim' : 'sana atanmış, bekleyen teslim'}</span></div><div><strong class="${late.length ? 'late-text' : ''}">${late.length}</strong><span>${root.ReviewUI.TARGET_DAYS} günlük hedefi aşan</span></div>${admin ? `<div><strong>${unassigned.length}</strong><span>atanmamış teslim</span></div>` : ''}</div>${
+            me.blindReview && !admin
+              ? '<p class="muted">Kör değerlendirme açık: değerlendiriciler aday e-postasını ve dosya adını görmez.</p>'
+              : ''
+          }${
+            admin
+              ? `<div class="admin-tools"><label class="check"><input type="checkbox" id="pilot-blind" ${me.blindReview ? 'checked' : ''}> Kör değerlendirme · değerlendiriciler aday kimliğini görmesin</label>${
+                  unassigned.length
+                    ? `<form id="pilot-bulk-assign" class="inline-form"><label class="field">Atanmamış ${unassigned.length} teslimi ata<select name="reviewer">${members
+                        .filter(m => ['reviewer', 'admin'].includes(m.role))
+                        .map(m => `<option value="${e(m.id)}">${e(m.email)}</option>`)
+                        .join(
+                          ''
+                        )}<option value="__balance">Değerlendiricilere eşit dağıt</option></select></label><button>Toplu ata</button></form>`
+                    : ''
+                }</div>`
+              : ''
+          }</section>`
+        : ''
+    }<section class="card" style="margin-top:20px"><div class="sectionhead"><h2>${canReview ? 'Teslimler ve incelemeler' : 'Teslimlerim'}</h2><button id="pilot-refresh">Teslimleri yenile</button></div><label class="field">Teslimlerde ara<input id="pilot-search" type="search" placeholder="Vaka, dosya veya kişi"></label><label class="field">Görüş durumu<select id="pilot-status-filter"><option value="all">Tümü</option><option value="pending">Geri bildirim bekleyen</option><option value="reviewed">Geri bildirim verilen</option></select></label><p id="pilot-list-count" role="status"></p>${
       rows.length
-        ? rows
+        ? list
             .map(
               r =>
-                `<article class="pilot-delivery" data-queue-text="${e((r.name + ' ' + r.email + ' ' + (me.cases.find(c => c.id === r.case_id)?.title || r.case_id)).toLocaleLowerCase('tr-TR'))}" data-reviewed="${r.feedback ? 'yes' : 'no'}"><h3>${e(me.cases.find(c => c.id === r.case_id)?.title || r.case_id)}</h3><p>${e(r.email)} · ${e(r.created.slice(0, 16).replace('T', ' '))} UTC · ${e(r.version)}${r.parent_id ? ' · Revizyon' : ''}</p><p>Teslim kodu: <code>${e(r.id)}</code></p><a class="btn" href="/api/pilot?op=file&id=${encodeURIComponent(r.id)}">${e(r.name)} · İndir</a>${`<a class="btn" href="#file-work/${e(r.id)}">${r.user_id === me.user.id ? 'Dosya karşılaştırması ve görüşme özeti' : 'Teslim zincirini ve ölçütleri incele'} →</a>`}${r.revision_note ? `<p>Değişiklik notu: ${e(r.revision_note)}</p>` : ''}${feedback(r)}${r.user_id === me.user.id && !rows.some(n => n.user_id === r.user_id && n.case_id === r.case_id && n.version === r.version && (n.created > r.created || (n.created === r.created && ((n.sequence || 0) > (r.sequence || 0) || ((n.sequence || 0) === (r.sequence || 0) && n.id > r.id))))) ? `<details data-cycle="${e(r.case_id)}" data-version="${e(r.version)}"><summary>Gelişim adımlarım</summary><div data-cycle-content>Yüklemek için aç.</div></details>` : ''}${
+                `<article class="pilot-delivery" data-queue-text="${e((r.name + ' ' + r.email + ' ' + (me.cases.find(c => c.id === r.case_id)?.title || r.case_id)).toLocaleLowerCase('tr-TR'))}" data-reviewed="${r.feedback ? 'yes' : 'no'}"><h3>${e(me.cases.find(c => c.id === r.case_id)?.title || r.case_id)}</h3><p>${e(r.email)} · ${e(r.created.slice(0, 16).replace('T', ' '))} UTC · ${e(r.version)}${r.parent_id ? ' · Revizyon' : ''} ${canReview ? root.ReviewUI.waitLabel(r) : ''}</p><p>Teslim kodu: <code>${e(r.id)}</code></p><button type="button" data-preview="${e(r.id)}">Ekranda aç</button><a class="btn" href="/api/pilot?op=file&id=${encodeURIComponent(r.id)}">${e(r.name)} · İndir</a>${`<a class="btn" href="#file-work/${e(r.id)}">${r.user_id === me.user.id ? 'Dosya karşılaştırması ve görüşme özeti' : 'Teslim zincirini ve ölçütleri incele'} →</a>`}${r.revision_note ? `<p>Değişiklik notu: ${e(r.revision_note)}</p>` : ''}${feedback(r)}${r.user_id === me.user.id && !rows.some(n => n.user_id === r.user_id && n.case_id === r.case_id && n.version === r.version && (n.created > r.created || (n.created === r.created && ((n.sequence || 0) > (r.sequence || 0) || ((n.sequence || 0) === (r.sequence || 0) && n.id > r.id))))) ? `<details data-cycle="${e(r.case_id)}" data-version="${e(r.version)}"><summary>Gelişim adımlarım</summary><div data-cycle-content>Yüklemek için aç.</div></details>` : ''}${
                   admin && !r.feedback
                     ? `<form data-assignment="${e(r.id)}"><label class="field">Değerlendirici<select name="reviewer">${members
                         .filter(m => ['reviewer', 'admin'].includes(m.role))
@@ -70,7 +108,7 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
                         )
                         .join('')}</select></label><button>Değerlendirici ata</button></form>`
                     : ''
-                }${canReview && !r.feedback && (admin || r.reviewer_id === me.user.id) ? `<details><summary>Geri bildirim hazırla</summary><p>Dosyayı indirip incele. Her çıktı için dosyadaki sayfa/hücre veya bölüm dayanağını belirt. Bu geri bildirim bir işe uygunluk puanı değildir.</p><form data-review="${e(r.id)}"><label class="field">Genel değerlendirme<textarea name="summary" required maxlength="4000"></textarea></label>${r.outputs.map((o, i) => `<h4>${i + 1}. ${e(o)}</h4><label class="field">Gözlem<textarea name="observation${i}" required maxlength="4000"></textarea></label><label class="field">Dosyadaki dayanak · sayfa / hücre / bölüm ve kısa alıntı<textarea name="evidence${i}" required maxlength="4000"></textarea></label><label class="field">Sonraki denemede çalışılacak adım<textarea name="next${i}" required maxlength="4000"></textarea></label>`).join('')}<button type="button" data-review-save="${e(r.id)}">Taslağı hesabıma kaydet</button><button class="primary">Geri bildirimi yayımla</button></form></details>` : ''}</article>`
+                }${canReview && !r.feedback && (admin || r.reviewer_id === me.user.id) ? `<details class="review-details"><summary>Geri bildirim hazırla</summary><p class="muted">Önce dosyayı “Ekranda aç” ile incele. Ölçüt seviyeleri ve çıktı notları adaya açılır; tek bir uygunluk puanı oluşmaz.</p>${root.ReviewUI.form(r, me)}</details>` : ''}<div class="preview-box" data-preview-box="${e(r.id)}"></div></article>`
             )
             .join('')
         : '<p>Henüz teslim yok.</p>'
@@ -133,6 +171,57 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
     draw();
   }
   function wire() {
+    document.querySelectorAll('[data-preview]').forEach(
+      b =>
+        (b.onclick = () => {
+          const r = rows.find(x => x.id === b.dataset.preview),
+            box = document.querySelector(`[data-preview-box="${CSS.escape(r.id)}"]`);
+          if (box.dataset.open) {
+            box.innerHTML = '';
+            delete box.dataset.open;
+            b.textContent = 'Ekranda aç';
+            return;
+          }
+          box.dataset.open = '1';
+          b.textContent = 'Önizlemeyi kapat';
+          root.ReviewUI.preview(box, r);
+        })
+    );
+    const blind = document.getElementById('pilot-blind');
+    if (blind)
+      blind.onchange = () =>
+        job(async () => {
+          const r = await api('settings', { blindReview: blind.checked });
+          me.blindReview = r.blindReview;
+          await refresh();
+          message(r.blindReview ? 'Kör değerlendirme açıldı.' : 'Kör değerlendirme kapatıldı.');
+        });
+    const bulk = document.getElementById('pilot-bulk-assign');
+    if (bulk)
+      bulk.onsubmit = ev => {
+        ev.preventDefault();
+        job(async () => {
+          const choice = new FormData(bulk).get('reviewer'),
+            reviewers = members.filter(m => ['reviewer', 'admin'].includes(m.role)),
+            pool = reviewers.filter(m => m.role === 'reviewer').length
+              ? reviewers.filter(m => m.role === 'reviewer')
+              : reviewers,
+            load = Object.fromEntries(
+              pool.map(m => [m.id, rows.filter(r => !r.feedback && r.reviewer_id === m.id).length])
+            ),
+            targets = root.ReviewUI.sortQueue(rows.filter(r => !r.feedback && !r.reviewer_id));
+          if (!pool.length) throw Error('Önce bir kullanıcıya değerlendirici rolü ver.');
+          for (const r of targets) {
+            // Eşit dağıtımda en az bekleyen işi olan değerlendirici seçilir.
+            const id =
+              choice === '__balance' ? Object.entries(load).sort((a, b) => a[1] - b[1])[0][0] : choice;
+            await api('assign', { id: r.id, reviewer: id });
+            if (id in load) load[id]++;
+          }
+          await refresh();
+          message(targets.length + ' teslim atandı.');
+        });
+      };
     document.getElementById('pilot-refresh').onclick = () =>
       job(async () => {
         if (
@@ -347,19 +436,10 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
         (form.onsubmit = ev => {
           ev.preventDefault();
           job(async () => {
-            const r = rows.find(r => r.id === form.dataset.review),
-              f = new FormData(form);
+            const r = rows.find(r => r.id === form.dataset.review);
             if (!confirm('Geri bildirim adaya açılacak ve bu teslim için sabitlenecek. Yayımlansın mı?'))
               return;
-            await api('review', {
-              id: r.id,
-              summary: f.get('summary'),
-              items: r.outputs.map((o, i) => ({
-                observation: f.get('observation' + i),
-                evidence: f.get('evidence' + i),
-                next: f.get('next' + i),
-              })),
-            });
+            await api('review', root.ReviewUI.collect(form, r, me));
             await refresh();
             message('Geri bildirim yayımlandı.');
           });
@@ -393,16 +473,7 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
     }
   }
   function fields(form, r) {
-    const f = new FormData(form);
-    return {
-      id: r.id,
-      summary: f.get('summary'),
-      items: r.outputs.map((o, i) => ({
-        observation: f.get('observation' + i),
-        evidence: f.get('evidence' + i),
-        next: f.get('next' + i),
-      })),
-    };
+    return root.ReviewUI.collect(form, r, me);
   }
   function wireDrafts() {
     document.querySelectorAll('[data-review]').forEach(form => {
@@ -412,6 +483,7 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
         form,
         'aa-review-draft:' + me.user.id + ':' + r.id
       );
+      root.ReviewUI.bindForm(form, r, me);
       let loaded = false,
         dirty = !!local?.dirty();
       form.addEventListener('input', () => (dirty = true));
@@ -420,12 +492,7 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
         loaded = true;
         try {
           const { draft } = await api('reviewdraft&id=' + encodeURIComponent(r.id));
-          if (draft && !dirty) {
-            form.elements.summary.value = draft.summary;
-            draft.items.forEach((item, i) => {
-              for (const k of ['observation', 'evidence', 'next']) form.elements[k + i].value = item[k];
-            });
-          }
+          if (draft && !dirty) root.ReviewUI.fill(form, draft);
         } catch (err) {
           loaded = false;
           message(err.message + ' Taslak bölümünü kapatıp açarak tekrar dene.');

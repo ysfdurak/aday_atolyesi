@@ -16,3 +16,4 @@ web/modules/rol/content.js
 *.json
 *.md
 drizzle
+web/vendor

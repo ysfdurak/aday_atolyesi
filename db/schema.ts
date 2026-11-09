@@ -64,3 +64,10 @@ export const fileWork = sqliteTable('pilot_file_work', {
   payload: text('payload').notNull(),
   updated: text('updated').notNull(),
 });
+
+// Pilot ayarları (ör. kör değerlendirme). Anahtar/değer olarak saklanır.
+export const settings = sqliteTable('pilot_settings', {
+  key: text('key').primaryKey(),
+  value: text('value').notNull(),
+  updated: text('updated').notNull(),
+});

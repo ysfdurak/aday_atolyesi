@@ -11,3 +11,4 @@ web/cases/packs/** linguist-generated=true
 web/cases/office/** linguist-generated=true binary
 web/cases/*.zip linguist-generated=true binary
 server/pilot-*.json linguist-generated=true -diff
+web/vendor/** linguist-vendored=true

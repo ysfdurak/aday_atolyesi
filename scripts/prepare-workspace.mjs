@@ -42,7 +42,7 @@ writeFileSync(
     context.window.CASE_CATALOG.map(c => ({
       id: c.id,
       version: c.version,
-      rubric: c.rubric.map(r => ({ name: r.name, evidence: r.evidence, levels: r.levels })),
+      rubric: c.rubric.map(r => ({ name: r.name, evidence: r.evidence, anchors: r.anchors })),
     })),
     null,
     2

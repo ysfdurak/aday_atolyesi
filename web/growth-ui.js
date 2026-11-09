@@ -133,6 +133,11 @@
     if (!document.getElementById('growth-track')) return;
     document.getElementById('growth-load-files').onclick = async () => {
       const attempt = ++accountRequest;
+      if (root.PilotProgress?.status() === 'guest') {
+        account = { status: 'auth', rows: [], userId: null };
+        render({ preserveScroll: true });
+        return;
+      }
       account = { status: 'loading', rows: [], userId: null };
       render({ preserveScroll: true });
       const controller = new AbortController(),

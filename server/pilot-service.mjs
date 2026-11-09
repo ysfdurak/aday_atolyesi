@@ -1,3 +1,4 @@
+import { readIdentity } from './identity.mjs';
 import { fileWorkspace, fileAccess } from './file-workspace.mjs';
 import reviewCatalog from './pilot-review-catalog.json' with { type: 'json' };
 import { inflateRawSync } from 'node:zlib';
@@ -210,9 +211,11 @@ export async function handlePilot(request, env) {
     if (!['GET', 'PUT', 'POST'].includes(method)) fail('İşlem desteklenmiyor.', 405);
     if (method !== 'GET' && request.headers.get('origin') !== url.origin)
       fail('İşlem kaynağı doğrulanamadı.', 403);
-    const uid = request.headers.get('oai-authenticated-user-id'),
-      email = request.headers.get('oai-authenticated-user-email');
-    if (!uid || !email) fail('Devam etmek için hesabınla giriş yap.', 401);
+    const identity = readIdentity(request, env);
+    // Misafir kullanıcı için durum sorgusu hata değil, beklenen bir durumdur.
+    if (!identity && op === 'progress' && method === 'GET') return reply({ guest: true });
+    if (!identity) fail('Devam etmek için hesabınla giriş yap.', 401);
+    const { id: uid, email } = identity;
     if (!env.DB || !env.BUCKET) fail('Hesap ve dosya hizmeti henüz hazır değil.', 503);
     const db = env.DB,
       now = new Date().toISOString();

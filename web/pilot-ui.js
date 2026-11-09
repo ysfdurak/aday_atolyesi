@@ -336,6 +336,12 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
       ticket = ++bindTicket;
     if (!target) return;
     try {
+      // Misafir kullanıcıda kimlik isteği göndermeden giriş seçeneğini göster.
+      if (root.PilotProgress) {
+        await root.PilotProgress.refresh(true);
+        if (root.PilotProgress.status() === 'guest')
+          throw Object.assign(Error('Devam etmek için hesabınla giriş yap.'), { status: 401 });
+      }
       const identity = await api('me');
       if (ticket !== bindTicket || !target.isConnected) return;
       me = identity;
@@ -346,7 +352,7 @@ ${canReview ? '</details>' : ''}<section class="card" style="margin-top:20px"><d
     } catch (err) {
       const n = document.getElementById('pilot-content');
       if (n === target && ticket === bindTicket) {
-        n.innerHTML = `<section class="card"><p>${e(err.message)}</p>${err.status === 401 ? (root.AA_LOCAL_DEMO ? '<a class="btn primary" href="/signin-with-chatgpt">Demo rolünü seç</a><p>Yerel demo kayıtları sunucu kapanınca silinir.</p>' : '<a class="btn primary" href="/signin-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">ChatGPT hesabımla giriş yap</a><p>Bu pilot sürümde giriş ChatGPT hesabıyla yapılır.</p>') : '<button id="pilot-retry">Tekrar dene</button>'}</section>`;
+        n.innerHTML = `<section class="card"><p>${e(err.message)}</p>${err.status === 401 ? (root.AA_LOCAL_DEMO ? '<a class="btn primary" href="/signin-with-chatgpt">Demo rolünü seç</a><p>Yerel demo kayıtları sunucu kapanınca silinir.</p>' : '<a class="btn primary" href="/signin-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">Giriş yap</a><p>Hesabınla giriş yaptığında teslimlerin ve geri bildirimlerin her cihazdan açılır.</p>') : '<button id="pilot-retry">Tekrar dene</button>'}</section>`;
         document.getElementById('pilot-retry')?.addEventListener('click', bind);
       }
     }

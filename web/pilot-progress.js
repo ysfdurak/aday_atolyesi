@@ -19,6 +19,11 @@
         }
         if (!r.ok) throw Error('unavailable');
         const data = await r.json();
+        if (data.guest) {
+          snapshot = null;
+          status = 'guest';
+          return;
+        }
         snapshot = data;
         status = 'ready';
       } catch {

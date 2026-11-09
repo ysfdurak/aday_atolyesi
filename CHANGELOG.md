@@ -6,6 +6,7 @@ Kullanım kolaylığı ve kod düzeni revizyonu.
 
 - **Gezinme:** Menü 13 öğeden 7 başlığa indi. Mülakat hazırlığı (deneyim örnekleri, mülakat dosyası, prova, CV), Gelişimim (gelişim raporu, modül sonuçları) ve Hesap ve ayarlar alt sekmelerle açılır. Mobil alt çubukta Vakalar ve Mülakat eklendi.
 - **Vaka ekranı:** Geniş ekranda belgeler ve cevap alanları yan yana. Her çıktıda kelime sayacı (vaka sınırı varsa uyarı), tek tıkla yapı şablonu, isteğe bağlı süre tutucu ve teslim öncesi öz kontrol listesi.
+- **İki teslim yolu ayrıldı:** Ekrandaki metin teslimi “Bitirdim, referansla karşılaştır” olarak adlandırıldı; değerlendiriciye yalnız dosya tesliminin gittiği vaka ekranında açıkça yazıyor.
 - **Vaka havuzu:** Devam eden ve hedef role uygun vakalar önce, sonra kolaydan zora sıralanır; uygun vakalarda “Hedefine uygun” etiketi.
 - **Otomatik hesap kaydı:** Hesabım ekranından açılabilir. Değişiklikler birkaç dakikada bir gönderilir; başka cihazda daha yeni kayıt varsa üzerine yazılmaz ve otomatik kayıt durur.
 - **Metin:** Vaka metinlerinde sayı ve noktalama çevresindeki 400'e yakın eksik boşluk düzeltildi; Word/Excel paketleri yeniden üretildi. “Assessment Atölyesi” adı “Vaka Atölyesi” oldu. Mizaç aday ekranlarında hitap “sen” olarak birleştirildi. Tekrarlanan uyarılar “Nasıl çalışır?” sayfasında “Verilerin nerede saklanır?” bölümünde toplandı.

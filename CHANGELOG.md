@@ -1,5 +1,17 @@
 # Sürüm geçmişi
 
+## 0.20.0 · 15 Kasım 2026
+
+İçerik, tasarım ve öğreticilik incelemesi.
+
+- **İlk ziyaret:** Çalışma alanında "Nasıl ilerlersin?" kartı (3 adım). Gelişim raporu boşken teknik terimler yerine "Raporun dolması için üç adım" gösterilir.
+- **Deneyim formu:** Zorunlu alanlar önde; kaynak, alternatif, öğrenme ve risk alanları "Anlatımını güçlendir" bölümünde toplanır (doluysa açık gelir). Doldurulmuş, kurgusal bir örnek kayıt eklendi.
+- **Rehber:** 11 terimlik "Sık kullanılan terimler" sözlüğü; rehber sayfası menüde yanlış bölümü işaretlemiyor.
+- **Vaka ekranı:** "İki yol var" notu başlık ve görev özetinin altına taşındı (telefonda ilk ekranı kaplamıyor).
+- **Telefon:** Zihin'in alt menüsü artık Aday Atölyesi çubuğunun altında kalmıyor; Mizaç menüsü tek satırda yatay kayar.
+- **Erişilebilirlik:** Ana uygulama ve üç modülde renk karşıtlığı WCAG AA'ya çekildi; başlık sırası ve sayfa bölgeleri düzeltildi. axe denetimi masaüstü ve telefonda 0 ihlal.
+- **Dil:** Geliştirici ifadeleri ("Bu sürümde çalışıyor", "İlk geliştirme sürümü", "Geliştirme sırası") kullanıcıya dönük ifadelerle değişti; yan yana düğmeler arasına boşluk eklendi.
+
 ## 0.19.1 · 15 Kasım 2026
 
 - Eski GitHub Pages adresi (`ysfdurak.github.io/aday_atolyesi`) canlı demoya, aynı sayfaya yönlenir. Statik sürüm `?static=1` ile açılır.

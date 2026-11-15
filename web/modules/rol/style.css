@@ -288,7 +288,10 @@ a {
   font: 11px Manrope;
   color: var(--green);
 }
-.mini-case h4 {
+.mini-case h4,
+.mini-case .mini-case-title {
+  font-weight: 700;
+  font-family: inherit;
   margin: 6px 0;
   font-size: 15px;
 }

@@ -371,15 +371,14 @@
     const id = location.hash.split('/')[1],
       c = cat().find(c => c.id === id),
       remote = c && root.PilotProgress?.phase(c.id, c.version);
-    return (
-      (root.AA_STATIC
-        ? `<div class="note">Bu ekranda yazıp çalışmanı referans çözümle karşılaştırabilirsin. Dosyayla İK değerlendirmesine gönderme bu statik demoda kapalıdır.</div>`
-        : '') +
-      (root.AA_STATIC
-        ? ''
-        : `<div class="note">${remote ? esc(remote.title) + '. ' : ''}<b>İki yol var:</b> Bu ekranda yazıp kendi çalışmanı referans çözümle karşılaştırabilirsin (bu cihazda kalır, değerlendiriciye gitmez). İK değerlendiricisinden geri bildirim almak için yanıtını tek bir PDF, Word veya Excel dosyası olarak teslim et. ${link('#pilot' + (c ? '/' + c.id : ''), 'Dosyayla değerlendirmeye gönder')}</div>`) +
-      baseView()
-    );
+    const note = root.AA_STATIC
+      ? `<div class="note">Bu ekranda yazıp çalışmanı referans çözümle karşılaştırabilirsin. Dosyayla İK değerlendirmesine gönderme bu statik demoda kapalıdır.</div>`
+      : `<div class="note two-ways">${remote ? esc(remote.title) + '. ' : ''}<b>İki yol var:</b> Bu ekranda yazarsan çalışman bu cihazda kalır ve bitirince referans çözümle karşılaştırırsın. İK değerlendiricisinden geri bildirim için yanıtını tek bir PDF, Word veya Excel dosyası olarak gönder. ${link('#pilot' + (c ? '/' + c.id : ''), 'Dosyayla değerlendirmeye gönder')}</div>`;
+    const body = baseView();
+    // Vaka ekranında not, başlık ve görev özetinden sonra, çalışmaya başlamadan hemen önce durur.
+    if (c && body.includes('<div class="case-split">'))
+      return body.replace('<div class="case-split">', note + '<div class="case-split">');
+    return note + body;
   }
   root.CaseUI = { view, bind, summary };
 })(window);

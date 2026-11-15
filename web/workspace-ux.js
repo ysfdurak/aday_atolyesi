@@ -51,7 +51,11 @@
         co.started > 0 ||
         (st.examples || []).length > 0;
     return `<section class="dashboard-hero"><div><span class="eyebrow">${p ? 'Kendi hızında, somut bir sonraki adım' : 'Hazırlığına buradan başla'}</span><h1>${p ? 'Bugün neye<br><em>odaklanalım?</em>' : 'Hedefin belli olsun.<br><em>İlk adımın da.</em>'}</h1><p class="muted">${p ? safe(pos?.name || p.title) + ' · Günde ' + p.minutes + ' dakika. Çalışmalarını kendi deneyiminle ilişkilendir.' : 'Pozisyonunu seç; sınav pratiği, rol kararları ve şirket vakaları için bir çalışma sırası oluştur.'}</p><div class="pillrow">${p ? `<span>${days < 0 ? 'Hedef tarihi geçti' : days === 0 ? 'Hedef günün bugün' : days + ' gün kaldı'}</span><span>${safe(displayDate(p.deadline + 'T12:00Z'))}</span>` : '<span>Sınav, deneyim ve vaka hazırlığı tek yerde</span>'}</div>${p ? btn('#settings', 'Hedefimi düzenle') : ''}</div><article class="next-action" id="dashboard-next"><span class="eyebrow">${p ? 'Sıradaki çalışman' : 'İlk adım · yaklaşık 2 dakika'}</span><h2>${safe(n.title)}</h2><p>${safe(n.detail)}</p><div class="actions">${btn(n.href, p ? 'Kaldığım yerden devam et' : 'Hedefimi belirle', true)}</div><small>${n.minutes || 10} dk çalışma bloğu${p ? ' · ' + btn('#plan', 'Günlük planın tamamı') : ''}</small></article></section>
-${hasActivity ? `<section class="card growth-entry"><h2>Cevaplarım bana ne söylüyor?</h2><p>Kendi seçimini, dayanağını ve önce çalışabileceğin iki alanı birlikte incele.</p>${btn('#growth', 'Gelişim raporumu aç', true)}</section>` : ''}<div class="workspace-overview"><h2>Çalışmaların bir bakışta</h2><p class="muted">Tamamladığın çalışmaların sayısı.</p><div class="grid status-cards">${checklist(
+${hasActivity ? `<section class="card growth-entry"><h2>Cevaplarım bana ne söylüyor?</h2><p>Kendi seçimini, dayanağını ve önce çalışabileceğin iki alanı birlikte incele.</p>${btn('#growth', 'Gelişim raporumu aç', true)}</section>` : ''}${
+      p
+        ? ''
+        : `<section class="card how-it-works"><h2>Nasıl ilerlersin?</h2><ol class="steps-list"><li><b>Hedefini belirle.</b> Pozisyonu, tarihi ve günlük süreni seç; uygulama sana günlük bir plan çıkarır.</li><li><b>Her gün tek adımı yap.</b> Plan seni sırasıyla sınav pratiğine, rol sorularına ve şirket vakalarına götürür. Vakada belgeleri inceler, kararını gerekçesiyle yazarsın.</li><li><b>Deneyimini görüşmeye taşı.</b> Kendi yaşadığın olayları deneyim örneği olarak yaz, mülakat dosyanda topla ve prova et.</li></ol><p class="muted">Ayrıntılar ve kullanılan terimler: ${btn('#guide', 'Nasıl çalışır?')}</p></section>`
+    }<div class="workspace-overview"><h2>Çalışmaların bir bakışta</h2><p class="muted">Tamamladığın çalışmaların sayısı.</p><div class="grid status-cards">${checklist(
       s
     )
       .map(
@@ -73,13 +77,44 @@ ${root.AA_STATIC ? `<section class="save-strip"><div><b>Çalışman bu tarayıc�
         ''
       )}</select></label><label class="field">Hazırlık hedef tarihin<input name="deadline" type="date" required min="${AA.today()}" value="${AA.plusDay(AA.today(), 14)}"></label><label class="field">Günlük çalışma süren<select name="minutes">${[15, 30, 45, 60, 90].map(n => `<option value="${n}" ${n === 30 ? 'selected' : ''}>${n} dakika</option>`).join('')}</select></label><p>Yönetim pozisyonlarında sorumluluk kapsamı yönetim olarak kaydedilir. Başlangıç tarihi bugün olur. İlanı ve diğer ayrıntıları hedef ayarlarından sonra ekleyebilirsin.</p><p class="muted">Yazdıkların bu cihazda tutulur. Hesaba kaydetme ve dosya teslimi ayrı işlemdir; dosyalarını sen, yönetici ve atanmış değerlendirici görebilir.</p><button class="primary">Planımı oluştur</button><p id="quick-start-status" role="status"></p></form>${btn('#settings', 'Ayrıntılı hedef ayarları')}`;
   }
+  // Zorunlu üç alan açık durur; anlatımı güçlendiren alanlar katlanır bölümdedir (doluysa açık gelir).
+  const REQUIRED = ['situation', 'action', 'result'];
+  function field(e, [id, label, q]) {
+    const req = REQUIRED.includes(id);
+    return `<label class="field" for="example-${id}">${label}${req ? ' *' : ' · isteğe bağlı'}<textarea id="example-${id}" name="${id}" maxlength="3000" ${req ? 'required' : ''} rows="3" placeholder="${safe(q)}">${safe(e[id] || '')}</textarea></label>`;
+  }
   function fields(e) {
-    return E.fields
-      .map(
-        ([id, label, q]) =>
-          `<label class="field" for="example-${id}">${label}${['situation', 'action', 'result'].includes(id) ? ' *' : ' · isteğe bağlı'}<textarea id="example-${id}" name="${id}" maxlength="3000" ${['situation', 'action', 'result'].includes(id) ? 'required' : ''} rows="3" placeholder="${safe(q)}">${safe(e[id] || '')}</textarea></label>`
-      )
-      .join('');
+    const optional = E.fields.filter(([id]) => !REQUIRED.includes(id)),
+      filled = optional.some(([id]) => e[id]?.trim()) || !!e.tradeoff?.trim();
+    return `${E.fields
+      .filter(([id]) => REQUIRED.includes(id))
+      .map(f => field(e, f))
+      .join(
+        ''
+      )}<details class="optional-fields" ${filled ? 'open' : ''}><summary>Anlatımını güçlendir · isteğe bağlı</summary><p class="muted">Mülakatta en çok sorulan takip soruları bunlardır: “Bunu nereden biliyorsun?”, “Başka ne yapabilirdin?”, “Şimdi ne yapardın?”</p>${optional
+      .map(f => field(e, f))
+      .join(
+        ''
+      )}<label class="field">Risk, yan etki veya başka etkileyen koşul · isteğe bağlı<textarea name="tradeoff" maxlength="3000" rows="3" placeholder="Sonucu senin eylemin dışında ne etkilemiş olabilir?">${safe(e.tradeoff || '')}</textarea></label></details>`;
+  }
+  // Öğretici örnek: alanların nasıl doldurulacağını gösterir; kayda eklenmez.
+  const SAMPLE = {
+    title: 'Haftalık raporda tutmayan rakamları nasıl inceledim?',
+    kind: 'Proje (staj) · aday beyanı',
+    situation:
+      'Stajımda ekibin haftalık satış raporu ile muhasebe kaydı arasında yaklaşık %4 fark vardı. Yöneticim cuma toplantısına kadar farkın nedenini bulmamı istedi.',
+    action:
+      'İki kaynağı sipariş numarasıyla eşleştirdim ve farkın iade kayıtlarından geldiğini buldum. Raporda iadelerin ayrı sütunda gösterilmesini önerdim ve şablonu ben güncelledim.',
+    result:
+      'Sonraki dört haftada iki kaynak arasındaki fark kapandı; toplantıda rakam tartışmasına ayrılan süre kısaldı.',
+    source: 'Dört haftalık rapor karşılaştırması ve yöneticimin toplantı notu.',
+    alternative:
+      'Farkı “yuvarlama” diye not düşmek daha hızlıydı. Tekrar ederse rapora güven azalacağı için kaynağını aramayı seçtim.',
+    learning:
+      'Benzer bir uyuşmazlıkta önce tanımları karşılaştırırım (iade dahil mi?). Bunu ilk gün yapsaydım bir gün kazanırdım.',
+  };
+  function sample() {
+    return `<details class="example-sample"><summary>Doldurulmuş bir örnek gör</summary><p class="muted">Kurgusal bir örnektir. Kendi olayını kendi cümlelerinle yaz; sayılar ve sonuç senin gözlemine dayanmalı.</p><h4>${safe(SAMPLE.title)}</h4><p class="tag">${safe(SAMPLE.kind)}</p>${E.fields.map(([id, label]) => `<p><b>${label}:</b> ${safe(SAMPLE[id])}</p>`).join('')}</details>`;
   }
   function exampleCard(e) {
     const x = E.example(e),
@@ -98,13 +133,13 @@ ${root.AA_STATIC ? `<section class="save-strip"><div><b>Çalışman bu tarayıc�
           ].filter(Boolean)
         ),
       ];
-    return `<span class="eyebrow">Deneyim arşivin / Kaynak → karar → sonuç</span><div class="sectionhead"><div><h1>Katkını somut<br><em>bir olayla anlat.</em></h1><p class="muted">İş, proje ve öğrenme deneyimlerini ayrı belirt. Gerçek şirket ve kişi adlarını yazmak zorunda değilsin.</p></div>${btn('#dossier', 'Mülakat dosyam')}</div><div class="grid2 examples-layout"><form id="example" class="card"><div class="sectionhead"><h2>${d.editingId ? 'Örneğini düzenle' : 'Yeni deneyim örneği'}</h2><span class="tag">Taslak bu cihazda</span></div><p>Yıldızlı alanlar gerekli. Yazarken taslağın kaydolur; “Örneği kaydet” ile arşivine eklersin.</p><input type="hidden" name="editingId" value="${safe(d.editingId || '')}"><label class="field">Başlık *<input name="title" maxlength="120" required value="${safe(d.title || '')}" placeholder="Örn. Rapor uyuşmazlığını nasıl inceledim?"></label><div class="formgrid"><label class="field">Deneyimin kaynağı *<select name="kind" required><option value="">Kaynak türünü seç</option>${Object.entries(
+    return `<span class="eyebrow">Deneyim arşivin / Kaynak → karar → sonuç</span><div class="sectionhead"><div><h1>Katkını somut<br><em>bir olayla anlat.</em></h1><p class="muted">İş, proje ve öğrenme deneyimlerini ayrı belirt. Gerçek şirket ve kişi adlarını yazmak zorunda değilsin.</p></div>${btn('#dossier', 'Mülakat dosyam')}</div><div class="grid2 examples-layout"><form id="example" class="card"><div class="sectionhead"><h2>${d.editingId ? 'Örneğini düzenle' : 'Yeni deneyim örneği'}</h2><span class="tag">Taslak bu cihazda</span></div><p>Yıldızlı alanları doldurman yeterli. Yazarken taslağın kaydolur; “Örneği kaydet” ile arşivine eklersin.</p>${sample()}<input type="hidden" name="editingId" value="${safe(d.editingId || '')}"><label class="field">Başlık *<input name="title" maxlength="120" required value="${safe(d.title || '')}" placeholder="Örn. Rapor uyuşmazlığını nasıl inceledim?"></label><div class="formgrid"><label class="field">Deneyimin kaynağı *<select name="kind" required><option value="">Kaynak türünü seç</option>${Object.entries(
       E.kinds
     )
       .map(([id, label]) => `<option value="${id}" ${d.kind === id ? 'selected' : ''}>${label}</option>`)
       .join(
         ''
-      )}</select></label><label class="field">Yetkinlik / konu *<select name="topic" required><option value="">Konu seç</option>${topics.map(t => `<option ${d.topic === t ? 'selected' : ''}>${safe(t)}</option>`).join('')}</select></label></div>${fields(d)}<label class="field">Risk, yan etki veya başka etkileyen koşul · isteğe bağlı<textarea name="tradeoff" maxlength="3000" rows="3" placeholder="Sonucu senin eylemin dışında ne etkilemiş olabilir?">${safe(d.tradeoff || '')}</textarea></label><p id="example-save-status" class="muted" role="status">${d.title || d.situation ? 'Kaydedilmiş taslağın açıldı.' : 'Yazmaya başladığında taslak burada korunur.'}</p><p id="example-error" role="alert" class="danger"></p><div class="actions"><button class="primary">${d.editingId ? 'Değişiklikleri kaydet' : 'Örneği kaydet'}</button><button type="button" data-example-new>Yeni boş taslak</button></div><p class="muted">Bir alana metin yazılması o yetkinliği kanıtlamaz. Kaynağı ve sonucu görüşmede ayrıca açıklarsın.</p></form><section><div class="sectionhead"><h2>Arşivin · ${st.examples.length}</h2></div><label class="field">Örneklerinde ara<input id="example-search" type="search" placeholder="Başlık veya yetkinlik"></label><p id="example-count" role="status"></p><div id="example-list">${
+      )}</select></label><label class="field">Yetkinlik / konu *<select name="topic" required><option value="">Konu seç</option>${topics.map(t => `<option ${d.topic === t ? 'selected' : ''}>${safe(t)}</option>`).join('')}</select></label></div>${fields(d)}<p id="example-save-status" class="muted" role="status">${d.title || d.situation ? 'Kaydedilmiş taslağın açıldı.' : 'Yazmaya başladığında taslak burada korunur.'}</p><p id="example-error" role="alert" class="danger"></p><div class="actions"><button class="primary">${d.editingId ? 'Değişiklikleri kaydet' : 'Örneği kaydet'}</button><button type="button" data-example-new>Yeni boş taslak</button></div><p class="muted">Bir alana metin yazılması o yetkinliği kanıtlamaz. Kaynağı ve sonucu görüşmede ayrıca açıklarsın.</p></form><section><div class="sectionhead"><h2>Arşivin · ${st.examples.length}</h2></div><label class="field">Örneklerinde ara<input id="example-search" type="search" placeholder="Başlık veya yetkinlik"></label><p id="example-count" role="status"></p><div id="example-list">${
       st.examples.length
         ? st.examples
             .slice()

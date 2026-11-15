@@ -1,4 +1,4 @@
-# 0.19.1 doğrulama kaydı
+# 0.20.0 doğrulama kaydı
 
 9 Kasım 2026 · Revizyon dalında yeniden çalıştırıldı.
 
@@ -13,6 +13,7 @@
 | İK akışı (tarayıcı) | Yönetici kör modu açtı ve üç teslimi eşit dağıtarak atadı; değerlendirici takma adla gördü, DOCX/XLSX/PDF önizlemelerini açtı, ölçüt seviyeleriyle geri bildirim yayımladı; aday ölçüt çubuklarını gördü. |
 | Cloudflare yayın provası | `npm run build` ve `wrangler deploy --dry-run` temiz (gzip 358 KB; D1, R2, değişkenler ve gece görevi tanımlı). `wrangler dev` ile yerel Workers ortamında aday girişi ve dosya teslimi, yönetici kör mod ve toplu atama, değerlendirici kuyruğu ve DOCX önizlemesi denendi. Gece sıfırlama ayrı bir deneme Worker'ıyla gerçek D1/R2 üzerinde doğrulandı. |
 | Canlı demo dayanıklılığı (0.19.1) | Yerel Workers ortamında 12 API ve 12 bot isteği aynı anda gönderildi: hata kaydı yok, örnek teslimler tek kez yüklendi, `.env`/`config.php` gibi yollar uygulama çalışmadan 404 aldı. Eski Pages adresleri (kök, `web/`, modül sayfası) canlı demoya yönlendi. |
+| Arayüz incelemesi (0.20.0) | Playwright ile 9 ekran + vaka ekranı masaüstü (1280) ve telefon (390) genişliğinde açıldı; axe-core (WCAG 2 A/AA + best-practice) 0 ihlal, sayfa hatası yok. Zihin alt menüsü telefonda görünür. |
 | Görsel kontrol | Masaüstü (1366 px) ve mobil (390 px) görünümde ana ekranlar, vaka ekranı ve modüller headless Chrome ile gezildi; yatay taşma yok. Gerçek telefon testi değildir. |
 
 Canlı iki hesaplı davet, gerçek cihaz kabulü ve gerçek aday pilotu [kabul listesinde](PREPILOT-ACCEPTANCE.md) açık olarak izlenir.

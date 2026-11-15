@@ -2,7 +2,7 @@
 :root {
   --bg: #f6f5f2;
   --ink: #242b29;
-  --muted: #79807b;
+  --muted: #5f6661;
   --green: #356b50;
   --lime: #daec9f;
   --line: #e4e6df;
@@ -117,7 +117,7 @@ small {
 }
 .navlabel {
   font-size: 9px;
-  color: #a1a79f;
+  color: #656d66;
   letter-spacing: 1.5px;
   margin: 0 14px 14px;
 }
@@ -128,7 +128,7 @@ nav {
 nav a {
   padding: 14px;
   border-radius: 9px;
-  color: #737c75;
+  color: #5d665f;
   display: flex;
   align-items: center;
   gap: 13px;
@@ -247,7 +247,7 @@ main {
   font-size: 32px;
 }
 .hero p {
-  color: #6b7868;
+  color: #515d4f;
   font-size: 13px;
   max-width: 330px;
   margin-bottom: 23px;
@@ -341,7 +341,7 @@ main {
   border-radius: 5px;
   padding: 6px 8px;
   background: #f0f3e8;
-  color: #6b814b;
+  color: #52663a;
   display: inline-block;
   width: fit-content;
 }
@@ -397,7 +397,7 @@ main {
   display: grid;
   place-items: center;
   background: color-mix(in srgb, var(--c) 10%, white);
-  color: var(--c);
+  color: color-mix(in srgb, var(--c) 72%, #1d241f);
   font-weight: 600;
   margin-bottom: 18px;
 }
@@ -413,7 +413,7 @@ main {
   border-top: 1px solid #f0f1eb;
   padding-top: 12px;
   font-size: 10px;
-  color: #959b90;
+  color: #616760;
   display: flex;
   justify-content: space-between;
 }
@@ -431,11 +431,11 @@ main {
   border-color: #e6e0f0;
 }
 .sourcepromo .caticon {
-  color: #8f7faa;
+  color: #6b5a88;
   background: #e4ddf0;
 }
 .sourcepromo p {
-  color: #8b819a;
+  color: #675d76;
   font-size: 12px;
 }
 .sourcepromo a {
@@ -793,7 +793,7 @@ footer {
   display: flex;
   justify-content: space-between;
   font-size: 10px;
-  color: #9a9f95;
+  color: #5f6661;
 }
 #toast {
   position: fixed;

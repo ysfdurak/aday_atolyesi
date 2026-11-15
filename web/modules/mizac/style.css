@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700;800&display=swap');
 :root {
   --ink: #183b39;
-  --muted: #61746f;
+  --muted: #53655e;
   --green: #226458;
   --lime: #d7ef9a;
   --bg: #f4f6ef;
@@ -1001,4 +1001,32 @@ summary {
 }
 .checkpoint h1 {
   margin: 6px 0 10px;
+}
+
+/* Telefonda menü: marka üstte, bölümler tek satırda yatay kaydırılır */
+@media (max-width: 650px) {
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 14px 16px 10px;
+  }
+  header nav {
+    margin-left: 0;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  header nav button,
+  header nav a {
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+}
+
+h2.paper-title {
+  font-size: 20px;
+  letter-spacing: 0;
 }

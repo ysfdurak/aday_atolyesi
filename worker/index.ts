@@ -13,6 +13,16 @@ import {
 
 type Env = Cloudflare.Env & { AA_VITRIN?: string; DB: D1Database; BUCKET: R2Bucket };
 
+// Statik dosyalar (arayüz, vakalar, modüller) Cloudflare'in dosya katmanından Worker çalışmadan sunulur.
+// Worker'a yalnız bu yollar gelir; diğer her şey (ör. botların .env, config.php, dump.sql taramaları)
+// uygulama çalıştırılmadan hızlıca 404 alır. Bu hem işlemci süresini hem hata kayıtlarını azaltır.
+const APP_PATHS = new Set(['/', '/api/pilot', '/signin-with-chatgpt', '/signout-with-chatgpt']);
+const notFound = () =>
+  new Response('Bulunamadı', {
+    status: 404,
+    headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'public, max-age=3600' },
+  });
+
 // Canlı vitrin (AA_VITRIN=1): rolle şifresiz giriş, kimlik yalnız çerezden, ilk istekte tablo kurulumu
 // ve örnek veri, yükleme sınırı. Vitrin kapalıysa istekler olduğu gibi uygulamaya gider.
 async function vitrin(request: Request, env: Env, ctx: ExecutionContext): Promise<Request | Response> {
@@ -37,6 +47,9 @@ async function vitrin(request: Request, env: Env, ctx: ExecutionContext): Promis
 
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+    const { pathname } = new URL(request.url);
+    if (!import.meta.env.DEV && !APP_PATHS.has(pathname) && !pathname.startsWith('/_next/'))
+      return notFound();
     if (isVitrin(env)) {
       const next = await vitrin(request, env, ctx);
       if (next instanceof Response) return next;

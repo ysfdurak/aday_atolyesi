@@ -75,6 +75,11 @@ const env = {
 await ensureSchema(env.DB);
 resetSchemaCache();
 await ensureSchema(env.DB);
+// Aynı anda iki ilk istek: biri tabloyu kurarken diğeri hata vermemeli.
+sqlite.exec('DROP TABLE pilot_settings');
+sqlite.exec("DELETE FROM aa_schema WHERE tag LIKE '0004%'");
+resetSchemaCache();
+await Promise.all([ensureSchema(env.DB), (resetSchemaCache(), ensureSchema(env.DB))]);
 const tags = sqlite
   .prepare('SELECT tag FROM aa_schema ORDER BY tag')
   .all()
@@ -85,13 +90,27 @@ assert.deepEqual(
 );
 assert(sqlite.prepare("SELECT name FROM sqlite_master WHERE name='pilot_settings'").get());
 
-// Örnek veri
-await ensureSeeded(env);
+// Örnek veri: aynı anda gelen istekler örnekleri yalnız bir kez yükler.
+resetSchemaCache();
+await Promise.all([ensureSeeded(env), ensureSeeded(env), ensureSeeded(env)]);
+resetSchemaCache();
 await ensureSeeded(env);
 const subs = sqlite.prepare('SELECT * FROM pilot_submissions ORDER BY created').all();
 assert.equal(subs.length, 3, 'üç örnek teslim yüklenir (ikinci çağrı tekrar yüklemez)');
 assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_reviews').get().n, 1);
 assert.equal(objects.size, 3);
+
+// Cloudflare istekler arası Promise paylaşımına izin vermez: modülde bekleyen Promise tutulmamalı.
+const vitrinSource = readFileSync('server/vitrin.mjs', 'utf8');
+assert(
+  !/let \w+ = null;[\s\S]{0,80}\|\|\s*\(async/.test(vitrinSource),
+  'istekler arasında paylaşılan Promise'
+);
+const workerSource = readFileSync('worker/index.ts', 'utf8');
+assert(
+  workerSource.includes('APP_PATHS') && workerSource.includes("'/api/pilot'"),
+  'uygulama dışı yollar hızlı 404 almalı'
+);
 
 // Giriş
 const origin = 'https://aday.example.test';

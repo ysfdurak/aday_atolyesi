@@ -15,4 +15,4 @@ Adayın yazdığı kişisel karşılaştırma ve görüşme özeti kendi hesabı
 
 Teslim, atama ve görüş paylaşımını tekrarlamak için proje kökünde `node tests/check-demo.mjs` çalıştır. [Doğrulama kaydında](VERIFICATION.md) bu otomatik kontrol ile görsel ve canlı kabulün durumunu ayrı ayrı görebilirsin.
 
-Demo sunucusunu durdurmak için `Ctrl+C` kullan. Sunucuyu yeniden başlattığında örnek hesaplar ve boş teslim listesiyle açılır. Tam çalışma adımları için [pilot protokolüne](../PILOT-PROTOCOL.md) bak.
+Demo sunucusunu durdurmak için `Ctrl+C` kullan. Sunucuyu yeniden başlattığında örnek hesaplar ve boş teslim listesiyle açılır. Tam çalışma adımları için [pilot protokolüne](PILOT-PROTOCOL.md) bak.

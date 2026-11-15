@@ -18,13 +18,13 @@ Dört seçimlik `#start`, teslim araması ve görüş filtresi, sekmede korunan 
 
 `#rehearsal` yalnız mülakat dosyasına seçilen deneyim ve teslim edilmiş metin vakalarından soru/takip sorusu üretir. Cevap ve öz kontrol taslakları korunur; aynı kaynağa bağlı en fazla beş değişmeyen deneme saklanır. Kaynak değişirse eski prova yeni kayda taşınmaz. Dosyada açık dayanak soruları gösterilir; günlük planda bütçe içinde prova önerilir. Ses kaydı veya otomatik değerlendirme yoktur.
 
-Pilot deneyim formu, isteğe bağlı görev durumu, tahmini süre, cihaz, hazırlık yolu ve sonraki kullanım tercihi toplar. Yönetici özeti yalnız yetkili hesaba açıktır. Eski geri bildirimler uyumludur. `node check-rehearsal.cjs` ve `node check-cycle-integration.mjs` yeni sözleşmeleri doğrular. Öznel ürün puanı **82/100**; gerçek aday, iki hesap ve görsel doğrulama sınırlamaları sürer. Ayrıntılar: [RELEASE-0.14.md](RELEASE-0.14.md).
+Pilot deneyim formu, isteğe bağlı görev durumu, tahmini süre, cihaz, hazırlık yolu ve sonraki kullanım tercihi toplar. Yönetici özeti yalnız yetkili hesaba açıktır. Eski geri bildirimler uyumludur. `node check-rehearsal.cjs` ve `node check-cycle-integration.mjs` yeni sözleşmeleri doğrular. Öznel ürün puanı **82/100**; gerçek aday, iki hesap ve görsel doğrulama sınırlamaları sürer. Ayrıntılar: [RELEASE-0.14.md](reviews/RELEASE-0.14.md).
 
 ## 0.13 gelişim döngüsü
 
 `#growth` alanı güncel cevap ve insan görüşünden en fazla iki çalışma önerir. Kısa çalışma notları, aynı vaka sürümündeki ilk/son teslim alıntıları ve yeni bağlamdaki somut dayanaklar taslak olarak korunur. Analist, operasyon uzmanı ve ekip lideri için üç bağlı yol vardır. PDF/Word/Excel görüşleri adayın isteğiyle, yalnız kendi son teslimlerinden getirilir; dosya metni otomatik okunmaz. Yeni revizyon önceki savunmayı güncel saymaz. Mülakat dosyasına gelişim notları adayın seçimiyle eklenir.
 
-`node check-growth.cjs` kaynak/alıntı/sürüm bütünlüğünü; `node check-cycle-integration.mjs` dosya akışını ve kendi geri bildirimine erişim sınırını kontrol eder. Yeniden değerlendirme: **80/100**, öznel ürün incelemesi; gerçek aday pilotu henüz yapılmadı. Ayrıntılar: [GROWTH-REVIEW.md](GROWTH-REVIEW.md), sonraki çalışma: [PILOT-PROTOCOL.md](PILOT-PROTOCOL.md).
+`node check-growth.cjs` kaynak/alıntı/sürüm bütünlüğünü; `node check-cycle-integration.mjs` dosya akışını ve kendi geri bildirimine erişim sınırını kontrol eder. Yeniden değerlendirme: **80/100**, öznel ürün incelemesi; gerçek aday pilotu henüz yapılmadı. Ayrıntılar: [GROWTH-REVIEW.md](reviews/GROWTH-REVIEW.md), sonraki çalışma: [PILOT-PROTOCOL.md](PILOT-PROTOCOL.md).
 
 ## Güncel kapsam
 

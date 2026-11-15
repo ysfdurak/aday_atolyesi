@@ -111,33 +111,39 @@ export async function handleAuth(request) {
 }
 
 // ---- Veritabanı kurulumu ----
-let schemaReady = null;
-/** Eksik tabloları kurar. Aynı Worker örneğinde bir kez çalışır. */
-export function ensureSchema(db) {
-  schemaReady =
-    schemaReady ||
-    (async () => {
-      await db
-        .prepare(
-          'CREATE TABLE IF NOT EXISTS aa_schema (tag text PRIMARY KEY NOT NULL, applied text NOT NULL)'
-        )
-        .run();
-      const done = new Set((await db.prepare('SELECT tag FROM aa_schema').all()).results.map(r => r.tag));
-      for (const m of MIGRATIONS) {
-        if (done.has(m.tag)) continue;
-        for (const sql of m.statements) await db.prepare(sql).run();
-        await db
-          .prepare('INSERT INTO aa_schema(tag,applied) VALUES (?,?)')
-          .bind(m.tag, new Date().toISOString())
-          .run();
+// Not: Cloudflare Workers bir isteğin başlattığı Promise'i başka bir isteğin beklemesine izin vermez.
+// Bu yüzden istekler arasında paylaşılan Promise tutulmaz; yalnız "bitti" bilgisi saklanır ve her adım
+// aynı anda iki istek çalıştırsa da güvenli olacak şekilde (idempotent) yazılmıştır.
+let schemaDone = false;
+const alreadyExists = err => /already exists/i.test(String(err?.message || err));
+/** Eksik tabloları kurar. Aynı Worker örneğinde başarıyla bittikten sonra tekrar çalışmaz. */
+export async function ensureSchema(db) {
+  if (schemaDone) return;
+  await db
+    .prepare('CREATE TABLE IF NOT EXISTS aa_schema (tag text PRIMARY KEY NOT NULL, applied text NOT NULL)')
+    .run();
+  const done = new Set((await db.prepare('SELECT tag FROM aa_schema').all()).results.map(r => r.tag));
+  for (const m of MIGRATIONS) {
+    if (done.has(m.tag)) continue;
+    for (const sql of m.statements) {
+      try {
+        await db.prepare(sql).run();
+      } catch (err) {
+        // Aynı anda gelen başka bir istek bu adımı az önce yapmış olabilir.
+        if (!alreadyExists(err)) throw err;
       }
-    })().catch(err => {
-      schemaReady = null;
-      throw err;
-    });
-  return schemaReady;
+    }
+    await db
+      .prepare('INSERT OR IGNORE INTO aa_schema(tag,applied) VALUES (?,?)')
+      .bind(m.tag, new Date().toISOString())
+      .run();
+  }
+  schemaDone = true;
 }
-export const resetSchemaCache = () => (schemaReady = null);
+export const resetSchemaCache = () => {
+  schemaDone = false;
+  seededDone = false;
+};
 
 // ---- Örnek veri ----
 const fromBase64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
@@ -234,20 +240,39 @@ export async function seed(env, now = Date.now()) {
   return ids;
 }
 
-/** Vitrin boşsa (ilk yayın) örnekleri yükler. */
-let seeded = null;
-export function ensureSeeded(env) {
-  seeded =
-    seeded ||
-    (async () => {
-      await ensureSchema(env.DB);
-      const row = await env.DB.prepare("SELECT value FROM pilot_settings WHERE key='vitrin_seeded'").first();
-      if (!row) await seed(env);
-    })().catch(err => {
-      seeded = null;
-      throw err;
-    });
-  return seeded;
+/** Vitrin boşsa (ilk yayın) örnekleri yükler. Aynı anda birden çok istek gelse de yalnız biri yükler. */
+let seededDone = false;
+const STALE_CLAIM_MS = 2 * 60 * 1000;
+async function claimSeeding(db, now) {
+  const claim = await db
+    .prepare(
+      "INSERT INTO pilot_settings(key,value,updated) VALUES ('vitrin_seeded','pending',?) ON CONFLICT(key) DO NOTHING"
+    )
+    .bind(new Date(now).toISOString())
+    .run();
+  return claim.meta.changes === 1;
+}
+export async function ensureSeeded(env, now = Date.now()) {
+  if (seededDone) return;
+  await ensureSchema(env.DB);
+  const row = await env.DB.prepare(
+    "SELECT value,updated FROM pilot_settings WHERE key='vitrin_seeded'"
+  ).first();
+  if (row && row.value !== 'pending') {
+    seededDone = true;
+    return;
+  }
+  // Yarım kalmış bir yükleme (ör. Worker kesildi) iki dakika sonra yeniden denenir.
+  if (row && now - Date.parse(row.updated) > STALE_CLAIM_MS)
+    await env.DB.prepare("DELETE FROM pilot_settings WHERE key='vitrin_seeded' AND value='pending'").run();
+  if (!(await claimSeeding(env.DB, now))) return; // başka bir istek yüklüyor
+  try {
+    await seed(env, now);
+    seededDone = true;
+  } catch (err) {
+    await env.DB.prepare("DELETE FROM pilot_settings WHERE key='vitrin_seeded' AND value='pending'").run();
+    throw err;
+  }
 }
 
 /** Gece sıfırlama: bütün kayıtları ve dosyaları siler, örnekleri yeniden yükler. */
@@ -261,6 +286,10 @@ export async function resetVitrin(env, now = Date.now()) {
     cursor = page.truncated ? page.cursor : undefined;
   } while (cursor);
   for (const t of TABLES) await env.DB.prepare('DELETE FROM ' + t).run();
-  seeded = null;
-  return seed(env, now);
+  // Yükleme bitene kadar başka isteklerin örnekleri ikinci kez yüklemesini engelle.
+  await claimSeeding(env.DB, now);
+  seededDone = false;
+  const ids = await seed(env, now);
+  seededDone = true;
+  return ids;
 }

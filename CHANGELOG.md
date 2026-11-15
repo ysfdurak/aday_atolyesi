@@ -1,5 +1,11 @@
 # Sürüm geçmişi
 
+## 0.19.1 · 15 Kasım 2026
+
+- Canlı demoda %11 hata oranı giderildi: tablo kurulumu ve örnek yükleme artık istekler arasında paylaşılan Promise kullanmıyor (Cloudflare "promise was created by a request that has since ended" hatası); eşzamanlı ilk isteklerde örnekler yalnız bir kez yüklenir.
+- Worker yalnız uygulama yollarını işler; bot taramaları (`.env`, `config.php` vb.) uygulama çalıştırılmadan hızlı 404 alır. İşlemci süresi düşer.
+- Örnek geri bildirimin tarihi geçmişe ayarlandı.
+
 ## 0.19.0 · 15 Kasım 2026
 
 Canlı demo: **aday.ysfdurak.com**.

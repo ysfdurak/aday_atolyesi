@@ -31,7 +31,9 @@ Canlı demo herkese açık bir vitrindir. Bu mod `server/vitrin.mjs` dosyasında
 5. **Tablolar kendiliğinden kurulur:** İlk istekte `server/migrations.mjs` listesindeki tablolar kurulur. Hangi kurulumun yapıldığı `aa_schema` tablosunda tutulur; yeni bir migration eklenirse bir sonraki istekte yalnız o çalışır.
 6. **Örnek veri:** Vitrin ilk açıldığında üç kurgusal aday teslimi yüklenir: biri ölçütlü geri bildirimle yayımlanmış, biri değerlendiricide 4 gündür bekliyor (hedef süre aşılmış), biri atanmamış. Böylece değerlendirici ve yönetici rolleri boş ekranla karşılaşmaz.
 7. **Gece sıfırlama:** Her gece 00:00 UTC'de (03:00 TSİ) Cloudflare zamanlanmış görevi çalışır. Bütün kayıtlar ve dosyalar silinir, örnekler yeniden yüklenir.
-8. **Sınırlar:** Dosya başına 3 MB. Ortak değerlendirici hesabının rolü düşürülemez (`PROTECTED_MEMBERS`), böylece bir ziyaretçi demoyu bozamaz.
+8. **Hızlı 404:** Statik dosyalar Worker çalışmadan sunulur. Worker'a yalnız `/`, `/api/pilot` ve giriş/çıkış yolları gelir; başka her istek (ör. botların `.env`, `config.php`, `dump.sql` taramaları) uygulama çalıştırılmadan 404 alır.
+9. **Eşzamanlı istekler:** Cloudflare bir isteğin başlattığı işi başka bir isteğin beklemesine izin vermez ("This promise was created by a request that has since ended" hatası). Bu yüzden tablo kurulumu ve örnek yükleme istekler arasında paylaşılan bir iş olarak değil, aynı anda iki istek çalıştırsa da güvenli olacak şekilde yazıldı; örnekleri yalnız `vitrin_seeded` işaretini ilk alan istek yükler.
+10. **Sınırlar:** Dosya başına 3 MB. Ortak değerlendirici hesabının rolü düşürülemez (`PROTECTED_MEMBERS`), böylece bir ziyaretçi demoyu bozamaz.
 
 ## Yayın akışı
 
@@ -66,6 +68,7 @@ Veritabanı, dosya kovası ve gece görevi ilk yayında otomatik oluşur; paneld
 - **Sayfa açılıyor ama Hesap ekranı "Veritabanı hazırlanıyor" diyor:** İlk tablo kurulumu başarısız olmuştur. Cloudflare panelinde Worker → **Logs** bölümünde `vitrin schema` satırına bak.
 - **Örnek teslimler görünmüyor:** Logs'ta `vitrin seed` satırına bak. Gece sıfırlamasını beklemeden düzeltmek için D1 konsolunda `DELETE FROM pilot_settings WHERE key='vitrin_seeded'` çalıştır; bir sonraki istekte örnekler yeniden yüklenir.
 - **Gece sıfırlaması çalışmadı:** Worker → **Settings → Trigger Events** bölümünde `0 0 * * *` görünmeli. Yerel ortamda bu derleme biçiminde zamanlanmış görev tetiklenemiyor (wrangler dev kısıtı); sıfırlama kodu `tests/check-vitrin.mjs` ve ayrı bir deneme Worker'ıyla doğrulandı.
+- **Logs'ta `.env`, `config.php`, `server.key` gibi istekler:** Yeni açılan her alan adına gelen otomatik tarama botlarıdır. Bu dosyalar uygulamada yoktur; hepsi 404 alır ve bir şey sızmaz. Hata olarak değil, 404 olarak görünmeleri beklenir.
 - **Cloudflare ücretsiz plan:** Worker istek başına kısa bir işlemci süresiyle sınırlıdır. Büyük Office dosyalarının doğrulaması bu süreyi zorlayabilir; vitrinde 3 MB sınırı bu yüzden de var.
 
 ## Gerçek bir pilot için

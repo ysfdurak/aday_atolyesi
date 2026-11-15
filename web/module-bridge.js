@@ -14,15 +14,16 @@
     kind = path.includes('/mizac/') ? 'mizac' : path.includes('/rol/') ? 'rol' : 'zihin';
   const style = document.createElement('style');
   style.textContent =
-    'body{padding-bottom:76px}.aa-return{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#193d36;color:#fff;padding:12px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px;font:13px/1.4 system-ui;box-shadow:0 -2px 15px #0001}.aa-return a{color:#e2edb1;text-decoration:none;font-weight:650;min-height:44px;display:flex;align-items:center}.aa-return small{color:#c2d4c7}.aa-return a{white-space:nowrap}@media(max-width:650px){.aa-return small{display:none}.aa-return{font-size:12px;gap:8px}.aa-return a:last-child{font-size:11px}}.aa-personal{max-width:1000px;margin:15px auto;padding:12px}.aa-personal article{padding:22px;background:white;border:1px solid #d6e1cf;border-radius:12px;margin:15px 0}.aa-personal h1{font-size:36px}.aa-personal button,.aa-personal a{margin:6px;padding:12px;min-height:48px}.aa-personal .notice{margin:15px 0}@media(max-width:600px){.aa-return{padding:8px 14px;font-size:12px}.aa-return small{display:none}.aa-personal h1{font-size:29px}}@media print{.aa-return{display:none}body{padding-bottom:0}}';
+    'body{padding-bottom:76px}.aa-return{position:fixed;bottom:0;left:0;right:0;z-index:10000;background:#193d36;color:#fff;padding:12px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px;font:13px/1.4 system-ui;box-shadow:0 -2px 15px #0001}.aa-return a{color:#e2edb1;text-decoration:none;font-weight:650;min-height:44px;display:flex;align-items:center}.aa-return small{color:#c2d4c7}.aa-return a{white-space:nowrap}@media(max-width:650px){body{padding-bottom:0}.aa-return{position:static;box-shadow:none;font-size:12px;gap:8px;padding:2px 14px}.aa-return small{display:none}.aa-return a{min-height:40px}.aa-return a:last-child{font-size:12px}}.aa-personal{max-width:1000px;margin:15px auto;padding:12px}.aa-personal article{padding:22px;background:white;border:1px solid #d6e1cf;border-radius:12px;margin:15px 0}.aa-personal h1{font-size:36px}.aa-personal button,.aa-personal a{margin:6px;padding:12px;min-height:48px}.aa-personal .notice{margin:15px 0}@media(max-width:600px){.aa-personal h1{font-size:29px}}@media print{.aa-return{display:none}body{padding-bottom:0}}';
   document.head.append(style);
-  const bar = document.createElement('div');
+  const bar = document.createElement('nav');
   bar.className = 'aa-return';
+  bar.setAttribute('aria-label', 'Aday Atölyesi bağlantıları');
   bar.innerHTML =
     '<a href="/">← Aday Atölyesi</a><small>İlerlemen planına ve gelişim raporuna otomatik yansır.' +
     (window.AA_STATIC ? ' Statik demo: kayıtlar bu tarayıcıda.' : '') +
     '</small><a href="/#plan">Planım ↗</a><a href="/#growth">Gelişimim ↗</a>';
-  document.body.append(bar);
+  document.body.prepend(bar);
   if (kind === 'mizac') {
     if (profile && !Object.keys(state.answers || {}).length) {
       state.role = { analyst: 'analyst', operations: 'operations', lead: 'lead' }[profile.role] || 'general';

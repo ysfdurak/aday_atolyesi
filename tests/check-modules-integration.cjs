@@ -76,8 +76,8 @@ for (const role of ['analyst', 'operations', 'graduate', 'lead', 'custom']) {
     window: null,
     document: {
       head: { append() {} },
-      body: { append() {} },
-      createElement: () => ({ style: {}, append() {}, innerHTML: '' }),
+      body: { append() {}, prepend() {} },
+      createElement: () => ({ style: {}, append() {}, setAttribute() {}, innerHTML: '' }),
       querySelector: () => ({ innerHTML: '', addEventListener() {} }),
       querySelectorAll: () => [],
       getElementById: () => ({ onclick: null }),

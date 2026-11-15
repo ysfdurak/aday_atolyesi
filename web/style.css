@@ -171,7 +171,7 @@ button:hover,
   display: inline-block;
 }
 .eyebrow {
-  color: #66816c;
+  color: #4e6a55;
 }
 .hero {
   display: grid;
@@ -280,7 +280,7 @@ small {
   padding: 24px;
 }
 .card .num {
-  color: #78945b;
+  color: #5a7440;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -2014,4 +2014,70 @@ footer a {
 }
 .static-note {
   border-left: 4px solid #d8b56a;
+}
+
+/* 0.20 — öğretici adımlar, sözlük */
+.steps-list {
+  margin: 10px 0 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 18px;
+}
+.steps-list li::marker {
+  font-weight: 750;
+  color: var(--green);
+}
+.steps-list .actions {
+  margin-top: 10px;
+}
+.growth-start {
+  margin: 18px 0 24px;
+}
+.how-it-works {
+  margin: 8px 0 26px;
+}
+.how-it-works .muted {
+  margin: 16px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.glossary dl {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) 1fr;
+  gap: 10px 22px;
+  margin: 12px 0 0;
+}
+.glossary dt {
+  font-weight: 700;
+}
+.glossary dd {
+  margin: 0;
+  color: var(--muted);
+}
+@media (max-width: 720px) {
+  .glossary dl {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .glossary dd {
+    margin-bottom: 10px;
+  }
+}
+.optional-fields,
+.example-sample {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 6px 0 14px;
+  background: #f8f9f4;
+}
+.optional-fields summary,
+.example-sample summary {
+  cursor: pointer;
+  font-weight: 650;
+}
+.example-sample p {
+  margin: 8px 0;
 }

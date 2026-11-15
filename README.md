@@ -45,7 +45,7 @@ npm run build
 | Klasör | İçerik |
 | --- | --- |
 | `web/` | Aday arayüzü, atölyeler (`web/modules/`), vaka verileri ve indirilebilir dosyalar |
-| `server/` | Pilot API: teslim, atama, geri bildirim, hesap kaydı (`pilot-service.mjs`), kimlik katmanı (`identity.mjs`) |
+| `server/` | Pilot API: teslim, atama, geri bildirim, hesap kaydı (`pilot-service.mjs`), kimlik katmanı (`identity.mjs`), canlı demo vitrini (`vitrin.mjs`) |
 | `content/` | Düzenlenebilir rol, yetkinlik ve pozisyon içeriği |
 | `tools/` | İçerikten veri dosyalarını üreten betikler (`npm run cases` vakaları yeniden üretir) |
 | `tests/` | Otomatik kontroller |

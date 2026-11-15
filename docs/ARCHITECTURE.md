@@ -59,7 +59,7 @@ Yerel demo yalnız loopback adresine bağlanır. Sabit sentetik roller ve bellek
 
 ## İçerik ve bakım
 
-Rol sorusu düzenlemek için `content/` kaynaklarını güncelle ve `node tools/build-role-bank.cjs` çalıştır. Genel katalogları `node scripts/prepare-workspace.mjs` üretir. Kurgu vakaların sürümünü değiştirirken eski teslimin ait olduğu vaka sürümünü koru. Ayrıntılı eski tasarım kararları [geliştirme geçmişinde](../HISTORY.md) bulunur.
+Rol sorusu düzenlemek için `content/` kaynaklarını güncelle ve `node tools/build-role-bank.cjs` çalıştır. Genel katalogları `node scripts/prepare-workspace.mjs` üretir. Kurgu vakaların sürümünü değiştirirken eski teslimin ait olduğu vaka sürümünü koru. Ayrıntılı eski tasarım kararları [geliştirme geçmişinde](HISTORY.md) bulunur.
 
 Üçüncü taraf kaynak bildirimleri: [Sites Vite eklentisinin lisansı](../scripts/vite/sites-vite-plugin.LICENSE) ve Word önizlemesi için kullanılan [mammoth 1.13.0 lisansı](../web/vendor/mammoth-1.13.0.LICENSE) (BSD-2).
 

@@ -222,8 +222,11 @@ export async function seed(env, now = Date.now()) {
     [ids[1], stamp(4 * day + 3 * 3600000), null],
     [ids[2], stamp(1 * day + 2 * 3600000), null],
   ];
-  for (const [id, created] of dates)
+  for (const [id, created, reviewed] of dates) {
     await db.prepare('UPDATE pilot_submissions SET created=? WHERE id=?').bind(created, id).run();
+    if (reviewed)
+      await db.prepare('UPDATE pilot_reviews SET created=? WHERE submission_id=?').bind(reviewed, id).run();
+  }
   await db
     .prepare("INSERT OR REPLACE INTO pilot_settings(key,value,updated) VALUES ('vitrin_seeded',?,?)")
     .bind(new Date(now).toISOString(), new Date(now).toISOString())

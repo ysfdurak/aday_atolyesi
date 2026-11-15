@@ -174,6 +174,16 @@ assert.equal(queue.filter(r => r.feedback).length, 1);
 assert(queue.find(r => r.feedback).feedback.criteria.length >= 3, 'örnek geri bildirim ölçütlüdür');
 const late = queue.find(r => !r.feedback);
 assert(Date.now() - Date.parse(late.created) > 3 * 86400000, 'bekleyen örnek hedef süreyi aşmıştır');
+const reviewedRow = sqlite
+  .prepare(
+    'SELECT s.created AS sent, r.created AS reviewed FROM pilot_reviews r JOIN pilot_submissions s ON s.id=r.submission_id'
+  )
+  .get();
+assert(Date.parse(reviewedRow.reviewed) > Date.parse(reviewedRow.sent), 'geri bildirim tesliminden sonra');
+assert(
+  Date.now() - Date.parse(reviewedRow.reviewed) > 4 * 86400000,
+  'örnek geri bildirim tarihi geçmişe ayarlanır'
+);
 const adminView = (await call(adminCookie, 'me')).body;
 assert.equal(adminView.user.role, 'admin');
 assert.equal((await call(adminCookie, 'submissions')).body.filter(r => !r.reviewer_id).length, 1);

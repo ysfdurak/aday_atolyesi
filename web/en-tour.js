@@ -121,6 +121,19 @@
     'Bugün bir adım daha hazır.': 'One step more ready today.',
     'Bugünün tüm adımları': 'All of today’s steps',
     'Teslimi incele. Ölçütle geri bildir.': 'Review the submission. Give criteria-based feedback.',
+    // İK değerlendirme formu
+    'Geri bildirim hazırla': 'Prepare feedback',
+    '1. Ölçütler · her biri için bir seviye seç': '1. Criteria · choose a level for each',
+    '2. Genel değerlendirme': '2. Overall assessment',
+    '3. Çıktı bazında not': '3. Notes per output',
+    '0 · Henüz yok': '0 · Not yet',
+    '1 · Kısmen': '1 · Partly',
+    '2 · Karşılanıyor': '2 · Met',
+    '3 · Dayanaklı': '3 · Evidenced',
+    'Ayrı süreç kapasitesi': 'Separate process capacity',
+    'Yetkinlik ve kişi tutarlılığı': 'Skills and headcount consistency',
+    'Kırılganlık ve kontrol': 'Fragility and control',
+    'Uygulanabilir iletişim': 'Actionable communication',
     // Canlı demo girişi
     'Bir rol seç, şifresiz gir.': 'Pick a role, sign in without a password.',
     Aday: 'Candidate',
@@ -134,7 +147,7 @@
       .trim();
   function glossAll() {
     const sel =
-      'aside nav a, .subnav a, .tabs a, .mobile-dock a, nav a, h1, h2, button.primary, a.btn.primary, button[name=role]';
+      'aside nav a, .subnav a, .tabs a, .mobile-dock a, nav a, h1, h2, button.primary, a.btn.primary, button[name=role], details > summary, fieldset > legend, .levels label span, .crit > b, h4.review-step';
     // İngilizce vakada büyük harf dönüşümü Türkçe kurala göre yapılmasın (DİSTRİBUTİON → DISTRIBUTION).
     if (/^#cases\/vardiya-darbogazi/.test(location.hash))
       document.querySelectorAll('.eyebrow, .casetitle, .casebrief').forEach(el => (el.lang = 'en'));
@@ -225,6 +238,11 @@
       p: 'Pick a role — no password. Candidate: your own separate account. HR reviewer and pilot admin: shared demo accounts with sample submissions already loaded. Everything is wiped every night at 03:00 (Turkey time).',
       try: 'Choose “İK değerlendiricisi” (HR reviewer), open a sample submission and review it criterion by criterion.',
     },
+    review: {
+      t: 'HR review form',
+      p: 'The reviewer opens the submitted file on screen, then rates each criterion of the case on four levels — 0 Not yet, 1 Partly, 2 Met, 3 Evidenced — with an optional evidence note (page, cell or short quote). An overall assessment and a note per numbered output follow. Levels are shown to the candidate per criterion and are never added up into a score.',
+      try: 'Pick a level for each criterion and save the draft; the candidate sees nothing until the review is published.',
+    },
     settings: {
       t: 'Goal and records',
       p: 'Change the target role and schedule, and back up or restore work. By default everything stays in the browser; saving to an account is optional.',
@@ -256,6 +274,7 @@
     if (/modules\/mizac/.test(path)) return 'mizac';
     if (/modules\/rol/.test(path)) return 'rol';
     if (document.querySelector('button[name=role]')) return 'signin';
+    if (document.querySelector('details[open] fieldset.rubric')) return 'review';
     const h = location.hash.replace(/^#/, '');
     if (h.startsWith('cases/' + SHOWCASE)) return 'showcase';
     if (h.startsWith('cases/')) return 'case';
@@ -267,6 +286,7 @@
   .aa-en-gloss{display:inline-block;margin-left:8px;font-size:11px;font-weight:500;letter-spacing:0;text-transform:none;opacity:.7;font-style:italic}
   [data-aa-en].aa-en-nav{flex-wrap:wrap}
   .aa-en-nav .aa-en-gloss{flex-basis:100%;margin:2px 0 0 28px;font-size:11px}
+  .levels .aa-en-gloss{all:unset;display:block;margin-top:2px;font-size:11px;font-style:italic;font-weight:500;opacity:.75}
   .aa-en-gloss.aa-en-block{display:block;margin:4px 0 0;font-size:14px;line-height:1.3;opacity:.65}
   h1 .aa-en-gloss.aa-en-block{font-size:16px}
   #aa-en-tour{position:fixed;right:18px;bottom:18px;z-index:9999;width:min(370px,calc(100vw - 36px));background:#163d37;color:#f2f5ec;border-radius:16px;box-shadow:0 14px 40px rgba(0,0,0,.25);font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -286,8 +306,11 @@
   @media print{#aa-en-tour,.aa-en-gloss{display:none!important}}`;
 
   let panel;
-  function render() {
+  let lastKey = null;
+  function render(force) {
     const k = routeKey();
+    if (k === lastKey && force !== true) return;
+    lastKey = k;
     const g = GUIDE[k];
     const first = !sessionStorage.getItem('aa_en_seen');
     const showcaseLink = location.pathname.includes('/modules/')
@@ -337,6 +360,7 @@
       clearTimeout(t);
       t = setTimeout(() => {
         glossAll();
+        render();
       }, 60);
     }).observe(document.body, { childList: true, subtree: true });
     addEventListener('hashchange', () => setTimeout(render, 80));

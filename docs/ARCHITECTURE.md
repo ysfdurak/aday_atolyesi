@@ -20,10 +20,14 @@ CV metni hesap yedeğinden çıkarılır. Cihaz yedeği yerel kayıtları taşı
 
 ## Statik yayın (GitHub Pages)
 
-GitHub Pages `main` dalının kökünü yayımlar. Kökteki `index.html` ziyaretçiyi `web/` klasörüne yönlendirir; `.nojekyll` dosyaların Jekyll işlemesi olmadan sunulmasını sağlar. `web/site-base.js` her sayfada ilk yüklenir:
+GitHub Pages `main` dalının kökünü yayımlar. Canlı demo açıldığından beri bu adres yalnız yönlendirme yapar: kökteki `index.html` ve `web/site-base.js`, `ysfdurak.github.io/aday_atolyesi/...` adresine gelen ziyaretçiyi `aday.ysfdurak.com` üzerinde aynı sayfaya gönderir. `.nojekyll` dosyaların Jekyll işlemesi olmadan sunulmasını sağlar.
 
-- Uygulamanın yayımlandığı klasörü bulur ve kökten başlayan yolları (`/modules/...`, `/cases/...`) o klasöre göre çözer. Yerel demo ve Worker kurulumunda uygulama kökte olduğu için hiçbir şeyi değiştirmez.
-- `*.github.io` adreslerinde veya `?static=1` ile statik modu (`window.AA_STATIC`) açar. Bu modda `/api/pilot` isteklerine ağ kullanılmadan "kapalı" yanıtı döner; hesap, dosya teslimi, İK değerlendirmesi ve otomatik hesap kaydı ekranlarında bunun yerine açıklama notu gösterilir.
+`web/site-base.js` her sayfada ilk yüklenir ve ayrıca:
+
+- Uygulamanın yayımlandığı klasörü bulur, kökten başlayan yolları (`/modules/...`, `/cases/...`) o klasöre göre çözer. Canlı demo ve yerel demoda uygulama kökte olduğu için bir şey değiştirmez.
+- `?static=1` ile statik modu (`window.AA_STATIC`) açar: sunucusuz bir barındırmada denemek içindir. Bu modda `/api/pilot` isteklerine ağ kullanılmadan "kapalı" yanıtı döner; hesap, dosya teslimi ve İK ekranlarında açıklama notu gösterilir.
+
+Not: Eski Pages adresinde tarayıcıya kaydedilmiş çalışmalar yeni adrese taşınmaz (tarayıcı depolaması adrese bağlıdır). Gerekirse `?static=1` ile eski adreste Hesap ve ayarlar → Hedef ve kayıtlar bölümünden yedek indirilip canlı demoda yüklenebilir.
 
 Kontrol: `tests/check-static-site.cjs`.
 

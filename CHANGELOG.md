@@ -2,6 +2,7 @@
 
 ## 0.19.1 · 15 Kasım 2026
 
+- Eski GitHub Pages adresi (`ysfdurak.github.io/aday_atolyesi`) canlı demoya, aynı sayfaya yönlenir. Statik sürüm `?static=1` ile açılır.
 - Canlı demoda %11 hata oranı giderildi: tablo kurulumu ve örnek yükleme artık istekler arasında paylaşılan Promise kullanmıyor (Cloudflare "promise was created by a request that has since ended" hatası); eşzamanlı ilk isteklerde örnekler yalnız bir kez yüklenir.
 - Worker yalnız uygulama yollarını işler; bot taramaları (`.env`, `config.php` vb.) uygulama çalıştırılmadan hızlı 404 alır. İşlemci süresi düşer.
 - Örnek geri bildirimin tarihi geçmişe ayarlandı.

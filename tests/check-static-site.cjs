@@ -1,4 +1,4 @@
-// GitHub Pages gibi alt klasörde statik yayın: yol çözümü ve pilot API'nin ağ kullanmadan kapalı yanıt vermesi.
+// GitHub Pages adresi canlı demoya yönlenir; ?static=1 ile statik sürüm: yol çözümü ve pilot API'nin ağsız kapalı yanıtı.
 const fs = require('node:fs'),
   vm = require('node:vm'),
   assert = require('node:assert/strict');
@@ -6,6 +6,8 @@ const code = fs.readFileSync('web/site-base.js', 'utf8');
 function load(href, scriptSrc) {
   const calls = [];
   const loc = new URL(href);
+  const redirects = [];
+  loc.replace = url => redirects.push(url);
   const win = {
     fetch: async url => (calls.push(url), new Response('ok')),
   };
@@ -27,7 +29,7 @@ function load(href, scriptSrc) {
     },
   };
   vm.runInNewContext(code, ctx);
-  return { win, calls };
+  return { win, calls, redirects };
 }
 (async () => {
   // Kök kurulum (yerel demo, Worker): hiçbir şey değişmez.
@@ -41,8 +43,29 @@ function load(href, scriptSrc) {
   assert.deepEqual(root.calls, ['/api/pilot?op=me'], 'kökte istekler olduğu gibi gider');
 
   // GitHub Pages: alt klasör + statik mod.
+  // Eski Pages adresi: aynı sayfaya canlı demoda devam edilir.
+  const cases = [
+    ['https://ysfdurak.github.io/aday_atolyesi/web/', 'https://aday.ysfdurak.com/workspace.html'],
+    [
+      'https://ysfdurak.github.io/aday_atolyesi/web/index.html#cases',
+      'https://aday.ysfdurak.com/workspace.html#cases',
+    ],
+    [
+      'https://ysfdurak.github.io/aday_atolyesi/web/modules/zihin/index.html#exam/graded',
+      'https://aday.ysfdurak.com/modules/zihin/index.html#exam/graded',
+    ],
+  ];
+  for (const [from, to] of cases) {
+    const r = load(from, 'https://ysfdurak.github.io/aday_atolyesi/web/site-base.js');
+    assert.deepEqual(r.redirects, [to]);
+    assert.equal(r.win.AA_REDIRECTING, true);
+  }
+  const html = fs.readFileSync('index.html', 'utf8');
+  assert(html.includes('https://aday.ysfdurak.com/workspace.html'), 'Pages girişi canlı demoya yönlenmeli');
+
+  // ?static=1 ile statik sürüm hâlâ denenebilir.
   const pages = load(
-    'https://ysfdurak.github.io/aday_atolyesi/web/modules/zihin/index.html',
+    'https://ysfdurak.github.io/aday_atolyesi/web/modules/zihin/index.html?static=1',
     'https://ysfdurak.github.io/aday_atolyesi/web/site-base.js'
   );
   assert.equal(pages.win.AA_STATIC, true);
@@ -72,9 +95,9 @@ function load(href, scriptSrc) {
     assert(!/src="\/(?!\/)/.test(html), m + ' modülünde kökten başlayan script yolu kalmamalı');
     assert(html.indexOf('../../site-base.js') < html.indexOf('../../position-context.js'));
   }
-  assert(fs.existsSync('.nojekyll') && fs.readFileSync('index.html', 'utf8').includes('url=web/'));
+  assert(fs.existsSync('.nojekyll'));
   console.log(
-    'PASS: kök ve alt klasör yol çözümü, statik modda ağsız pilot yanıtı, modül yolları ve Pages girişi.'
+    'PASS: Pages adresinin canlı demoya yönlenmesi, kök ve alt klasör yol çözümü, ?static=1 ile ağsız pilot yanıtı, modül yolları.'
   );
 })().catch(err => {
   console.error(err);

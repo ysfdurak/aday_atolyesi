@@ -117,6 +117,15 @@
     'Bitirdim, referansla karşılaştır →': 'Done, compare with the reference',
     'Demo rolünü seç': 'Choose a demo role',
     'Kendi haritamı çıkar →': 'Map my own preferences',
+    // Plan ekranı
+    'Bugün bir adım daha hazır.': 'One step more ready today.',
+    'Bugünün tüm adımları': 'All of today’s steps',
+    'Teslimi incele. Ölçütle geri bildir.': 'Review the submission. Give criteria-based feedback.',
+    // Canlı demo girişi
+    'Bir rol seç, şifresiz gir.': 'Pick a role, sign in without a password.',
+    Aday: 'Candidate',
+    'İK değerlendiricisi': 'HR reviewer',
+    'Pilot yöneticisi': 'Pilot admin',
   };
   const norm = s =>
     s
@@ -125,7 +134,10 @@
       .trim();
   function glossAll() {
     const sel =
-      'aside nav a, .subnav a, .tabs a, .mobile-dock a, nav a, h1, h2, button.primary, a.btn.primary';
+      'aside nav a, .subnav a, .tabs a, .mobile-dock a, nav a, h1, h2, button.primary, a.btn.primary, button[name=role]';
+    // İngilizce vakada büyük harf dönüşümü Türkçe kurala göre yapılmasın (DİSTRİBUTİON → DISTRIBUTION).
+    if (/^#cases\/vardiya-darbogazi/.test(location.hash))
+      document.querySelectorAll('.eyebrow, .casetitle, .casebrief').forEach(el => (el.lang = 'en'));
     document.querySelectorAll(sel).forEach(el => {
       if (el.dataset.aaEn || el.closest('#aa-en-tour')) return;
       const text = norm(el.innerText || '');
@@ -208,6 +220,11 @@
       p: 'Here the candidate submits a case file and HR reviews it. In this public demo you can sign in without a password as a candidate, an HR reviewer or the pilot admin.',
       try: 'Choose “İK değerlendiricisi” (HR reviewer), open a sample submission and review it: each criterion gets a level from 0 to 3 with a written, evidence-based note per output. Levels are never turned into a single score. The admin can switch on blind review and assign submissions in bulk.',
     },
+    signin: {
+      t: 'Live demo sign-in',
+      p: 'Pick a role — no password. Candidate: your own separate account. HR reviewer and pilot admin: shared demo accounts with sample submissions already loaded. Everything is wiped every night at 03:00 (Turkey time).',
+      try: 'Choose “İK değerlendiricisi” (HR reviewer), open a sample submission and review it criterion by criterion.',
+    },
     settings: {
       t: 'Goal and records',
       p: 'Change the target role and schedule, and back up or restore work. By default everything stays in the browser; saving to an account is optional.',
@@ -238,6 +255,7 @@
     if (/modules\/zihin/.test(path)) return 'zihin';
     if (/modules\/mizac/.test(path)) return 'mizac';
     if (/modules\/rol/.test(path)) return 'rol';
+    if (document.querySelector('button[name=role]')) return 'signin';
     const h = location.hash.replace(/^#/, '');
     if (h.startsWith('cases/' + SHOWCASE)) return 'showcase';
     if (h.startsWith('cases/')) return 'case';

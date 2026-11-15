@@ -27,7 +27,7 @@ Yazdırırken (PDF) panel ve karşılıklar görünmez.
 | `tools/build-en-showcase.py` | Bu dosyaları üretir. |
 | `tests/check-en-showcase.mjs` | İngilizce kaydın Türkçe kayıtla aynı yapıda ve aynı sürümde olduğunu, dosyaların yerinde olduğunu, turun her sayfada yüklendiğini denetler. |
 
-Tur betiği `web/index.html` ile üç modül sayfasında (`web/modules/zihin|mizac|rol/index.html`) yüklenir.
+Tur betiği `web/index.html`, üç modül sayfası (`web/modules/zihin|mizac|rol/index.html`) ve canlı demo giriş sayfasında (`server/vitrin.mjs`) yüklenir. Kök adres `app/page.tsx` ile `/workspace.html`'e yönlenirken `?lang=en` korunur; sitedeki bağlantı bu yüzden kök adrese gidebilir.
 
 ## Nasıl çalışır? (kod rehberi)
 

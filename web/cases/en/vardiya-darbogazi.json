@@ -1,0 +1,226 @@
+{
+ "id": "vardiya-darbogazi",
+ "lang": "en",
+ "title": "Koru Distribution — Daily operations plan",
+ "level": 1,
+ "kind": "Decision and presentation",
+ "minutes": 60,
+ "roles": ["operations", "analyst", "graduate"],
+ "skills": ["Capacity", "Bottleneck", "Implementation plan"],
+ "brief": "Koru Distribution’s outbound list for today is final. The last truck leaves at 17:30. The shift supervisor is on leave, so you will run today’s work allocation and the dispatch meeting.",
+ "mandate": "You are expected to prepare and submit the requested outputs based on the company file below. The decision and the working approach are yours.",
+ "docs": [
+  {
+   "title": "Company file / Koru Distribution",
+   "text": "Since 2018, Koru Distribution has prepared orders for four home and office product brands in a single centre. The centre has 96 employees; on the shift in this case, 11 people are assigned to picking and packing. Other teams handle goods receipt, stock and loading. The company’s performance meeting is based on daily dispatch and customer feedback.\n\nThe small-item and large-item areas are physically separate. The packing area is the shared exit for both. Staff training records are kept by the shift supervisor. Order volume has changed over the last two weeks because of a campaign. Teams plan the day with standard times; actual end-of-day records are entered in a separate system. Task changes during the shift are announced on the board and in company messaging. Today’s outbound order list was finalised at 08:00. Changing the truck time depends on carrier and customer approval.",
+   "headers": [],
+   "rows": [],
+   "code": "D01"
+  },
+  {
+   "title": "Organisation and roles",
+   "text": "Record taken from the current allocation of duties. The people in the table are fictional. Your task in this case is to prepare the file and recommendation for the related decision meeting. Final approvals are given within the structure below.",
+   "headers": ["Unit / person", "Responsibility", "Decision / approval area"],
+   "rows": [
+    ["Warehouse manager / Onur", "Centre resources", "Extra budget and carrier requests"],
+    ["Shift supervisor / you", "Daily work and task plan", "Allocation within the existing trained team"],
+    ["Quality / Derya", "Product and package acceptance records", "Holding non-conforming packages"],
+    ["Carrier desk / Eren", "Truck and delivery paperwork", "Confirmation of truck times"]
+   ],
+   "code": "D02",
+   "file": "/cases/en/vardiya-darbogazi-2.csv"
+  },
+  {
+   "title": "Workload and times",
+   "text": "Each order is picked once and packed once. The picking times in the table are approved planning times. Packing takes 1 minute per order. Orders leave as a single package. Large orders cannot be processed in the small-item picking area.",
+   "headers": ["Order type", "Quantity", "Picking min/order"],
+   "rows": [["Small", 900, 1], ["Large", 300, 3]],
+   "code": "D03",
+   "file": "/cases/en/vardiya-darbogazi-3.csv"
+  },
+  {
+   "title": "Team and authority",
+   "text": "Each person has 300 net working minutes during the shift. All members of the small and large picking teams are trained in packing; small and large picking training are different. Task changes can be made at the start of the shift. No budget for extra staff has been given.",
+   "headers": ["Team", "People", "Net min/person"],
+   "rows": [["Small picking", 4, 300], ["Large picking", 4, 300], ["Packing", 3, 300]],
+   "code": "D04",
+   "file": "/cases/en/vardiya-darbogazi-4.csv"
+  },
+  {
+   "title": "Checkpoints",
+   "text": "There is enough ready work for packing in the first 60 minutes. The outbound truck takes its last load at 17:30. The quality checklist and product matching check are in force. The standard times are not a confidence interval covering all the variability in the last eight shifts.",
+   "headers": [],
+   "rows": [],
+   "code": "D05"
+  },
+  {
+   "title": "Last six shifts",
+   "text": "The records below are a periodic appendix to the information file. Because it is a separate table, it is not automatically added to amounts or quantities in other documents. The period and scope columns show the group the records belong to.",
+   "headers": ["Day", "Small orders", "Large orders", "Orders left when the truck left"],
+   "rows": [
+    ["Monday", 720, 210, 0],
+    ["Tuesday", 840, 250, 35],
+    ["Wednesday", 780, 240, 0],
+    ["Thursday", 920, 280, 64],
+    ["Friday", 850, 260, 18],
+    ["Today", 900, 300, "Not yet known"]
+   ],
+   "code": "D06",
+   "file": "/cases/en/vardiya-darbogazi-6.csv"
+  },
+  {
+   "title": "Today’s dispatch schedule",
+   "text": "Fictional records taken from the department’s working system. The note fields are the record owner’s notes during the period; they are not a cause-and-effect assessment verified by management.",
+   "headers": ["Group", "Small", "Large", "Carrier desk target"],
+   "rows": [
+    ["G 1", 180, 40, "11:00"],
+    ["G 2", 150, 50, "12:30"],
+    ["G 3", 170, 60, "14:00"],
+    ["G 4", 160, 50, "15:00"],
+    ["G 5", 140, 50, "16:00"],
+    ["G 6", 100, 50, "17:30"]
+   ],
+   "code": "D07",
+   "file": "/cases/en/vardiya-darbogazi-7.csv"
+  },
+  {
+   "title": "Internal messages / before the meeting",
+   "text": "08:10 / Small-item team lead: “Last week we waited a few times before noon. The packing training of the four people in the group is up to date. Returns in our area are handled by another team; they are not on today’s list.”\n\n08:15 / Packing lead: “The label printers on two benches were replaced this morning. The test showed no problems. We can start as soon as packages arrive ready. At lunchtime, when there is no room left on the benches, we move pallets to a temporary waiting area.”\n\n08:25 / Carrier desk: “The groups are interim targets. The last truck closes at 17:30; loads can be moved between groups. The loading team wants the board list to be up to date. Orders that miss the last truck get a separate delivery record the next day.”",
+   "headers": [],
+   "rows": [],
+   "code": "D08"
+  },
+  {
+   "title": "Operating rules and meeting records",
+   "text": "The shift starts at 08:30. The net 300 minutes is the time left after each person’s breaks and planned activities. The interim targets are not a customer priority list; contract-based customer exceptions are kept at the carrier desk. On the end-of-day handover form, dispatched orders, waiting orders and orders held by quality are in separate fields.",
+   "headers": [],
+   "rows": [],
+   "code": "D09"
+  }
+ ],
+ "tasks": [
+  "Daily shift and task allocation chart. This output must include the current situation, the proposed target/expectation and the reasoning for your choice.",
+  "Working tables and calculation appendix supporting the plan.",
+  "Start-of-shift briefing for the team.",
+  "One-page management note for the shift meeting."
+ ],
+ "numbers": [
+  { "id": "toplama", "label": "Total picking workload", "value": 1800, "unit": "min", "tolerance": 0.1, "why": "900×1 + 300×3 = 1,800 minutes." },
+  { "id": "acik", "label": "Initial packing capacity gap", "value": 300, "unit": "min", "tolerance": 0.1, "why": "1,200×1 − 3×300 = 300 minutes." },
+  { "id": "transfer", "label": "Minimum full-shift transfer to close the gap", "value": 1, "unit": "person", "tolerance": 0, "why": "If one person moves to packing from small or large picking, the remaining three cover that team’s 900-minute load; packing becomes 4×300 = 1,200." }
+ ],
+ "rubric": [
+  {
+   "name": "Separate process capacity",
+   "evidence": "Shows that spare picking capacity does not automatically close the packing gap.",
+   "anchors": [
+    "The relevant evidence or expected output is not shown yet.",
+    "The topic is mentioned; the link to the data or the reasoning is largely missing.",
+    "Shows that spare picking capacity does not automatically close the packing gap. Some gaps in limits or implementation.",
+    "The criterion is met with evidence; the related assumption, limit or alternative is also explained."
+   ],
+   "practice": 0
+  },
+  {
+   "name": "Skills and headcount consistency",
+   "evidence": "Checks the source team’s capacity after the transfer and does not count anyone twice.",
+   "anchors": [
+    "The relevant evidence or expected output is not shown yet.",
+    "The topic is mentioned; the link to the data or the reasoning is largely missing.",
+    "Checks the source team’s capacity after the transfer and does not count anyone twice. Some gaps in limits or implementation.",
+    "The criterion is met with evidence; the related assumption, limit or alternative is also explained."
+   ],
+   "practice": 0
+  },
+  {
+   "name": "Fragility and control",
+   "evidence": "States that a full-capacity plan has no buffer; sets up tracking of actual pace and ready work.",
+   "anchors": [
+    "The relevant evidence or expected output is not shown yet.",
+    "The topic is mentioned; the link to the data or the reasoning is largely missing.",
+    "States that a full-capacity plan has no buffer; sets up tracking of actual pace and ready work. Some gaps in limits or implementation.",
+    "The criterion is met with evidence; the related assumption, limit or alternative is also explained."
+   ],
+   "practice": 1
+  },
+  {
+   "name": "Actionable communication",
+   "evidence": "Explains who does what and when, the check times and the escalation condition.",
+   "anchors": [
+    "The relevant evidence or expected output is not shown yet.",
+    "The topic is mentioned; the link to the data or the reasoning is largely missing.",
+    "Explains who does what and when, the check times and the escalation condition. Some gaps in limits or implementation.",
+    "The criterion is met with evidence; the related assumption, limit or alternative is also explained."
+   ],
+   "practice": 1
+  }
+ ],
+ "update": {
+  "title": "Extra demand mid-shift",
+  "text": "60 more large orders have arrived. In your first plan you moved one person from the small picking team to packing. Even if there is enough picking time left, what new capacity gap appears in the day’s total? Net 60 person-minutes of packing support can be provided for the extra work; how do you check its timing?",
+  "reference": "The large picking load is 360×3 = 1,080 min, within the four people’s 1,200 min capacity. Packing: 1,260 min load / 1,200 min capacity → a 60 person-minute gap. Support arriving late may not save the last dispatch time; completion and flow need to be checked."
+ },
+ "solution": [
+  "Move one small-item picker to packing: small 900/900 min, large 900/1,200 min, packing 1,200/1,200 min. Moving someone from the large team is also mathematically possible with the starting loads.",
+  "The first plan runs at full capacity; if standard times slip, or equipment or ready-work problems occur, delivery is at risk. The slack in the large team is not automatically a packing buffer; timed support can be planned.",
+  "Meeting the dispatch target by dropping quality is not an acceptable alternative."
+ ],
+ "pitfalls": [
+  "Adding up all person-minutes and assuming every process will keep up.",
+  "Still counting the transferred person in picking capacity.",
+  "Counting the 60 extra orders as 60 minutes of picking work."
+ ],
+ "questions": [
+  "What would change against the extra demand if you had taken the person from the large team?",
+  "If actual working times vary, which data would you collect in the first hour?"
+ ],
+ "version": "3.0.0",
+ "company": "Koru Distribution",
+ "dossierVersion": "2.0",
+ "docCodes": ["D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09"],
+ "learning": {
+  "transfer": "ekip-yuku",
+  "sections": [
+   {
+    "title": "Current situation and expected result",
+    "sources": "D01, D02, D03, D04, D05",
+    "text": "Today’s 900 small and 300 large orders flow from two picking areas into shared packing. The goal is to make the 17:30 last dispatch while keeping the quality standard. Total headcount alone does not show sufficiency; people, process and available time must be shown separately. The interim groups remain carrier targets, not a customer priority list."
+   },
+   {
+    "title": "Calculations and basis for assessment",
+    "sources": "D01, D02, D03, D04, D05",
+    "text": "Total picking workload: 900×1 + 300×3 = 1,800 minutes. Initial packing capacity gap: 1,200×1 − 3×300 = 300 minutes. Minimum full-shift transfer to close the gap: if one person moves to packing from small or large picking, the remaining three cover that team’s 900-minute load; packing becomes 4×300 = 1,200."
+   },
+   {
+    "title": "Additional records, messages and data limits",
+    "sources": "D06, D07, D08, D09",
+    "text": "D06 shows that work was left over on past shifts; the past table does not guarantee that today will be completed. D07’s groups add up to the total 900 small and 300 large orders and are not added to the main load again. D08 confirms training, but the label printer’s morning test does not prove it will run without faults all day. Build-up in the packing area calls for checking ready work and the feed flow. The 300 minutes in D09 are net of breaks and planned activities; breaks are not deducted a second time."
+   },
+   {
+    "title": "Alternative defensible decisions",
+    "sources": "D01, D02, D03, D04, D05",
+    "text": "Moving one person from small picking to packing works at the start: small 900/900, large 900/1,200, packing 1,200/1,200 person-minutes. Moving one person from the large team may also be possible given the loads and training. The two options leave the buffer in different processes. Timed support can be another valid solution; it must not count the same person as working in two places at once. Dropping quality does not achieve the same target."
+   },
+   {
+    "title": "Implementation, authority and follow-up",
+    "sources": "D02, D05, D09",
+    "text": "D02 gives the shift supervisor the authority to allocate within the existing trained team; extra budget and changing the truck need other approvals. D05 says there is ready work for the first hour; the following hours must be tracked separately. For interim checks, packed / waiting / held by quality are kept separate. If 17:30 is at risk, escalate to the carrier desk and the warehouse manager with options and their impact."
+   }
+  ],
+  "drills": [
+   {
+    "title": "Find the process gap",
+    "prompt": "Picking is 900 person-minutes, packing 1,200 person-minutes. Each area has three people with 300 net minutes each. Where is the gap and how big is it?",
+    "reference": "Picking is enough at 900/900; packing has a 300 person-minute gap at 1,200/900. Total slack is not, by itself, a transfer of capacity between processes."
+   },
+   {
+    "title": "Check timed support",
+    "prompt": "60 person-minutes of support has been offered; it will arrive after the last truck closes. How do you update your plan?",
+    "reference": "Even if the day’s total looks sufficient, the support does not save the delivery time. Check when the work arrives and finishes, and look for trained resources or an approved delivery change."
+   }
+  ]
+ },
+ "wordFile": "/cases/en/vardiya-darbogazi-workbook.docx",
+ "excelFile": "/cases/en/vardiya-darbogazi-workbook.xlsx",
+ "candidateFile": "/cases/en/vardiya-darbogazi-candidate.md"
+}

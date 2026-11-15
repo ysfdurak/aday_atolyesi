@@ -20,7 +20,7 @@ Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri b
 
 > **Not:** Canlı demo herkese açık bir vitrindir. Değerlendirici ve yönetici hesapları ortaktır; yüklenen dosyalar bu rolleri seçen herkese görünür. **Gerçek kişisel bilgi içeren dosya yükleme.** Bütün kayıtlar ve dosyalar her gece 03.00'te (TSİ) silinir, dosya sınırı 3 MB'tır. Nasıl çalıştığı: [docs/YAYIN.md](docs/YAYIN.md).
 
-[ysfdurak.github.io/aday_atolyesi](https://ysfdurak.github.io/aday_atolyesi/) adresinde ayrıca **statik** bir sürüm vardır: hazırlık araçları açık, hesap, dosya teslimi ve İK değerlendirmesi kapalıdır; çalışmalar yalnız o tarayıcıda saklanır.
+Eski `ysfdurak.github.io/aday_atolyesi` adresi canlı demoya yönlenir.
 
 ## Yerel demo
 

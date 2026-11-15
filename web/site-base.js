@@ -1,4 +1,6 @@
 // Uygulamanın hangi adres altında yayımlandığını belirler ve statik demo modunu açar.
+// - GitHub Pages adresi (ysfdurak.github.io/aday_atolyesi) artık canlı demoya (aday.ysfdurak.com) yönlendirir.
+//   Statik sürümü yine de denemek için adrese ?static=1 eklenir.
 // - Yerel demo ve Worker kurulumunda uygulama sitenin kökündedir; bu dosya hiçbir şeyi değiştirmez.
 // - GitHub Pages gibi bir alt klasörde (ör. /aday_atolyesi/web/) yayımlandığında kökten başlayan
 //   bağlantıları ve istekleri o klasöre yönlendirir.
@@ -6,9 +8,18 @@
 //   (window.AA_STATIC). Pilot API isteklerine ağ kullanılmadan "kapalı" yanıtı döner.
 (function (root) {
   'use strict';
+  root.AA_CANONICAL = 'https://aday.ysfdurak.com';
   const script = document.currentScript;
   const base = new URL('.', script ? script.src : location.href).href; // her zaman web köküdür
   const params = new URLSearchParams(location.search);
+  if (/\.github\.io$/i.test(location.hostname) && params.get('static') !== '1') {
+    // Eski statik adres: aynı sayfaya canlı demoda devam et (ör. /web/modules/zihin/ → /modules/zihin/).
+    let rest = (location.pathname.match(/\/web\/(.*)$/) || [])[1] || '';
+    if (rest === '' || rest === 'index.html') rest = 'workspace.html';
+    location.replace(root.AA_CANONICAL + '/' + rest + location.search + location.hash);
+    root.AA_REDIRECTING = true;
+    return;
+  }
   const isStatic =
     params.get('static') === '1' ||
     /\.github\.io$/i.test(location.hostname) ||

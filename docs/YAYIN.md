@@ -7,7 +7,7 @@ Bu belge uygulamanın internette nasıl çalıştığını, nasıl yayınlandı�
 | Adres | Ne | Sunucu var mı? |
 | --- | --- | --- |
 | `aday.ysfdurak.com` | Tam canlı demo: hesap, dosya teslimi, İK değerlendirmesi, kör değerlendirme | Evet: Cloudflare Workers + D1 + R2 |
-| `ysfdurak.github.io/aday_atolyesi` | Statik demo: hazırlık araçları açık, hesap ve teslim kapalı | Hayır (GitHub Pages) |
+| `ysfdurak.github.io/aday_atolyesi` | Canlı demoya yönlendirme (aynı sayfaya gider). Statik sürüm `?static=1` ile açılır | Hayır (GitHub Pages) |
 | `npm run demo` | Bilgisayarda tam demo, kayıtlar bellekte | Bilgisayarın kendisi |
 
 ## Canlı demo nasıl çalışır?

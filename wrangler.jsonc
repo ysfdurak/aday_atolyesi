@@ -1,0 +1,25 @@
+// Aday Atölyesi · Cloudflare Workers yayın ayarları (aday.ysfdurak.com canlı demosu).
+// Gerçek bir pilot kurulumunda: AA_VITRIN "0" yapılır, kimlik doğrulayan bir ağ geçidi eklenir
+// (docs/ARCHITECTURE.md → Yayına alma), "name", veritabanı ve kova adları değiştirilir.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aday-atolyesi",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  // Kimliksiz bağlamalar: ilk "wrangler deploy" veritabanını ve dosya kovasını kendisi oluşturur.
+  // Tablolar ilk istekte kurulur (server/vitrin.mjs → ensureSchema, kaynak: drizzle/*.sql).
+  "d1_databases": [{ "binding": "DB", "database_name": "aday-atolyesi-db" }],
+  "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "aday-atolyesi-dosyalar" }],
+  "vars": {
+    // 1 = herkese açık vitrin: rolle şifresiz giriş, örnek veri, her gece sıfırlama, 3 MB dosya sınırı.
+    "AA_VITRIN": "1",
+    // Bu e-postayla giren hesap pilot yöneticisidir (vitrinde ortak yönetici hesabı).
+    "PILOT_OWNER_EMAIL": "yonetici@vitrin.aday-atolyesi",
+    // Rolü düşürülemeyen ortak demo hesapları.
+    "PROTECTED_MEMBERS": "vitrin-degerlendirici"
+  },
+  // Her gece 00:00 UTC (03:00 TSİ): vitrin verisini ve dosyaları sıfırla (worker/index.ts → scheduled).
+  "triggers": { "crons": ["0 0 * * *"] },
+  "observability": { "enabled": true }
+}

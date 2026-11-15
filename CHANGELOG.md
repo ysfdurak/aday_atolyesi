@@ -1,5 +1,16 @@
 # Sürüm geçmişi
 
+## 0.19.0 · 15 Kasım 2026
+
+Canlı demo: **aday.ysfdurak.com**.
+
+- **Cloudflare yayın ayarı** (`wrangler.jsonc`): Worker `aday-atolyesi`, D1 veritabanı ve R2 dosya kovası ilk yayında otomatik oluşur, gece görevi tanımlı.
+- **Vitrin modu** (`server/vitrin.mjs`): rol seçerek şifresiz giriş; her ziyaretçiye ayrı aday hesabı, ortak değerlendirici ve yönetici hesabı; kimlik yalnız çerezden okunur, istemcinin gönderdiği kimlik başlıkları silinir.
+- **Otomatik tablo kurulumu:** boş veritabanında tablolar ilk istekte `drizzle/` migration'larından kurulur (`server/migrations.mjs`, `aa_schema` tablosu).
+- **Örnek veri ve gece sıfırlama:** üç kurgusal teslim (yayımlanmış ölçütlü geri bildirim, gecikmiş, atanmamış); her gece 03.00'te (TSİ) bütün kayıtlar ve dosyalar silinip örnekler yeniden yüklenir.
+- **Demo korumaları:** 3 MB dosya sınırı; ortak değerlendirici hesabının rolü düşürülemez (`PROTECTED_MEMBERS`); giriş sayfasında ve Hesap ekranında "gerçek kişisel bilgi yükleme" uyarısı.
+- Yeni test `tests/check-vitrin.mjs`; yayın ve işletme rehberi `docs/YAYIN.md`.
+
 ## 0.18.1 · 9 Kasım 2026
 
 - **GitHub Pages'te çalışan statik demo.** Uygulama artık `ysfdurak.github.io/aday_atolyesi` adresinde telefondan da açılıyor. Kökten başlayan yollar yayın klasörüne göre çözülüyor; modül sayfaları ortak dosyaları göreli yoldan yüklüyor.

@@ -12,3 +12,5 @@ web/cases/office/** linguist-generated=true binary
 web/cases/*.zip linguist-generated=true binary
 server/pilot-*.json linguist-generated=true -diff
 web/vendor/** linguist-vendored=true
+server/migrations.mjs linguist-generated=true
+server/vitrin-samples.mjs linguist-generated=true -diff

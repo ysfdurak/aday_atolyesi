@@ -278,6 +278,7 @@ export async function handlePilot(request, env) {
       return reply({
         user: member,
         cases: catalog,
+        vitrin: String(env.AA_VITRIN ?? '0') === '1',
         // Ölçütler yalnız değerlendirme yetkisi olanlara gönderilir.
         ...(canReview ? { rubrics: reviewCatalog } : {}),
         blindReview: await blindReview(db),
@@ -565,6 +566,13 @@ export async function handlePilot(request, env) {
       if (!admin) fail('Yetkin yok.', 403);
       const b = await json(request);
       if (!['candidate', 'reviewer'].includes(b.role) || b.id === uid) fail('Yetki değişikliği geçersiz.');
+      // Vitrin gibi ortak demo kurulumlarında ortak değerlendirici hesabının rolü düşürülemez.
+      const protectedIds = String(env.PROTECTED_MEMBERS || '')
+        .split(',')
+        .map(s => s.trim())
+        .filter(Boolean);
+      if (protectedIds.includes(b.id) && b.role !== 'reviewer')
+        fail('Bu demo hesabının rolü değiştirilemez.');
       await db
         .prepare("UPDATE pilot_members SET role=? WHERE id=? AND role<>'admin'")
         .bind(b.role, text(b.id, 200))

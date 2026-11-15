@@ -2,7 +2,7 @@
 
 Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri bildirim → revizyon → mülakat provası** akışında birleştiren Türkçe portföy projesidir. Aday kendi çalışmasını düzenler. İK değerlendiricisi atanmış vaka teslimini ölçüt ve dayanak üzerinden inceler.
 
-[Uygulama sürümü 0.18.1](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
+[Uygulama sürümü 0.19.0](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
 
 | Alan | Kullanıcı ne yapar? |
 | --- | --- |
@@ -14,11 +14,13 @@ Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri b
 | Mülakat hazırlığı | Seçtiği örnekleri bir dosyada toplar ve kendi dayanaklarıyla prova yapar. |
 | İK incelemesi | Atanmış teslimi ekranda açar, her ölçüt için 0–3 seviye seçer ve çıktı bazında dayanaklı görüş yazar. Yönetici kör değerlendirmeyi açabilir, bekleyen teslimleri toplu atar. |
 
-## Çevrimiçi demo
+## Canlı demo
 
-[ysfdurak.github.io/aday_atolyesi](https://ysfdurak.github.io/aday_atolyesi/) adresinde telefondan veya bilgisayardan kurulum olmadan açılır.
+**[aday.ysfdurak.com](https://aday.ysfdurak.com/)**: tam sürüm, kurulum gerektirmez. Hesap ve ayarlar → **Giriş yap** ile bir rol seç (aday, İK değerlendiricisi veya pilot yöneticisi), şifre yok. Örnek teslimler yüklüdür; aday olarak dosya teslim edebilir, değerlendirici olarak ölçütlü geri bildirim yazabilir, yönetici olarak atama ve kör değerlendirmeyi deneyebilirsin.
 
-> **Not:** Çevrimiçi demo GitHub Pages üzerinde çalışan **statik** bir sürümdür. Hazırlık planı, Zihin Parkuru, Mizaç, Rol Atölyesi, vaka çalışmaları, Word/Excel indirme, deneyim arşivi ve mülakat hazırlığı açıktır. Çalışmalar yalnızca o tarayıcıda saklanır; korumak için **Hesap ve ayarlar → Hedef ve kayıtlar** bölümünden cihaz yedeği indirilebilir. Sunucu gerektiren **hesap, dosya teslimi, İK değerlendirmesi, kör değerlendirme ve otomatik hesap kaydı bu sürümde kapalıdır**; uygulama içinde de bu durum bir notla gösterilir. Bu özellikleri denemek için aşağıdaki yerel demoyu kullan.
+> **Not:** Canlı demo herkese açık bir vitrindir. Değerlendirici ve yönetici hesapları ortaktır; yüklenen dosyalar bu rolleri seçen herkese görünür. **Gerçek kişisel bilgi içeren dosya yükleme.** Bütün kayıtlar ve dosyalar her gece 03.00'te (TSİ) silinir, dosya sınırı 3 MB'tır. Nasıl çalıştığı: [docs/YAYIN.md](docs/YAYIN.md).
+
+[ysfdurak.github.io/aday_atolyesi](https://ysfdurak.github.io/aday_atolyesi/) adresinde ayrıca **statik** bir sürüm vardır: hazırlık araçları açık, hesap, dosya teslimi ve İK değerlendirmesi kapalıdır; çalışmalar yalnız o tarayıcıda saklanır.
 
 ## Yerel demo
 

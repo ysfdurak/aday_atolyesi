@@ -14,6 +14,10 @@ Tarayıcıdaki hazırlık alanı, vaka motorları ve modüller `web/` dizininded
 
 CV metni hesap yedeğinden çıkarılır. Cihaz yedeği yerel kayıtları taşıyabilir. Bir cihazdan diğerine aktarmak için uygulamadaki yedekleme veya hesaba kaydetme seçenekleri kullanılır.
 
+## Canlı demo (Cloudflare)
+
+`aday.ysfdurak.com` Cloudflare Workers üzerinde vitrin modunda çalışır: rolle şifresiz giriş, otomatik tablo kurulumu, örnek veri ve gece sıfırlama. Ayarlar `wrangler.jsonc`, kod `server/vitrin.mjs` ve `worker/index.ts` içindedir. Kurulum, işleyiş ve sorun giderme: [YAYIN.md](YAYIN.md).
+
 ## Statik yayın (GitHub Pages)
 
 GitHub Pages `main` dalının kökünü yayımlar. Kökteki `index.html` ziyaretçiyi `web/` klasörüne yönlendirir; `.nojekyll` dosyaların Jekyll işlemesi olmadan sunulmasını sağlar. `web/site-base.js` her sayfada ilk yüklenir:

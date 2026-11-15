@@ -17,3 +17,5 @@ web/modules/rol/content.js
 *.md
 drizzle
 web/vendor
+server/vitrin-samples.mjs
+server/migrations.mjs

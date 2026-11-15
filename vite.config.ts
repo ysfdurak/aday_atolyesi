@@ -54,8 +54,9 @@ export default defineConfig(async ({ command }) => {
       cloudflare({
         viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
         inspectorPort: false,
+        // Yerel önizlemede yer tutucu bağlamalar; yayın derlemesinde kök dizindeki wrangler.jsonc kullanılır.
         config: {
-          ...localBindingConfig,
+          ...(command === 'serve' ? localBindingConfig : {}),
           ...(command === 'serve'
             ? {
                 services: [

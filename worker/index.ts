@@ -1,9 +1,47 @@
 import handler from 'vinext/server/fetch-handler';
 import { runWithConnectorBinding } from '../lib/connector-context';
 import type { ConnectorBinding } from '../lib/connector-contract.mjs';
+import {
+  isVitrin,
+  handleAuth,
+  withSessionIdentity,
+  ensureSchema,
+  ensureSeeded,
+  resetVitrin,
+  VITRIN_MAX_UPLOAD,
+} from '../server/vitrin.mjs';
+
+type Env = Cloudflare.Env & { AA_VITRIN?: string; DB: D1Database; BUCKET: R2Bucket };
+
+// Canlı vitrin (AA_VITRIN=1): rolle şifresiz giriş, kimlik yalnız çerezden, ilk istekte tablo kurulumu
+// ve örnek veri, yükleme sınırı. Vitrin kapalıysa istekler olduğu gibi uygulamaya gider.
+async function vitrin(request: Request, env: Env, ctx: ExecutionContext): Promise<Request | Response> {
+  const url = new URL(request.url);
+  const auth = await handleAuth(request);
+  if (auth) return auth;
+  if (url.pathname !== '/api/pilot') return request;
+  try {
+    await ensureSchema(env.DB);
+    ctx.waitUntil(ensureSeeded(env).catch((err: unknown) => console.error('vitrin seed', err)));
+  } catch (err) {
+    console.error('vitrin schema', err);
+    return Response.json({ error: 'Veritabanı hazırlanıyor. Biraz sonra tekrar dene.' }, { status: 503 });
+  }
+  if (url.searchParams.get('op') === 'submit') {
+    const size = Number(request.headers.get('content-length') || 0);
+    if (size > VITRIN_MAX_UPLOAD)
+      return Response.json({ error: 'Canlı demoda dosya sınırı 3 MB.' }, { status: 413 });
+  }
+  return withSessionIdentity(request);
+}
 
 const worker = {
-  fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+    if (isVitrin(env)) {
+      const next = await vitrin(request, env, ctx);
+      if (next instanceof Response) return next;
+      request = next;
+    }
     let binding = ctx.props?.CONNECTORS;
     // Local preview emulates the same request-scoped capability. This branch and
     // the auxiliary service binding are absent from production builds.
@@ -27,6 +65,11 @@ const worker = {
       };
     }
     return runWithConnectorBinding(binding, () => handler.fetch(request, env, ctx));
+  },
+  // Zamanlanmış görev (wrangler.jsonc → triggers.crons): vitrinde her gece kayıtları ve dosyaları sıfırlar.
+  async scheduled(_event: ScheduledController, env: Env, ctx: ExecutionContext) {
+    if (!isVitrin(env)) return;
+    ctx.waitUntil(resetVitrin(env));
   },
 };
 

@@ -1,5 +1,14 @@
 # Sürüm geçmişi
 
+## 0.21.0 · 15 Kasım 2026
+
+İngilizce okuyan ziyaretçiler için tanıtım turu. Uygulama Türkçe kalır.
+
+- **`?lang=en` turu** (`web/en-tour.js`): her ekran ve üç modül için İngilizce rehber paneli (aday yazmaya başlayınca küçülür), menü/sekme/başlık altında İngilizce karşılıklar. Seçim tarayıcıda hatırlanır; `?lang=tr` kapatır. Yazdırırken görünmez.
+- **İngilizce vitrin vakası:** "Koru Distribution — Daily operations plan" (`web/cases/en/`): belgeler, tablolar, görevler, ölçütler, referans çözüm, Word/Excel çalışma dosyaları, CSV'ler ve metin paketi. Dosyaları `python3 tools/build-en-showcase.py` Türkçe dosyalardan üretir.
+- **Canlı demo girişi** de turu yükler; kök adres (`/?lang=en`) çalışma alanına yönlenirken sorgu değerlerini korur.
+- **Kontrol:** `tests/check-en-showcase.mjs` İngilizce vakanın Türkçe vakayla aynı yapıda ve aynı sürümde olduğunu, dosyalarının yerinde olduğunu denetler.
+
 ## 0.20.0 · 15 Kasım 2026
 
 İçerik, tasarım ve öğreticilik incelemesi.

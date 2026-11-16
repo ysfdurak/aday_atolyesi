@@ -22,6 +22,10 @@ Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri b
 
 Eski `ysfdurak.github.io/aday_atolyesi` adresi canlı demoya yönlenir.
 
+### İngilizce tanıtım turu
+
+Uygulama Türk adaylar için yazıldığından arayüz ve içerik Türkçe kalır. İngilizce okuyan ziyaretçi için adresin sonuna `?lang=en` eklenir: [aday.ysfdurak.com/?lang=en](https://aday.ysfdurak.com/?lang=en). Her ekranın ne işe yaradığını anlatan bir rehber paneli açılır, menü ve başlıkların altında küçük İngilizce karşılıklar görünür, **Koru Distribution** vakası (belgeler, Word/Excel dosyaları ve referans çözüm) tamamen İngilizce açılır. `?lang=tr` turu kapatır. Ayrıntı: [docs/INGILIZCE-TUR.md](docs/INGILIZCE-TUR.md).
+
 ## Yerel demo
 
 Node.js 22.13 veya üstü (önerilen: 24) kurulu bir bilgisayarda proje klasörünü aç ve çalıştır:

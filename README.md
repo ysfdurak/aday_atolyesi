@@ -2,7 +2,7 @@
 
 Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri bildirim → revizyon → mülakat provası** akışında birleştiren Türkçe portföy projesidir. Aday kendi çalışmasını düzenler. İK değerlendiricisi atanmış vaka teslimini ölçüt ve dayanak üzerinden inceler.
 
-[Uygulama sürümü 0.20.0](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
+[Uygulama sürümü 0.21.1](CHANGELOG.md) · [Demo senaryosu](docs/DEMO.md) · [Mimari ve kurulum](docs/ARCHITECTURE.md) · [Doğrulama](docs/VERIFICATION.md)
 
 | Alan | Kullanıcı ne yapar? |
 | --- | --- |
@@ -58,6 +58,16 @@ npm run build
 | `docs/` | Mimari, demo, pilot protokolü, doğrulama kaydı ve geçmiş incelemeler |
 
 `web/case-data.js`, Office paketleri ve benzeri büyük dosyalar `tools/` betiklerinin çıktısıdır; demo kurulum gerektirmeden çalışsın diye repoda tutulur ve `.gitattributes` ile üretilmiş dosya olarak işaretlidir.
+
+## English
+
+**Aday Atölyesi** (Candidate Workshop) brings job-application preparation into one flow: target → practice → case → feedback → revision → interview rehearsal. Candidates organise their own work; an HR reviewer assesses assigned case submissions against criteria and evidence.
+
+- **Try it:** https://aday.ysfdurak.com/?lang=en — sign in by picking a role (candidate, HR reviewer or pilot admin), no password. The app is written for candidates in Turkey, so the interface and content stay in Turkish; `?lang=en` opens a guide that explains every screen, shows English labels under menus and headings, and opens the **Koru Distribution** case fully in English.
+- **Workshops:** preparation plan for 20 roles, Role Workshop (187 scenarios in 24 competencies), Zihin Parkuru (numerical, verbal and spatial practice with an error notebook), work-style preferences, 20 fictional company cases with Word/Excel files, and interview preparation.
+- **HR review:** each criterion gets a 0–3 level and an evidence note per output; blind review, waiting time and bulk assignment. Levels are never combined into a single score.
+- **Live demo note:** it is a public showcase; reviewer and admin accounts are shared, so do not upload files with real personal data. All records and files are deleted every night.
+- **Stack:** JavaScript, Cloudflare Workers, D1 (SQLite) and R2. Run locally with `npm run demo` (Node.js 22.13+) and open http://127.0.0.1:5173. No AI calls.
 
 ## Kapsam ve sınırlar
 

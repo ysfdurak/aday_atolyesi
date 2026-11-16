@@ -1,6 +1,6 @@
 /* İngilizce tanıtım turu.
- * Uygulama Türkçe adaylar için yazıldı ve Türkçe kalır. Adres ?lang=en ile açıldığında (seçim bu tarayıcıda
- * hatırlanır, ?lang=tr ile kapanır) İngilizce okuyan ziyaretçiye:
+ * Uygulama Türkçe adaylar için yazıldı ve Türkçe kalır. Adres ?lang=en ile açıldığında (tur aynı sekmede
+ * sürer, yeni ziyarette uygulama Türkçe açılır; ?lang=tr kapatır) İngilizce okuyan ziyaretçiye:
  *   1) her ekranın ne işe yaradığını anlatan bir rehber paneli,
  *   2) menü, sekme ve başlıkların altında küçük İngilizce karşılıklar,
  *   3) bir vitrin vakasının (Koru Distribution) tamamen İngilizce sürümü gösterilir.
@@ -9,14 +9,19 @@
   'use strict';
   const KEY = 'aa_lang';
   const SHOWCASE = 'vardiya-darbogazi';
+  // Tur yalnızca bu sekmede açık kalır (sessionStorage): yeni bir ziyarette uygulama yine Türkçe açılır.
+  // Eski sürüm seçimi kalıcı tuttuğu için o kayıt silinir.
+  let on = false;
   try {
+    localStorage.removeItem(KEY);
     const q = new URLSearchParams(location.search).get('lang');
-    if (q === 'en') localStorage.setItem(KEY, 'en');
-    if (q === 'tr') localStorage.removeItem(KEY);
-    if (localStorage.getItem(KEY) !== 'en') return;
+    if (q === 'en') sessionStorage.setItem(KEY, 'en');
+    if (q === 'tr') sessionStorage.removeItem(KEY);
+    on = sessionStorage.getItem(KEY) === 'en';
   } catch {
-    return;
+    on = false;
   }
+  if (!on) return;
   root.AA_EN = true;
   const url = path => (root.AA_URL ? root.AA_URL(path) : path);
 

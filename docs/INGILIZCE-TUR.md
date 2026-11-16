@@ -6,7 +6,7 @@ Aday Atölyesi Türk adaylar için yazıldı: sınav soruları Türkçe dil bilg
 
 | Adres | Sonuç |
 | --- | --- |
-| `https://aday.ysfdurak.com/?lang=en` | Tur açılır ve bu tarayıcıda hatırlanır (`localStorage` anahtarı `aa_lang`). |
+| `https://aday.ysfdurak.com/?lang=en` | Tur açılır ve aynı sekmede gezerken açık kalır (`sessionStorage` anahtarı `aa_lang`). Yeni bir ziyarette uygulama yine Türkçe açılır. |
 | `https://aday.ysfdurak.com/?lang=tr` | Tur kapanır. Paneldeki **Turn off** bağlantısı da aynı işi yapar. |
 
 Tur açıkken:

@@ -88,7 +88,7 @@
   ];
   function table(rows) {
     return (
-      '<div class="tablewrap"><table class="numberGrid">' +
+      '<div class="tablewrap" tabindex="0"><table class="numberGrid">' +
       rows
         .map(row => '<tr>' + row.map(x => `<td>${x === '?' ? '?' : fmt(x)}</td>`).join('') + '</tr>')
         .join('') +

@@ -75,7 +75,7 @@
     num = n => Number(n.toFixed(2)).toLocaleString('tr-TR', { maximumFractionDigits: 2 }),
     seq = v => '<div class="sequence">' + v.map(x => `<span class="seqbox">${x}</span>`).join('') + '</div>',
     table = (head, rows) =>
-      '<div class="tablewrap"><table><thead><tr>' +
+      '<div class="tablewrap" tabindex="0"><table><thead><tr>' +
       head.map(x => `<th>${x}</th>`).join('') +
       '</tr></thead><tbody>' +
       rows.map(r => '<tr>' + r.map(x => `<td>${x}</td>`).join('') + '</tr>').join('') +

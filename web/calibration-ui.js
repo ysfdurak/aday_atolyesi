@@ -71,7 +71,7 @@
           cmp.max === 0
             ? `İki değerlendirici ${items.length} ölçütün hepsinde aynı seviyeyi seçti.`
             : `${cmp.agree}/${items.length} ölçütte aynı seviye. En büyük fark (${cmp.max} seviye): <b>${cmp.source.map(r => e(r.name)).join(', ')}</b>. Konuşmayı bu ölçütün dayanağıyla başlatın: teslimdeki hangi cümle, hangi seviye tanımına uyuyor?`
-        }</p><div class="tablewrap"><table><thead><tr><th>Ölçüt</th><th>A</th><th>B</th><th>Fark</th><th>Taslak referans ${draftTag()}</th></tr></thead><tbody>${cmp.rows
+        }</p><div class="tablewrap" tabindex="0"><table><thead><tr><th>Ölçüt</th><th>A</th><th>B</th><th>Fark</th><th>Taslak referans ${draftTag()}</th></tr></thead><tbody>${cmp.rows
           .map(
             r =>
               `<tr class="${r.diff >= 2 ? 'cal-big' : r.diff === 1 ? 'cal-small' : ''}"><td>${e(r.name)}</td><td>${r.a}</td><td>${r.b}</td><td>${r.diff === 0 ? 'Aynı' : r.diff + ' seviye'}</td><td>${r.level} · ${NAMES[r.level - 1]} örneği</td></tr>`

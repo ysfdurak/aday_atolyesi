@@ -693,7 +693,7 @@ ${canReview ? '</details>' : ''}${
           const n = document.createElement('section');
           n.className = 'card';
           n.style.marginTop = '20px';
-          n.innerHTML = `<h2>Pilot görev özeti</h2><p>${summary.respondents} geri bildirim sahibi · ${summary.observed} görev gözlemi bildiren kişi. Bunlar aday beyanlarıdır; katılmayanları veya tüm davetlileri kapsayan başarı oranı değildir.</p><div class="tablewrap"><table><thead><tr><th>Görev</th><th>Yardımsız</th><th>Yardımla</th><th>Takıldı</th><th>Denemedi</th></tr></thead><tbody>${Object.entries(
+          n.innerHTML = `<h2>Pilot görev özeti</h2><p>${summary.respondents} geri bildirim sahibi · ${summary.observed} görev gözlemi bildiren kişi. Bunlar aday beyanlarıdır; katılmayanları veya tüm davetlileri kapsayan başarı oranı değildir.</p><div class="tablewrap" tabindex="0"><table><thead><tr><th>Görev</th><th>Yardımsız</th><th>Yardımla</th><th>Takıldı</th><th>Denemedi</th></tr></thead><tbody>${Object.entries(
             summary.tasks
           )
             .map(

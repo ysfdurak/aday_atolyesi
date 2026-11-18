@@ -94,7 +94,7 @@ function shell(body) {
     .map(([id, label]) => `<a href="#${id}" ${current === id ? 'aria-current="page"' : ''}>${label}</a>`)
     .join('')}</nav>`;
 }
-const AA_VERSION = '0.21.1';
+const AA_VERSION = '0.22.0';
 function home() {
   return WorkspaceUX.home(state, AA.snapshot(localStorage));
 }
@@ -260,7 +260,8 @@ async function render(options = {}) {
   route = requested;
   syncPosition();
   const needsCases =
-      ['cases', 'pilot', 'growth', 'rehearsal', 'file-work'].includes(route) && !CaseContent.ready(),
+      ['cases', 'pilot', 'growth', 'rehearsal', 'file-work', 'kalibrasyon'].includes(route) &&
+      !CaseContent.ready(),
     needsFeedback = route === 'growth' && !ResponseContent.ready();
   if (needsCases || needsFeedback) {
     $('#app').innerHTML = shell(
@@ -301,6 +302,7 @@ async function render(options = {}) {
       rehearsal: window.RehearsalUI?.view,
       'file-work': window.FileWorkUI?.view,
       pilot: PilotUI.view,
+      kalibrasyon: window.CalibrationUI?.view,
       cases: CaseUI.view,
     }[route] || home
   )();
@@ -344,6 +346,7 @@ function bind() {
   window.FileWorkUI?.bind();
   if (CaseContent.ready()) CaseUI.bind();
   PilotUI.bind();
+  if (route === 'kalibrasyon') window.CalibrationUI?.bind($('#app'));
   PilotProgress.refresh();
   $('#profile')?.addEventListener('submit', e => {
     e.preventDefault();

@@ -108,7 +108,7 @@ button:hover,
 }
 .brand small {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 1.4px;
   margin-top: 6px;
@@ -158,7 +158,7 @@ button:hover,
 }
 .tag,
 .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 750;
   letter-spacing: 1.6px;
   text-transform: uppercase;
@@ -578,7 +578,7 @@ th {
     margin-top: 25px;
   }
   .top .tag {
-    font-size: 9px;
+    font-size: 12px;
   }
 }
 @media print {
@@ -645,7 +645,7 @@ th {
   gap: 8px;
 }
 .casecardtop .tag {
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0;
 }
 .casegrid {
@@ -1160,7 +1160,7 @@ button:disabled {
   gap: 6px;
 }
 .evidence-presence span {
-  font-size: 11px;
+  font-size: 12px;
   background: #f3f4f0;
   color: #68776e;
   padding: 5px 8px;
@@ -1229,7 +1229,7 @@ button:disabled {
 .top .tag {
   text-transform: none;
   letter-spacing: 0;
-  font-size: 11px;
+  font-size: 12px;
   max-width: 55%;
 }
 .status-cards {
@@ -1382,7 +1382,7 @@ button:disabled {
     align-items: flex-start;
   }
   .top .tag {
-    font-size: 10px;
+    font-size: 12px;
     max-width: 55%;
     text-align: right;
   }
@@ -1460,7 +1460,7 @@ button:disabled {
     padding-top: 0;
   }
   .dossier-limit {
-    font-size: 10px;
+    font-size: 12px;
   }
   body[data-route='dossier'] .main > h1,
   body[data-route='dossier'] .main > .eyebrow,
@@ -1738,7 +1738,7 @@ footer a {
     grid-template-columns: repeat(5, 1fr);
   }
   .mobile-dock a {
-    font-size: 11.5px;
+    font-size: 12px;
   }
   .subnav {
     flex-wrap: nowrap;
@@ -2085,11 +2085,88 @@ footer a {
 /* Mobil: alt çubukta zaten duran beş ana bölüm açılır menüde tekrar edilmez;
    "Diğer" yalnızca alt çubukta olmayanları gösterir (Gelişim, Pilot, Nasıl çalışır?) */
 @media (max-width: 720px) {
-  .shell > .side.mobile-open nav a[href="#home"],
-  .shell > .side.mobile-open nav a[href="#plan"],
-  .shell > .side.mobile-open nav a[href="#modules"],
-  .shell > .side.mobile-open nav a[href="#cases"],
-  .shell > .side.mobile-open nav a[href="#examples"] {
+  .shell > .side.mobile-open nav a[href='#home'],
+  .shell > .side.mobile-open nav a[href='#plan'],
+  .shell > .side.mobile-open nav a[href='#modules'],
+  .shell > .side.mobile-open nav a[href='#cases'],
+  .shell > .side.mobile-open nav a[href='#examples'] {
     display: none;
+  }
+}
+
+/* Örnek cevaplar ve değerlendirici kalibrasyonu */
+.draft-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.4;
+  padding: 2px 9px;
+  border-radius: 20px;
+  background: #fbecd9;
+  color: #7a3d16;
+  border: 1px solid #ecc9a7;
+  vertical-align: middle;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.crit-examples-box {
+  margin: 6px 0 8px;
+}
+.crit-examples-box summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+.crit-examples dl {
+  margin: 6px 0 10px;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 12px;
+  font-size: 13px;
+}
+.crit-examples dt {
+  font-weight: 650;
+  color: var(--green);
+}
+.crit-examples dd {
+  margin: 0;
+}
+.cal-submission {
+  padding-left: 22px;
+}
+.cal-submission li {
+  margin: 0 0 10px;
+}
+.cal-submission p {
+  margin: 2px 0 0;
+}
+.cal-raters fieldset {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+  padding: 14px 16px;
+  margin: 0;
+  min-width: 0;
+}
+.cal-raters legend {
+  font-weight: 700;
+  padding: 0 6px;
+}
+.cal-crit {
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+}
+.cal-crit:first-of-type {
+  border-top: 0;
+}
+.cal-result tr.cal-big td {
+  background: #fbe4d6;
+}
+.cal-result tr.cal-small td {
+  background: #fbf3dd;
+}
+@media (max-width: 640px) {
+  .crit-examples dl {
+    grid-template-columns: 1fr;
   }
 }

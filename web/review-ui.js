@@ -24,7 +24,7 @@
   function form(r, me) {
     const crit = rubric(me, r);
     const criteria = crit.length
-      ? `<fieldset class="rubric"><legend>1. Ölçütler · her biri için bir seviye seç</legend><p class="muted">Seviyeler toplanmaz, tek puana dönüşmez. Adaya ölçüt bazında gösterilir.</p>${crit
+      ? `<fieldset class="rubric"><legend>1. Ölçütler · her biri için bir seviye seç</legend><p class="muted">Seviyeler toplanmaz, tek puana dönüşmez. Adaya ölçüt bazında gösterilir. Seviyeyi seçmeden önce ölçütün örnek cevaplarına bakabilirsin; ekipçe aynı okumayı yapmak için <a href="#kalibrasyon">kalibrasyon alıştırması</a>.</p>${crit
           .map(
             (c, i) =>
               `<div class="crit"><b>${e(c.name)}</b><p class="muted">${e(c.evidence)}</p><div class="levels" role="radiogroup" aria-label="${e(c.name)}">${LEVELS.map(
@@ -32,7 +32,7 @@
                   `<label title="${e(c.anchors?.[n] || LEVEL_TEXT[n])}"><input type="radio" name="crit${i}" value="${n}" required><span>${n} · ${l}</span></label>`
               ).join(
                 ''
-              )}</div><p class="anchor muted" data-anchor="${i}" aria-live="polite"></p><input name="critnote${i}" maxlength="600" placeholder="Dayanak (isteğe bağlı): sayfa, hücre veya kısa alıntı"></div>`
+              )}</div><p class="anchor muted" data-anchor="${i}" aria-live="polite"></p>${root.CalibrationUI?.formExamples(r.case_id, c.name) || ''}<input name="critnote${i}" maxlength="600" placeholder="Dayanak (isteğe bağlı): sayfa, hücre veya kısa alıntı"></div>`
           )
           .join('')}</fieldset>`
       : '';

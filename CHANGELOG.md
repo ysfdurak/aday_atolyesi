@@ -1,5 +1,14 @@
 # Sürüm geçmişi
 
+## 0.22.0 · 19 Kasım 2026
+
+İK değerlendirmesinde yapılandırılmış değerlendirme (OPM yaklaşımı): aynı ölçek, seviye örnekleri ve değerlendiriciler arası kalibrasyon.
+
+- **Ölçüt örnek cevapları:** 20 vakanın 104 ölçütünün her biri için zayıf (1), yeterli (2) ve güçlü (3) cevap örneği (`content/rubric-examples.json` → `web/rubric-examples.js`). Değerlendirme formunda her ölçütün altında açılır. Hepsi **uzman incelemesi bekleyen taslak** olarak etiketlidir.
+- **Değerlendirici kalibrasyonu** (`#kalibrasyon`, `web/calibration-ui.js`): iki değerlendirici aynı sentetik teslimi ölçüt bazında bağımsız puanlar. Ekran farkın hangi ölçütten geldiğini gösterir (en büyük fark, aynı seviye sayısı, satır bazında A/B/fark). Sentetik teslim örnek cevaplardan sabit biçimde kurulur; taslak referans seviyesi karşılaştırmadan sonra açılır. Toplam puan üretilmez. Kayıt yalnız tarayıcıda (`aa-kalibrasyon-v1`).
+- **Okunabilirlik:** 12 px altındaki yazılar (etiket, üst başlık, bazı mobil metinler) 12 px'e çıkarıldı.
+- **Kontrol:** `tests/check-calibration.cjs` örneklerin bütün ölçütleri kapsadığını, üretilmiş dosyanın güncel olduğunu ve fark kaynağının doğru bulunduğunu denetler.
+
 ## 0.21.1 · 16 Kasım 2026
 
 - **İngilizce tur yalnızca açıldığı sekmede sürer.** Önceki sürüm `?lang=en` seçimini tarayıcıya kalıcı yazıyordu; sonra normal adresle açılan Türkçe uygulamada da rehber çıkıyordu. Artık seçim `sessionStorage`'da tutulur, eski kalıcı kayıt ilk açılışta silinir.

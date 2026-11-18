@@ -12,7 +12,7 @@ Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri b
 | Mizaç | 96 ifade ve 6 senaryoyla çalışma tercihlerini değerlendirir ve gerçek örneklerle gözden geçirir. |
 | Vaka Atölyesi | 20 kurgusal şirket vakasında Word ve Excel belgelerini kullanır, bir karar üretir ve revize eder. |
 | Mülakat hazırlığı | Seçtiği örnekleri bir dosyada toplar ve kendi dayanaklarıyla prova yapar. |
-| İK incelemesi | Atanmış teslimi ekranda açar, her ölçüt için 0–3 seviye seçer ve çıktı bazında dayanaklı görüş yazar. Yönetici kör değerlendirmeyi açabilir, bekleyen teslimleri toplu atar. |
+| İK incelemesi | Atanmış teslimi ekranda açar, her ölçüt için 0–3 seviye seçer ve çıktı bazında dayanaklı görüş yazar. Her ölçütte zayıf/yeterli/güçlü cevap örnekleri (uzman incelemesi bekleyen taslak) görünür. Kalibrasyon ekranında iki değerlendirici aynı sentetik teslimi puanlar, farkın hangi ölçütten geldiğini görür. Yönetici kör değerlendirmeyi açabilir, bekleyen teslimleri toplu atar. |
 
 ## Canlı demo
 

@@ -2081,3 +2081,15 @@ footer a {
 .example-sample p {
   margin: 8px 0;
 }
+
+/* Mobil: alt çubukta zaten duran beş ana bölüm açılır menüde tekrar edilmez;
+   "Diğer" yalnızca alt çubukta olmayanları gösterir (Gelişim, Pilot, Nasıl çalışır?) */
+@media (max-width: 720px) {
+  .shell > .side.mobile-open nav a[href="#home"],
+  .shell > .side.mobile-open nav a[href="#plan"],
+  .shell > .side.mobile-open nav a[href="#modules"],
+  .shell > .side.mobile-open nav a[href="#cases"],
+  .shell > .side.mobile-open nav a[href="#examples"] {
+    display: none;
+  }
+}

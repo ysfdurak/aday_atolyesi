@@ -51,6 +51,7 @@
     'Çalışma alanım': 'My workspace',
     'Hazırlık planım': 'My preparation plan',
     Atölyeler: 'Workshops',
+    Diğer: 'More',
     'Vaka Atölyesi': 'Case workshop',
     'Mülakat hazırlığı': 'Interview prep',
     Gelişimim: 'My progress',

@@ -1,0 +1,568 @@
+{
+  "status": "taslak",
+  "statusLabel": "Uzman incelemesi bekleyen taslak",
+  "method": "OPM yapılandırılmış değerlendirme yaklaşımı: aynı ölçek, her ölçüt için düşük–orta–yüksek düzeyi gösteren cevap örnekleri, değerlendiricilerin ölçüt bazında bağımsız puanlaması ve ardından farkların ölçüt üzerinden konuşulması.",
+  "levels": { "zayif": 1, "yeterli": 2, "guclu": 3 },
+  "cases": {
+    "kpi-paradoksu": {
+      "Payda ve hesap doğruluğu": [
+        "Web %97, mağaza %83; ortalama %90 olduğu için hedefe yakınız.",
+        "Son dönem toplam oran (194+664)/1.000 = %85,8; önceki dönem %92. Düşüş 6,2 puan.",
+        "Toplam oranı adetlerle hesapladım: önceki %92, son %85,8. Kanal oranlarının basit ortalaması (%90) hacim farkını yok saydığı için kullanmadım; hesap ekinde iki yolu yan yana gösterdim."
+      ],
+      "Karma etkisini açıklama": [
+        "Toplam oran düştüğüne göre iki kanal da kötüleşmiş.",
+        "İki kanal da iyileşti, ama mağazanın payı %20'den %80'e çıktığı için toplam düştü.",
+        "Web %95→%97, mağaza %80→%83 iyileşti; düşük oranlı mağazanın payı %20'den %80'e çıktı. Önceki karmayla son dönem %94,2 olurdu: toplamdaki düşüş karmadan geliyor."
+      ],
+      "Çıkarım sınırı": [
+        "Mağaza ekibi yeterince özenli çalışmıyor; düşüşün nedeni bu.",
+        "Bu tablo düşüşün karmadan geldiğini gösteriyor; ekip performansı hakkında bir şey söylemiyor.",
+        "Karma değişiminin nedeni (sistem geçişi, yeni ortaklar) D07'de ayrılamıyor; ne nedeni ne ekip verimliliğini biliyoruz. Ayırmak için devreden talep ve yeni ortak listesini istedim."
+      ],
+      "İletişim ve takip": [
+        "Rakamlar ektedir, toplantıda konuşuruz.",
+        "Sonuç: toplam %85,8, kanallar iyileşti, fark karmadan. Kasımdan itibaren kanal oranlarını da raporlayalım.",
+        "Notta sonuç, veri ve eksik bilgiyi ayrı başlıklarda verdim. Kasım takibinde aynı tanımla toplam oran, kanal oranı ve kanal payı birlikte izlenecek; veri talebinin sahibi ve dönüş tarihi yazılı."
+      ]
+    },
+    "vardiya-darbogazi": {
+      "Ayrı süreç kapasitesi": [
+        "Toplamda 11 kişi × 300 dk = 3.300 dk var, iş 3.000 dk; plan yetişir.",
+        "Toplama 1.800 dk'ya yetiyor ama paketleme 1.200 dk iş için 900 dk kapasiteyle 300 dk açık veriyor.",
+        "Süreçleri ayrı hesapladım: toplamadaki boşluk paketlemeye kendiliğinden akmaz. Paketlemede 300 dk açık var; kapatmak için bir eğitimli kişinin vardiya başında görev değiştirmesi gerekiyor."
+      ],
+      "Yetkinlik ve kişi tutarlılığı": [
+        "Küçük ekipten birini paketlemeye alıyorum; küçük ekip yine 1.200 dk kapasiteyle çalışır.",
+        "Küçükten bir kişi paketlemeye geçince küçük alan 900/900 dk ile tam dolu kalıyor; paketleme 1.200/1.200.",
+        "Transfer edileni kaynak ekipten düştüm: küçük 900/900, büyük 900/1.200, paketleme 1.200/1.200. Büyükten transfer de mümkün; hangi ekipte tampon kalacağını karşılaştırdım ve paketleme eğitiminin güncel olduğunu D08'den teyit ettim."
+      ],
+      "Kırılganlık ve kontrol": [
+        "Hesap tutuyor, ek kontrol gerekmez.",
+        "Plan tam kapasitede; ilk saatten sonra paketlemedeki birikmeyi kontrol edeceğim.",
+        "Paketleme %100 dolu, tampon yok; standart süreler sekiz vardiyanın değişkenliğini temsil etmiyor. 10.30 ve 13.00'te fiili hız ile hazır iş miktarını ölçüyorum; sapma 30 dk'yı geçerse büyük ekipten zamanlı destek açılacak."
+      ],
+      "Uygulanabilir iletişim": [
+        "Ekip planı panoda görür.",
+        "08.30'da Ayşe paketlemeye geçiyor; 13.00'te durum kontrolü yapacağım.",
+        "08.30 brifinginde kimin hangi alanda başladığını, 10.30/13.00 kontrol saatlerini ve 17.30 riske girerse taşıyıcı masası ile depo müdürüne kimin, hangi seçenekle eskalasyon yapacağını yazdım."
+      ]
+    },
+    "gelen-kutusu": {
+      "Risk ve son tarih ayrımı": [
+        "Önce genel müdürün isteğini yapıyorum, çünkü en kıdemli kişi o.",
+        "Şüpheli e-postayı ilk iş BT'ye bildirdim; ardından saatli teslimlere geçtim.",
+        "Önceliği unvana değil etki ve süreye göre verdim: güvenlik riski şimdi yayılabileceği için ilk sırada. Genel müdürün talebi önemli, ama son tarihi daha geç."
+      ],
+      "Bağımlılık ve takvim": [
+        "Bütün işleri öğlene kadar sırayla bitiririm.",
+        "09.45 ve 11.00 teslimlerini planladım; 10.30 raporu için verinin 09.50'de gelmesini bekliyorum.",
+        "09.50'de gelecek veri olmadan 10.30 raporu başlayamaz; o yüzden 09.45 işini öne aldım, 09.50–10.30 arasını rapora ayırdım ve verinin gecikmesi hâlinde 10.00'da kime haber vereceğimi yazdım."
+      ],
+      "Delegasyon": [
+        "Bordro onayını Zeynep'e bıraktım, o halleder.",
+        "Toplantı salonu işini Kerem'e verdim; 10.15'e kadar teyit edecek.",
+        "Kerem'e salon işini çıktı ve 10.15 dönüş saatiyle verdim. Bordro onayı yetki gerektirdiği için devretmedim; yöneticiye öğlen onayı için hazır dosya bıraktım."
+      ],
+      "Bilgi güvenliği": [
+        "İstenen personel dosyasını kişisel e-postasına gönderdim, acil olduğu için.",
+        "Ham dosyayı kişisel e-postaya göndermedim; onaylı paylaşım klasörünü önerdim.",
+        "Önce iş ihtiyacını sordum: ham dosya gerekmiyor, özet tablo yeterli. Kişisel veri içermeyen özeti onaylı kanaldan paylaştım ve talebi kayda geçtim."
+      ],
+      "Paydaş iletişimi": [
+        "Her şey yolunda, öğlene kadar hepsi biter.",
+        "Durum özeti: üç iş bitti, ikisi bekliyor, biri Kerem'de.",
+        "Özette biten, bekleyen ve devredilen işleri sahibiyle ayırdım. Bordro için 'onay sizde' dedim; veri gecikmesi teyit edilmeden tarih sözü vermedim."
+      ]
+    },
+    "geri-bildirim": {
+      "Somut ve dengeli açılış": [
+        "Son zamanlarda çok özensiz çalışıyorsun.",
+        "Bu ay 120 dosya tamamladın; 10 dosya yeniden işleme girdi, bunu konuşmak istiyorum.",
+        "120 dosya tamamladığını ve 10'unun yeniden işlendiğini birlikte söyledim; bunun bir davranış gözlemi olduğunu, kişiliğine dair bir yargı olmadığını açıkça belirttim."
+      ],
+      "Nedeni araştırma": [
+        "Yeni alanın zor olduğu belli; hataların nedeni bu.",
+        "Hataların ne zaman ve hangi dosya türünde arttığını sordum.",
+        "İş zorluğu, yeni alan, acil yük ve destek eksikliği iddialarının her birini sordum; hiçbirini önceden gerçek ya da bahane saymadım ve hangi kayıtla doğrulanacağını birlikte belirledik."
+      ],
+      "Destek ve hesap verebilirlik": [
+        "Hata olmasın yeter; nasıl yapacağın sana kalmış.",
+        "Kontrol standardı aynı kalıyor; haftada bir ortak inceleme yapacağız.",
+        "Kontrol standardından taviz vermedim. Ortak incelemeyi, takılınca hangi kanaldan yardım alacağını ve kendisinin her dosyada kontrol listesini kullanacağını birlikte yazdık."
+      ],
+      "Takip": [
+        "Gelecek ay hatalar azaldıysa sorun çözülmüş demektir.",
+        "Önümüzdeki dört hafta yeniden işlem oranını izleyeceğiz.",
+        "Her hafta aynı tanımla rastgele 20 dosyalık örneklemde hata oranını izleyeceğiz; tek haftalık düşüşü kalıcı gelişim saymayacağız, dördüncü haftada birlikte değerlendireceğiz."
+      ]
+    },
+    "butce-sapmasi": {
+      "Ayrıştırma": [
+        "Gider bütçeyi aştı; fark fiyat artışından geliyor.",
+        "Hacim etkisini bütçe fiyatıyla, fiyat etkisini gerçek hacimle hesapladım.",
+        "Hacim etkisi = (gerçek − bütçe hacim) × bütçe fiyatı; fiyat etkisi = (gerçek − bütçe fiyat) × gerçek hacim. İki bileşenin toplamı toplam farka tam eşit; hesap ekinde mutabakatı gösterdim."
+      ],
+      "Karşılaştırma tabanı": [
+        "Statik bütçeye göre aştık, bu yeterli bilgi.",
+        "Esnek bütçe, gerçek hacimde ne harcamamız gerektiğini gösteriyor.",
+        "Statik bütçe 'plana göre ne oldu', esnek bütçe 'bu hacimde ne olmalıydı' sorusunu cevaplıyor; performans tartışmasında esnek, bütçe disiplininde statik taban kullanılmalı."
+      ],
+      "Kontrol ve sorumluluk": [
+        "Fiyat farkı satın almanın hatası; sorumlu kişiyle konuşulmalı.",
+        "Fiyat farkını kusur olarak yazmadım; nedenini öğrenmek için satın almadan bilgi istedim.",
+        "Fiyat ve sabit gider farkını otomatik kişisel kusur saymadım. Kararın kimin yetkisinde olduğunu ve fiyatın piyasa mı sözleşme mi kaynaklı olduğunu gösterecek veriyi istedim."
+      ],
+      "Seçenek analizi": [
+        "Yeni tedarikçi 200 TL ucuz; hemen geçelim.",
+        "200 TL farkın yanında geçiş maliyetini de hesaba kattım.",
+        "200 TL birim farkını geçiş maliyeti ve hizmet eşdeğerliğiyle (teslim süresi, kalite) birlikte değerlendirdim; eşdeğerlik doğrulanmadan geçişi önermedim."
+      ],
+      "Yönetici notu": [
+        "Ekteki tabloda her şey var.",
+        "Notta hesap, varsayımlar ve öneri ayrı başlıklarda.",
+        "Hesap, varsayım, eksik bilgi ve önerilen karar ayrı başlıklarda; eksik bilgi gelince kararın nasıl değişebileceğini de bir cümleyle yazdım."
+      ]
+    },
+    "kampanya-karari": {
+      "Katkı hesabı": [
+        "Kampanya ciroyu artırdı; başarılı.",
+        "Brüt marjı ciroya uyguladım ve reklam giderini düştüm: katkı negatif.",
+        "Katkı = ciro × brüt marj − reklam gideri; gideri yalnız bir kez düştüm. Sonuç negatif çıktı; ciro artışına rağmen kampanya bu haliyle para kaybettiriyor."
+      ],
+      "Ölçüm sınırları": [
+        "ROAS 3, yani her lira üç lira kazandırıyor.",
+        "ROAS ciroyu ölçüyor, katkıyı değil; atıf da artımlı etkiyi göstermiyor.",
+        "ROAS ciro/gider oranıdır, kâr değildir. Atıflanan satışın bir kısmı kampanya olmadan da gelecekti; artımlı etkiyi ancak karşılaştırma grubuyla bilebiliriz."
+      ],
+      "Kaynak ve kapasite": [
+        "Bütçeyi iki katına çıkarırsak satış da iki katına çıkar.",
+        "Ek bütçenin aynı dönüşü getireceğini varsaymadım; içerik kapasitesi sınırlı.",
+        "Ek bütçede dönüş azalabilir ve içerik ekibinin kapasitesi sınırlı; ölçeklemeyi kapasite planı ve azalan getiri varsayımıyla birlikte değerlendirdim."
+      ],
+      "Deneme tasarımı": [
+        "Bir süre daha deneyip bakalım.",
+        "Dört haftalık, sınırlı bütçeli bir deneme öneriyorum; ölçüt katkı.",
+        "Deneme: dört hafta, sınırlı bütçe, ölçüt artımlı katkı, karşılaştırma için kampanya almayan bölge; katkı iki hafta üst üste negatifse durdurma kuralı."
+      ],
+      "Ticari iletişim": [
+        "Ekip yanlış metrikle çalışmış; kampanya başarısız.",
+        "Ekibin ciro artışını sağladığını belirttim, ama birim ekonomi negatif.",
+        "Ekibin ciro ve erişim başarısını tanıdım; ardından olumsuz birim ekonomiyi rakamla ve suçlamadan açıkladım, birlikte çözülecek soruyu net koydum."
+      ]
+    },
+    "aday-hunisi": {
+      "Aşama paydası": [
+        "Kabul oranı = kabul / başvuru.",
+        "Teklif kabul oranını teklife böldüm.",
+        "Her aşamayı bir önceki aşamaya böldüm (kabul/teklif); kaynakları toplarken ağırlıklı hesap yaptım, kaynak oranlarının basit ortalamasını almadım."
+      ],
+      "Süreç teşhisi": [
+        "Sorun teknik mülakatta, oranı en düşük orası.",
+        "Her geçişi ayrı inceledim; en büyük kayıp teknik aşamada görünüyor.",
+        "Ön görüşme, teknik, teklif ve kabul geçişlerini ayrı inceledim; teknik aşamadaki düşüşün aday kalitesinden mi süreçten mi geldiğini ayırmak için bekleme süresi verisini istedim."
+      ],
+      "Karşılaştırılabilirlik": [
+        "Öneri kanalından gelen adaylar daha kaliteli.",
+        "Kaynakları karşılaştırmadan önce rol ve kıdem farkını kontrol etmek gerekiyor.",
+        "Kaynakları rol, kıdem, ücret ve bekleme süresi farkları ayrılmadan karşılaştırmadım; kaynak etiketini aday kalitesinin kanıtı saymadım."
+      ],
+      "Maliyet kapsamı": [
+        "Kaynak gideri 10.000 TL / 5 işe alım = işe alım maliyeti 2.000 TL.",
+        "Kaynak giderini toplam işe alım maliyeti olarak sunmadım.",
+        "Kaynak gideri yalnız ilan/ajans bedelidir; mülakatçı zamanı ve işe başlama sonrası maliyetler dahil değil. Rakamı 'kaynak başına gider' olarak etiketledim."
+      ],
+      "Ölçek ve takip": [
+        "Öneri kanalını üç katına çıkaralım; aynı oranla üç kat işe alım olur.",
+        "Öneri kanalını sınırlı bir denemeyle büyütmeyi öneriyorum.",
+        "Üç kat büyütmede oranın korunacağını varsaymadım; bir çeyreklik sınırlı deneme ve aşama oranlarını aynı tanımla izleyen takip tablosu önerdim."
+      ]
+    },
+    "proje-kisitlari": {
+      "Ağ ve kaynak ayrımı": [
+        "Kritik yol 9 gün, proje 9 günde biter.",
+        "Ağ süresi 9 gün ama tek geliştirici paralel işleri yapamıyor.",
+        "Ağ diyagramı 9 gün gösteriyor; işler tek geliştiricide sıralanınca takvim uzuyor. Planı kaynak kısıtıyla yeniden kurdum."
+      ],
+      "Tutarlı takvim": [
+        "Test ile geliştirme aynı gün yapılabilir.",
+        "Öncülleri ve tam günleri uyguladım; geliştirici aynı gün tek iş yapıyor.",
+        "Her işi öncülü bittikten sonra, tam gün olarak ve tek kaynakla sıraladım; takvimin her gününü bir işe bağlayan çizelge ekte."
+      ],
+      "Alternatiflerin açıklığı": [
+        "Biraz fazla mesaiyle yetiştiririz.",
+        "Üç seçenek: tarihi kaydırmak, ek kaynak almak, kapsamı azaltmak.",
+        "Seçenekleri tarih, bedel, kapsam ve onay gereği açısından tablo halinde karşılaştırdım; fazla mesaiyi gizli varsayım olarak koymadım, gerekirse ayrı seçenek olarak yazdım."
+      ],
+      "Kalite ve kabul": [
+        "Zaman yetmezse testi atlarız.",
+        "Testi kaldırmadım; kısmi teslimde kabul tanımı değişir.",
+        "Testi korudum. Kısmi teslim seçeneğinde neyin kabul edileceği değiştiği için yeni kabul tanımını müşteri onayına bağlı ve görünür şekilde yazdım."
+      ],
+      "Karar iletişimi": [
+        "Projede gecikme olabilir, bilginize.",
+        "Sorun, seçenekler ve önerim notta.",
+        "Notta sorun, seçenekler, önerim, kararı verecek kişi ve kararın en geç ne zaman verilmesi gerektiği ayrı satırlarda."
+      ]
+    },
+    "parti-kalitesi": {
+      "Önlem ve yetki": [
+        "Müşteri bekliyor; partiyi sevk edip sonra kontrol ederiz.",
+        "Şüpheli stoğu ayırdım ve kalite kararını kaliteye bıraktım.",
+        "Şüpheli partiyi fiziksel olarak ayırıp sistemde blokladım; sevk kararını kalite yetkilisine taşıdım. Satış baskısını kayda geçirdim ama onaysız sevk etmedim."
+      ],
+      "İzlenebilirlik": [
+        "Partiden yaklaşık 300 birim müşterilere gitti.",
+        "Parti, sipariş ve müşteri listesini çıkardım.",
+        "Parti, sipariş, müşteri ve miktarı ayrı sütunlarda listeledim; birden fazla siparişe bölünen tahsisleri çift saymadığımı toplamla mutabık kıldım."
+      ],
+      "Örneklem yorumu": [
+        "40 numunede hata çıkmadı; parti güvenli.",
+        "0/40 iyi bir işaret ama riskin sıfır olduğunu göstermez.",
+        "0/40 sonucu kesin güvenlik kanıtı değil; bu örneklemle düşük ama sıfır olmayan bir hata oranı hâlâ mümkün. Kararı kalite kriterine ve ek teste bağladım."
+      ],
+      "Alternatif ve koşul": [
+        "B ürününü gönderelim, aynı sayılır.",
+        "B ikamesini stok ve kalite onayı koşuluyla önerdim.",
+        "B ikamesini üç koşulla önerdim: yeterli stok, teknik eşdeğerlik teyidi ve kalite onayı; müşteri onayı da gerekiyor."
+      ],
+      "Müşteri iletişimi": [
+        "Sorun yok, siparişiniz yolda.",
+        "Müşteriye gecikme olduğunu ve yarın bilgi vereceğimizi yazdım.",
+        "Mesajda doğrulanmış bilgiyi, belirsiz olanı, bir sonraki güncellemenin saatini ve sorumlu kişiyi ayırdım; teyit edilmemiş tarih vermedim."
+      ],
+      "Karar kaydı": [
+        "Karar toplantıda konuşulur.",
+        "Kararı kalite müdürünün yarın 10.00'da vereceğini kaydettim.",
+        "Kaydı tuttum: kararı kim, hangi test verisiyle, ne zaman verecek; kapsam genişlerse sipariş, stok ve müşteri listelerinden hangilerinin güncelleneceği yazılı."
+      ]
+    },
+    "yatirim-kapasitesi": {
+      "Fayda niteliği": [
+        "Makine 4 saat kazandırıyor; bu ayda 40.000 TL kâr demek.",
+        "Serbest kalan kapasiteyi doğrudan nakit tasarrufu saymadım.",
+        "Serbest kapasite, ekonomik değer ve önlenebilir nakit gideri ayrı satırlarda; serbest saat ancak satılır ya da gider önlenirse nakde dönüşür."
+      ],
+      "Hesap tutarlılığı": [
+        "Yıllık fayda 120.000, yatırım 300.000; geri ödeme 2,5 ay.",
+        "Bakımı aylık faydadan düştüm ve geri ödemeyi ay cinsinden hesapladım.",
+        "Aylık net fayda = brüt fayda − bakım; geri ödeme = yatırım / aylık net fayda. Birimleri (ay/yıl, TL) her satırda yazarak tutarlı tuttum."
+      ],
+      "Alternatifler": [
+        "B'nin geri ödemesi daha kısa; B'yi alalım.",
+        "B daha hızlı geri ödüyor ama A'nın 12 aylık toplamı daha yüksek.",
+        "B'nin kısa geri ödemesini A'nın 12 aydaki yüksek net farkıyla birlikte tabloya koydum; seçim nakit önceliğine göre değişiyor, bunu açıkça yazdım."
+      ],
+      "Duyarlılık": [
+        "Varsayımlar makul, sonucu değiştirmez.",
+        "Hacim %20 düşerse geri ödemenin uzadığını gösterdim.",
+        "Gerçekleşme oranı, hacim, kurulum süresi ve bakımı ayrı ayrı değiştirdim; aynı faydayı iki kez saymadığımı kontrol ettim ve kararı değiştiren eşiği yazdım."
+      ],
+      "Uygulama ve doğrulama": [
+        "Makineyi alıp kullanmaya başlarız.",
+        "Üç aylık pilotta fiili kazancı ölçmeyi öneriyorum.",
+        "Pilotta baz dönemi, iş karmasını, duruş sürelerini ve faydayı kimin raporlayacağını tanımladım; fayda bu ölçümle doğrulanmadan ikinci makineye geçilmiyor."
+      ],
+      "Karar önerisi": [
+        "Yatırım kesin kâr getirir, onaylayalım.",
+        "Yatırımı pilot sonucuna bağlı olarak öneriyorum.",
+        "Koşullu öneri: pilot gerçekleşme oranı %70'i geçerse A'ya devam. Belirsiz faydayı kesin kâr diye sunmadım; karar için gereken bir sonraki bilgiyi yazdım."
+      ]
+    },
+    "ekip-yuku": {
+      "Görünmeyen işi dahil etme": [
+        "Herkesin proje saatleri eşit; yük dengeli.",
+        "Mentorluk ve destek saatlerini de yüke ekledim.",
+        "Mentorluk ve destek işini ana işten ayrı satırda ekledim; Can'ın net kapasitesini değiştirmeden, toplam yükünü doğru gösterdim."
+      ],
+      "Yetkinlikle uyumlu dağılım": [
+        "Raporu en boş görünen kişiye veriyorum.",
+        "Raporu beceri sahibi Deniz'e verdim.",
+        "Raporu uygun beceriye sahip Deniz'e verdim; işi kaynak kişinin yükünden düşüp Deniz'in yüküne ekledim ve yeni dağılımı tabloda gösterdim."
+      ],
+      "Adalet ve iletişim": [
+        "Herkese eşit saat verdim; bu en adili.",
+        "Eşit saatin her zaman adil yük olmadığını açıkladım.",
+        "Eşit saat dağıtımı ile beceri ve görünmeyen işi hesaba katan adil yükü ayırdım; ölçütleri ekibe kimseyi suçlamadan açıkladım."
+      ],
+      "Delegasyon ve takip": [
+        "Ece işi takip eder.",
+        "Teslim tarihini ve karar sınırını belirttim.",
+        "Teslim tarihi, karar sınırı, destek kanalı ve kontrol zamanı yazılı; Ece'ye tanımsız bir kontrol yükü bırakmadım, kontrolü takvime koydum."
+      ],
+      "Sürdürülebilirlik": [
+        "Yeni işleri de ekip alır, biraz yoğun olur.",
+        "Ekip neredeyse tam dolu; yeni iş için öncelik kararı gerekiyor.",
+        "Ekip kapasitesinin neredeyse tamamı dolu; yeni bir iş geldiğinde hangi işin erteleneceğine dair öncelik kararı yöneticiden alınmalı, bunu kurala bağladım."
+      ]
+    },
+    "hizmet-kesintisi": {
+      "Durum bütünlüğü": [
+        "Toplam 2.060 sipariş etkilendi.",
+        "1.500 + 350 + 150 = 2.000 sipariş etkilendi.",
+        "Etkilenen 2.000 sipariş (1.500+350+150); 60 sipariş bu toplamın alt kümesi, üstüne eklenmez. Tabloda alt kümeyi ayrı gösterdim."
+      ],
+      "Risk ve yetki": [
+        "Bütün başarısız ödemeleri hemen yeniden deneyelim.",
+        "Yeniden deneme kararını teknik ekibe bıraktım.",
+        "Yeniden deneme teknik sahibin, iade finansın kararı; çift tahsilat riski nedeniyle onaysız toplu işlem önermedim ve iki sahibe karar için gereken veriyi gönderdim."
+      ],
+      "Kuyruk hesabı": [
+        "70 temsilciyle kuyruk bir saatte erir.",
+        "Geliş hızını ve kapasiteyi ayrı hesapladım.",
+        "Saatlik geliş hızını kapasiteden ayırdım; 70 kişinin hepsi bu konuda eğitimli olmadığı için kapasiteyi eğitimli kişi sayısıyla hesapladım."
+      ],
+      "Koordinasyon": [
+        "Herkes kendi ekibini bilgilendirsin.",
+        "Tek bir durum sayfası ve sorumlular listesi oluşturdum.",
+        "Tek bilgi kaynağı, sorumlular, karar kaydı ve 30 dakikada bir güncelleme ritmi kurdum; kararlar saatle kayda geçiyor."
+      ],
+      "İletişim": [
+        "Müşterilere 30 dakikada çözüleceğini söyleyelim.",
+        "Müşteriye sorunun incelendiğini ve bir sonraki bilgi saatini yazdım.",
+        "Doğrulanmamış 30 dakika sözü vermedim; bilineni, bilinmeyeni ve bir sonraki güncellemenin saatini açıkça yazdım."
+      ],
+      "Kapanış ve öğrenme": [
+        "Sistem düzeldi; olay kapandı.",
+        "Kapanıştan önce mutabakat ve müşteri takibi yapılmalı.",
+        "Teknik düzelmeyi tek başına kapanış saymadım: ödeme mutabakatı, etkilenen müşteri takibi ve suçlamasız sonradan inceleme tamamlanınca olay kapanacak."
+      ]
+    },
+    "sube-lokasyonu": {
+      "Şube ve şirket ayrımı": [
+        "Yeni şube aylık 80.000 kâr eder; şirket de o kadar kazanır.",
+        "Yeni şubenin eski şubeden aktaracağı katkıyı düştüm.",
+        "Şirket etkisi = yeni şube katkısı − eski şubenin kaybettiği katkı; aktarılan satışın tamamını değil, yalnız katkısını kayıp saydım."
+      ],
+      "Sermaye ve rezerv": [
+        "İlk ay yatırım nedeniyle zarar var; şube kötü.",
+        "Tek seferlik yatırımı aylık sonuçtan ayırdım.",
+        "Kurulum yatırımını aylık faaliyet sonucundan ayırdım ve işletme sermayesinin plana eklenmediğini, rezerv hesabını değiştirdiğini açıkladım."
+      ],
+      "Stratejik ölçütler": [
+        "Kira en ucuz olan yeri seçelim.",
+        "Müşteri, erişim ve kira esnekliğini karşılaştırdım.",
+        "Müşteri profili, erişim, kira esnekliği ve açılış riskini gerekçeli ağırlıklarla karşılaştırdım; ağırlıkların neden seçildiğini yazdım."
+      ],
+      "Koşullu öneri": [
+        "İki yer de iyi; yönetim seçsin.",
+        "B'yi öneriyorum; A'nın erişim avantajı var.",
+        "B'yi öneriyorum; A'nın erişim üstünlüğünü kabul ediyorum. Saha sayımında A'nın dönüşümü B için varsaydığım dönüşümü geçerse fikrim değişir; bunu koşul olarak yazdım."
+      ],
+      "Doğrulama": [
+        "Tahminler sektör ortalaması, yeterli.",
+        "Ziyaretçi tahminini sahada sayımla doğrulamayı öneriyorum.",
+        "Ziyaretçi, dönüşüm ve aktarım tahminlerini iki haftalık saha sayımı ve rakip şube gözlemiyle, izin durumunu belediyeyle teyit eden bir plan kurdum."
+      ]
+    },
+    "buyume-formati": {
+      "Faaliyet ve yatırım": [
+        "Üç ayda toplam zarar var; büyüme kötü.",
+        "Tek seferlik yatırımı faaliyet sonucundan ayırdım.",
+        "Faaliyet sonucunu yatırımdan ayrı gösterdim; nakit hesabında ise yatırımı dahil ettim, iki tabloyu karıştırmadım."
+      ],
+      "Zorunlu kısıt": [
+        "Üçüncü ay kâra geçtiği için rezerv sorun değil.",
+        "Şube modelinin rezerv kısıtını ihlal ettiğini belirttim.",
+        "Üçüncü ayın olumlu sonucu, ikinci aydaki rezerv ihlalini ortadan kaldırmıyor; bu kısıt şube seçeneğini bu haliyle elemek için yeterli."
+      ],
+      "Model karşılaştırması": [
+        "Ortaklık daha az para ister, onu seçelim.",
+        "Kontrol ve çıkış esnekliğini karşılaştırdım.",
+        "Kontrol, yerel ortak bilgisi, müşteriyi öğrenme ve çıkış esnekliğini iki model için ayrı ayrı açıkladım; sermaye avantajı tek ölçüt değil."
+      ],
+      "Aşamalı öneri": [
+        "İki şehre aynı anda girelim.",
+        "Önce tek bölgede ortaklıkla başlamayı öneriyorum.",
+        "Sermaye ve insan kaynağıyla tutarlı ilk adım: tek bölgede ortaklık; altıncı ay sonunda katkı ve müşteri tekrar oranına bakan bir karar kapısı."
+      ],
+      "Başarı kanıtı": [
+        "İlk üç ay başarılı; büyümeye devam.",
+        "İlk üç ay uzun vadeli başarıyı göstermez.",
+        "İlk üç ayın açılış etkisi taşıyabileceğini söyledim; devam ve durdurma koşullarını sayısal eşiklerle tanımladım."
+      ]
+    },
+    "nakit-toparlanma": {
+      "Nakit bütünlüğü": [
+        "Alacaklar 300.000; nakit sorunu yok.",
+        "Haftalık bakiyeyi bir önceki haftadan devrettim.",
+        "Her hafta açılış bakiyesi bir önceki kapanıştan geliyor; alacak ve stoğu tahsil edilmeden nakde eklemedim."
+      ],
+      "Zamanlama ve tutar": [
+        "Erken tahsilat bize kalıcı 50.000 kazandırır.",
+        "Erken tahsilatı ve ertelenen ödemeyi haftalara işledim.",
+        "Erken tahsilat bir haftayı rahatlatıp sonraki haftayı azaltıyor; ertelenen ödeme de iki hafta sonra geri geliyor. İkisini kalıcı kazanç saymadım."
+      ],
+      "Uygulanabilir birleşim": [
+        "Bütün önlemleri birlikte uygularız.",
+        "Finansman sınırını aşmayan bir birleşim seçtim.",
+        "Seçtiğim birleşim 200.000 finansman sınırını aşmıyor ve her hafta 100.000 tamponu koruyor; iki koşulu tabloda haftalık denetledim."
+      ],
+      "Öncelik ve yetki": [
+        "Tedarikçilere ödemeleri erteleyeceğimizi bildiririz.",
+        "Erteleme için tedarikçi onayı gerektiğini yazdım.",
+        "48 saat içinde hangi tedarikçinin onayının alınacağını, kimin onaylayacağını ve kritik operasyonu etkileyen ödemelerin ertelenmeyeceğini tanımladım."
+      ],
+      "Kalıcı toparlanma": [
+        "Dört haftayı kurtarırsak sorun çözülür.",
+        "Dört hafta kurtulsa da zarar devam ediyor.",
+        "Dört haftalık plan likiditeyi kurtarır, ama zarar eden model aynı kaldığı sürece sorun tekrar eder; kalıcı çözüm için fiyat ve maliyet adımı gerekiyor."
+      ],
+      "Belirsizlik planı": [
+        "Tahsilatın gelmeme ihtimali düşük.",
+        "Tahsilat gecikirse ek finansmana başvurulacak.",
+        "Tahsilat ya da tedarikçi onayı gerçekleşmezse hangi tarihte hangi alternatifin (ek kredi, sipariş erteleme) tetikleneceğini yazdım."
+      ]
+    },
+    "zarar-portfoyu": {
+      "Maliyet ayrımı": [
+        "C hattı zarar ediyor; kapatalım.",
+        "Katkı, kaçınılabilir sabit gider ve merkez payını ayırdım.",
+        "Her hat için katkı, kapanınca kalkacak sabit gider ve dağıtılmış merkez giderini ayrı hesapladım; merkez gideri kapanışla kalkmıyor."
+      ],
+      "Toplam şirket etkisi": [
+        "C kapanınca şirket C'nin zararı kadar iyileşir.",
+        "C kapanınca merkez gideri diğer hatlara kalıyor.",
+        "C'nin kâğıt üzerindeki zararı ile kapanışın şirket toplamına etkisini ayırdım: merkez payı kaldığı için şirket sonucu zararın tamamı kadar iyileşmiyor."
+      ],
+      "Bağlantılı satış": [
+        "C kapanınca A'nın cirosu da düşer, o kadar kâr kaybederiz.",
+        "C'nin A satışlarına etkisini hesaba kattım.",
+        "C ile birlikte kaybolacak A satışının cirosunu değil katkısını kayıp saydım; katkı oranını ayrıca gösterdim."
+      ],
+      "Geçiş ve sürekli durum": [
+        "Kapanış hemen kâr getirir.",
+        "Geçiş maliyetini ve sürekli durumu ayrı gösterdim.",
+        "İlk 30 gündeki gider kalkış gecikmesini, 50.000 tek seferlik kapanış giderini ve kalıcı aylık sonucu üç ayrı satırda verdim."
+      ],
+      "Alternatif ve kanıt": [
+        "Fiyatı artırırsak sorun biter.",
+        "Fiyat artışının hacim etkisinin sınanması gerekiyor.",
+        "Fiyat/hacim varsayımını küçük bir müşteri grubunda sınamayı önerdim; iyileşme senaryosunda bile zararın tamamen kapanmadığını gizlemedim."
+      ],
+      "Uygulama": [
+        "Kapanışı ay sonunda yaparız.",
+        "Kapanış için ürün ve müşteri geçiş planı hazırladım.",
+        "Ürün, müşteri ve ekip geçişini sahip, tarih ve karar kapısıyla planladım; müşteri kaybı eşiği aşılırsa plan durduruluyor."
+      ]
+    },
+    "doksan-gun-toparlanma": {
+      "Sorunu ayrıştırma": [
+        "Ciro düştü; sorun satış.",
+        "Ciro, katkı ve likiditeyi ayrı inceledim.",
+        "Ciro, katkı, faaliyet zararı ve likiditeyi ayrı gösterdim; asıl acil sorun likidite, yapısal sorun katkı marjı."
+      ],
+      "Kaynak gerçekçiliği": [
+        "İlk ay on aksiyonun hepsine başlıyoruz.",
+        "İlk 30 günde kaynak sınırını aşmayan üç aksiyon seçtim.",
+        "İlk 30 gün için 6 kişi-hafta ve nakit sınırını aşmayan aksiyonları seçtim; kalanları sıraya koydum, eşzamanlı yazmadım."
+      ],
+      "Fayda niteliği ve zaman": [
+        "Stok azaltma ayda 100.000 kâr getirir.",
+        "Stok azaltmanın tek seferlik nakit olduğunu belirttim.",
+        "Stok azaltmayı tek seferlik nakit, fiyat düzeltmesini kademeli kâr olarak yazdım; tam uygulama faydasını ilk ay gerçekleşecekmiş gibi göstermedim."
+      ],
+      "Öncelik ve vazgeçiş": [
+        "Diğer aksiyonlar sonra bakılır.",
+        "Bekleyen aksiyonların neden beklediğini yazdım.",
+        "Seçilmeyen her aksiyon için neden beklediğini ve hangi kanıt gelirse öne alınacağını yazdım."
+      ],
+      "Aksiyon planı": [
+        "Ekip aksiyonları uygulayacak.",
+        "Her aksiyonun sorumlusu ve tarihi var.",
+        "Her aksiyonda sorumlu, önkoşul, başarı ölçütü, tarih ve 30/60 gün kontrol kapısı birbirine bağlı."
+      ],
+      "Duyarlılık": [
+        "Plan uygulanırsa 90 günde toparlanırız.",
+        "Fiyat artışında hacim düşerse sonucun nasıl değiştiğini gösterdim.",
+        "Fiyat/hacim, kalite ve iki aksiyonun aynı faydayı sayma riskini sınadım; sonucu garanti etmedim, aralık olarak verdim."
+      ]
+    },
+    "kapasite-ortakligi": {
+      "Katkı tanımı": [
+        "Birim başına 250 TL kazanç var; 1.000 birimde 250.000 kâr.",
+        "250 TL'den yeni birim maliyetleri düştüm.",
+        "250 TL satış fiyatı değil birim katkı da değil; yeni birim maliyetleri ve sabit maliyetleri ayrıca düşerek gerçek katkıyı hesapladım."
+      ],
+      "Süre ve kapasite": [
+        "Ortaklık süresiz devam eder.",
+        "Karma modelin sekiz haftalık sınırı var.",
+        "Karma modelin sekiz haftalık sınırını ve kendi yatırımımızın devreye girme süresini birlikte takvimde gösterdim; arada boşluk kalıyor."
+      ],
+      "Talep duyarlılığı": [
+        "Talep yüksek kalacağı için kendi yatırımımız en kârlı.",
+        "Düşük talepte sabit maliyetli modelin zarar ettiğini gösterdim.",
+        "Talebi düşük, orta, yüksek senaryolarda hesapladım; sabit maliyeti yüksek modelin düşük talepte ne kadar kaybettirdiğini rakamla gösterdim."
+      ],
+      "Operasyon ve müşteri riski": [
+        "İş ortağı tecrübeli, sorun olmaz.",
+        "İş ortağının kalite koşullarını doğrulamayı önerdim.",
+        "Kalite, veri paylaşımı ve teslim koşulları sözleşmede ve küçük bir pilotta doğrulanmadan ölçeklemeyi önermedim."
+      ],
+      "Aşamalı öneri": [
+        "Ortaklıkla hemen tam ölçekte başlayalım.",
+        "Önce pilot, sonra karar öneriyorum.",
+        "Pilot, öğrenme, geçiş sonu ve kalıcı karar kapılarını tarih ve ölçütle bağladım; her kapıda devam/dur kararı veriliyor."
+      ]
+    },
+    "musteri-toparlanma": {
+      "Kohort ve büyüme": [
+        "Müşteri sayısı %10 arttı; kayıp sorun değil.",
+        "Net büyüme %10 olsa da eski müşterilerin %20'si kaybedildi.",
+        "Net %10 büyüme, eski müşterilerdeki %20 kaybı gizliyor; kohortları ayırınca yeni müşteri kazanımı kaybı telafi ediyor ama sorun çözülmüş değil."
+      ],
+      "Kapsamlı indirim maliyeti": [
+        "Ek 100 müşteriye indirim maliyeti 10.000 TL.",
+        "İndirim alan bütün müşterileri maliyete kattım.",
+        "İndirim 1.200 müşteriye veriliyor; maliyeti yalnız ek 100 müşteri için değil, zaten kalacak olanlar dahil hepsi için hesapladım."
+      ],
+      "Ufuk ve kalıcılık": [
+        "Kampanya bir kerelik; sonrası kendiliğinden devam eder.",
+        "Tek seferlik giderle çok aylık kalıcılığı ayırdım.",
+        "Hedefli çalışmanın tek seferlik giderini ve müşterilerin kaç ay kalacağı varsayımını ayrı yazdım; kalıcılık varsayımı değişince sonuç değişiyor."
+      ],
+      "Nedensel kanıt": [
+        "Kampanya 150 müşteriyi elde tuttu.",
+        "Elde tutma tahmini henüz kanıtlanmış etki değil.",
+        "150 müşteri tahmindir; kampanya almayan karşılaştırma grubuyla kontrollü ölçüm yapılmadan etki olarak raporlamadım."
+      ],
+      "Toparlanma önerisi": [
+        "Kampanya müşteri sayısını artırdı; başarılı.",
+        "Müşteri sayısı yanında katkı ve kaybı da izlemeyi öneriyorum.",
+        "Müşteri sayısı, katkı, kayıp ve nakit/kaliteyi birlikte izleyen bir pano önerdim; bu önlemlerle bile kâr açığının kaldığını açıkça yazdım."
+      ]
+    },
+    "buyuk-musteri": {
+      "Kâr ve nakit": [
+        "Aylık 320.000 kâr; nakit de rahatlar.",
+        "Kâr var ama ilk üç ay tahsilat gelmiyor.",
+        "Aylık 320.000 kâr muhasebe sonucudur; vade nedeniyle ilk üç ay nakit girişi yok. Nakit tablosunu ayrı kurdum."
+      ],
+      "Fonlama bütünü": [
+        "Başlangıç maliyetini karşılayabiliriz.",
+        "Başlangıç ve aylık ödemeleri birlikte hesapladım.",
+        "Başlangıç yatırımı, değişken ve sabit ödemeler ve 500.000 rezervi aynı nakit tablosunda birlikte hesapladım; en düşük bakiye ayı açıkça görünüyor."
+      ],
+      "Müşteri yoğunlaşması": [
+        "Büyük müşteri ciroyu ikiye katlar; çok iyi.",
+        "Tek müşteriye bağımlılık riskini belirttim.",
+        "Gelirin yarısının tek müşteriye bağlanmasını risk olarak yazdım; fesih, taahhüt ve ödeme koşullarını sözleşmeden görmeden kararı kesinleştirmedim."
+      ],
+      "Koşullu karar": [
+        "Teklifi kabul edelim.",
+        "Peşinat ve vade müzakeresini öneriyorum.",
+        "Peşinat, kısa vade, aşamalı başlama ve finansman seçeneklerini sıraladım; her birini yetkili onayına bağladım ve hangisi olmazsa kabul etmeyeceğimizi yazdım."
+      ],
+      "Küçük portföy gerçekçiliği": [
+        "40 küçük müşteri kolayca bulunur.",
+        "40 müşterinin edinim süresini sorguladım.",
+        "40 küçük müşterinin edinim ve hizmet yükünü, satış ekibinin kapasitesini ve tahsilat varsayımını doğrulanacak maddeler olarak yazdım."
+      ],
+      "Karar sunumu": [
+        "Büyük müşteri daha kârlı.",
+        "İki alternatifi aynı 12 aylık ufukta karşılaştırdım.",
+        "İki alternatifi aynı ufukta kıyasladım; fiyat %5 ya da vade 30 gün değişirse önerinin nasıl değiştiğini ayrı bir tabloyla gösterdim."
+      ]
+    }
+  }
+}

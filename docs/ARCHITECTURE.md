@@ -66,3 +66,11 @@ Rol sorusu düzenlemek için `content/` kaynaklarını güncelle ve `node tools/
 ## Değerlendirme modeli
 
 Ölçütler `server/pilot-review-catalog.json` içinde vaka sürümüne bağlıdır ve `scripts/prepare-workspace.mjs` tarafından vaka verisinden üretilir. Değerlendirici her ölçüt için 0–3 seviye seçer; doğrulama `server/review-model.mjs` içindedir. Seviyeler toplanıp puana dönüştürülmez. Kör değerlendirme açıkken `submissions`, `file` ve `file-workspace` yanıtlarında değerlendiriciye (yönetici hariç) aday kimliği yerine kararlı bir takma ad ve gizlenmiş dosya adı döner. Yeni bir kurulumda `drizzle/0004_blind_review_settings.sql` dahil bütün migration dosyalarını sırayla uygula.
+
+### Örnek cevaplar ve kalibrasyon (0.22.0)
+
+Yaklaşım OPM'nin yapılandırılmış değerlendirme rehberine dayanır: her aday aynı ölçekle değerlendirilir, ölçeğin düşük–orta–yüksek düzeyleri davranış/cevap örnekleriyle somutlaştırılır, her değerlendirici ölçüt başına bağımsız puan verir ve farklar sonra ölçüt üzerinden konuşulur. OPM, bu örneklerin konu uzmanıyla geliştirilmesini şart koşar; bu yüzden buradaki örnekler **uzman incelemesi bekleyen taslaktır** ve arayüzde bu etiketle görünür.
+
+- Kaynak: `content/rubric-examples.json` (`cases[vakaId][ölçütAdı] = [zayıf, yeterli, güçlü]`). Değiştirdikten sonra `node tools/build-rubric-examples.mjs` çalıştır; `tests/check-calibration.cjs` güncelliği ve kapsamı denetler. Ölçüt adı vaka verisinde değişirse örnek de aynı adla güncellenmeli (test eksik/fazla ölçütü yakalar).
+- Değerlendirme formu (`web/review-ui.js`) her ölçütün altında örnekleri katlanır kutuda gösterir; seviye seçimini etkilemez, kaydedilmez.
+- Kalibrasyon (`#kalibrasyon`): sentetik teslimde ölçüt k için seviye `((k·2 + vaka sırası) mod 3) + 1` olan örnek kullanılır; iki değerlendirici aynı metni görür. Karşılaştırma yalnız bütün ölçütler iki tarafta puanlanınca açılır; en büyük farkı veren ölçüt(ler) "fark kaynağı" olarak gösterilir. Gerçek teslimlerde iki değerlendirici atanması bu sürümde yok; sunucu tarafında aynı karşılaştırma için teslim başına çok değerlendirici kaydı gerekir.

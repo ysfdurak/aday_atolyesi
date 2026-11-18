@@ -79,7 +79,7 @@ function subnav() {
 function shell(body) {
   const p = state.profile,
     current = navGroup(route).id;
-  return `<a href="#main-content" class="skip-link" data-skip>İçeriğe geç</a><header class="mobile-toolbar"><a href="#home" class="mobile-title">↗ aday atölyesi</a><button type="button" id="menu-toggle" aria-controls="workspace-menu" aria-expanded="false">Menü <span aria-hidden="true">☰</span></button></header><div class="shell"><aside id="workspace-menu" class="side"><a class="brand" href="#home"><i>↗</i><span>aday atölyesi<small>BAŞVURUDAN GÖRÜŞMEYE</small></span></a><nav aria-label="Ana gezinme">${NAV.map(
+  return `<a href="#main-content" class="skip-link" data-skip>İçeriğe geç</a><header class="mobile-toolbar"><a href="#home" class="mobile-title">↗ aday atölyesi</a><button type="button" id="menu-toggle" aria-controls="workspace-menu" aria-expanded="false">Diğer <span aria-hidden="true">☰</span></button></header><div class="shell"><aside id="workspace-menu" class="side"><a class="brand" href="#home"><i>↗</i><span>aday atölyesi<small>BAŞVURUDAN GÖRÜŞMEYE</small></span></a><nav aria-label="Ana gezinme">${NAV.map(
     ({ id, icon, name }) =>
       `<a href="#${id}" class="${current === id ? 'active' : ''}" ${current === id ? 'aria-current="page"' : ''}><span>${icon}</span>${name}</a>`
   ).join(

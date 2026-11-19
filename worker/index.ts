@@ -17,6 +17,23 @@ type Env = Cloudflare.Env & { AA_VITRIN?: string; DB: D1Database; BUCKET: R2Buck
 // Worker'a yalnız bu yollar gelir; diğer her şey (ör. botların .env, config.php, dump.sql taramaları)
 // uygulama çalıştırılmadan hızlıca 404 alır. Bu hem işlemci süresini hem hata kayıtlarını azaltır.
 const APP_PATHS = new Set(['/', '/api/pilot', '/signin-with-chatgpt', '/signout-with-chatgpt']);
+// Worker'ın ürettiği her yanıta (HTML sayfa, API, yönlendirme) temel güvenlik başlıkları.
+// Statik dosyalar aynı başlıkları web/_headers ile alır. Var olan başlığın üzerine yazılmaz.
+const GUVENLIK_BASLIKLARI: Record<string, string> = {
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'X-Frame-Options': 'DENY',
+  'Content-Security-Policy': "frame-ancestors 'none'; object-src 'none'; base-uri 'self'",
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
+  'Cross-Origin-Opener-Policy': 'same-origin',
+};
+function guvenlikBasliklari(response: Response): Response {
+  // Yönlendirme ve akış yanıtlarının başlıkları değiştirilemez olabilir; kopyası üzerinde çalış.
+  const out = new Response(response.body, response);
+  for (const [k, v] of Object.entries(GUVENLIK_BASLIKLARI)) if (!out.headers.has(k)) out.headers.set(k, v);
+  return out;
+}
+
 const notFound = () =>
   new Response('Bulunamadı', {
     status: 404,
@@ -47,6 +64,16 @@ async function vitrin(request: Request, env: Env, ctx: ExecutionContext): Promis
 
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+    return guvenlikBasliklari(await uygulama(request, env, ctx));
+  },
+  // Zamanlanmış görev (wrangler.jsonc → triggers.crons): vitrinde her gece kayıtları ve dosyaları sıfırlar.
+  async scheduled(_event: ScheduledController, env: Env, ctx: ExecutionContext) {
+    if (!isVitrin(env)) return;
+    ctx.waitUntil(resetVitrin(env));
+  },
+};
+
+async function uygulama(request: Request, env: Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
     const { pathname } = new URL(request.url);
     if (!import.meta.env.DEV && !APP_PATHS.has(pathname) && !pathname.startsWith('/_next/'))
       return notFound();
@@ -78,12 +105,6 @@ const worker = {
       };
     }
     return runWithConnectorBinding(binding, () => handler.fetch(request, env, ctx));
-  },
-  // Zamanlanmış görev (wrangler.jsonc → triggers.crons): vitrinde her gece kayıtları ve dosyaları sıfırlar.
-  async scheduled(_event: ScheduledController, env: Env, ctx: ExecutionContext) {
-    if (!isVitrin(env)) return;
-    ctx.waitUntil(resetVitrin(env));
-  },
-};
+}
 
 export default worker;

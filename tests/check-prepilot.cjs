@@ -25,7 +25,6 @@ const A = x.AA,
   R = x.Rehearsal,
   E = x.Evidence,
   cat = x.CASE_CATALOG,
-  plain = v => JSON.parse(JSON.stringify(v)),
   snap = A.snapshot(x.localStorage);
 assert.equal(G.tracks.length, 20);
 assert.equal(new Set(G.tracks.map(t => t.positionId)).size, 20);

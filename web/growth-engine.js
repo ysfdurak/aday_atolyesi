@@ -1,7 +1,6 @@
 (function (root) {
   'use strict';
-  const text = v => (typeof v === 'string' ? v.trim() : ''),
-    clone = x => JSON.parse(JSON.stringify(x));
+  const text = v => (typeof v === 'string' ? v.trim() : '');
   const tracks = [
     {
       id: 'analyst',

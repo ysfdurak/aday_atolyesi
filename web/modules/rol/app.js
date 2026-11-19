@@ -477,7 +477,7 @@ function raw(q, a) {
 }
 function sampleRecord() {
   const answers = {};
-  C.items.forEach((q, i) => {
+  C.items.forEach(q => {
     const by = q.options.map((o, j) => j).sort((a, b) => q.options[b].score - q.options[a].score);
     let weak = ['delegasyon', 'performans'].includes(q.dim),
       mixed = ['catisma', 'degisim'].includes(q.dim);
@@ -996,7 +996,6 @@ function bind() {
           j = i + +b.dataset.dir;
         [arr[i], arr[j]] = [arr[j], arr[i]];
         rankDraft = arr;
-        const prior = state.answers[q.id];
         state.answers[q.id] = arr;
         state.completed = false;
         save();

@@ -344,14 +344,15 @@ ${canReview ? '</details>' : ''}${
           }
           message('Otomatik kayıt açıldı. Sürüm ' + revision + '.');
         });
-    if (!root.__aaSyncListener)
-      ((root.__aaSyncListener = true),
-        root.addEventListener('account-sync', () => {
-          const out = document.getElementById('pilot-autosync-status'),
-            box = document.getElementById('pilot-autosync');
-          if (out) out.textContent = root.AccountSync.label();
-          if (box) box.checked = root.AccountSync.settings().on;
-        }));
+    if (!root.__aaSyncListener) {
+      root.__aaSyncListener = true;
+      root.addEventListener('account-sync', () => {
+        const out = document.getElementById('pilot-autosync-status'),
+          box = document.getElementById('pilot-autosync');
+        if (out) out.textContent = root.AccountSync.label();
+        if (box) box.checked = root.AccountSync.settings().on;
+      });
+    }
     document.getElementById('pilot-load').onclick = () =>
       job(async () => {
         const b = await api('save');

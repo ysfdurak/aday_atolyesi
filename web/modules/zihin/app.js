@@ -509,7 +509,7 @@ function result() {
     title('TUR TAMAMLANDI', 'Her tur bir sonraki adıma hazırlar.', r.name) +
     `<div class="scorehero"><span class="eyebrow">${r.mode === 'exam' ? 'TOPLAM BAŞARI' : 'YANIT DOĞRULUĞU'}</span><strong>%${rate}</strong><p>${r.right} doğru · ${r.answered - r.right} yanlış${r.mode === 'exam' ? ` · ${r.total - r.answered} boş` : ''}</p><div class="badges" style="justify-content:center"><span class="badge">+${r.right * 10} XP</span>${rate >= 80 && r.answered >= 6 ? '<span class="badge">◎ İsabetli tur</span>' : ''}${r.answered >= 12 ? '<span class="badge">◈ Parkur tamamlandı</span>' : ''}</div></div><div class="resultstats"><div class="panel"><small>Toplam süre</small><h2>${fmt(r.elapsed)}</h2></div><div class="panel"><small>Doğru yanıt ort.</small><h2>${right.length ? Math.round(mean(right.map(x => x.sec))) + ' sn' : '—'}</h2></div><div class="panel"><small>İpucuyla çözülen</small><h2>${answered.filter(x => x.hinted).length}</h2></div></div>${r.assessment ? `<section class="panel" style="margin-top:22px"><span class="tag">BECERİ GERİ BİLDİRİMİ</span><h3>Deneme raporun hazır.</h3><p>Altı alanın sonuçları, aşama dağılımı, süre kullanımı, gelişim önerileri ve mülakatta doğrulanabilecek noktalar.</p><a class="btn" href="#report/${r.assessment.id}">Ayrıntılı raporu aç →</a></section>` : ''}${r.discoverySummary ? discoveryResultCard(r.discoverySummary) : ''}${r.coachSummary ? coachResultCard(r.coachSummary) : ''}<div class="toolbar"><a class="btn" href="#train">Yeni antrenman →</a><a class="btn light" href="#progress">Gelişimimi gör</a></div><section class="panel"><h2>Çözümleri incele</h2><p class="subtle">Yanlışların arkasındaki kuralı keşfet. Açmak için soruya dokun.</p>${
       r.rows
-        .filter((x, i) => r.mode === 'exam' || x.answer !== undefined)
+        .filter(x => r.mode === 'exam' || x.answer !== undefined)
         .map(
           (x, i) =>
             `<details class="reviewitem"><summary>${x.answer === undefined ? '○' : x.correct ? '✓' : '×'} ${i + 1}. ${catname(x.q.cat)} · ${x.q.q}</summary>${x.q.visual}<p>Senin yanıtın: <b>${x.answer ?? 'Boş'}</b><br>Doğru yanıt: <b>${x.q.answer}</b></p><div class="feedback">${x.q.exp}</div></details>`
@@ -1052,8 +1052,7 @@ function orientationPage() {
 }
 
 function positionPage() {
-  const selected = window.Positions?.load(localStorage),
-    pos = window.Positions?.get(selected?.positionId);
+  const selected = window.Positions?.load(localStorage);
   if (!window.Positions) {
     app.innerHTML = '<p>Pozisyon kataloğu yüklenemedi.</p>';
     return;

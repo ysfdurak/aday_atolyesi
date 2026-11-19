@@ -127,10 +127,10 @@
       proof,
     };
   }
-  custom('matrix', 'Satır–sütun bileşimi', level => {
+  custom('matrix', 'Satır–sütun bileşimi', _level => {
     let mode = R(0, 2),
       rows = Array.from({ length: 4 }, () => [R(4, 15), R(3, 9)]),
-      k = R(2, 5),
+      _k = R(2, 5), // kullanılmıyor ama rastgele dizinin sırası (ve kayıtlı sorular) değişmesin diye çağrı kalır
       f = (a, b) => (mode === 0 ? a * b - a : mode === 1 ? a * a - b : a * b + a + b),
       values = rows.map(([a, b]) => f(a, b)),
       transpose = R(0, 1),
@@ -145,7 +145,7 @@
       [rows[3][0] * rows[3][1], rows[3][0] + rows[3][1], rows[3][0] ** 2 + rows[3][1]]
     );
   });
-  custom('composition', 'İşlem sırasını tersinden kurma', level => {
+  custom('composition', 'İşlem sırasını tersinden kurma', _level => {
     let a = R(2, 4),
       b = R(3, 8),
       xs = [R(2, 5), R(7, 10), R(12, 15)],
@@ -183,7 +183,7 @@
       [total - rows[3][0] - rows[3][1], rows[2][2], rows[3][2] + weights[0]]
     );
   });
-  custom('operators', 'Sembollerin gizli işlemleri', level => {
+  custom('operators', 'Sembollerin gizli işlemleri', _level => {
     let mode = R(0, 2),
       symbols = shuffle(['◇', '⊙', '△']),
       f = (a, b) => (mode === 0 ? a * a + b : mode === 1 ? a * b + a : a * a - b * b),
@@ -208,10 +208,9 @@
       [inputs[3][0] * inputs[3][1], inputs[3][0] ** 2 + inputs[3][1] ** 2, inputs[3][0] + inputs[3][1]]
     );
   });
-  custom('path', 'Yerleşim boyunca ilerleyen örüntü', level => {
+  custom('path', 'Yerleşim boyunca ilerleyen örüntü', _level => {
     let start = R(3, 12),
       step = R(3, 8),
-      n = 3,
       positions = R(0, 1) ? [0, 1, 2, 5, 8, 7, 6, 3, 4] : [0, 1, 2, 5, 4, 3, 6, 7, 8],
       full = Array.from({ length: 9 }, (_, i) => start + i * step),
       hole = R(4, 7),
@@ -226,7 +225,7 @@
       [full[hole] - step, full[hole] + step, full[hole] + 2 * step]
     );
   });
-  custom('code', 'Basamaklar arasında kodlama', level => {
+  custom('code', 'Basamaklar arasında kodlama', _level => {
     let mode = R(0, 2),
       xs = shuffle([24, 35, 46, 57, 68, 79, 83, 92]).slice(0, 4),
       f = x => {
@@ -244,7 +243,7 @@
       [xs[3], Math.floor(xs[3] / 10) + (xs[3] % 10), values[3] + 10]
     );
   });
-  custom('conditional', 'Girdiye göre değişen kural', level => {
+  custom('conditional', 'Girdiye göre değişen kural', _level => {
     let k = R(2, 5),
       xs = shuffle([
         R(3, 6) * 2,
@@ -266,7 +265,7 @@
       [2 * target + k, Math.floor(target / 2) + k, 2 * target - k]
     );
   });
-  custom('symbol-values', 'Birden fazla eşitlikten değer çıkarma', level => {
+  custom('symbol-values', 'Birden fazla eşitlikten değer çıkarma', _level => {
     let x = R(5, 12),
       y = R(13, 20),
       z = R(21, 28),

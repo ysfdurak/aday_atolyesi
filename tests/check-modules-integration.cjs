@@ -66,12 +66,11 @@ assert(
 );
 // The combined module bridge must work with all twelve competencies and each common target role.
 for (const role of ['analyst', 'operations', 'graduate', 'lead', 'custom']) {
-  const nodes = [],
-    values = {
-      'aa-state-v1': JSON.stringify({
-        profile: { role, title: 'QA hedefi', people: role === 'lead', employed: false },
-      }),
-    };
+  const values = {
+    'aa-state-v1': JSON.stringify({
+      profile: { role, title: 'QA hedefi', people: role === 'lead', employed: false },
+    }),
+  };
   const ctx = {
     window: null,
     document: {

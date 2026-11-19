@@ -73,7 +73,6 @@
   };
   const labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
     num = n => Number(n.toFixed(2)).toLocaleString('tr-TR', { maximumFractionDigits: 2 }),
-    seq = v => '<div class="sequence">' + v.map(x => `<span class="seqbox">${x}</span>`).join('') + '</div>',
     table = (head, rows) =>
       '<div class="tablewrap" tabindex="0"><table><thead><tr>' +
       head.map(x => `<th>${x}</th>`).join('') +
@@ -179,9 +178,10 @@
       raw = null,
       hint = 'Verilen koşulları küçük parçalara ayır; seçenekleri tek tek ele.',
       proof = {};
-    let a = R(3, 9),
-      b = R(2, 5),
-      c = R(2, 6);
+    // a, b, c bu işlevde okunmuyor ama rastgele dizinin sırası (ve kayıtlı sorular) değişmesin diye çağrılar kalır.
+    let _a = R(3, 9),
+      _b = R(2, 5),
+      _c = R(2, 6);
     if (cat === 'shape') {
       let m = R(1, 510),
         n = R(1, 510),

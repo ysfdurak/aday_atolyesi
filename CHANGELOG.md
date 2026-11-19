@@ -1,5 +1,10 @@
 # Sürüm geçmişi
 
+## 0.22.1 · 19 Kasım 2026
+
+- **Puanlanmış örnek teslim** (`#ornek-teslim`, `CalibrationUI.sampleView`): Henüz çalışma yokken ana sayfada sayaçların üstünde giriş kartı çıkar. Ekran kurgusal bir teslimi ölçüt ölçüt gösterir: verilen düzey (0–3 ölçeği), **neden bu düzey**, ölçütte aranan ve bir üst düzeyin örnek cevabı. Puanlar toplanmaz.
+- **Cevaba özel gerekçe:** `content/rubric-examples.json` içine `reasons` alanı eklendi (şimdilik ilk vaka, 4 ölçüt × 3 düzey). Gerekçe yoksa seviye tanımı (anchors) gösterilir. Yeni vakaya gerekçe eklemek için aynı yapıyı doldur, sonra `node tools/build-rubric-examples.mjs`. Taslak etiketi sürer.
+
 ## 0.22.0 · 19 Kasım 2026
 
 İK değerlendirmesinde yapılandırılmış değerlendirme (OPM yaklaşımı): aynı ölçek, seviye örnekleri ve değerlendiriciler arası kalibrasyon.

@@ -2,7 +2,11 @@
   "status": "taslak",
   "statusLabel": "Uzman incelemesi bekleyen taslak",
   "method": "OPM yapılandırılmış değerlendirme yaklaşımı: aynı ölçek, her ölçüt için düşük–orta–yüksek düzeyi gösteren cevap örnekleri, değerlendiricilerin ölçüt bazında bağımsız puanlaması ve ardından farkların ölçüt üzerinden konuşulması.",
-  "levels": { "zayif": 1, "yeterli": 2, "guclu": 3 },
+  "levels": {
+    "zayif": 1,
+    "yeterli": 2,
+    "guclu": 3
+  },
   "cases": {
     "kpi-paradoksu": {
       "Payda ve hesap doğruluğu": [
@@ -562,6 +566,30 @@
         "Büyük müşteri daha kârlı.",
         "İki alternatifi aynı 12 aylık ufukta karşılaştırdım.",
         "İki alternatifi aynı ufukta kıyasladım; fiyat %5 ya da vade 30 gün değişirse önerinin nasıl değiştiğini ayrı bir tabloyla gösterdim."
+      ]
+    }
+  },
+  "reasons": {
+    "kpi-paradoksu": {
+      "Payda ve hesap doğruluğu": [
+        "İki kanal oranının basit ortalamasını (%90) toplam oran gibi kullanıyor. Kanalların hacmi çok farklı olduğu için bu ortalama yanıltır; toplam adetlerden hesap yok.",
+        "Toplam oranı adetlerden doğru hesaplıyor (%85,8). Ama basit ortalamanın neden kullanılmadığını söylemiyor; okuyan iki rakamı karıştırabilir.",
+        "Toplamı adetlerden hesaplıyor, basit ortalamayı neden kullanmadığını açıklıyor ve iki yolu ekte yan yana gösteriyor: hesap da gerekçe de doğrulanabilir."
+      ],
+      "Karma etkisini açıklama": [
+        "Toplam düştü diye kanalların da kötüleştiğini varsayıyor; kanal oranlarına hiç bakmamış. Oysa iki kanal da iyileşmiş.",
+        "Doğru mekanizmayı söylüyor (iki kanal iyileşti, düşük oranlı kanalın payı arttı) ama bunu bir hesapla göstermiyor.",
+        "Kanal oranlarını, pay değişimini ve önceki karmayla hesaplanmış karşı olgusal oranı (%94,2) veriyor: düşüşün karmadan geldiği sayıyla kanıtlanmış."
+      ],
+      "Çıkarım sınırı": [
+        "Tablonun gösteremeyeceği bir nedeni (ekibin özensizliği) kesin bir sonuç gibi yazıyor; verideki hiçbir şey bunu desteklemiyor.",
+        "Tablonun ne söylediğini ve ne söylemediğini doğru ayırıyor. Ama karma değişiminin nedenini öğrenmek için ne gerektiğini söylemiyor.",
+        "Neyin bilinmediğini açıkça yazıyor ve bunu ayırmak için hangi veriyi istediğini belirtiyor: sınır ve sonraki adım birlikte."
+      ],
+      "İletişim ve takip": [
+        "Sonucu, dayanağı ve takibi söylemiyor; okuyanın ne karar vereceği belli değil. \"Toplantıda konuşuruz\" bir takip değil.",
+        "Sonucu kısa ve doğru veriyor, bir takip öneriyor. Ama takibin sahibi, tarihi ve eksik veri talebi yok.",
+        "Sonuç, veri ve eksik bilgi ayrı başlıklarda; takipte neyin hangi tanımla izleneceği, veri talebinin sahibi ve tarihi yazılı."
       ]
     }
   }

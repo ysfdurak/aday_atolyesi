@@ -197,9 +197,9 @@
           up = it.level < 3 ? (bank[it.name] || [])[it.level] : '';
         return `<li class="sample-crit"><div class="sample-head"><b>${k + 1}. ${e(it.name)}</b><span class="tag lv${it.level}">${it.level} · ${LEVELS[it.level]}</span></div>
 <p class="sample-text">“${e(it.text)}”</p>
-<p><b>Neden bu düzey?</b> ${e(an[it.level] || (it.level === 1 ? 'Konuya değinilmiş ama dayanak ya da gerekçe eksik.' : it.level === 2 ? 'Ölçüt karşılanıyor; varsayım ya da sınır açık kalmış.' : 'Ölçüt dayanaklı biçimde karşılanıyor.'))}</p>
+<p><b>Neden bu düzey?</b> ${e((ex().reasons?.[c.id]?.[it.name] || [])[it.level - 1] || an[it.level] || (it.level === 1 ? 'Konuya değinilmiş ama dayanak ya da gerekçe eksik.' : it.level === 2 ? 'Ölçüt karşılanıyor; varsayım ya da sınır açık kalmış.' : 'Ölçüt dayanaklı biçimde karşılanıyor.'))}</p>
 ${r.evidence ? `<p class="muted"><b>Bu ölçütte aranan:</b> ${e(r.evidence)}</p>` : ''}
-${up ? `<details><summary>Bir üst düzey (${it.level + 1} · ${LEVELS[it.level + 1]}) nasıl görünür?</summary><p>“${e(up)}”</p>${an[it.level + 1] ? `<p class="muted">${e(an[it.level + 1])}</p>` : ''}</details>` : '<p class="muted">Bu ölçütte en üst düzey.</p>'}</li>`;
+${up ? `<details><summary>Bir üst düzey (${it.level + 1} · ${LEVELS[it.level + 1]}) nasıl görünür?</summary><p>“${e(up)}”</p>${(ex().reasons?.[c.id]?.[it.name] || [])[it.level] || an[it.level + 1] ? `<p class="muted">${e((ex().reasons?.[c.id]?.[it.name] || [])[it.level] || an[it.level + 1])}</p>` : ''}</details>` : '<p class="muted">Bu ölçütte en üst düzey.</p>'}</li>`;
       })
       .join('');
     return `<span class="eyebrow">Örnek · puanlanmış teslim</span><h1>İyi bir cevap<br><em>neye benzer?</em></h1><p class="muted">Kurgusal bir adayın “${e(c.title)}” vakasına verdiği cevap. Her ölçüt ayrı puanlanır; puanlar toplanmaz. Her satırda verilen düzeyi, nedenini ve bir üst düzeyin nasıl göründüğünü gör.</p>

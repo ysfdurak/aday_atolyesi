@@ -14,6 +14,9 @@ Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri b
 | Mülakat hazırlığı | Seçtiği örnekleri bir dosyada toplar ve kendi dayanaklarıyla prova yapar. |
 | İK incelemesi | Atanmış teslimi ekranda açar, her ölçüt için 0–3 seviye seçer ve çıktı bazında dayanaklı görüş yazar. Her ölçütte zayıf/yeterli/güçlü cevap örnekleri (uzman incelemesi bekleyen taslak) görünür. Kalibrasyon ekranında iki değerlendirici aynı sentetik teslimi puanlar, farkın hangi ölçütten geldiğini görür. Yönetici kör değerlendirmeyi açabilir, bekleyen teslimleri toplu atar. |
 
+
+**Projeyi anlatırken:** Mülakatta sorulabilecek 10 soru, kısa cevaplar ve verilen kararlar (sorun → karar → bedel): [docs/MULAKAT.md](docs/MULAKAT.md).
+
 ## Canlı demo
 
 **[aday.ysfdurak.com](https://aday.ysfdurak.com/)**: tam sürüm, kurulum gerektirmez. Hesap ve ayarlar → **Giriş yap** ile bir rol seç (aday, İK değerlendiricisi veya pilot yöneticisi), şifre yok. Örnek teslimler yüklüdür; aday olarak hazır kurgusal örnek dosyayı teslim edebilir, değerlendirici olarak ölçütlü geri bildirim yazabilir, yönetici olarak atama ve kör değerlendirmeyi deneyebilirsin.

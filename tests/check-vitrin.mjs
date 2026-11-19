@@ -14,6 +14,8 @@ import {
   resetSchemaCache,
   ensureSeeded,
   resetVitrin,
+  MAX_SCOPES_DAY,
+  MAX_SCOPES_IP_HOUR,
 } from '../server/vitrin.mjs';
 import { readMigrations, render } from '../tools/build-migrations.mjs';
 
@@ -147,8 +149,8 @@ for (const bad of [
   'root%7C' + A.scope,
 ])
   assert.equal(sessionOf('aa_vitrin=' + bad), null, bad);
-// Eski aday çerez biçimi okunmaya devam eder.
-assert.equal(sessionOf('aa_vitrin=' + encodeURIComponent('candidate|' + A.id)).id, A.id);
+// Eski aday çerez biçimi alan anahtarı olarak kabul edilmez (o kimlikler eskiden ortak ekranlarda görünüyordu).
+assert.equal(sessionOf('aa_vitrin=' + encodeURIComponent('candidate|' + A.id)), null);
 const out = await handleAuth(new Request(origin + '/signout-with-chatgpt'));
 assert.match(out.headers.get('set-cookie'), /Max-Age=0/);
 assert.equal(await handleAuth(new Request(origin + '/workspace.html')), null);
@@ -307,6 +309,23 @@ assert.equal(
 );
 await ensureSeeded(env, A.scope);
 assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_submissions').get().n, 3);
+
+// Kötüye kullanım sınırı: aynı IP'den saatte en fazla MAX_SCOPES_IP_HOUR yeni alan; günlük toplam tavan.
+const t0 = Date.now();
+const results = [];
+for (let i = 0; i <= MAX_SCOPES_IP_HOUR; i++)
+  results.push(await ensureSeeded(env, crypto.randomUUID(), t0, '198.51.100.7'));
+assert.equal(results.filter(r => r === 'ok').length, MAX_SCOPES_IP_HOUR, 'saatlik IP sınırına kadar açılır');
+assert.equal(results.at(-1), 'full', 'sınırdan sonrası reddedilir');
+assert.equal(await ensureSeeded(env, crypto.randomUUID(), t0, '198.51.100.8'), 'ok', 'başka IP etkilenmez');
+assert.equal(
+  await ensureSeeded(env, A.scope, t0 + 10 * 60 * 1000, '198.51.100.7'),
+  'ok',
+  'var olan alan sınırdan etkilenmez'
+);
+const ins = sqlite.prepare("INSERT INTO pilot_settings(key,value,updated) VALUES (?, 'x', 'x')");
+for (let i = 0; i < MAX_SCOPES_DAY; i++) ins.run('vitrin_seeded:sahte-' + i);
+assert.equal(await ensureSeeded(env, crypto.randomUUID(), t0, '198.51.100.9'), 'full', 'günlük tavan');
 console.log(
   'PASS: vitrin tablo kurulumu, ziyaretçiye özel alan ve örnek kuyruk, iki ziyaretçinin birbirini görmemesi, yalnız hazır örnek dosya teslimi, sahte kimlik başlıklarının silinmesi ve gece sıfırlama.'
 );

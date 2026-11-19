@@ -1,5 +1,12 @@
 # Sürüm geçmişi
 
+## 0.23.1 · 19 Kasım 2026
+
+Güvenlik gözden geçirmesi.
+
+- **Eski çerez biçimi kabul edilmez:** `candidate|vitrin-aday-<kimlik>` biçimindeki eski çerezler artık geçersiz. O kimlikler değişiklikten önce ortak yönetici ve değerlendirici ekranlarında görünüyordu; alan anahtarı olarak kabul edilseydi o ekranları görmüş biri bu ziyaretçinin yeni alanına girebilirdi.
+- **Alan açma sınırı:** Her yeni alan D1'e ~25 yazma ve R2'ye 3 dosya demek. Betikle sınırsız alan açılıp günlük kota tüketilmesin diye günde en fazla 1.500, aynı IP'den saatte en fazla 20 yeni alan kurulur (`MAX_SCOPES_DAY`, `MAX_SCOPES_IP_HOUR`); aşınca 503 ve açıklama döner. Var olan alanlar etkilenmez. IP, Cloudflare'in yazdığı `CF-Connecting-IP`'den okunur (Workers'ta istemci bunu değiştiremez).
+
 ## 0.23.0 · 19 Kasım 2026
 
 Canlı vitrinde ziyaretçiye özel alan ve yalnız örnek dosya (gizlilik).

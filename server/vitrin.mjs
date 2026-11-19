@@ -54,9 +54,9 @@ export function readSession(request) {
     new RegExp('(?:^|;\\s*)' + COOKIE + '=([^;]+)')
   )?.[1];
   if (!raw) return null;
-  const [role, value = ''] = decodeURIComponent(raw).split('|');
-  // Eski biçim (candidate|vitrin-aday-<alan>) da okunur; ortak hesap çerezleri artık geçersizdir.
-  const scope = value.startsWith(ROLES.candidate.prefix) ? value.slice(ROLES.candidate.prefix.length) : value;
+  const [role, scope = ''] = decodeURIComponent(raw).split('|');
+  // Eski biçim (candidate|vitrin-aday-<kimlik>) bilerek okunmaz: o kimlikler eskiden ortak yönetici ve
+  // değerlendirici ekranlarında görünüyordu, alan anahtarı olarak kullanılırsa başkası o alana girebilirdi.
   if (!ROLES[role] || !UUID.test(scope)) return null;
   return { ...account(role, scope), scope };
 }
@@ -313,25 +313,57 @@ async function claimSeeding(db, scope, now) {
     .run();
   return claim.meta.changes === 1;
 }
-/** Alan boşsa örnekleri yükler. Aynı anda birden çok istek gelse de yalnız biri yükler. */
-export async function ensureSeeded(env, scope, now = Date.now()) {
-  if (!scope) return;
-  if (now - (seededAt.get(scope) ?? -Infinity) < RECHECK_MS) return;
+// Kötüye kullanım sınırı: her yeni alan D1'e ~25 yazma ve R2'ye 3 dosya demektir. Otomatik betikle sınırsız alan
+// açılıp günlük kota tüketilmesin diye günde en fazla MAX_SCOPES_DAY, aynı IP'den saatte en fazla MAX_SCOPES_IP_HOUR
+// yeni alan kurulur. Sayaçlar pilot_settings'te tutulur ve gece sıfırlamasında silinir.
+export const MAX_SCOPES_DAY = 1500;
+export const MAX_SCOPES_IP_HOUR = 20;
+async function ipKey(ip, now) {
+  const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('aday-vitrin:' + ip));
+  const h = [...new Uint8Array(d).slice(0, 8)].map(b => b.toString(16).padStart(2, '0')).join('');
+  return `vitrin_ip:${h}:${Math.floor(now / 3600000)}`;
+}
+async function allowNewScope(db, ip, now) {
+  const day = await db
+    .prepare("SELECT COUNT(*) AS n FROM pilot_settings WHERE key LIKE 'vitrin\\_seeded:%' ESCAPE '\\'")
+    .first();
+  if (day.n >= MAX_SCOPES_DAY) return false;
+  if (!ip) return true;
+  const key = await ipKey(ip, now),
+    stamp = new Date(now).toISOString();
+  const row = await db
+    .prepare(
+      "INSERT INTO pilot_settings(key,value,updated) VALUES (?,'1',?) ON CONFLICT(key) DO UPDATE SET value=CAST(value AS INTEGER)+1,updated=excluded.updated RETURNING value"
+    )
+    .bind(key, stamp)
+    .first();
+  return Number(row.value) <= MAX_SCOPES_IP_HOUR;
+}
+
+/**
+ * Alan boşsa örnekleri yükler. Aynı anda birden çok istek gelse de yalnız biri yükler.
+ * Dönüş: 'ok' (hazır ya da başka istek yüklüyor) veya 'full' (kötüye kullanım sınırı doldu).
+ */
+export async function ensureSeeded(env, scope, now = Date.now(), ip = '') {
+  if (!scope) return 'ok';
+  if (now - (seededAt.get(scope) ?? -Infinity) < RECHECK_MS) return 'ok';
   await ensureSchema(env.DB);
   const key = 'vitrin_seeded:' + scope;
   const row = await env.DB.prepare('SELECT value,updated FROM pilot_settings WHERE key=?').bind(key).first();
   if (row && row.value !== 'pending') {
     if (seededAt.size > 5000) seededAt.clear();
     seededAt.set(scope, now);
-    return;
+    return 'ok';
   }
   // Yarım kalmış bir yükleme (ör. Worker kesildi) iki dakika sonra yeniden denenir.
   if (row && now - Date.parse(row.updated) > STALE_CLAIM_MS)
     await env.DB.prepare("DELETE FROM pilot_settings WHERE key=? AND value='pending'").bind(key).run();
-  if (!(await claimSeeding(env.DB, scope, now))) return; // başka bir istek yüklüyor
+  if (!row && !(await allowNewScope(env.DB, ip, now))) return 'full';
+  if (!(await claimSeeding(env.DB, scope, now))) return 'ok'; // başka bir istek yüklüyor
   try {
     await seed(env, scope, now);
     seededAt.set(scope, now);
+    return 'ok';
   } catch (err) {
     await env.DB.prepare("DELETE FROM pilot_settings WHERE key=? AND value='pending'").bind(key).run();
     throw err;

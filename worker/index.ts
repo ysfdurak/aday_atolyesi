@@ -60,9 +60,18 @@ async function vitrin(request: Request, env: Env): Promise<Request | Response> {
   try {
     await ensureSchema(env.DB);
     // Ziyaretçinin alanı ilk istekte örneklerle kurulur; ilk ekran boş görünmesin diye beklenir.
-    await ensureSeeded(env, readSession(request)?.scope).catch((err: unknown) =>
-      console.error('vitrin seed', err)
+    const ip = request.headers.get('cf-connecting-ip') || '';
+    const seeded = await ensureSeeded(env, readSession(request)?.scope, Date.now(), ip).catch(
+      (err: unknown) => {
+        console.error('vitrin seed', err);
+        return 'ok';
+      }
     );
+    if (seeded === 'full')
+      return Response.json(
+        { error: 'Canlı demo şu an çok yoğun; yeni deneme alanı açılamıyor. Biraz sonra tekrar dene.' },
+        { status: 503, headers: { 'Retry-After': '3600' } }
+      );
   } catch (err) {
     console.error('vitrin schema', err);
     return Response.json({ error: 'Veritabanı hazırlanıyor. Biraz sonra tekrar dene.' }, { status: 503 });

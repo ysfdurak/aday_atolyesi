@@ -12,12 +12,10 @@
   "d1_databases": [{ "binding": "DB", "database_name": "aday-atolyesi-db" }],
   "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "aday-atolyesi-dosyalar" }],
   "vars": {
-    // 1 = herkese açık vitrin: rolle şifresiz giriş, örnek veri, her gece sıfırlama, 3 MB dosya sınırı.
-    "AA_VITRIN": "1",
-    // Bu e-postayla giren hesap pilot yöneticisidir (vitrinde ortak yönetici hesabı).
-    "PILOT_OWNER_EMAIL": "yonetici@vitrin.aday-atolyesi",
-    // Rolü düşürülemeyen ortak demo hesapları.
-    "PROTECTED_MEMBERS": "vitrin-degerlendirici"
+    // 1 = herkese açık vitrin: rolle şifresiz giriş, ziyaretçiye özel alan, yalnız hazır örnek dosya,
+    // her gece sıfırlama. Vitrinde yönetici ve değerlendirici hesapları her alan için ayrı kurulur;
+    // PILOT_OWNER_EMAIL ve PROTECTED_MEMBERS yalnız gerçek pilot kurulumunda kullanılır.
+    "AA_VITRIN": "1"
   },
   // Her gece 00:00 UTC (03:00 TSİ): vitrin verisini ve dosyaları sıfırla (worker/index.ts → scheduled).
   "triggers": { "crons": ["0 0 * * *"] },

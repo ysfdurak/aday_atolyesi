@@ -16,9 +16,9 @@ Aday Atölyesi, başvuru hazırlığını **hedef → pratik → vaka → geri b
 
 ## Canlı demo
 
-**[aday.ysfdurak.com](https://aday.ysfdurak.com/)**: tam sürüm, kurulum gerektirmez. Hesap ve ayarlar → **Giriş yap** ile bir rol seç (aday, İK değerlendiricisi veya pilot yöneticisi), şifre yok. Örnek teslimler yüklüdür; aday olarak dosya teslim edebilir, değerlendirici olarak ölçütlü geri bildirim yazabilir, yönetici olarak atama ve kör değerlendirmeyi deneyebilirsin.
+**[aday.ysfdurak.com](https://aday.ysfdurak.com/)**: tam sürüm, kurulum gerektirmez. Hesap ve ayarlar → **Giriş yap** ile bir rol seç (aday, İK değerlendiricisi veya pilot yöneticisi), şifre yok. Örnek teslimler yüklüdür; aday olarak hazır kurgusal örnek dosyayı teslim edebilir, değerlendirici olarak ölçütlü geri bildirim yazabilir, yönetici olarak atama ve kör değerlendirmeyi deneyebilirsin.
 
-> **Not:** Canlı demo herkese açık bir vitrindir. Değerlendirici ve yönetici hesapları ortaktır; yüklenen dosyalar bu rolleri seçen herkese görünür. **Gerçek kişisel bilgi içeren dosya yükleme.** Bütün kayıtlar ve dosyalar her gece 03.00'te (TSİ) silinir, dosya sınırı 3 MB'tır. Nasıl çalıştığı: [docs/YAYIN.md](docs/YAYIN.md).
+> **Not:** Canlı demo herkese açıktır ama her ziyaretçinin alanı ayrıdır: üç rol de tarayıcına ait ayrı hesaplardır, başka ziyaretçiler kayıtlarını görmez. Kendi dosyanı yükleyemezsin; teslim hazır kurgusal örnek dosyalarla yapılır. Bütün kayıtlar her gece 03.00'te (TSİ) silinir. Nasıl çalıştığı: [docs/YAYIN.md](docs/YAYIN.md).
 
 Eski `ysfdurak.github.io/aday_atolyesi` adresi canlı demoya yönlenir.
 

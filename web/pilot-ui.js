@@ -73,10 +73,15 @@
       mine = pending.filter(r => r.reviewer_id === me.user.id),
       late = (admin ? pending : mine).filter(r => root.ReviewUI.ageDays(r) >= root.ReviewUI.TARGET_DAYS);
     const vitrinNote = me.vitrin
-      ? `<div class="static-banner vitrin-note" role="note"><b>Canlı demo · ${e({ candidate: 'Aday', reviewer: 'İK değerlendiricisi', admin: 'Pilot yöneticisi' }[me.user.role] || '')} olarak girişlisin.</b> Gerçek kişisel bilgi içeren dosya yükleme: dosyalar değerlendirici ve yönetici rolünü seçen herkese görünür. Bütün kayıtlar her gece 03.00'te (TSİ) silinir; dosya sınırı 3 MB. <a href="/signin-with-chatgpt" target="_top">Rolü değiştir</a></div>`
+      ? `<div class="static-banner vitrin-note" role="note"><b>Canlı demo · ${e({ candidate: 'Aday', reviewer: 'İK değerlendiricisi', admin: 'Pilot yöneticisi' }[me.user.role] || '')} olarak girişlisin.</b> Bu alan sana özel: üç rol de bu tarayıcıya ait; başka ziyaretçiler kayıtlarını görmez. Teslim için hazır kurgusal örnek dosyalar kullanılır, kendi dosyan yüklenmez. Bütün kayıtlar her gece 03.00'te (TSİ) silinir. <a href="/signin-with-chatgpt" target="_top">Rolü değiştir</a></div>`
       : '';
     n.innerHTML = `${vitrinNote}${canReview ? `<section class="card"><div class="sectionhead"><h2>${e(me.user.email)}</h2><a class="btn" href="/signout-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">Çıkış yap</a></div><p>Atanmış teslimleri aşağıdan incele. Kendi hazırlık araçlarını istersen açabilirsin.</p><p><a class="btn" href="#kalibrasyon">Değerlendirici kalibrasyonu ↗</a> <span class="muted">İki değerlendirici aynı sentetik teslimi puanlar; fark hangi ölçütten geliyor görürsün.</span></p></section><details class="pilot-personal"><summary>Kendi hazırlık kayıtlarım ve dosya teslimim</summary>` : ''}<section class="card"><div class="sectionhead"><h2>${e(me.user.email)}</h2><a class="btn" href="/signout-with-chatgpt?return_to=%2Fworkspace.html%23pilot" target="_top">Çıkış yap</a></div><p>Hesap türü: ${e({ admin: 'Yönetici', reviewer: 'Değerlendirici', candidate: 'Aday' }[me.user.role])}</p><p class="muted">Pilot kotası: ${me.maxFiles} dosya · toplam ${Math.round(me.maxStorageBytes / 1048576)} MB. Dosya başına 10 MB.</p><h3>Hazırlık kaydım</h3><p>Hedef, deneyim örnekleri, vaka ve atölye kayıtları dahil edilir. CV metni dahil edilmez. Hesaptan yükleme bu cihazdaki çalışma kayıtlarını değiştirir; önce mevcut yedeğini indir.</p><div class="actions"><button id="pilot-save">Bu cihazdaki çalışmayı hesabıma kaydet</button><button id="pilot-load">Hesabımdaki çalışmayı bu cihaza yükle</button><button id="pilot-account-export">Hesap kayıtlarımı indir</button><a class="btn" href="#settings">Cihaz yedeği indir</a></div><label class="check autosync"><input type="checkbox" id="pilot-autosync" ${root.AccountSync?.settings().on ? 'checked' : ''}> Bu cihazdaki çalışmayı hesabıma otomatik kaydet</label><p class="muted" id="pilot-autosync-status" aria-live="polite">${e(root.AccountSync?.label() || '')}</p><p class="muted">Açıkken değişiklikler birkaç dakikada bir gönderilir. Başka bir cihazda daha yeni kayıt varsa üzerine yazılmaz; otomatik kayıt durur ve sana sorulur.</p></section>
-<section class="card" style="margin-top:20px"><h2>Vaka dosyamı teslim et</h2><p>Önce vaka belgelerini ve senden beklenen çıktıları incele. Yanıtlarını tek dosyada, çıktılarla aynı numaraları kullanarak hazırla.</p><form id="pilot-submit"><label class="field">Vaka<select name="case" id="pilot-case">${me.cases.map(c => `<option value="${e(c.id)}">${e(c.title)}</option>`).join('')}</select></label><div id="pilot-outputs"></div><label class="field">Teslim biçimi<select name="parent" id="pilot-parent"><option value="">Yeni çalışma</option></select></label><label class="field">Revizyonda neleri değiştirdin?<textarea name="note" maxlength="2000" rows="3"></textarea></label><label class="field">Tek yanıt dosyası · PDF / DOCX / XLSX · En fazla 10 MB<input name="file" type="file" accept=".pdf,.docx,.xlsx" required></label><label class="check"><input name="confirmed" type="checkbox" required> Beklenen tüm çıktıları dosyamda aynı numaralarla yanıtladım.</label><p class="muted">Dosya biçimi ve boyutu kontrol edilir. Numaralı yanıtların içeriği insan tarafından incelenir. Şifresiz, makrosuz dosya kullan. Dosyanı sen, yönetici ve atanmış değerlendirici görebilir.</p><button class="primary">Dosyamı teslim et</button></form></section>
+<section class="card" style="margin-top:20px"><h2>Vaka dosyamı teslim et</h2><p>Önce vaka belgelerini ve senden beklenen çıktıları incele. Yanıtlarını tek dosyada, çıktılarla aynı numaraları kullanarak hazırla.</p><form id="pilot-submit"><label class="field">Vaka<select name="case" id="pilot-case">${me.cases
+      .filter(c => !me.vitrin || (me.vitrinCases || []).includes(c.id))
+      .map(c => `<option value="${e(c.id)}">${e(c.title)}</option>`)
+      .join(
+        ''
+      )}</select></label><div id="pilot-outputs"></div><label class="field">Teslim biçimi<select name="parent" id="pilot-parent"><option value="">Yeni çalışma</option></select></label><label class="field">Revizyonda neleri değiştirdin?<textarea name="note" maxlength="2000" rows="3"></textarea></label>${me.vitrin ? `<div class="note vitrin-file" role="note"><b>Teslim dosyası: hazır kurgusal örnek.</b> Canlı demoda kendi dosyanı yükleyemezsin; seçtiğin vakanın örnek cevabı gönderilir. <a href="#" id="pilot-sample-link" download>Örnek dosyayı indir</a></div>` : `<label class="field">Tek yanıt dosyası · PDF / DOCX / XLSX · En fazla 10 MB<input name="file" type="file" accept=".pdf,.docx,.xlsx" required></label>`}<label class="check"><input name="confirmed" type="checkbox" required> Beklenen tüm çıktıları dosyamda aynı numaralarla yanıtladım.</label><p class="muted">Dosya biçimi ve boyutu kontrol edilir. Numaralı yanıtların içeriği insan tarafından incelenir. Şifresiz, makrosuz dosya kullan. Dosyanı sen, yönetici ve atanmış değerlendirici görebilir.</p><button class="primary">Dosyamı teslim et</button></form></section>
 ${canReview ? '</details>' : ''}${
       canReview
         ? `<section class="card queue-summary" style="margin-top:20px"><div class="stats"><div><strong>${admin ? pending.length : mine.length}</strong><span>${admin ? 'geri bildirim bekleyen teslim' : 'sana atanmış, bekleyen teslim'}</span></div><div><strong class="${late.length ? 'late-text' : ''}">${late.length}</strong><span>${root.ReviewUI.TARGET_DAYS} günlük hedefi aşan</span></div>${admin ? `<div><strong>${unassigned.length}</strong><span>atanmamış teslim</span></div>` : ''}</div>${
@@ -131,7 +136,8 @@ ${canReview ? '</details>' : ''}${
         : ''
     }`;
     const target = location.hash.split('/')[1];
-    if (target && me.cases.some(c => c.id === target)) document.getElementById('pilot-case').value = target;
+    if (target && [...document.getElementById('pilot-case').options].some(o => o.value === target))
+      document.getElementById('pilot-case').value = target;
     wire();
   }
   function selected() {
@@ -139,6 +145,8 @@ ${canReview ? '</details>' : ''}${
   }
   function outputs() {
     const c = selected();
+    const sampleLink = document.getElementById('pilot-sample-link');
+    if (sampleLink) sampleLink.href = '/vitrin-ornek?case=' + encodeURIComponent(c.id);
     document.getElementById('pilot-outputs').innerHTML =
       `<p><a href="#cases/${e(c.id)}">Vaka dosyasını incele ↗</a> · <a href="${e(c.wordFile)}">Word indir</a> · <a href="${e(c.excelFile)}">Excel indir</a></p><h3>Senden beklenen çıktılar</h3><ol>${c.outputs.map(o => `<li>${e(o)}</li>`).join('')}</ol>`;
     document.getElementById('pilot-parent').innerHTML =
@@ -275,7 +283,8 @@ ${canReview ? '</details>' : ''}${
       requestId = AA.uuid();
       outputs();
     };
-    document.querySelector('#pilot-submit input[type=file]').onchange = () => (requestId = AA.uuid());
+    const fileInput = document.querySelector('#pilot-submit input[type=file]');
+    if (fileInput) fileInput.onchange = () => (requestId = AA.uuid());
     document.getElementById('pilot-account-export').onclick = () =>
       job(async () => {
         const data = await api('export'),
@@ -367,8 +376,17 @@ ${canReview ? '</details>' : ''}${
       const form = ev.currentTarget;
       job(async () => {
         const f = new FormData(form),
-          file = f.get('file'),
           c = selected();
+        let file = f.get('file');
+        if (me.vitrin) {
+          if (!(me.vitrinCases || []).includes(c.id))
+            throw Error('Bu vaka için hazır örnek dosya yok. Canlı demoda örneği olan bir vaka seç.');
+          const res = await fetch('/vitrin-ornek?case=' + encodeURIComponent(c.id));
+          if (!res.ok) throw Error('Örnek dosya alınamadı. Biraz sonra tekrar dene.');
+          const name =
+            /filename="([^"]+)"/.exec(res.headers.get('content-disposition') || '')?.[1] || 'ornek.docx';
+          file = new File([await res.blob()], name);
+        }
         if (!file?.size || file.size > me.maxBytes) throw Error('Dosyan en fazla 10 MB olabilir.');
         if (!/\.(pdf|docx|xlsx)$/i.test(file.name)) throw Error('PDF, DOCX veya XLSX yükle.');
         if (f.get('parent') && !String(f.get('note')).trim())

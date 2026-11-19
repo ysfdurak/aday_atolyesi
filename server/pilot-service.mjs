@@ -1,6 +1,7 @@
 import { readIdentity } from './identity.mjs';
 import { rubricFor, validateCriteria } from './review-model.mjs';
 import { fileWorkspace, fileAccess } from './file-workspace.mjs';
+import { SAMPLES } from './vitrin-samples.mjs';
 import reviewCatalog from './pilot-review-catalog.json' with { type: 'json' };
 import { inflateRawSync } from 'node:zlib';
 // Runtime-independent catalog: no solution/rubric is sent through this service.
@@ -204,10 +205,23 @@ async function progress(db, uid) {
     })
     .filter(Boolean);
 }
+// Vitrin (AA_VITRIN=1): her ziyaretçinin aday, değerlendirici ve yönetici hesapları aynı rastgele
+// kimlikle biter (ör. vitrin-yonetici-<uuid>). Bu son ek "alan"dır; yönetici dahil herkes yalnız
+// kendi alanındaki kayıtları görür. Vitrin dışında alan boştur ve hiçbir şey değişmez.
+const SCOPE = /-([0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12})$/;
+export function vitrinScope(env, uid) {
+  if (String(env?.AA_VITRIN ?? '0') !== '1') return '';
+  // Alanı olmayan kimlik vitrinde hiçbir kaydı eşleştiremez.
+  return SCOPE.exec(String(uid))?.[1] || 'alan-yok';
+}
+const settingKey = (key, scope) => (scope ? key + ':' + scope : key);
 // Kör değerlendirme: açıkken değerlendiriciler (yönetici hariç) başkasının teslimlerinde
 // e-posta, kullanıcı kimliği ve dosya adı yerine sabit bir takma ad görür.
-async function blindReview(db) {
-  const row = await db.prepare("SELECT value FROM pilot_settings WHERE key='blind_review'").first();
+async function blindReview(db, scope = '') {
+  const row = await db
+    .prepare('SELECT value FROM pilot_settings WHERE key=?')
+    .bind(settingKey('blind_review', scope))
+    .first();
   return row?.value === '1';
 }
 async function pseudonym(id) {
@@ -249,6 +263,8 @@ export async function handlePilot(request, env) {
       )
       .run();
     const member = await db.prepare('SELECT id,email,role FROM pilot_members WHERE id=?').bind(uid).first();
+    const scope = vitrinScope(env, uid);
+    member.scope = scope;
     const admin = member.role === 'admin',
       canReview = ['reviewer', 'admin'].includes(member.role);
     if (op === 'file-workspace')
@@ -260,7 +276,7 @@ export async function handlePilot(request, env) {
         now,
         catalog,
         reviewCatalog,
-        { maskName: !admin && (await blindReview(db)) ? maskedName : null }
+        { maskName: !admin && (await blindReview(db, scope)) ? maskedName : null }
       );
     if (op === 'settings' && method === 'POST') {
       if (!admin) fail('Yetkin yok.', 403);
@@ -268,20 +284,22 @@ export async function handlePilot(request, env) {
       if (typeof b.blindReview !== 'boolean') fail('Ayar geçersiz.');
       await db
         .prepare(
-          "INSERT INTO pilot_settings(key,value,updated) VALUES ('blind_review',?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value,updated=excluded.updated"
+          'INSERT INTO pilot_settings(key,value,updated) VALUES (?,?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value,updated=excluded.updated'
         )
-        .bind(b.blindReview ? '1' : '0', now)
+        .bind(settingKey('blind_review', scope), b.blindReview ? '1' : '0', now)
         .run();
       return reply({ blindReview: b.blindReview });
     }
     if (op === 'me' && method === 'GET')
       return reply({
-        user: member,
+        user: { ...member, scope: undefined },
         cases: catalog,
         vitrin: String(env.AA_VITRIN ?? '0') === '1',
+        // Vitrinde yalnız bu vakaların hazır kurgusal cevap dosyası teslim edilebilir.
+        ...(scope ? { vitrinCases: SAMPLES.map(x => x.case) } : {}),
         // Ölçütler yalnız değerlendirme yetkisi olanlara gönderilir.
         ...(canReview ? { rubrics: reviewCatalog } : {}),
-        blindReview: await blindReview(db),
+        blindReview: await blindReview(db, scope),
         maxBytes: MAX,
         maxFiles: 100,
         maxStorageBytes: 262144000,
@@ -440,7 +458,9 @@ export async function handlePilot(request, env) {
     }
     if (op === 'pilotfeedback-summary' && method === 'GET') {
       if (!admin) fail('Yetkin yok.', 403);
-      const rows = (await db.prepare('SELECT payload FROM pilot_feedback').all()).results;
+      const rows = (
+        await db.prepare("SELECT payload FROM pilot_feedback WHERE user_id LIKE '%' || ?").bind(scope).all()
+      ).results;
       return reply(summarizeObservations(rows.map(r => ({ payload: JSON.parse(r.payload) }))));
     }
     if (op === 'pilotfeedback-all' && method === 'GET') {
@@ -448,8 +468,9 @@ export async function handlePilot(request, env) {
       const rows = (
         await db
           .prepare(
-            'SELECT m.email,f.payload,f.updated FROM pilot_feedback f JOIN pilot_members m ON m.id=f.user_id ORDER BY f.updated DESC LIMIT 200'
+            "SELECT m.email,f.payload,f.updated FROM pilot_feedback f JOIN pilot_members m ON m.id=f.user_id WHERE f.user_id LIKE '%' || ? ORDER BY f.updated DESC LIMIT 200"
           )
+          .bind(scope)
           .all()
       ).results;
       return reply(rows.map(r => ({ ...r, payload: JSON.parse(r.payload) })));
@@ -502,14 +523,18 @@ export async function handlePilot(request, env) {
       return reply(
         await db
           .prepare(
-            "SELECT (SELECT COUNT(*) FROM pilot_members WHERE role='candidate') AS candidates,(SELECT COUNT(*) FROM pilot_saves) AS saved,(SELECT COUNT(DISTINCT user_id) FROM pilot_submissions) AS submitters,(SELECT COUNT(*) FROM pilot_submissions) AS submissions,(SELECT COUNT(*) FROM pilot_reviews) AS reviews,(SELECT COUNT(*) FROM pilot_submissions WHERE parent_id IS NOT NULL) AS revisions,(SELECT COALESCE(SUM(size),0) FROM pilot_submissions) AS bytes"
+            "SELECT (SELECT COUNT(*) FROM pilot_members WHERE role='candidate' AND id LIKE '%' || ?1) AS candidates,(SELECT COUNT(*) FROM pilot_saves WHERE user_id LIKE '%' || ?1) AS saved,(SELECT COUNT(DISTINCT user_id) FROM pilot_submissions WHERE user_id LIKE '%' || ?1) AS submitters,(SELECT COUNT(*) FROM pilot_submissions WHERE user_id LIKE '%' || ?1) AS submissions,(SELECT COUNT(*) FROM pilot_reviews r JOIN pilot_submissions s ON s.id=r.submission_id WHERE s.user_id LIKE '%' || ?1) AS reviews,(SELECT COUNT(*) FROM pilot_submissions WHERE parent_id IS NOT NULL AND user_id LIKE '%' || ?1) AS revisions,(SELECT COALESCE(SUM(size),0) FROM pilot_submissions WHERE user_id LIKE '%' || ?1) AS bytes"
           )
+          .bind(scope)
           .first()
       );
     }
     if (op === 'reviewdraft') {
       const b = method === 'POST' ? await json(request) : Object.fromEntries(url.searchParams),
-        row = await db.prepare('SELECT * FROM pilot_submissions WHERE id=?').bind(text(b.id, 100)).first();
+        row = await db
+          .prepare("SELECT * FROM pilot_submissions WHERE id=? AND user_id LIKE '%' || ?")
+          .bind(text(b.id, 100), scope)
+          .first();
       if (!row || !canReview || (!admin && row.reviewer_id !== uid)) fail('Bu taslak için yetkin yok.', 403);
       const key = uid + '/' + row.id;
       if (method === 'GET') {
@@ -558,15 +583,21 @@ export async function handlePilot(request, env) {
     if (op === 'members' && method === 'GET') {
       if (!admin) fail('Yetkin yok.', 403);
       return reply(
-        (await db.prepare('SELECT id,email,role FROM pilot_members ORDER BY created DESC LIMIT 200').all())
-          .results
+        (
+          await db
+            .prepare(
+              "SELECT id,email,role FROM pilot_members WHERE id LIKE '%' || ? ORDER BY created DESC LIMIT 200"
+            )
+            .bind(scope)
+            .all()
+        ).results
       );
     }
     if (op === 'role' && method === 'POST') {
       if (!admin) fail('Yetkin yok.', 403);
       const b = await json(request);
       if (!['candidate', 'reviewer'].includes(b.role) || b.id === uid) fail('Yetki değişikliği geçersiz.');
-      // Vitrin gibi ortak demo kurulumlarında ortak değerlendirici hesabının rolü düşürülemez.
+      // Ortak demo kurulumlarında belirli hesapların (PROTECTED_MEMBERS) rolü düşürülemez.
       const protectedIds = String(env.PROTECTED_MEMBERS || '')
         .split(',')
         .map(s => s.trim())
@@ -574,8 +605,8 @@ export async function handlePilot(request, env) {
       if (protectedIds.includes(b.id) && b.role !== 'reviewer')
         fail('Bu demo hesabının rolü değiştirilemez.');
       await db
-        .prepare("UPDATE pilot_members SET role=? WHERE id=? AND role<>'admin'")
-        .bind(b.role, text(b.id, 200))
+        .prepare("UPDATE pilot_members SET role=? WHERE id=? AND role<>'admin' AND id LIKE '%' || ?")
+        .bind(b.role, text(b.id, 200), scope)
         .run();
       return reply({ ok: true });
     }
@@ -595,11 +626,11 @@ export async function handlePilot(request, env) {
     if (op === 'submissions' && method === 'GET') {
       const rows = await db
         .prepare(
-          `SELECT s.rowid AS sequence,s.id,s.user_id,s.case_id,s.version,s.name,s.size,s.created,s.parent_id,s.revision_note,s.reviewer_id,s.outputs,m.email,r.payload AS feedback,r.created AS reviewed FROM pilot_submissions s JOIN pilot_members m ON m.id=s.user_id LEFT JOIN pilot_reviews r ON r.submission_id=s.id ${admin ? '' : 'WHERE s.user_id=? OR (s.reviewer_id=? AND ?=1)'} ORDER BY s.created DESC,s.rowid DESC LIMIT 200`
+          `SELECT s.rowid AS sequence,s.id,s.user_id,s.case_id,s.version,s.name,s.size,s.created,s.parent_id,s.revision_note,s.reviewer_id,s.outputs,m.email,r.payload AS feedback,r.created AS reviewed FROM pilot_submissions s JOIN pilot_members m ON m.id=s.user_id LEFT JOIN pilot_reviews r ON r.submission_id=s.id WHERE s.user_id LIKE '%' || ? ${admin ? '' : 'AND (s.user_id=? OR (s.reviewer_id=? AND ?=1))'} ORDER BY s.created DESC,s.rowid DESC LIMIT 200`
         )
-        .bind(...(admin ? [] : [uid, uid, canReview ? 1 : 0]))
+        .bind(scope, ...(admin ? [] : [uid, uid, canReview ? 1 : 0]))
         .all();
-      const blind = !admin && (await blindReview(db));
+      const blind = !admin && (await blindReview(db, scope));
       return reply(
         await Promise.all(
           rows.results.map(async r => {
@@ -714,14 +745,14 @@ export async function handlePilot(request, env) {
     }
     if (op === 'file' && method === 'GET') {
       const row = await db
-        .prepare('SELECT * FROM pilot_submissions WHERE id=?')
-        .bind(text(url.searchParams.get('id'), 100))
+        .prepare("SELECT * FROM pilot_submissions WHERE id=? AND user_id LIKE '%' || ?")
+        .bind(text(url.searchParams.get('id'), 100), scope)
         .first();
       if (!(await fileAccess(db, member, row))) fail('Dosya bulunamadı.', 404);
       const file = await env.BUCKET.get(row.file_key);
       if (!file) fail('Dosya bulunamadı.', 404);
       const downloadName =
-        !admin && row.user_id !== uid && (await blindReview(db))
+        !admin && row.user_id !== uid && (await blindReview(db, scope))
           ? maskedName(row.name).replace('teslim.', 'teslim-' + (await pseudonym(row.user_id)) + '.')
           : row.name;
       return new Response(file.body, {
@@ -737,8 +768,10 @@ export async function handlePilot(request, env) {
       if (!admin) fail('Yetkin yok.', 403);
       const b = await json(request),
         target = await db
-          .prepare("SELECT id FROM pilot_members WHERE id=? AND role IN ('reviewer','admin')")
-          .bind(text(b.reviewer, 200))
+          .prepare(
+            "SELECT id FROM pilot_members WHERE id=? AND role IN ('reviewer','admin') AND id LIKE '%' || ?"
+          )
+          .bind(text(b.reviewer, 200), scope)
           .first();
       if (!target) fail('Değerlendirici bulunamadı.');
       const has = await db
@@ -746,12 +779,19 @@ export async function handlePilot(request, env) {
         .bind(text(b.id, 100))
         .first();
       if (has) fail('Geri bildirim verilmiş teslimin değerlendiricisi değiştirilemez.');
-      await db.prepare('UPDATE pilot_submissions SET reviewer_id=? WHERE id=?').bind(target.id, b.id).run();
+      const moved = await db
+        .prepare("UPDATE pilot_submissions SET reviewer_id=? WHERE id=? AND user_id LIKE '%' || ?")
+        .bind(target.id, b.id, scope)
+        .run();
+      if (!moved.meta.changes) fail('Teslim bulunamadı.', 404);
       return reply({ ok: true });
     }
     if (op === 'review' && method === 'POST') {
       const b = await json(request),
-        row = await db.prepare('SELECT * FROM pilot_submissions WHERE id=?').bind(text(b.id, 100)).first();
+        row = await db
+          .prepare("SELECT * FROM pilot_submissions WHERE id=? AND user_id LIKE '%' || ?")
+          .bind(text(b.id, 100), scope)
+          .first();
       if (!row || (!admin && row.reviewer_id !== uid)) fail('Bu teslim için yetkin yok.', 403);
       if (!['reviewer', 'admin'].includes(member.role)) fail('Değerlendirme yetkin yok.', 403);
       const outputs = JSON.parse(row.outputs);

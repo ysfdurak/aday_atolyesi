@@ -22,6 +22,8 @@ export function ancestry(rows, id) {
 }
 export async function fileAccess(db, member, row) {
   if (!row) return false;
+  // Vitrin: her ziyaretçinin kendi alanı var; başka alanın teslimi yönetici için de görünmez.
+  if (member.scope && !String(row.user_id).endsWith(member.scope)) return false;
   if (member.role === 'admin' || row.user_id === member.id) return true;
   if (member.role !== 'reviewer') return false;
   if (row.reviewer_id === member.id) return true;

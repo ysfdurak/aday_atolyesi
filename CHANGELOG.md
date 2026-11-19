@@ -1,5 +1,15 @@
 # Sürüm geçmişi
 
+## 0.23.0 · 19 Kasım 2026
+
+Canlı vitrinde ziyaretçiye özel alan ve yalnız örnek dosya (gizlilik).
+
+- **Önceki durum:** Değerlendirici ve yönetici hesapları ortaktı. Bir ziyaretçi gerçek özgeçmişini veya şirket dosyasını yüklerse, gece silinene kadar bu rolleri seçen başka bir ziyaretçi görebilirdi.
+- **Ziyaretçiye özel alan:** Üç rolün hesabı da tarayıcıya ait rastgele alan kimliğiyle biter. `vitrinScope` (pilot-service) teslim listesi, dosya, atama, değerlendirme, taslak, üye, rol, sayaç ve kör değerlendirme ayarını alana göre süzer; yönetici de yalnız kendi alanını görür. Örnekler her alana ilk istekte yüklenir. Eski ortak hesap çerezleri geçersizdir.
+- **Yalnız hazır örnek dosya:** Teslim gövdesi seçilen vakanın kurgusal cevap dosyasıyla aynı değilse sunucu reddeder (`guardUpload`). Arayüzde dosya seçme alanı yerine örnek notu ve indirme bağlantısı çıkar; vaka listesi örneği olan vakalarla sınırlıdır.
+- **Kabul testi** (`tests/check-vitrin.mjs`): iki bağımsız ziyaretçi örnek akışı tamamlar ve hiçbir rolde birbirinin teslimini göremez, indiremez, atayamaz, değerlendiremez; kendi dosyası ve başka vakanın örneği reddedilir.
+- Vitrin dışında (`AA_VITRIN=0`) davranış değişmez.
+
 ## 0.22.1 · 19 Kasım 2026
 
 - **Puanlanmış örnek teslim** (`#ornek-teslim`, `CalibrationUI.sampleView`): Henüz çalışma yokken ana sayfada sayaçların üstünde giriş kartı çıkar. Ekran kurgusal bir teslimi ölçüt ölçüt gösterir: verilen düzey (0–3 ölçeği), **neden bu düzey**, ölçütte aranan ve bir üst düzeyin örnek cevabı. Puanlar toplanmaz.

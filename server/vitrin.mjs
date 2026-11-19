@@ -1,12 +1,17 @@
 // Canlı vitrin (aday.ysfdurak.com): herkese açık deneme kurulumu.
 //
 // - Rol seçerek şifresiz giriş: aday, İK değerlendiricisi veya pilot yöneticisi.
-//   Her ziyaretçinin aday hesabı ayrıdır (tarayıcıya özel rastgele kimlik); değerlendirici ve
-//   yönetici hesapları ortaktır, bu yüzden aday teslimleri bu rolleri seçen herkese görünür.
+// - Her ziyaretçinin kendi alanı var (tarayıcıya özel rastgele kimlik). Üç rolün hesabı da bu alana
+//   aittir: vitrin-aday-<alan>, vitrin-degerlendirici-<alan>, vitrin-yonetici-<alan>. Yönetici dahil
+//   kimse başka bir ziyaretçinin teslimini, kaydını veya ayarını göremez (pilot-service › vitrinScope).
+// - Dosya teslimi yalnız hazır kurgusal örnek dosyalarla yapılır; başka dosya sunucuda reddedilir.
+//   Böylece gerçek özgeçmiş veya şirket dosyası vitrine hiç girmez.
 // - Kimlik yalnız oturum çerezinden okunur; istemciden gelen kimlik başlıkları silinir.
 // - D1 veritabanı ilk yayında boş oluşur; tablolar ilk istekte MIGRATIONS listesinden kurulur.
-// - Örnek veri: üç kurgusal aday teslimi (biri yayımlanmış ölçütlü geri bildirimle, biri gecikmiş).
-// - Her gece (wrangler.jsonc → triggers.crons) bütün kayıtlar ve dosyalar silinir, örnekler yeniden yüklenir.
+// - Örnek veri: her alana ilk istekte üç kurgusal aday teslimi (biri yayımlanmış ölçütlü geri
+//   bildirimle, biri gecikmiş) yüklenir.
+// - Her gece (wrangler.jsonc → triggers.crons) bütün kayıtlar ve dosyalar silinir; alanlar bir sonraki
+//   istekte örneklerle yeniden kurulur.
 import { handlePilot } from './pilot-service.mjs';
 import { DEFAULT_HEADERS } from './identity.mjs';
 import { MIGRATIONS } from './migrations.mjs';
@@ -14,16 +19,21 @@ import { SAMPLES } from './vitrin-samples.mjs';
 
 export const COOKIE = 'aa_vitrin';
 export const VITRIN_MAX_UPLOAD = 3 * 1024 * 1024;
-export const ACCOUNTS = {
-  reviewer: {
-    id: 'vitrin-degerlendirici',
-    email: 'degerlendirici@vitrin.aday-atolyesi',
-    label: 'İK değerlendiricisi',
-  },
-  admin: { id: 'vitrin-yonetici', email: 'yonetici@vitrin.aday-atolyesi', label: 'Pilot yöneticisi' },
+const ROLES = {
+  candidate: { prefix: 'vitrin-aday-', mail: 'aday', label: 'Aday' },
+  reviewer: { prefix: 'vitrin-degerlendirici-', mail: 'degerlendirici', label: 'İK değerlendiricisi' },
+  admin: { prefix: 'vitrin-yonetici-', mail: 'yonetici', label: 'Pilot yöneticisi' },
 };
-const ROLE_LABELS = { candidate: 'Aday', reviewer: ACCOUNTS.reviewer.label, admin: ACCOUNTS.admin.label };
-const CANDIDATE_ID = /^vitrin-aday-[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+const ROLE_LABELS = Object.fromEntries(Object.entries(ROLES).map(([k, v]) => [k, v.label]));
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
+/** Bir alanın (ziyaretçinin) verilen roldeki hesabı. */
+export function account(role, scope) {
+  const r = ROLES[role];
+  return { role, id: r.prefix + scope, email: `${r.mail}@${scope.slice(0, 8)}.vitrin.aday-atolyesi` };
+}
+const fromBase64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const SAMPLE_FILES = SAMPLES.map(s => ({ case: s.case, name: s.name, bytes: fromBase64(s.base64) }));
+const same = (a, b) => a.length === b.length && a.every((x, i) => x === b[i]);
 const TABLES = [
   'pilot_feedback',
   'pilot_review_drafts',
@@ -44,11 +54,62 @@ export function readSession(request) {
     new RegExp('(?:^|;\\s*)' + COOKIE + '=([^;]+)')
   )?.[1];
   if (!raw) return null;
-  const [role, id] = decodeURIComponent(raw).split('|');
-  if (role === 'candidate' && CANDIDATE_ID.test(id || ''))
-    return { role, id, email: id.slice(-12) + '@aday.vitrin.aday-atolyesi' };
-  if (ACCOUNTS[role] && id === ACCOUNTS[role].id) return { role, ...ACCOUNTS[role] };
-  return null;
+  const [role, value = ''] = decodeURIComponent(raw).split('|');
+  // Eski biçim (candidate|vitrin-aday-<alan>) da okunur; ortak hesap çerezleri artık geçersizdir.
+  const scope = value.startsWith(ROLES.candidate.prefix) ? value.slice(ROLES.candidate.prefix.length) : value;
+  if (!ROLES[role] || !UUID.test(scope)) return null;
+  return { ...account(role, scope), scope };
+}
+
+/** Vaka için hazır kurgusal cevap dosyası (GET /vitrin-ornek?case=…). Yoksa null. */
+export function sampleFile(request) {
+  const url = new URL(request.url);
+  if (url.pathname !== '/vitrin-ornek') return null;
+  const f = SAMPLE_FILES.find(x => x.case === url.searchParams.get('case'));
+  if (!f) return new Response('Bu vaka için hazır örnek yok.', { status: 404 });
+  return new Response(f.bytes, {
+    headers: {
+      'Content-Type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      'Content-Disposition': `attachment; filename="${f.name}"`,
+      'Cache-Control': 'public, max-age=3600',
+    },
+  });
+}
+
+const DEMO_ONLY =
+  'Canlı demoda kendi dosyanı yükleyemezsin; seçtiğin vakanın hazır kurgusal örnek dosyası teslim edilir. Gerçek dosyanla denemek için kendi kurulumunu kullan.';
+/**
+ * Teslim isteğini denetler: gövde, vakanın hazır örnek dosyasıyla bayt bayt aynı olmalı.
+ * Uygunsa gövdesi okunmuş yeni bir istek, değilse hata yanıtı döner.
+ */
+export async function guardUpload(request) {
+  const url = new URL(request.url);
+  if (url.searchParams.get('op') !== 'submit') return request;
+  const size = Number(request.headers.get('content-length') || 0);
+  if (size > VITRIN_MAX_UPLOAD) return Response.json({ error: DEMO_ONLY }, { status: 413 });
+  const sample = SAMPLE_FILES.find(x => x.case === url.searchParams.get('case'));
+  const reader = request.body?.getReader(),
+    parts = [];
+  let total = 0;
+  while (reader) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.length;
+    if (total > VITRIN_MAX_UPLOAD) {
+      await reader.cancel();
+      return Response.json({ error: DEMO_ONLY }, { status: 413 });
+    }
+    parts.push(value);
+  }
+  const bytes = new Uint8Array(total);
+  let at = 0;
+  for (const p of parts) {
+    bytes.set(p, at);
+    at += p.length;
+  }
+  if (!sample || !same(bytes, sample.bytes)) return Response.json({ error: DEMO_ONLY }, { status: 400 });
+  url.searchParams.set('name', sample.name);
+  return new Request(url, { method: request.method, headers: request.headers, body: bytes });
 }
 
 /** /api/pilot isteğini, kimliği yalnız çerezden gelecek şekilde yeniden kurar. */
@@ -79,7 +140,7 @@ export function signInPage(current) {
         `<button class="btn${role === 'candidate' ? ' primary' : ''}" name="role" value="${role}">${esc(label)}</button>`
     )
     .join(' ');
-  return `<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Canlı demo girişi · Aday Atölyesi</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"><meta name="robots" content="noindex"><script defer src="/en-tour.js"></script></head><body><main class="card" style="max-width:680px;margin:6vh auto;padding:2rem"><span class="eyebrow">Canlı demo</span><h1 style="font-size:34px">Bir rol seç, şifresiz gir.</h1><p>Aday olarak vaka dosyası teslim edebilir; İK değerlendiricisi olarak ölçütlü geri bildirim yazabilir; pilot yöneticisi olarak teslimleri atayıp kör değerlendirmeyi açabilirsin.</p>${current ? `<p class="muted">Şu an <b>${esc(ROLE_LABELS[current.role])}</b> olarak girişlisin.</p>` : ''}<form method="post" style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0">${buttons}</form><div class="note"><b>Bu bir demodur.</b> Gerçek kişisel bilgi içeren dosya yükleme: yüklenen dosyalar değerlendirici ve yönetici rolünü seçen herkese görünür. Bütün kayıtlar ve dosyalar her gece 03.00'te (TSİ) silinir. Dosya sınırı 3 MB.</div><p style="margin-top:18px"><a href="/workspace.html">← Hazırlık alanına dön</a></p></main></body></html>`;
+  return `<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Canlı demo girişi · Aday Atölyesi</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css"><meta name="robots" content="noindex"><script defer src="/en-tour.js"></script></head><body><main class="card" style="max-width:680px;margin:6vh auto;padding:2rem"><span class="eyebrow">Canlı demo</span><h1 style="font-size:34px">Bir rol seç, şifresiz gir.</h1><p>Aday olarak vaka dosyası teslim edebilir; İK değerlendiricisi olarak ölçütlü geri bildirim yazabilir; pilot yöneticisi olarak teslimleri atayıp kör değerlendirmeyi açabilirsin.</p>${current ? `<p class="muted">Şu an <b>${esc(ROLE_LABELS[current.role])}</b> olarak girişlisin.</p>` : ''}<form method="post" style="display:flex;gap:10px;flex-wrap:wrap;margin:18px 0">${buttons}</form><div class="note"><b>Bu bir demodur ve sana özeldir.</b> Üç rol de bu tarayıcıya ait ayrı bir alanda çalışır; başka ziyaretçiler senin kayıtlarını görmez, sen de onlarınkini görmezsin. Kendi dosyanı yükleyemezsin: teslim için hazır kurgusal örnek dosyalar kullanılır. Yazdığın notlar ve kayıtlar her gece 03.00'te (TSİ) silinir.</div><p style="margin-top:18px"><a href="/workspace.html">← Hazırlık alanına dön</a></p></main></body></html>`;
 }
 
 /** Giriş/çıkış yolları. İlgili değilse null döner. */
@@ -97,13 +158,9 @@ export async function handleAuth(request) {
   if (origin && origin !== url.origin) return new Response('Geçersiz istek', { status: 403 });
   const body = (await request.text()).slice(0, 200),
     role = new URLSearchParams(body).get('role');
-  let value;
-  if (role === 'candidate') {
-    // Aynı tarayıcı aday rolüne dönerse kendi teslimlerini yeniden görür.
-    const prior = readSession(request);
-    value = 'candidate|' + (prior?.role === 'candidate' ? prior.id : 'vitrin-aday-' + crypto.randomUUID());
-  } else if (ACCOUNTS[role]) value = role + '|' + ACCOUNTS[role].id;
-  else return new Response('Rol bulunamadı', { status: 400 });
+  if (!ROLES[role]) return new Response('Rol bulunamadı', { status: 400 });
+  // Aynı tarayıcı rol değiştirince kendi alanında kalır: aday olarak gönderdiğini yönetici olarak görür.
+  const value = role + '|' + (readSession(request)?.scope || crypto.randomUUID());
   return new Response(null, {
     status: 303,
     headers: { Location: back, 'Set-Cookie': cookie(value, 60 * 60 * 24 * 30) },
@@ -142,11 +199,10 @@ export async function ensureSchema(db) {
 }
 export const resetSchemaCache = () => {
   schemaDone = false;
-  seededDone = false;
+  seededAt.clear();
 };
 
 // ---- Örnek veri ----
-const fromBase64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 async function as(env, user, op, { method = 'POST', body, query = '' } = {}) {
   const headers = new Headers({
     [DEFAULT_HEADERS.id]: user.id,
@@ -166,23 +222,26 @@ async function as(env, user, op, { method = 'POST', body, query = '' } = {}) {
   return res.json();
 }
 
-/** Boş vitrine örnek kayıtları yükler. */
-export async function seed(env, now = Date.now()) {
+/** Bir ziyaretçi alanına örnek kayıtları yükler: kendi yöneticisi, değerlendiricisi ve üç kurgusal aday. */
+export async function seed(env, scope, now = Date.now()) {
   const db = env.DB;
-  const admin = ACCOUNTS.admin,
-    reviewer = ACCOUNTS.reviewer;
-  await as(env, admin, 'me', { method: 'GET' });
-  await as(env, reviewer, 'me', { method: 'GET' });
-  await as(env, admin, 'role', { body: { id: reviewer.id, role: 'reviewer' } });
+  const admin = account('admin', scope),
+    reviewer = account('reviewer', scope);
+  const stampNow = new Date(now).toISOString();
+  for (const m of [admin, reviewer])
+    await db
+      .prepare('INSERT OR IGNORE INTO pilot_members (id,email,role,created) VALUES (?,?,?,?)')
+      .bind(m.id, m.email, m.role, stampNow)
+      .run();
   const catalog = (await as(env, admin, 'me', { method: 'GET' })).cases;
   const ids = [];
-  for (const s of SAMPLES) {
+  for (const [i, s] of SAMPLES.entries()) {
     const c = catalog.find(x => x.id === s.case);
-    const user = { id: s.user, email: s.user + '@ornek.vitrin.aday-atolyesi' };
+    const user = { id: `vitrin-ornek-${i + 1}-${scope}`, email: `ornek-${i + 1}@ornek.vitrin.aday-atolyesi` };
     await as(env, user, 'me', { method: 'GET' });
     const r = await as(env, user, 'submit', {
       query: `&case=${c.id}&version=${encodeURIComponent(c.version)}&name=${encodeURIComponent(s.name)}&confirmed=yes`,
-      body: fromBase64(s.base64),
+      body: SAMPLE_FILES[i].bytes,
     });
     ids.push(r.id);
   }
@@ -234,49 +293,53 @@ export async function seed(env, now = Date.now()) {
       await db.prepare('UPDATE pilot_reviews SET created=? WHERE submission_id=?').bind(reviewed, id).run();
   }
   await db
-    .prepare("INSERT OR REPLACE INTO pilot_settings(key,value,updated) VALUES ('vitrin_seeded',?,?)")
-    .bind(new Date(now).toISOString(), new Date(now).toISOString())
+    .prepare('INSERT OR REPLACE INTO pilot_settings(key,value,updated) VALUES (?,?,?)')
+    .bind('vitrin_seeded:' + scope, stampNow, stampNow)
     .run();
   return ids;
 }
 
-/** Vitrin boşsa (ilk yayın) örnekleri yükler. Aynı anda birden çok istek gelse de yalnız biri yükler. */
-let seededDone = false;
+// Bu Worker örneğinde örnekleri hazır olan alanlar. Gece sıfırlaması başka bir örnekte çalışabileceği
+// için kayıt kısa süre sonra yeniden doğrulanır.
+const seededAt = new Map();
+const RECHECK_MS = 5 * 60 * 1000;
 const STALE_CLAIM_MS = 2 * 60 * 1000;
-async function claimSeeding(db, now) {
+async function claimSeeding(db, scope, now) {
   const claim = await db
     .prepare(
-      "INSERT INTO pilot_settings(key,value,updated) VALUES ('vitrin_seeded','pending',?) ON CONFLICT(key) DO NOTHING"
+      "INSERT INTO pilot_settings(key,value,updated) VALUES (?,'pending',?) ON CONFLICT(key) DO NOTHING"
     )
-    .bind(new Date(now).toISOString())
+    .bind('vitrin_seeded:' + scope, new Date(now).toISOString())
     .run();
   return claim.meta.changes === 1;
 }
-export async function ensureSeeded(env, now = Date.now()) {
-  if (seededDone) return;
+/** Alan boşsa örnekleri yükler. Aynı anda birden çok istek gelse de yalnız biri yükler. */
+export async function ensureSeeded(env, scope, now = Date.now()) {
+  if (!scope) return;
+  if (now - (seededAt.get(scope) ?? -Infinity) < RECHECK_MS) return;
   await ensureSchema(env.DB);
-  const row = await env.DB.prepare(
-    "SELECT value,updated FROM pilot_settings WHERE key='vitrin_seeded'"
-  ).first();
+  const key = 'vitrin_seeded:' + scope;
+  const row = await env.DB.prepare('SELECT value,updated FROM pilot_settings WHERE key=?').bind(key).first();
   if (row && row.value !== 'pending') {
-    seededDone = true;
+    if (seededAt.size > 5000) seededAt.clear();
+    seededAt.set(scope, now);
     return;
   }
   // Yarım kalmış bir yükleme (ör. Worker kesildi) iki dakika sonra yeniden denenir.
   if (row && now - Date.parse(row.updated) > STALE_CLAIM_MS)
-    await env.DB.prepare("DELETE FROM pilot_settings WHERE key='vitrin_seeded' AND value='pending'").run();
-  if (!(await claimSeeding(env.DB, now))) return; // başka bir istek yüklüyor
+    await env.DB.prepare("DELETE FROM pilot_settings WHERE key=? AND value='pending'").bind(key).run();
+  if (!(await claimSeeding(env.DB, scope, now))) return; // başka bir istek yüklüyor
   try {
-    await seed(env, now);
-    seededDone = true;
+    await seed(env, scope, now);
+    seededAt.set(scope, now);
   } catch (err) {
-    await env.DB.prepare("DELETE FROM pilot_settings WHERE key='vitrin_seeded' AND value='pending'").run();
+    await env.DB.prepare("DELETE FROM pilot_settings WHERE key=? AND value='pending'").bind(key).run();
     throw err;
   }
 }
 
-/** Gece sıfırlama: bütün kayıtları ve dosyaları siler, örnekleri yeniden yükler. */
-export async function resetVitrin(env, now = Date.now()) {
+/** Gece sıfırlama: bütün alanların kayıtlarını ve dosyalarını siler. Alanlar ilk istekte yeniden kurulur. */
+export async function resetVitrin(env) {
   await ensureSchema(env.DB);
   let cursor;
   do {
@@ -286,10 +349,5 @@ export async function resetVitrin(env, now = Date.now()) {
     cursor = page.truncated ? page.cursor : undefined;
   } while (cursor);
   for (const t of TABLES) await env.DB.prepare('DELETE FROM ' + t).run();
-  // Yükleme bitene kadar başka isteklerin örnekleri ikinci kez yüklemesini engelle.
-  await claimSeeding(env.DB, now);
-  seededDone = false;
-  const ids = await seed(env, now);
-  seededDone = true;
-  return ids;
+  seededAt.clear();
 }

@@ -22,18 +22,19 @@ Ayarların hepsi kök dizindeki `wrangler.jsonc` dosyasındadır. Veritabanı ve
 
 ### Vitrin modu (`AA_VITRIN = "1"`)
 
-Canlı demo herkese açık bir vitrindir. Bu mod `server/vitrin.mjs` dosyasında ve `worker/index.ts` içinde çalışır:
+Canlı demo herkese açık bir vitrindir ama her ziyaretçinin alanı ayrıdır. Bu mod `server/vitrin.mjs` dosyasında ve `worker/index.ts` içinde çalışır:
 
 1. **Giriş:** `/signin-with-chatgpt` adresi rol seçme sayfası gösterir (aday, İK değerlendiricisi, pilot yöneticisi). Şifre yoktur. Seçilen rol tarayıcıya bir çerezle (`aa_vitrin`) yazılır.
-2. **Aday hesapları ayrıdır:** Her tarayıcı aday rolünü seçtiğinde kendine özel rastgele bir hesap alır. Bir ziyaretçi başka bir ziyaretçinin aday kayıtlarını aday olarak göremez.
-3. **Değerlendirici ve yönetici ortaktır:** Bu rolleri seçen herkes aynı hesabı kullanır. Bu yüzden yüklenen dosyalar bu rolleri seçen herkese görünür. Giriş sayfası ve Hesap ekranı bunu açıkça yazar.
+2. **Her ziyaretçinin alanı ayrıdır:** Tarayıcı ilk girişte rastgele bir alan kimliği (UUID) alır. Üç rolün hesabı da bu alana aittir: `vitrin-aday-<alan>`, `vitrin-degerlendirici-<alan>`, `vitrin-yonetici-<alan>`. Rol değiştirince aynı alanda kalınır; aday olarak gönderdiğini yönetici olarak görürsün.
+3. **Alanlar birbirini görmez:** `server/pilot-service.mjs` içindeki `vitrinScope` her sorguyu alana göre süzer: teslim listesi, dosya indirme, atama, değerlendirme, taslak, üye listesi, rol değişikliği, sayaçlar ve kör değerlendirme ayarı. Yönetici de yalnız kendi alanını görür. Vitrin dışında (`AA_VITRIN=0`) alan boştur, davranış değişmez. `tests/check-vitrin.mjs` iki bağımsız ziyaretçiyle bunu sınar.
+3a. **Yalnız hazır örnek dosya:** Teslimde dosya, seçilen vakanın hazır kurgusal cevap dosyasıyla bayt bayt aynı olmalıdır (`guardUpload`); başka her dosya sunucuda reddedilir. Arayüzde dosya seçme alanı yerine "hazır kurgusal örnek" notu ve indirme bağlantısı (`/vitrin-ornek?case=…`) çıkar. Böylece gerçek özgeçmiş veya şirket dosyası vitrine hiç girmez.
 4. **Kimlik yalnız çerezden okunur:** İstemci kendi isteğine kimlik başlığı (`oai-authenticated-user-*`) eklese bile Worker bunları siler. Böylece kimse başka biri gibi davranamaz.
 5. **Tablolar kendiliğinden kurulur:** İlk istekte `server/migrations.mjs` listesindeki tablolar kurulur. Hangi kurulumun yapıldığı `aa_schema` tablosunda tutulur; yeni bir migration eklenirse bir sonraki istekte yalnız o çalışır.
-6. **Örnek veri:** Vitrin ilk açıldığında üç kurgusal aday teslimi yüklenir: biri ölçütlü geri bildirimle yayımlanmış, biri değerlendiricide 4 gündür bekliyor (hedef süre aşılmış), biri atanmamış. Böylece değerlendirici ve yönetici rolleri boş ekranla karşılaşmaz.
-7. **Gece sıfırlama:** Her gece 00:00 UTC'de (03:00 TSİ) Cloudflare zamanlanmış görevi çalışır. Bütün kayıtlar ve dosyalar silinir, örnekler yeniden yüklenir.
-8. **Hızlı 404:** Statik dosyalar Worker çalışmadan sunulur. Worker'a yalnız `/`, `/api/pilot` ve giriş/çıkış yolları gelir; başka her istek (ör. botların `.env`, `config.php`, `dump.sql` taramaları) uygulama çalıştırılmadan 404 alır.
-9. **Eşzamanlı istekler:** Cloudflare bir isteğin başlattığı işi başka bir isteğin beklemesine izin vermez ("This promise was created by a request that has since ended" hatası). Bu yüzden tablo kurulumu ve örnek yükleme istekler arasında paylaşılan bir iş olarak değil, aynı anda iki istek çalıştırsa da güvenli olacak şekilde yazıldı; örnekleri yalnız `vitrin_seeded` işaretini ilk alan istek yükler.
-10. **Sınırlar:** Dosya başına 3 MB. Ortak değerlendirici hesabının rolü düşürülemez (`PROTECTED_MEMBERS`), böylece bir ziyaretçi demoyu bozamaz.
+6. **Örnek veri:** Her alana ilk istekte üç kurgusal aday teslimi yüklenir: biri ölçütlü geri bildirimle yayımlanmış, biri değerlendiricide 4 gündür bekliyor (hedef süre aşılmış), biri atanmamış. Böylece değerlendirici ve yönetici rolleri boş ekranla karşılaşmaz.
+7. **Gece sıfırlama:** Her gece 00:00 UTC'de (03:00 TSİ) Cloudflare zamanlanmış görevi çalışır. Bütün alanların kayıtları ve dosyaları silinir; bir alan bir sonraki istekte örneklerle yeniden kurulur.
+8. **Hızlı 404:** Statik dosyalar Worker çalışmadan sunulur. Worker'a yalnız `/`, `/api/pilot`, `/vitrin-ornek` ve giriş/çıkış yolları gelir; başka her istek (ör. botların `.env`, `config.php`, `dump.sql` taramaları) uygulama çalıştırılmadan 404 alır.
+9. **Eşzamanlı istekler:** Cloudflare bir isteğin başlattığı işi başka bir isteğin beklemesine izin vermez ("This promise was created by a request that has since ended" hatası). Bu yüzden tablo kurulumu ve örnek yükleme istekler arasında paylaşılan bir iş olarak değil, aynı anda iki istek çalıştırsa da güvenli olacak şekilde yazıldı; bir alanın örneklerini yalnız `vitrin_seeded:<alan>` işaretini ilk alan istek yükler.
+10. **Sınırlar:** İstek gövdesi en fazla 3 MB. Bir ziyaretçi rolleri ancak kendi alanında değiştirebilir; başkasının demosunu bozamaz.
 
 ## Yayın akışı
 
@@ -73,7 +74,7 @@ Veritabanı, dosya kovası ve gece görevi ilk yayında otomatik oluşur; paneld
 
 ## Gerçek bir pilot için
 
-Vitrin bir tanıtım ortamıdır: ortak değerlendirici hesabı, şifresiz giriş ve gece silme gerçek adaylar için uygun değildir. Gerçek adaylarla pilot yapılacaksa:
+Vitrin bir tanıtım ortamıdır: şifresiz giriş, yalnız örnek dosya ve gece silme gerçek adaylar için uygun değildir. Gerçek adaylarla pilot yapılacaksa:
 
 - Kalıcı kayıtlar, gerçek hesaplar ve kişisel veri saklanacağı için **kendi sunucunda (VPS)** çalıştırmak daha uygundur: kim, hangi veriye erişir, yedek nerede durur kontrol sende olur.
 - Kimlik doğrulayan bir giriş eklenmelidir (ör. Cloudflare Access ya da kendi giriş sistemin). Başlık adları `AUTH_USER_ID_HEADER` ve `AUTH_EMAIL_HEADER` ile değiştirilebilir (`server/identity.mjs`).

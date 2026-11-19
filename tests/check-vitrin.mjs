@@ -4,8 +4,10 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { handlePilot } from '../server/pilot-service.mjs';
 import {
-  ACCOUNTS,
+  account,
   readSession,
+  guardUpload,
+  sampleFile,
   withSessionIdentity,
   handleAuth,
   ensureSchema,
@@ -25,8 +27,6 @@ const sqlite = new DatabaseSync(':memory:');
 const objects = new Map();
 const env = {
   AA_VITRIN: '1',
-  PILOT_OWNER_EMAIL: ACCOUNTS.admin.email,
-  PROTECTED_MEMBERS: ACCOUNTS.reviewer.id,
   DB: {
     prepare(sql) {
       let args = [];
@@ -90,16 +90,6 @@ assert.deepEqual(
 );
 assert(sqlite.prepare("SELECT name FROM sqlite_master WHERE name='pilot_settings'").get());
 
-// Örnek veri: aynı anda gelen istekler örnekleri yalnız bir kez yükler.
-resetSchemaCache();
-await Promise.all([ensureSeeded(env), ensureSeeded(env), ensureSeeded(env)]);
-resetSchemaCache();
-await ensureSeeded(env);
-const subs = sqlite.prepare('SELECT * FROM pilot_submissions ORDER BY created').all();
-assert.equal(subs.length, 3, 'üç örnek teslim yüklenir (ikinci çağrı tekrar yüklemez)');
-assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_reviews').get().n, 1);
-assert.equal(objects.size, 3);
-
 // Cloudflare istekler arası Promise paylaşımına izin vermez: modülde bekleyen Promise tutulmamalı.
 const vitrinSource = readFileSync('server/vitrin.mjs', 'utf8');
 assert(
@@ -108,7 +98,9 @@ assert(
 );
 const workerSource = readFileSync('worker/index.ts', 'utf8');
 assert(
-  workerSource.includes('APP_PATHS') && workerSource.includes("'/api/pilot'"),
+  workerSource.includes('APP_PATHS') &&
+    workerSource.includes("'/api/pilot'") &&
+    workerSource.includes("'/vitrin-ornek'"),
   'uygulama dışı yollar hızlı 404 almalı'
 );
 
@@ -117,7 +109,7 @@ const origin = 'https://aday.example.test';
 const page = await handleAuth(new Request(origin + '/signin-with-chatgpt'));
 assert.equal(page.status, 200);
 const html = await page.text();
-assert(html.includes('Gerçek kişisel bilgi') && html.includes('value="candidate"'));
+assert(html.includes('sana özeldir') && html.includes('value="candidate"'));
 const post = (role, headers = {}) =>
   handleAuth(
     new Request(origin + '/signin-with-chatgpt', {
@@ -128,45 +120,62 @@ const post = (role, headers = {}) =>
   );
 assert.equal((await post('root')).status, 400);
 assert.equal((await post('candidate', { origin: 'https://evil.test' })).status, 403);
+const cookieOf = res => res.headers.get('set-cookie').split(';')[0];
 const signed = await post('candidate');
 assert.equal(signed.status, 303);
-const setCookie = signed.headers.get('set-cookie');
-assert.match(setCookie, /HttpOnly; Secure; SameSite=Lax/);
-const candidateCookie = setCookie.split(';')[0];
-const sessionReq = new Request(origin + '/api/pilot?op=me', { headers: { cookie: candidateCookie } });
-const candidate = readSession(sessionReq);
-assert.equal(candidate.role, 'candidate');
-assert.match(candidate.id, /^vitrin-aday-/);
-const again = await post('candidate', { cookie: candidateCookie });
+assert.match(signed.headers.get('set-cookie'), /HttpOnly; Secure; SameSite=Lax/);
+const aCandidate = cookieOf(signed);
+const sessionOf = c => readSession(new Request(origin, { headers: { cookie: c } }));
+const A = sessionOf(aCandidate);
+assert.equal(A.role, 'candidate');
+assert.match(A.id, /^vitrin-aday-/);
 assert.equal(
-  readSession(new Request(origin, { headers: { cookie: again.headers.get('set-cookie').split(';')[0] } })).id,
-  candidate.id,
-  'aynı tarayıcı aday rolüne dönünce aynı hesap'
+  sessionOf(cookieOf(await post('candidate', { cookie: aCandidate }))).id,
+  A.id,
+  'aynı tarayıcı aynı aday'
 );
-assert.equal(readSession(new Request(origin, { headers: { cookie: 'aa_vitrin=admin%7Cbaska-biri' } })), null);
-assert.equal(
-  readSession(new Request(origin, { headers: { cookie: 'aa_vitrin=candidate%7Cvitrin-yonetici' } })),
-  null
-);
+// Rol değiştirince aynı alanda kalınır.
+const aAdmin = cookieOf(await post('admin', { cookie: aCandidate })),
+  aReviewer = cookieOf(await post('reviewer', { cookie: aAdmin }));
+assert.equal(sessionOf(aAdmin).id, 'vitrin-yonetici-' + A.scope);
+assert.equal(sessionOf(aReviewer).id, 'vitrin-degerlendirici-' + A.scope);
+// Eski ortak hesap çerezleri ve sahte değerler geçersiz.
+for (const bad of [
+  'admin%7Cvitrin-yonetici',
+  'reviewer%7Cvitrin-degerlendirici',
+  'admin%7Cbaska-biri',
+  'root%7C' + A.scope,
+])
+  assert.equal(sessionOf('aa_vitrin=' + bad), null, bad);
+// Eski aday çerez biçimi okunmaya devam eder.
+assert.equal(sessionOf('aa_vitrin=' + encodeURIComponent('candidate|' + A.id)).id, A.id);
 const out = await handleAuth(new Request(origin + '/signout-with-chatgpt'));
 assert.match(out.headers.get('set-cookie'), /Max-Age=0/);
 assert.equal(await handleAuth(new Request(origin + '/workspace.html')), null);
+
+// Örnek veri: alan başına bir kez, aynı anda gelen istekler de yalnız bir kez yükler.
+await Promise.all([ensureSeeded(env, A.scope), ensureSeeded(env, A.scope), ensureSeeded(env, A.scope)]);
+resetSchemaCache();
+await ensureSeeded(env, A.scope);
+assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_submissions').get().n, 3, 'alana üç örnek');
+assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_reviews').get().n, 1);
+assert.equal(objects.size, 3);
 
 // Kimlik yalnız çerezden: sahte başlıklar silinir.
 const forged = withSessionIdentity(
   new Request(origin + '/api/pilot?op=me', {
     headers: {
-      'oai-authenticated-user-id': ACCOUNTS.admin.id,
-      'oai-authenticated-user-email': ACCOUNTS.admin.email,
+      'oai-authenticated-user-id': account('admin', A.scope).id,
+      'oai-authenticated-user-email': 'x@y',
     },
   })
 );
 assert.equal(forged.headers.get('oai-authenticated-user-id'), null);
 assert.equal((await handlePilot(forged, env)).status, 401);
-const call = async (cookieValue, op, body) => {
+const call = async (cookieValue, op, body, query = '') => {
   const r = await handlePilot(
     withSessionIdentity(
-      new Request(origin + '/api/pilot?op=' + op, {
+      new Request(origin + '/api/pilot?op=' + op + query, {
         method: body ? 'POST' : 'GET',
         headers: { cookie: cookieValue, origin, ...(body ? { 'Content-Type': 'application/json' } : {}) },
         body: body ? JSON.stringify(body) : undefined,
@@ -174,20 +183,16 @@ const call = async (cookieValue, op, body) => {
     ),
     env
   );
-  return { status: r.status, body: await r.json() };
+  return { status: r.status, body: r.headers.get('content-type')?.includes('json') ? await r.json() : null };
 };
-const meCandidate = await call(candidateCookie, 'me');
+const meCandidate = await call(aCandidate, 'me');
 assert.equal(meCandidate.body.user.role, 'candidate');
 assert.equal(meCandidate.body.vitrin, true);
-assert.equal(
-  (await call(candidateCookie, 'submissions')).body.length,
-  0,
-  'ziyaretçi adayı örnek teslimleri görmez'
-);
+assert.equal(meCandidate.body.user.scope, undefined, 'alan kimliği yanıtta dönmez');
+assert.deepEqual(meCandidate.body.vitrinCases, ['kpi-paradoksu', 'vardiya-darbogazi', 'butce-sapmasi']);
+assert.equal((await call(aCandidate, 'submissions')).body.length, 0, 'aday örnek teslimleri görmez');
 
-const reviewerCookie = 'aa_vitrin=' + encodeURIComponent('reviewer|' + ACCOUNTS.reviewer.id);
-const adminCookie = 'aa_vitrin=' + encodeURIComponent('admin|' + ACCOUNTS.admin.id);
-const queue = (await call(reviewerCookie, 'submissions')).body;
+const queue = (await call(aReviewer, 'submissions')).body;
 assert.equal(queue.length, 2, 'değerlendirici kendisine atanan iki örneği görür');
 assert.equal(queue.filter(r => r.feedback).length, 1);
 assert(queue.find(r => r.feedback).feedback.criteria.length >= 3, 'örnek geri bildirim ölçütlüdür');
@@ -203,48 +208,105 @@ assert(
   Date.now() - Date.parse(reviewedRow.reviewed) > 4 * 86400000,
   'örnek geri bildirim tarihi geçmişe ayarlanır'
 );
-const adminView = (await call(adminCookie, 'me')).body;
+const adminView = (await call(aAdmin, 'me')).body;
 assert.equal(adminView.user.role, 'admin');
-assert.equal((await call(adminCookie, 'submissions')).body.filter(r => !r.reviewer_id).length, 1);
+assert.equal((await call(aAdmin, 'submissions')).body.filter(r => !r.reviewer_id).length, 1);
 
-// Ortak değerlendirici hesabının rolü düşürülemez.
-assert.equal((await call(adminCookie, 'role', { id: ACCOUNTS.reviewer.id, role: 'candidate' })).status, 400);
-assert.equal(
-  sqlite.prepare('SELECT role FROM pilot_members WHERE id=?').get(ACCOUNTS.reviewer.id).role,
-  'reviewer'
-);
-
-// Ziyaretçi teslimi ve gece sıfırlama
-const c = adminView.cases[0];
+// Teslim yalnız hazır örnek dosyayla: başka dosya sunucuda reddedilir.
+const submitReq = (cookieValue, caseId, version, body) =>
+  new Request(origin + `/api/pilot?op=submit&case=${caseId}&version=${version}&name=cv.pdf&confirmed=yes`, {
+    method: 'POST',
+    headers: { cookie: cookieValue, origin, 'content-length': String(body.length) },
+    body,
+  });
+const kpi = adminView.cases.find(c => c.id === 'kpi-paradoksu');
 const pdf = new TextEncoder().encode('%PDF-1.4\n1 0 obj\n<<>>\nendobj\n%%EOF\n');
-const up = await handlePilot(
-  withSessionIdentity(
-    new Request(
-      origin + `/api/pilot?op=submit&case=${c.id}&version=${c.version}&name=cevap.pdf&confirmed=yes`,
-      { method: 'POST', headers: { cookie: candidateCookie, origin }, body: pdf }
-    )
-  ),
+const rejected = await guardUpload(submitReq(aCandidate, kpi.id, kpi.version, pdf));
+assert(rejected instanceof Response && rejected.status === 400, 'kendi dosyası reddedilir');
+assert.match((await rejected.json()).error, /kendi dosyanı yükleyemezsin/);
+const sampleRes = sampleFile(new Request(origin + '/vitrin-ornek?case=' + kpi.id));
+assert.equal(sampleRes.status, 200);
+const sampleBytes = new Uint8Array(await sampleRes.arrayBuffer());
+assert.equal(sampleFile(new Request(origin + '/vitrin-ornek?case=yok')).status, 404);
+const otherCase = adminView.cases.find(c => c.id === 'vardiya-darbogazi');
+assert.equal(
+  (await guardUpload(submitReq(aCandidate, otherCase.id, otherCase.version, sampleBytes))).status,
+  400,
+  'başka vakanın örneği de kabul edilmez'
+);
+const okReq = await guardUpload(submitReq(aCandidate, kpi.id, kpi.version, sampleBytes));
+assert(okReq instanceof Request);
+assert.equal(
+  new URL(okReq.url).searchParams.get('name'),
+  'ornek-aday-1-kpi-paradoksu.docx',
+  'dosya adı örneğinki olur'
+);
+const up = await handlePilot(withSessionIdentity(okReq), env);
+assert.equal(up.status, 201);
+const aSubmission = (await up.json()).id;
+
+// İki bağımsız ziyaretçi: B, A'nın teslimini hiçbir rolde göremez, A da B'ninkini.
+const bCandidate = cookieOf(await post('candidate')),
+  B = sessionOf(bCandidate);
+assert.notEqual(B.scope, A.scope);
+const bAdmin = cookieOf(await post('admin', { cookie: bCandidate })),
+  bReviewer = cookieOf(await post('reviewer', { cookie: bAdmin }));
+await ensureSeeded(env, B.scope);
+const bUp = await handlePilot(
+  withSessionIdentity(await guardUpload(submitReq(bCandidate, kpi.id, kpi.version, sampleBytes))),
   env
 );
-assert.equal(up.status, 201);
-assert.equal(objects.size, 4);
-await call(adminCookie, 'settings', { blindReview: true });
+assert.equal(bUp.status, 201);
+const bSubmission = (await bUp.json()).id;
+const ids = async c => (await call(c, 'submissions')).body.map(r => r.id);
+assert(!(await ids(bAdmin)).includes(aSubmission), 'B yöneticisi A teslimini görmez');
+assert.equal((await ids(bAdmin)).length, 4, 'B yöneticisi kendi üç örneğini ve kendi teslimini görür');
+assert(!(await ids(aAdmin)).includes(bSubmission), 'A yöneticisi B teslimini görmez');
+assert(!(await ids(bReviewer)).includes(aSubmission));
+assert.equal((await call(bAdmin, 'file', null, '&id=' + aSubmission)).status, 404, 'dosya indirilemez');
+assert.equal(
+  (await call(bAdmin, 'assign', { id: aSubmission, reviewer: account('reviewer', B.scope).id })).status,
+  404
+);
+assert.equal(
+  (await call(bAdmin, 'assign', { id: bSubmission, reviewer: account('reviewer', A.scope).id })).status,
+  400,
+  'başka alanın değerlendiricisine atanamaz'
+);
+assert.equal((await call(bAdmin, 'review', { id: aSubmission, items: [] })).status, 403);
+assert.equal((await call(bAdmin, 'reviewdraft', null, '&id=' + aSubmission)).status, 403);
+assert.equal((await call(bAdmin, 'file-workspace', null, '&id=' + aSubmission)).status, 403);
+const bMembers = (await call(bAdmin, 'members')).body.map(m => m.id);
+assert(
+  bMembers.every(id => id.endsWith(B.scope)),
+  'üye listesi yalnız kendi alanı'
+);
+await call(bAdmin, 'role', { id: A.id, role: 'reviewer' });
+assert.equal(
+  sqlite.prepare('SELECT role FROM pilot_members WHERE id=?').get(A.id).role,
+  'candidate',
+  'başka alanın rolü değişmez'
+);
+const metrics = (await call(bAdmin, 'metrics')).body;
+assert.equal(metrics.submissions, 4);
+assert.equal(metrics.reviews, 1);
+// Kör değerlendirme ayarı da alana özel.
+await call(aAdmin, 'settings', { blindReview: true });
+assert.equal((await call(aAdmin, 'me')).body.blindReview, true);
+assert.equal((await call(bAdmin, 'me')).body.blindReview, false);
+
+// Gece sıfırlama: bütün alanlar silinir; ilk istekte örnekler yeniden kurulur.
 await resetVitrin(env);
+assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_submissions').get().n, 0);
+assert.equal(objects.size, 0, 'dosyalar silinir');
+assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_members').get().n, 0);
 assert.equal(
-  sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_submissions').get().n,
-  3,
-  'sıfırlamada yalnız örnekler kalır'
-);
-assert.equal(objects.size, 3, 'ziyaretçi dosyaları silinir');
-assert.equal(
-  sqlite.prepare("SELECT COUNT(*) AS n FROM pilot_members WHERE id LIKE 'vitrin-aday-%'").get().n,
-  0
-);
-assert.equal(
-  sqlite.prepare("SELECT value FROM pilot_settings WHERE key='blind_review'").get(),
-  undefined,
+  sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_settings').get().n,
+  0,
   'ayarlar varsayılana döner'
 );
+await ensureSeeded(env, A.scope);
+assert.equal(sqlite.prepare('SELECT COUNT(*) AS n FROM pilot_submissions').get().n, 3);
 console.log(
-  'PASS: vitrin tablo kurulumu, örnek kuyruk, rolle giriş, sahte kimlik başlıklarının silinmesi, korumalı hesap ve gece sıfırlama.'
+  'PASS: vitrin tablo kurulumu, ziyaretçiye özel alan ve örnek kuyruk, iki ziyaretçinin birbirini görmemesi, yalnız hazır örnek dosya teslimi, sahte kimlik başlıklarının silinmesi ve gece sıfırlama.'
 );

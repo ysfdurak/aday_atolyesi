@@ -292,6 +292,7 @@
   }
 
   root.ReviewUI = {
+    loadMammoth,
     form,
     bindForm,
     collect,

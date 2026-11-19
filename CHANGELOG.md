@@ -1,5 +1,10 @@
 # Sürüm geçmişi
 
+## 0.23.2 · 19 Kasım 2026
+
+- **Kendi dosyanı tarayıcıda kontrol et (vitrin):** Canlı demoda kendi dosyan sunucuya gönderilmez, ama teslim alanındaki "Kendi dosyanı yalnız bu tarayıcıda kontrol et" ile biçim ve boyut, Word'de her beklenen çıktının numarasıyla başlayan bir bölüm olup olmadığı ve kelime sayısı kontrol edilir (mammoth, tarayıcıda). Dosya hiçbir yere gitmez.
+- **Lint:** 48 uyarı temizlendi; CI artık uyarıya izin vermiyor (`--max-warnings=0`).
+
 ## 0.23.1 · 19 Kasım 2026
 
 Güvenlik gözden geçirmesi.

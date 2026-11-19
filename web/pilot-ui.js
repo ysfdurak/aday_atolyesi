@@ -81,7 +81,7 @@
       .map(c => `<option value="${e(c.id)}">${e(c.title)}</option>`)
       .join(
         ''
-      )}</select></label><div id="pilot-outputs"></div><label class="field">Teslim biçimi<select name="parent" id="pilot-parent"><option value="">Yeni çalışma</option></select></label><label class="field">Revizyonda neleri değiştirdin?<textarea name="note" maxlength="2000" rows="3"></textarea></label>${me.vitrin ? `<div class="note vitrin-file" role="note"><b>Teslim dosyası: hazır kurgusal örnek.</b> Canlı demoda kendi dosyanı yükleyemezsin; seçtiğin vakanın örnek cevabı gönderilir. <a href="#" id="pilot-sample-link" download>Örnek dosyayı indir</a></div>` : `<label class="field">Tek yanıt dosyası · PDF / DOCX / XLSX · En fazla 10 MB<input name="file" type="file" accept=".pdf,.docx,.xlsx" required></label>`}<label class="check"><input name="confirmed" type="checkbox" required> Beklenen tüm çıktıları dosyamda aynı numaralarla yanıtladım.</label><p class="muted">Dosya biçimi ve boyutu kontrol edilir. Numaralı yanıtların içeriği insan tarafından incelenir. Şifresiz, makrosuz dosya kullan. Dosyanı sen, yönetici ve atanmış değerlendirici görebilir.</p><button class="primary">Dosyamı teslim et</button></form></section>
+      )}</select></label><div id="pilot-outputs"></div><label class="field">Teslim biçimi<select name="parent" id="pilot-parent"><option value="">Yeni çalışma</option></select></label><label class="field">Revizyonda neleri değiştirdin?<textarea name="note" maxlength="2000" rows="3"></textarea></label>${me.vitrin ? `<div class="note vitrin-file" role="note"><b>Teslim dosyası: hazır kurgusal örnek.</b> Canlı demoda kendi dosyanı yükleyemezsin; seçtiğin vakanın örnek cevabı gönderilir. <a href="#" id="pilot-sample-link" download>Örnek dosyayı indir</a><label class="field local-check">Kendi dosyanı yalnız bu tarayıcıda kontrol et (hiçbir yere gönderilmez) · PDF / DOCX / XLSX<input type="file" id="pilot-local-check" accept=".pdf,.docx,.xlsx"></label><div id="pilot-local-result" aria-live="polite"></div></div>` : `<label class="field">Tek yanıt dosyası · PDF / DOCX / XLSX · En fazla 10 MB<input name="file" type="file" accept=".pdf,.docx,.xlsx" required></label>`}<label class="check"><input name="confirmed" type="checkbox" required> Beklenen tüm çıktıları dosyamda aynı numaralarla yanıtladım.</label><p class="muted">Dosya biçimi ve boyutu kontrol edilir. Numaralı yanıtların içeriği insan tarafından incelenir. Şifresiz, makrosuz dosya kullan. Dosyanı sen, yönetici ve atanmış değerlendirici görebilir.</p><button class="primary">Dosyamı teslim et</button></form></section>
 ${canReview ? '</details>' : ''}${
       canReview
         ? `<section class="card queue-summary" style="margin-top:20px"><div class="stats"><div><strong>${admin ? pending.length : mine.length}</strong><span>${admin ? 'geri bildirim bekleyen teslim' : 'sana atanmış, bekleyen teslim'}</span></div><div><strong class="${late.length ? 'late-text' : ''}">${late.length}</strong><span>${root.ReviewUI.TARGET_DAYS} günlük hedefi aşan</span></div>${admin ? `<div><strong>${unassigned.length}</strong><span>atanmamış teslim</span></div>` : ''}</div>${
@@ -139,6 +139,41 @@ ${canReview ? '</details>' : ''}${
     if (target && [...document.getElementById('pilot-case').options].some(o => o.value === target))
       document.getElementById('pilot-case').value = target;
     wire();
+  }
+  /** Kendi dosyasının tarayıcıda kontrolü: biçim, boyut ve Word'de her beklenen çıktının numarasıyla başlayan bir bölüm. */
+  async function localFileCheck(f, c) {
+    const ext = (f.name.match(/\.([a-z0-9]+)$/i) || [])[1]?.toLowerCase(),
+      items = [];
+    if (!['pdf', 'docx', 'xlsx'].includes(ext)) throw Error('PDF, DOCX veya XLSX seç.');
+    const size =
+      f.size < 1048576
+        ? Math.max(1, Math.round(f.size / 1024)) + ' KB'
+        : (f.size / 1048576).toFixed(1) + ' MB';
+    items.push([f.size <= me.maxBytes, `Boyut ${size} (sınır ${Math.round(me.maxBytes / 1048576)} MB)`]);
+    if (ext === 'docx') {
+      const m = await root.ReviewUI.loadMammoth(),
+        text = (await m.extractRawText({ arrayBuffer: await f.arrayBuffer() })).value || '';
+      c.outputs.forEach((o, i) => {
+        const n = i + 1,
+          found = new RegExp(`(^|\\n)\\s*(çıktı\\s*)?${n}\\s*[.):\\-–]`, 'i').test(text);
+        items.push([
+          found,
+          `${n}. çıktı (${o.length > 60 ? o.slice(0, 57) + '…' : o}): ${found ? 'numarasıyla başlayan bölüm var' : 'bulunamadı; cevabı “' + n + '.” ile başlat'}`,
+        ]);
+      });
+      const words = (text.match(/\S+/g) || []).length;
+      items.push([words >= 80, `${words.toLocaleString('tr-TR')} kelime`]);
+    } else
+      items.push([
+        true,
+        'PDF ve Excel’de çıktı numaralarını kendin kontrol et; bu kontrol yalnız Word’de yapılır.',
+      ]);
+    const okAll = items.every(x => x[0]);
+    return `<div class="note ${okAll ? '' : 'warn'}"><b>${okAll ? 'Dosyan teslime hazır görünüyor.' : 'Teslimden önce şunlara bak:'}</b><ul>${items
+      .map(([ok, t]) => `<li>${ok ? '✓' : '✗'} ${e(t)}</li>`)
+      .join(
+        ''
+      )}</ul><p class="muted">Bu kontrol yalnız bu tarayıcıda yapıldı; dosya gönderilmedi. Canlı demoda teslim yine hazır örnek dosyayla yapılır; kendi dosyanı kendi kurulumunda teslim edebilirsin.</p></div>`;
   }
   function selected() {
     return me.cases.find(c => c.id === document.getElementById('pilot-case').value);
@@ -283,7 +318,24 @@ ${canReview ? '</details>' : ''}${
       requestId = AA.uuid();
       outputs();
     };
-    const fileInput = document.querySelector('#pilot-submit input[type=file]');
+    // Vitrin: kendi dosyası sunucuya gitmez; biçim, boyut ve (Word'de) çıktı numaraları tarayıcıda kontrol edilir.
+    const localCheck = document.getElementById('pilot-local-check');
+    if (localCheck)
+      localCheck.onchange = async () => {
+        const out = document.getElementById('pilot-local-result'),
+          f = localCheck.files?.[0],
+          c = selected();
+        if (!f) return;
+        out.innerHTML = '<p class="muted">Kontrol ediliyor…</p>';
+        try {
+          out.innerHTML = await localFileCheck(f, c);
+        } catch (err) {
+          out.innerHTML = `<p class="danger">${e(err.message || 'Dosya okunamadı.')}</p>`;
+        } finally {
+          localCheck.value = '';
+        }
+      };
+    const fileInput = document.querySelector('#pilot-submit input[name=file]');
     if (fileInput) fileInput.onchange = () => (requestId = AA.uuid());
     document.getElementById('pilot-account-export').onclick = () =>
       job(async () => {

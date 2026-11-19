@@ -2170,3 +2170,47 @@ footer a {
     grid-template-columns: 1fr;
   }
 }
+/* İlk girişte sayaçların yanında: puanlanmış örnek teslime giriş */
+.sample-entry {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 14px;
+  text-decoration: none;
+  color: inherit;
+  border-left: 4px solid var(--accent, #2f6f5e);
+  position: relative;
+}
+.sample-entry strong {
+  font-size: 1.1rem;
+}
+.sample-entry b {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+}
+.sample-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+.sample-crit {
+  border-top: 1px solid var(--line, #e3e3e3);
+  padding-top: 12px;
+}
+.sample-crit:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.sample-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sample-text {
+  font-style: italic;
+  margin: 6px 0;
+}

@@ -181,5 +181,31 @@
     };
   }
 
-  root.CalibrationUI = { view, bind, synthetic, compare, examples, formExamples, KEY };
+  // Aday için puanlanmış örnek teslim: aynı sentetik teslim, her ölçütte verilen düzey, nedeni (seviye tanımı)
+  // ve bir üst düzeyin nasıl göründüğü. İlk girişte sayaçlar sıfırken "iyi cevap neye benzer?" sorusunu cevaplar.
+  function sampleView() {
+    const list = cases();
+    if (!list.length)
+      return '<section class="card"><h1>Puanlanmış örnek teslim</h1><p>Vaka içeriği yüklenemedi.</p></section>';
+    const c = list[0],
+      items = synthetic(c),
+      bank = ex().cases[c.id] || {};
+    const rows = items
+      .map((it, k) => {
+        const r = c.rubric[k] || {},
+          an = r.anchors || [],
+          up = it.level < 3 ? (bank[it.name] || [])[it.level] : '';
+        return `<li class="sample-crit"><div class="sample-head"><b>${k + 1}. ${e(it.name)}</b><span class="tag lv${it.level}">${it.level} · ${LEVELS[it.level]}</span></div>
+<p class="sample-text">“${e(it.text)}”</p>
+<p><b>Neden bu düzey?</b> ${e(an[it.level] || (it.level === 1 ? 'Konuya değinilmiş ama dayanak ya da gerekçe eksik.' : it.level === 2 ? 'Ölçüt karşılanıyor; varsayım ya da sınır açık kalmış.' : 'Ölçüt dayanaklı biçimde karşılanıyor.'))}</p>
+${r.evidence ? `<p class="muted"><b>Bu ölçütte aranan:</b> ${e(r.evidence)}</p>` : ''}
+${up ? `<details><summary>Bir üst düzey (${it.level + 1} · ${LEVELS[it.level + 1]}) nasıl görünür?</summary><p>“${e(up)}”</p>${an[it.level + 1] ? `<p class="muted">${e(an[it.level + 1])}</p>` : ''}</details>` : '<p class="muted">Bu ölçütte en üst düzey.</p>'}</li>`;
+      })
+      .join('');
+    return `<span class="eyebrow">Örnek · puanlanmış teslim</span><h1>İyi bir cevap<br><em>neye benzer?</em></h1><p class="muted">Kurgusal bir adayın “${e(c.title)}” vakasına verdiği cevap. Her ölçüt ayrı puanlanır; puanlar toplanmaz. Her satırda verilen düzeyi, nedenini ve bir üst düzeyin nasıl göründüğünü gör.</p>
+<section class="card"><p>${draftTag()} Ölçek: ${LEVELS.map((l, n) => n + ' · ' + l).join(' · ')}</p><ol class="sample-list">${rows}</ol></section>
+<div class="actions"><a class="btn primary" href="#cases">Kendi vakana başla</a><a class="btn" href="#home">Ana sayfaya dön</a></div>`;
+  }
+
+  root.CalibrationUI = { view, bind, synthetic, compare, examples, formExamples, sampleView, KEY };
 })(typeof window !== 'undefined' ? window : globalThis);

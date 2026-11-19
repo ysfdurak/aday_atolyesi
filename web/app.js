@@ -260,7 +260,7 @@ async function render(options = {}) {
   route = requested;
   syncPosition();
   const needsCases =
-      ['cases', 'pilot', 'growth', 'rehearsal', 'file-work', 'kalibrasyon'].includes(route) &&
+      ['cases', 'pilot', 'growth', 'rehearsal', 'file-work', 'kalibrasyon', 'ornek-teslim'].includes(route) &&
       !CaseContent.ready(),
     needsFeedback = route === 'growth' && !ResponseContent.ready();
   if (needsCases || needsFeedback) {
@@ -303,6 +303,7 @@ async function render(options = {}) {
       'file-work': window.FileWorkUI?.view,
       pilot: PilotUI.view,
       kalibrasyon: window.CalibrationUI?.view,
+      'ornek-teslim': window.CalibrationUI?.sampleView,
       cases: CaseUI.view,
     }[route] || home
   )();

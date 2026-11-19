@@ -55,7 +55,7 @@ ${hasActivity ? `<section class="card growth-entry"><h2>Cevaplarım bana ne söy
       p
         ? ''
         : `<section class="card how-it-works"><h2>Nasıl ilerlersin?</h2><ol class="steps-list"><li><b>Hedefini belirle.</b> Pozisyonu, tarihi ve günlük süreni seç; uygulama sana günlük bir plan çıkarır.</li><li><b>Her gün tek adımı yap.</b> Plan seni sırasıyla sınav pratiğine, rol sorularına ve şirket vakalarına götürür. Vakada belgeleri inceler, kararını gerekçesiyle yazarsın.</li><li><b>Deneyimini görüşmeye taşı.</b> Kendi yaşadığın olayları deneyim örneği olarak yaz, mülakat dosyanda topla ve prova et.</li></ol><p class="muted">Ayrıntılar ve kullanılan terimler: ${btn('#guide', 'Nasıl çalışır?')}</p></section>`
-    }<div class="workspace-overview"><h2>Çalışmaların bir bakışta</h2><p class="muted">Tamamladığın çalışmaların sayısı.</p><div class="grid status-cards">${checklist(
+    }<div class="workspace-overview"><h2>Çalışmaların bir bakışta</h2><p class="muted">Tamamladığın çalışmaların sayısı.</p>${hasActivity ? '' : `<a class="card sample-entry" href="#ornek-teslim"><span class="num">HENÜZ ÇALIŞMA YOK</span><strong>Puanlanmış örnek teslimi incele</strong><span>Bir vakaya verilmiş örnek cevabın her yetkinlikte hangi düzeyi, neden aldığını gör.</span><b aria-hidden="true">↗</b></a>`}<div class="grid status-cards">${checklist(
       s
     )
       .map(

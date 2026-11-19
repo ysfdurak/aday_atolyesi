@@ -32,7 +32,8 @@ const GUVENLIK_BASLIKLARI: Record<string, string> = {
   'Strict-Transport-Security': 'max-age=31536000',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'X-Frame-Options': 'DENY',
-  'Content-Security-Policy': "frame-ancestors 'none'; object-src 'none'; base-uri 'self'",
+  // Tam politika (Kasım 2026 taraması): yalnız kendi adresi; satır içi betik çerçeve (vinext) için gerekli.
+  'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; worker-src 'self' blob:; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self'",
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
   'Cross-Origin-Opener-Policy': 'same-origin',
 };

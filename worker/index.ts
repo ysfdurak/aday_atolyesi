@@ -29,6 +29,7 @@ const APP_PATHS = new Set([
 // Statik dosyalar aynı başlıkları web/_headers ile alır. Var olan başlığın üzerine yazılmaz.
 const GUVENLIK_BASLIKLARI: Record<string, string> = {
   'X-Content-Type-Options': 'nosniff',
+  'Strict-Transport-Security': 'max-age=31536000',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'X-Frame-Options': 'DENY',
   'Content-Security-Policy': "frame-ancestors 'none'; object-src 'none'; base-uri 'self'",

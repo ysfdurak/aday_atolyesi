@@ -36,6 +36,7 @@
     "eslint": "10.15.0",
     "eslint-config-next": "16.4.6",
     "json-rpc-2.0": "1.8.1",
+    "miniflare": "4.20260730.0",
     "prettier": "^3.10.1",
     "raw-body": "4.0.0",
     "react-server-dom-webpack": "19.3.1",

@@ -14,19 +14,14 @@ const compiled = await build({
   platform: 'neutral',
   external: ['node:zlib'],
 });
-// Miniflare'ın güncel sürümü işçi ayarlarını "workers" dizisinde ister (eski sürümler de bu biçimi kabul eder).
 const mf = new Miniflare({
-  workers: [
-    {
-      modules: true,
-      script: compiled.outputFiles[0].text,
-      compatibilityDate: '2026-05-15',
-      compatibilityFlags: ['nodejs_compat'],
-      bindings: { PILOT_OWNER_EMAIL: 'pilot-admin@example.test' },
-      d1Databases: ['DB'],
-      r2Buckets: ['BUCKET'],
-    },
-  ],
+  modules: true,
+  script: compiled.outputFiles[0].text,
+  compatibilityDate: '2026-05-15',
+  compatibilityFlags: ['nodejs_compat'],
+  bindings: { PILOT_OWNER_EMAIL: 'pilot-admin@example.test' },
+  d1Databases: ['DB'],
+  r2Buckets: ['BUCKET'],
   log: new Log(LogLevel.ERROR),
 });
 try {

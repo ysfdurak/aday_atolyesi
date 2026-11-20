@@ -104,8 +104,11 @@ function expandedReport(s, scores) {
       ''
     )}</div></section><section class="card section"><span class="eyebrow">Görüşmeci çalışma sayfası</span><h2>Öz bildirimi gerçek örnekle sınayın.</h2><p>Aynı rol için aynı çekirdek sorular, aynı takip sırası ve aynı değerlendirme çıpaları kullanılmalı. Aşağıdaki boş alanlar yazdırılıp doldurulabilir; görüşme notları bu prototipte kaydedilmez.</p><div class="tablewrap" tabindex="0"><table><tr><th>Başlık</th><th>Gözlenebilir kanıt / not</th></tr><tr><td>Durum ve görev</td><td>_________________________________________________</td></tr><tr><td>Adayın kendi eylemi</td><td>_________________________________________________</td></tr><tr><td>Sonuç / doğrulanabilir çıktı</td><td>_________________________________________________</td></tr><tr><td>Tercihin işe yaramadığı karşı örnek</td><td>_________________________________________________</td></tr><tr><td>İş örneğiyle doğrulama ihtiyacı</td><td>_________________________________________________</td></tr></table></div><p>Tercih ve beceri puanlarını birleştiren bir toplam uygunluk puanı yoktur. İnsan değerlendirmesi de işle ilgili açık ölçütlere dayanmalıdır.</p></section><section class="card section"><span class="eyebrow">Gelişim görüşmesi · 30 günlük taslak</span><h2>Küçük bir davranışı deneyip gözlemleyin.</h2><ol><li><b>1. hafta:</b> Katılımcı bir çalışma tercihini seçer; kolaylaştırdığı ve zorlaştırdığı iki gerçek durumu yazar.</li><li><b>2. hafta:</b> Karşı kutba yakın, geri alınabilir küçük bir yöntem dener. Örn. erken taslak veya ek kontrol noktası.</li><li><b>3. hafta:</b> Aynı görev türünde tekrarlar; süre, hata veya iletişim tekrarını göreve uygun biçimde gözlemler.</li><li><b>4. hafta:</b> Hangi koşulda hangi yaklaşımın işe yaradığını yönetici / mentor ile konuşur. Envanter puanını yükseltmek hedef değildir.</li></ol></section>`;
 }
+// Excel'in formül sanmaması için =, +, -, @, sekme veya satır başıyla başlayan metne kesme işareti eklenir (sayılar olduğu gibi kalır).
 function csvCell(v) {
-  return '"' + String(v ?? '').replace(/"/g, '""') + '"';
+  let s = String(v ?? '');
+  if (/^[=+\-@\t\r]/.test(s) && !/^[-+]?\d[\d.,]*%?$/.test(s)) s = "'" + s;
+  return '"' + s.replace(/"/g, '""') + '"';
 }
 function downloadText(name, text, type = 'text/plain') {
   const a = document.createElement('a');

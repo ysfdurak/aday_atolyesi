@@ -12,6 +12,11 @@ updates:
     groups:
       kucuk-guncellemeler:
         update-types: ["minor", "patch"]
+    # TypeScript 7: typescript-eslint henüz desteklemiyor (lint "does not support TS 7.0" hatasıyla durur).
+    # Destek gelince bu satırları silip yükselt. (Kasım 2026)
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "npm"
     directory: "/web"
     schedule:

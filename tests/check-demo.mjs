@@ -28,6 +28,12 @@ try {
   }
 
   assert.match(await (await fetch(base)).text(), /AA_LOCAL_DEMO=true/);
+  // fonts.css'teki yazı tipleri yerel demoda da sunulmalı (yoksa Türkçe karakterler yedek yazı tipine düşer).
+  for (const font of readFileSync('web/fonts/fonts.css', 'utf8').match(/\/fonts\/[\w-]+\.woff2/g)) {
+    const res = await fetch(base + font);
+    assert.equal(res.status, 200, font + ' yerel demoda bulunamadı.');
+    assert.equal(res.headers.get('content-type'), 'font/woff2');
+  }
   const forged = await fetch(base + '/api/pilot?op=me', {
     headers: {
       'oai-authenticated-user-id': 'demo-admin',

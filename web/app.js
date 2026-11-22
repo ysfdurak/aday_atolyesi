@@ -94,7 +94,7 @@ function shell(body) {
     .map(([id, label]) => `<a href="#${id}" ${current === id ? 'aria-current="page"' : ''}>${label}</a>`)
     .join('')}</nav>`;
 }
-const AA_VERSION = '0.22.0';
+const AA_VERSION = '0.23.2';
 function home() {
   return WorkspaceUX.home(state, AA.snapshot(localStorage));
 }

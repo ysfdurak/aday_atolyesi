@@ -73,6 +73,7 @@ const mime = {
   '.pdf': 'application/pdf',
   '.zip': 'application/zip',
   '.svg': 'image/svg+xml',
+  '.woff2': 'font/woff2',
   '.webmanifest': 'application/manifest+json',
   '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   '.xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',

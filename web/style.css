@@ -2214,3 +2214,11 @@ footer a {
   font-style: italic;
   margin: 6px 0;
 }
+
+/* Geri bildirim bağlantısı yalnız ölçüm servisi yüklendiğinde görünür (web/olcum.js). */
+.feedback-link {
+  display: none;
+}
+html[data-olcum] .feedback-link {
+  display: revert;
+}

@@ -1,5 +1,9 @@
 # Sürüm geçmişi
 
+## 0.23.3 · 22 Kasım 2026
+
+- **Kullanım ölçümü ve geri bildirim:** `aday.ysfdurak.com` demosu ortak ölçüm servisine (olcum.ysfdurak.com) bağlandı (`web/olcum.js`). Yalnız ekran adı (`#` sonrasının ilk parçası), aktif süre, cihaz türü ve dil gider; vaka cevapları, CV, dosyalar, ad, e-posta ve IP gitmez, çerez yok, DNT/GPC'ye uyulur. Kendi sunucusuna kurulan kopyalar dışarıya istek atmaz. Kenar menüsünde ve sayfa altında "Geri bildirim ver" bağlantısı; servis yüklenmezse görünmez. CSP'ye yalnız bu adres eklendi; "Verilerin nerede saklanır?" tablosuna bir satır eklendi.
+
 ## 0.23.2 · 19 Kasım 2026
 
 - **Kendi dosyanı tarayıcıda kontrol et (vitrin):** Canlı demoda kendi dosyan sunucuya gönderilmez, ama teslim alanındaki "Kendi dosyanı yalnız bu tarayıcıda kontrol et" ile biçim ve boyut, Word'de her beklenen çıktının numarasıyla başlayan bir bölüm olup olmadığı ve kelime sayısı kontrol edilir (mammoth, tarayıcıda). Dosya hiçbir yere gitmez.

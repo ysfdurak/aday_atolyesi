@@ -1,5 +1,9 @@
 # Sürüm geçmişi
 
+## 0.23.4 · 25 Kasım 2026
+
+- **Arama motoru (canonical):** Sayfanın standart adresi `workspace.html` yerine `https://aday.ysfdurak.com/workspace` oldu (`og:url` de). Cloudflare `.html` uzantılı adresi uzantısız adrese yönlendirdiği için eski canonical, Google'ı yönlendiren bir adrese gönderiyordu; Search Console'da sayfa "alternatif sayfa / yönlendirmeli" olarak dizin dışında kalıyordu.
+
 ## 0.23.3 · 22 Kasım 2026
 
 - **Kullanım ölçümü ve geri bildirim:** `aday.ysfdurak.com` demosu ortak ölçüm servisine (olcum.ysfdurak.com) bağlandı (`web/olcum.js`). Yalnız ekran adı (`#` sonrasının ilk parçası), aktif süre, cihaz türü ve dil gider; vaka cevapları, CV, dosyalar, ad, e-posta ve IP gitmez, çerez yok, DNT/GPC'ye uyulur. Kendi sunucusuna kurulan kopyalar dışarıya istek atmaz. Kenar menüsünde ve sayfa altında "Geri bildirim ver" bağlantısı; servis yüklenmezse görünmez. CSP'ye yalnız bu adres eklendi; "Verilerin nerede saklanır?" tablosuna bir satır eklendi.

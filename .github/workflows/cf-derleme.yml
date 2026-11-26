@@ -1,0 +1,17 @@
+# Cloudflare derleme bildirimi: her Workers Builds derlemesi bittiğinde ortak iş akışını çağırır.
+# Varsayılan daldaki derleme başarısızsa "derleme" etiketli issue açılır (GitHub e-postayla bildirir),
+# sonraki başarılı derlemede kapanır. Kurallar tek yerde: ysfdurak/ysfdurak.com → .github/workflows/cf-derleme.yml
+name: Cloudflare derlemesi
+
+on:
+  check_run:
+    types: [completed]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  bildir:
+    if: startsWith(github.event.check_run.name, 'Workers Builds')
+    uses: ysfdurak/ysfdurak.com/.github/workflows/cf-derleme.yml@main
